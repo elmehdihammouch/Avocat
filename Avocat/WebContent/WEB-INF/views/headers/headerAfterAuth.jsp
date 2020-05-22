@@ -74,7 +74,7 @@
         <!-- sidebar menu start-->
           
         <ul class="sidebar-menu" id="nav-accordion">
-        <!--   <p class="centered"><a href="profile.html"><img src="img/fr-05.jpg" class="img-circle" width="80"></a></p>  -->
+         <p class="centered"><a href="profile.html"><img src="resources/images/fr-05.jpg" class="img-circle" width="80"></a></p>  
           <h5 class="centered">Sam</h5>
             
            <li >
