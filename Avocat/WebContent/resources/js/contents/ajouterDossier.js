@@ -1,6 +1,14 @@
+
 //ensemble des divs
+	var 	choixClient=document.getElementById("choixClient");
+	var     dossier=document.getElementById("dossier");
+	var     procesAD=document.getElementById("procesAD");
+	var 	changeDisplay1AD=document.getElementById("changeDisplay1AD");
+	var 	changeDisplay2AD=document.getElementById("changeDisplay2AD");
+
+//ensemble des divs d'ajout du proces
 	
-	var 	choixDossier=document.getElementById("choixDossier");
+	
 	var     proces=document.getElementById("proces");
 	var     fileUpload=document.getElementById("file_upload");
 	var     facture=document.getElementById("facture");
@@ -9,7 +17,11 @@
 	var 	titre=document.getElementById("titre_display");
 	var 	img=document.getElementById("img_display");
 
-//ensemble des inputs
+//ensemble des inputs d'ajout du dossier 
+	var 	cinClientAD=document.getElementById("cinClientAD");
+
+
+//ensemble des inputs d'ajout du proces
 	var 	nom=document.getElementById("nom");
 	var 	prenom=document.getElementById("prenom");	
 	var 	cin=document.getElementById("cin");
@@ -17,9 +29,7 @@
 	var 	avocatAdv=document.getElementById("avocatAdv");
 	var 	FMB=document.getElementById("FMB");
 
-	
-
-//ensemble des regexps 
+	//ensemble des regexps 
 	var nomRegex = /^[a-zA-Z]{2,}$/;
 	var cinRegex = /^([a-zA-Z]{1,2})([0-9]{4,10})$/;
 	var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -27,11 +37,25 @@
 	var phoneRegex = /(^[0-9]{10}$)|(^(\+)[0-9]{12}$)/;	
 	var adresseRegex = /^[0-9a-zA-Z\s]*$/;
 	var factureRegex = /^[0-9]+$/;
-	var avocatAdvRegex = /^[a-zA-Z\s]{2,}$/;
+	var avocatAdvRegex = /^[a-zA-Z\s]{2,}$/;	
+
+
+
+
+
+
 //listeners
+	changeDisplay1AD.addEventListener('click',changeDisplayF1AD);
+	changeDisplay2AD.addEventListener('click',changeDisplayF2AD);
+
+//listeners pour l'ajout du proces
 	changeDisplay1.addEventListener('click',changeDisplayF1);
 	changeDisplay2.addEventListener('click',changeDisplayF2);
-//listeners for inputs 
+
+//listeners pour les inputs d'ajout du dossier
+cinClientAD.addEventListener("keyup",validationCin);		
+
+//listeners pour les i,puts d'ajout du proces
 nom.addEventListener("keyup",validationNom)	;
 prenom.addEventListener("keyup",validationNom);
 cin.addEventListener("keyup",validationCin);
@@ -93,35 +117,81 @@ function validationAvocatAdv(){
 
 
 
-//fonction qui change le display
-function changeDisplayF1(){
 
 
-	if(choixDossier.style.display=="block" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
-		
-		
-			choixDossier.style.display='none';
-			proces.style.display='block';
-			fileUpload.style.display="none";
-			facture.style.display="none";
-			changeDisplay2.parentElement.style.display="block";
-			changeDisplay1.parentElement.className="col-xs-3 col-xs-offset-2 herite-ajout-proces";
+function changeDisplayF1AD(){
+	if(choixClient.style.display=="block" && dossier.style.display=="none" && procesAD.style.display=="none")	{
+		if(cinRegex.test(cinClientAD.value)==true){
+			//if(/*ici on realisera une recherche sur le client saisie par l'utilisateur*/){
+				choixClient.style.display="none";
+				dossier.style.display="block";
+				procesAD.style.display="none";
+				changeDisplay2AD.parentElement.style.display="block";
+				changeDisplay1AD.parentElement.className="col-xs-3 col-xs-offset-2 herite-ajout-proces";
+						titre.style.display="none";
+						img.style.display="none";
+						img.nextElementSibling.style.display="none";
+						titre.nextElementSibling.children[0].style.display="none";
+			//}	
+		}
+		else{alert("veillez saisir un CIN valide");}			
+	}
+
+	else if(choixClient.style.display=="none" && dossier.style.display=="block" && procesAD.style.display=="none"){
+		choixClient.style.display="none";
+		dossier.style.display="none";
+		procesAD.style.display="block";
+		changeDisplay1AD.parentElement.style.display="none";
+		changeDisplay2AD.parentElement.style.display="none";
+					//proces js
+
+
+	}
+}
+
+function changeDisplayF2AD(){
+	/*if(choixClient.style.display=="none" && dossier.style.display=="none" && procesAD.style.display=="none")	{
+		choixClient.style.display="none";
+		dossier.style.display="block";
+		procesAD.style.display="none";
+		changeDisplay2AD.parentElement.style.display="block";
+		changeDisplay1AD.parentElement.className="col-xs-3 col-xs-offset-2 herite-ajout-proces";
 				titre.style.display="none";
 				img.style.display="none";
 				img.nextElementSibling.style.display="none";
 				titre.nextElementSibling.children[0].style.display="none";
-		
-		
+	}*/
 
+	 if(choixClient.style.display=="none" && dossier.style.display=="block" && procesAD.style.display=="none"){
+		choixClient.style.display="block";
+		dossier.style.display="none";
+		procesAD.style.display="none";
+		changeDisplay2AD.parentElement.style.display="none";
+		changeDisplay1AD.parentElement.className="col-xs-3 col-xs-offset-5 herite-ajout-proces";
+				titre.style.display="block";
+				img.style.display="block";
+				img.nextElementSibling.style.display="block";
+				titre.nextElementSibling.children[0].style.display="block";
 
-		
 
 	}
+}
 
-	else if(choixDossier.style.display=="none" && proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
+
+
+
+
+
+
+
+
+//----------------------------------------------------fonctions de changement du dysplay d'ajout du proces ----------------------------------------------------
+//fonction qui change le display
+function changeDisplayF1(){
+
+	if( proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 		
 		if( nomRegex.test(nom.value)==true && nomRegex.test(prenom.value)==true && cinRegex.test(cin.value)==true && adresseRegex.test(adresse.value)==true && avocatAdvRegex.test(avocatAdv.value0==true) ){
-			choixDossier.style.display='none';
 			proces.style.display='none';
 			fileUpload.style.display="block";
 			facture.style.display="none";
@@ -133,10 +203,8 @@ function changeDisplayF1(){
 		
 	}
 
-	else if(choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
+	else if( proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
 		
-		
-			choixDossier.style.display='none';
 			proces.style.display='none';
 			fileUpload.style.display="none";
 			facture.style.display="block";
@@ -145,10 +213,9 @@ function changeDisplayF1(){
 		
 	}
 
-	else if(choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
+	else if( proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
 		
 		if(factureRegex.test(FMB.value)==true){
-			choixDossier.style.display='none';
 			proces.style.display='none';
 			fileUpload.style.display="none";
 			facture.style.display="block";
@@ -165,51 +232,34 @@ function changeDisplayF1(){
 
 function changeDisplayF2(){
 
-	if(choixDossier.style.display=="none" && proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
-
-		choixDossier.style.display='block';
-		proces.style.display='none';
-		fileUpload.style.display="none";
-		facture.style.display="none";	
-		changeDisplay2.parentElement.style.display="none";
-		changeDisplay1.parentElement.className="col-xs-3 col-xs-offset-5 herite-ajout-proces";
-			titre.style.display="block";
-			img.style.display="block";
-			img.nextElementSibling.style.display="block";
-			titre.nextElementSibling.children[0].style.display="block";
+	if( proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
+//changement du display des grandes divs 
+		choixClient.style.display="none";
+		dossier.style.display="block";
+		procesAD.style.display="none";
+		changeDisplay1AD.parentElement.style.display="block";
+		changeDisplay2AD.parentElement.style.display="block";
 	}
 
-	else if(choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
-		choixDossier.style.display='none';
+	else if( proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
 		proces.style.display='block';
 		fileUpload.style.display="none";
 		facture.style.display="none";		
 	}
 
-	else if(choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
-		choixDossier.style.display='none';
+	else if( proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
 		proces.style.display='none';
 		fileUpload.style.display="block";
 		facture.style.display="none";
 		document.getElementById("changeDisplay1").innerHTML="suivant";	
 	}
 
-	if(choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
+	if(proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 
 	}
 
 
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -225,6 +275,18 @@ $(window).load(function(){
 		})
 	});
 
+$(window).load(function(){
+			$(".col-3 input").val("");
+			
+			$(".input-effect select").focusout(function(){
+				if($(this).text() != ""){
+					$(this).addClass("has-content");
+				}else{
+					$(this).removeClass("has-content");
+				}
+			})
+	});
+
 window.onload = function(){
 	
 	active=document.getElementsByClassName("active");
@@ -237,7 +299,12 @@ window.onload = function(){
 		active[i].classList.remove("active");
 		i--;
 	}
-	document.getElementById("creerProces").className += "active";
-	document.getElementById("creerProces").parentElement.previousElementSibling.className += " active";
+	document.getElementById("creerDossier").className += "active";
+	document.getElementById("creerDossier").parentElement.previousElementSibling.className += " active";
+
+	
+		
+	
+
 
 };

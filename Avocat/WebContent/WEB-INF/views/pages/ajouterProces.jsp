@@ -8,12 +8,12 @@
  <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
  <link href="./resources/css/headers/style-responsive.css" rel="stylesheet">
  <link href="./resources/css/headers/style.css" rel="stylesheet">
- <link href="./resources/css/contents/AjouterProces.css" rel="stylesheet">
+ <link href="./resources/css/contents/ajouterProces.css" rel="stylesheet">
 <title>Avocat</title>
 </head>
 <body>
 <jsp:include page="../headers/headerAfterAuth.jsp"></jsp:include>
-<jsp:include page="../contents/AjouterProcesContent.jsp"></jsp:include>
+<jsp:include page="../contents/ajouterProcesContent.jsp"></jsp:include>
 
 
  <script type="text/javascript" src="./resources/jquery/jquery.js"></script>

@@ -74,7 +74,7 @@
         <!-- sidebar menu start-->
           
         <ul class="sidebar-menu" id="nav-accordion">
-         <p class="centered"><a href="profile.html"><img src="resources/images/fr-05.jpg" class="img-circle" width="80"></a></p>  
+          <p class="centered"><a href="profile.html"><img src="img/fr-05.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">Sam</h5>
             
            <li >
@@ -90,8 +90,8 @@
               <span>Gestion Client</span>
               </a>
             <ul class="sub">
-              <li class="active"><a href="newuser.html">creer un client</a></li>
-              <li><a href="">consulter liste clients</a></li>
+              <li class="active" id="creerClient"><a href="newuser.html">creer un client</a></li>
+              <li id="consulterClient"><a href="">consulter liste clients</a></li>
             </ul>
            </li>
           
@@ -101,8 +101,8 @@
               <span>Gestion des consultations</span>
             </a>
             <ul class="sub">
-              <li><a href="">creer une consultation</a></li>
-              <li><a href=""> Liste des consultations</a></li>
+              <li id="creerConsultation"><a href="" >creer une consultation</a></li>
+              <li id="consulterConsultation"><a href="" > Liste des consultations</a></li>
             </ul>
            </li>
 
@@ -112,19 +112,19 @@
               <span>Gestion des dossiers</span>
             </a>
             <ul class="sub">
-              <li><a href="">creer un dossier</a></li>
-              <li><a href="">consulter liste des dossiers</a></li>
+              <li id="creerDossier"><a href="" >creer un dossier</a></li>
+              <li id="consulterDossier"><a href="" >consulter liste des dossiers</a></li>
             </ul>
            </li>
 
            <li class="sub-menu">
-            <a href="javascript:;" class="active">
+            <a href="javascript:;" class="active" >
               <i class="fa fa-gavel"></i>
               <span>Gestion des Proces</span>
             </a>
             <ul class="sub">
-              <li><a href="">creer un proces</a></li>
-              <li><a href="">consulter liste des proces</a></li>
+              <li id="creerProces"><a href="">creer un proces</a></li>
+              <li id="consulterProces"><a href="">consulter liste des proces</a></li>
             </ul>
            </li>
 
