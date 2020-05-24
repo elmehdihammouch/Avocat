@@ -1,11 +1,14 @@
 package controllers;
 
 import java.io.IOException;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.daoAuthentification;
 import models.Administrateur;
@@ -27,17 +30,19 @@ public class Authentification extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		String action=request.getParameter("action");
-			//traitement d'authentification du avocat
-		if(action.equals("admineAuthentification")) {
+		//traitement d'authentification du avocat
+		if(action.equals("connecter")) {
 			String email=request.getParameter("email");
 			String password=request.getParameter("password");
-			Administrateur admin=new Administrateur();
-				
+			Administrateur admin;
+			HttpSession ses = request.getSession(true);
 			admin=daoAuthentification.adminAuthentification(email, password);
 			
 			if(admin!=null) {
-				request.getSession().setAttribute("admin", admin);
+				ses.setAttribute("admin", admin);
 				request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces.jsp").forward(request, response);
 			}
 			else {

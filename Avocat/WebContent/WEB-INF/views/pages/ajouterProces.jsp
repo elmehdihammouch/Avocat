@@ -14,6 +14,7 @@
 <title>Avocat</title>
 </head>
 <body>
+
 	<%HttpSession ses = request.getSession();
 	 Administrateur admin = null;
 	 admin = (Administrateur)session.getAttribute("admin"); 
@@ -21,11 +22,12 @@
 				 {
 		 request.getRequestDispatcher("adminAuthentification.jsp").forward(request, response);
 				 }
-				
 	%>
+
+
+
 <jsp:include page="../headers/headerAfterAuth.jsp"></jsp:include>
 <jsp:include page="../contents/ajouterProcesContent.jsp"></jsp:include>
-
 
 
  
@@ -34,10 +36,13 @@
 
 
 </body>
+
  <script type="text/javascript" src="./resources/jquery/jquery.js"></script>
   <script type="text/javascript" src="./resources/js/headers/jquery.dcjqaccordion.2.7.js"></script>
    <script type="text/javascript" src="./resources/js/headers/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="./resources/js/headers/jquery.nicescroll.js"></script>
      <script type="text/javascript" src="./resources/js/headers/common-scripts.js"></script>
       <script type="text/javascript" src="./resources/js/contents/ajouterProces.js"></script>
+
+
 </html>
