@@ -6,12 +6,11 @@ public class Proces {
 	public int idProces;
 	public int idDos;
 	public int numP;
-	public Date dateCD;
-	public Date dateAD;
+	public Date dateCP;
+	public Date dateAP;
 	public String adresseAdv;
 	public String nomAdv;
 	public String avocatAdv;
-	public String typeDos;
 	public String tribunal;
 	public String ville;
 	public int saleNum;
@@ -24,18 +23,16 @@ public class Proces {
 		super();
 	}
 
-	public Proces(int idDos, int numP, Date dateCD, Date dateAD, String adresseAdv, String nomAdv, String avocatAdv,
-			String typeDos, String tribunal, String ville, int saleNum, Date dateSeance, Date dateSui, String txtJug,
-			Date dateJug) {
+	public Proces(int idDos, int numP, Date dateCP, Date dateAP, String adresseAdv, String nomAdv, String avocatAdv,
+			String tribunal, String ville, int saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug) {
 		super();
 		this.idDos = idDos;
 		this.numP = numP;
-		this.dateCD = dateCD;
-		this.dateAD = dateAD;
+		this.dateCP = dateCP;
+		this.dateAP = dateAP;
 		this.adresseAdv = adresseAdv;
 		this.nomAdv = nomAdv;
 		this.avocatAdv = avocatAdv;
-		this.typeDos = typeDos;
 		this.tribunal = tribunal;
 		this.ville = ville;
 		this.saleNum = saleNum;
@@ -45,19 +42,18 @@ public class Proces {
 		this.dateJug = dateJug;
 	}
 
-	public Proces(int idProces, int idDos, int numP, Date dateCD, Date dateAD, String adresseAdv, String nomAdv,
-			String avocatAdv, String typeDos, String tribunal, String ville, int saleNum, Date dateSeance, Date dateSui,
-			String txtJug, Date dateJug) {
+	public Proces(int idProces, int idDos, int numP, Date dateCP, Date dateAP, String adresseAdv, String nomAdv,
+			String avocatAdv, String tribunal, String ville, int saleNum, Date dateSeance, Date dateSui, String txtJug,
+			Date dateJug) {
 		super();
 		this.idProces = idProces;
 		this.idDos = idDos;
 		this.numP = numP;
-		this.dateCD = dateCD;
-		this.dateAD = dateAD;
+		this.dateCP = dateCP;
+		this.dateAP = dateAP;
 		this.adresseAdv = adresseAdv;
 		this.nomAdv = nomAdv;
 		this.avocatAdv = avocatAdv;
-		this.typeDos = typeDos;
 		this.tribunal = tribunal;
 		this.ville = ville;
 		this.saleNum = saleNum;
@@ -91,20 +87,20 @@ public class Proces {
 		this.numP = numP;
 	}
 
-	public Date getDateCD() {
-		return dateCD;
+	public Date getDateCP() {
+		return dateCP;
 	}
 
-	public void setDateCD(Date dateCD) {
-		this.dateCD = dateCD;
+	public void setDateCP(Date dateCP) {
+		this.dateCP = dateCP;
 	}
 
-	public Date getDateAD() {
-		return dateAD;
+	public Date getDateAP() {
+		return dateAP;
 	}
 
-	public void setDateAD(Date dateAD) {
-		this.dateAD = dateAD;
+	public void setDateAP(Date dateAP) {
+		this.dateAP = dateAP;
 	}
 
 	public String getAdresseAdv() {
@@ -129,14 +125,6 @@ public class Proces {
 
 	public void setAvocatAdv(String avocatAdv) {
 		this.avocatAdv = avocatAdv;
-	}
-
-	public String getTypeDos() {
-		return typeDos;
-	}
-
-	public void setTypeDos(String typeDos) {
-		this.typeDos = typeDos;
 	}
 
 	public String getTribunal() {
@@ -194,6 +182,8 @@ public class Proces {
 	public void setDateJug(Date dateJug) {
 		this.dateJug = dateJug;
 	}
+
+	
 	
 	
 	

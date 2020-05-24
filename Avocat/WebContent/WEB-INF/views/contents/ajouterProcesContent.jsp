@@ -71,13 +71,9 @@
                       <h5>informatons relatives au proces</h5>
                     </div>
 
-                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <select class="effect-16 a" id="" style="width:100%" name="typeProces"><option></option> <option value="" >proces en droit de la famille</option>  <option value="" >proces en droit civil</option>  <option value="" >proces en droit du travail</option>  <option value="" >procès en droit administratif</option>  <option value="" >procès en droit commercial</option>  <option value="" >procès en droit pénal</option></select>
-                        <label id="cin1">Type de dossier</label>
-                        <span class="focus-border"></span>
-                    </div>
+                     
 
-                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+                     <div class="col-xs-9 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="description" id="description" >
                         <label id="cin1">Description</label>
                         <span class="focus-border"></span>
