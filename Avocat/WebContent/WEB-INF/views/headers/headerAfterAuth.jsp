@@ -1,3 +1,12 @@
+<%@page import="models.Administrateur"%>
+<%HttpSession ses = request.getSession();
+ Administrateur admin = null;
+ admin = (Administrateur)session.getAttribute("admin"); 			
+%>
+
+
+
+
 <section id="container">
     <header class="header black-bg">
       <div class="sidebar-toggle-box">
@@ -74,8 +83,14 @@
         <!-- sidebar menu start-->
           
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="img/fr-05.jpg" class="img-circle" width="80"></a></p>
-          <h5 class="centered">Sam</h5>
+          <p class="centered"><a href="profile.html"><img src="<%if(admin!=null){%>
+          <%=admin.getImageUrl()%>
+          <%} %>" class="img-circle" width="80"></a></p>
+          <h5 class="centered"><%if(admin!=null){%>
+          <%=admin.getNom() %>
+            &nbsp  
+          <%=admin.getPrenom() %>
+          <%} %></h5>
             
            <li >
                 <a href="#" class="">

@@ -1,3 +1,4 @@
+<%@page import="models.Administrateur"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -5,15 +6,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+ <link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
+ <link href="./resources/css/contents/mainAuth.css" rel="stylesheet">
+ <link href="./resources/css/contents/utilAuth.css" rel="stylesheet">
 </head>
 <body>
-<form method="post" action="Authentification">
-	<h4>email</h4>
-	<input type="text" name="email">
-	<h4>password</h4>
-	<input type="password" name="password">
-	
-	<input type="submit" name="action" value="admineAuthentification">
-</form>
+<%	 HttpSession ses = request.getSession();
+	 Administrateur admin = null;
+	 admin = (Administrateur)session.getAttribute("admin"); 
+	 if(admin!=null){
+	 request.getRequestDispatcher("ajouterProces.jsp").forward(request, response);
+	}	 %>
+	<jsp:include page="../contents/adminauth.jsp"></jsp:include>
 </body>
+	<script type="text/javascript" src="./resources/jquery/jquery.js"></script>
+	<script type="text/javascript" src="./resources/js/contents/auth.js"></script>
 </html>
