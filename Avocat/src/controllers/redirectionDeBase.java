@@ -16,7 +16,7 @@ public class redirectionDeBase extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces.jsp").forward(request, response);
-		request.getRequestDispatcher("/WEB-INF/views/pages/ajouterDossier.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces.jsp").forward(request, response);
 	}
 
 

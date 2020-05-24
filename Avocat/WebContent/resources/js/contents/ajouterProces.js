@@ -10,6 +10,7 @@
 	var 	img=document.getElementById("img_display");
 
 //ensemble des inputs
+	var 	idDossier=document.getElementById("idDossier");
 	var 	nom=document.getElementById("nom");
 	var 	prenom=document.getElementById("prenom");	
 	var 	cin=document.getElementById("cin");
@@ -98,8 +99,8 @@ function changeDisplayF1(){
 
 
 	if(choixDossier.style.display=="block" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
-		
-		
+		$.post("AjouterProces",{action : "choixDossier" , idDossier : idDossier.value}, function(data){alert(data);});
+		//if(/*callback is true*/){
 			choixDossier.style.display='none';
 			proces.style.display='block';
 			fileUpload.style.display="none";
@@ -110,8 +111,8 @@ function changeDisplayF1(){
 				img.style.display="none";
 				img.nextElementSibling.style.display="none";
 				titre.nextElementSibling.children[0].style.display="none";
-		
-		
+				
+		//}
 
 
 		
@@ -241,3 +242,8 @@ window.onload = function(){
 	document.getElementById("creerProces").parentElement.previousElementSibling.className += " active";
 
 };
+
+//verification avec le serveur
+window.onload = function(){
+	
+}

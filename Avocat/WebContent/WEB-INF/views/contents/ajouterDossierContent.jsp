@@ -1,7 +1,7 @@
 <div class="container">
       <section id="main-content">
         <section class="wrapper">
-          <img alt="" src="t%C3%A9l%C3%A9chargement.jpg" id="img_display" style="height: 150px;"> 
+          <img alt="" src="resources/images/img.jpg" id="img_display" style="height: 150px;"> 
             <hr>
               <h3 style="text-align: center;" id="titre_display" ><i class="fa fa-angle-right"></i> Ajout d'un dossier</h3>
           <div class="row mt">
