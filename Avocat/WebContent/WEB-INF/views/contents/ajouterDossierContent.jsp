@@ -16,7 +16,7 @@
 
 
                 <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                  <input class="effect-16 " type="text" placeholder="" name="" id="cinClientAD" name="cinClientAD" >
+                  <input class="effect-16 " type="text" placeholder="" name="cinClientAD" id="cinClientAD" name="cinClientAD" >
                   <label id="">cin client</label>
                   <span class="focus-border"></span>
                 </div>
@@ -76,19 +76,19 @@
                     </div>
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="nom" id="nom" >
+                       <input class="effect-16 " type="text" placeholder="" name="nomAdv" id="nomAdv" >
                         <label id="cin1">Nom</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="prenom" id="prenom" >
+                       <input class="effect-16 " type="text" placeholder="" name="prenomAdv" id="prenomAdv" >
                         <label id="cin1">Prenom</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="cin" id="cin" >
+                       <input class="effect-16 " type="text" placeholder="" name="cinAdv" id="cinAdv" >
                         <label id="cin1">CIN</label>
                         <span class="focus-border"></span>
                     </div>
@@ -99,7 +99,7 @@
                     
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16" type="text" placeholder="" name="adresse" id="adresse" >
+                       <input class="effect-16" type="text" placeholder="" name="adresseAdv" id="adresseAdv" >
                         <label id="cin1">Adresse</label>
                         <span class="focus-border"></span>
                     </div>

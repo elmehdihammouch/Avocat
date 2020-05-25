@@ -15,11 +15,11 @@ public class Client {
 	public String telephone;
 	public String email;
 	public String password;
-	public String typeServ;
+	
 	
 	
 	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String nationalite, String adresse,
-			String cin, String municipale, String telephone, String email, String password, String typeServ) {
+			String cin, String municipale, String telephone, String email, String password) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -33,12 +33,28 @@ public class Client {
 		this.telephone = telephone;
 		this.email = email;
 		this.password = password;
-		this.typeServ = typeServ;
+	
 	}
 
 
 	public Client(String nom, String prenom, Date dateNais, String lieuNais, String nationalite, String adresse,
-			String cin, String municipale, String telephone, String email, String password, String typeServ) {
+			String cin, String municipale, String telephone, String email) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNais = dateNais;
+		this.lieuNais = lieuNais;
+		this.nationalite = nationalite;
+		this.adresse = adresse;
+		this.cin = cin;
+		this.municipale = municipale;
+		this.telephone = telephone;
+		this.email = email;
+	}
+
+
+	public Client(String nom, String prenom, Date dateNais, String lieuNais, String nationalite, String adresse,
+			String cin, String municipale, String telephone, String email, String password) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -51,7 +67,7 @@ public class Client {
 		this.telephone = telephone;
 		this.email = email;
 		this.password = password;
-		this.typeServ = typeServ;
+		
 	}
 
 
@@ -180,14 +196,7 @@ public class Client {
 	}
 
 
-	public String getTypeServ() {
-		return typeServ;
-	}
-
-
-	public void setTypeServ(String typeServ) {
-		this.typeServ = typeServ;
-	}
+	
 
 
 	
