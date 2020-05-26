@@ -1,0 +1,78 @@
+/*= Reset CSS 
+============= */
+
+
+
+
+
+
+/*= Reset CSS End
+================= */
+
+/*= input focus effects css
+=========================== */
+body{background-color: white}
+:focus{outline: none;}
+
+.herite-ajout-proces{float: left; width: 27.33%; margin: 30px 3%; position: relative;} 
+.herite-ajout-consultation{float: left; width: 27.33%; margin: 30px 3%; position: relative;} 
+input[type="text"]{font: 14px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 0.1px;}
+select{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 0.1px;}
+input[type="number"]{font: 14px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 0.1px;}
+{border:none; }
+
+
+.effect-16{border: 0; padding: 6px 0; border-bottom: 1px solid #ccc; background-color: transparent;}
+.effect-16-validation{border: 0; padding: 6px 0; border-bottom: 1px solid #ccc; background-color: transparent;}
+
+.effect-16 ~ .focus-border{position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #3399FF; transition: 0.4s;}
+.effect-16-validation ~ .focus-border{position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #f44336; transition: 0.4s;}
+
+.effect-16:focus ~ .focus-border,
+.has-content.effect-16 ~ .focus-border{width: 100%; transition: 0.4s;}
+
+
+.effect-16 ~ label{position: absolute; left: 0; width: 100%; top: 9px; color: #aaa; transition: 0.3s; z-index: -1; letter-spacing: 0.5px;padding-left: 15px;}
+.effect-16-validation ~ label{position: absolute; left: 0; width: 100%; top: 9px; color: #aaa; transition: 0.3s; z-index: -1; letter-spacing: 0.5px;padding-left: 15px;}
+.effect-16-validation:focus ~ .focus-border,
+.has-content.effect-16-validation ~ .focus-border{width: 100%; transition: 0.4s;}
+
+
+.effect-16:focus ~ label, .has-content.effect-16 ~ label{left: -15px;top: -16px; font-size: 12px; color: #3399FF; transition: 0.3s;}
+.effect-16-validation:focus ~ label, .has-content.effect-16-validation ~ label{left: -15px;top: -16px; font-size: 12px; color: red; transition: 0.3s;}
+
+
+.ajout-proces{
+	margin-top: 50px;
+}
+/**.titles-style{
+	background-color: #80ffd4;
+	font-family: 'Rouge Script', cursive; font-size: 15px; font-weight: normal; line-height: 10px; margin: 0 0 10px; text-shadow: 1px 1px 2px #082b34; 
+	border-radius: 1%;
+	text-align: center;
+}
+
+
+
+/*= input focus effects css End
+=============================== */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
+}
+
+.mg{margin-top: 25px;}

@@ -22,10 +22,10 @@
 
 
 //ensemble des inputs d'ajout du proces
-	var 	nom=document.getElementById("nom");
-	var 	prenom=document.getElementById("prenom");	
-	var 	cin=document.getElementById("cin");
-	var 	adresse=document.getElementById("adresse");
+	var 	nom=document.getElementById("nomAdv");
+	var 	prenom=document.getElementById("prenomAdv");	
+	var 	cin=document.getElementById("cinAdv");
+	var 	adresse=document.getElementById("adresseAdv");
 	var 	avocatAdv=document.getElementById("avocatAdv");
 	var 	FMB=document.getElementById("FMB");
 
@@ -40,6 +40,64 @@
 	var avocatAdvRegex = /^[a-zA-Z\s]{2,}$/;	
 
 
+	var  	nomAC=document.getElementById("nom");
+	var  	prenomAC=document.getElementById("prenom");
+	var  	emailAC=document.getElementById("email");
+	var  	phoneAC=document.getElementById("telephone");
+	var  	cinAC=document.getElementById("cin");
+	var  	dateNaissanceAC=document.getElementById("dateNais");
+	var  	lieuNaissanceAC=document.getElementById("lieuNais");
+	var  	adresseAC=document.getElementById("adresse");
+	var  	municipaleAC=document.getElementById("municipale");
+	
+//ensemble des regexps 	
+//listeners
+	
+//listeners for inputs 
+nomAC.addEventListener("keyup",validationNomAC)	;
+prenomAC.addEventListener("keyup",validationNomAC);
+cinAC.addEventListener("keyup",validationCinAC);
+adresseAC.addEventListener("keyup",validationAdresseAC);
+emailAC.addEventListener("keyup",validationEmailAC);
+phoneAC.addEventListener("keyup",validationPhoneAC);
+//dateNaissanceAC.addEventL0istener("keyup",validationDateAC);
+lieuNaissanceAC.addEventListener("keyup",validationAdresseAC);
+
+municipaleAC.addEventListener("keyup",validationAdresseAC);
+
+
+//fonctions de validation 
+
+function validationNomAC(){
+	if(nomRegex.test(this.value)==false) {this.className="effect-16-validation has-content"}
+	else {this.className="effect-16"}
+		
+}
+
+function validationCinAC(){
+	if(cinRegex.test(this.value)==false) {this.className="effect-16-validation has-content"}
+	else {this.className="effect-16"}
+}
+
+function validationDateAC(){
+	if(dateRegex.test(this.value)==false) {this.className="effect-16-validation has-content"}
+	else {this.className="effect-16"}
+}
+
+function validationAdresseAC(){
+	if(adresseRegex.test(this.value)==false) {this.className="effect-16-validation has-content"}
+	else {this.className="effect-16"}
+}
+
+function validationPhoneAC(){
+	if(phoneRegex.test(this.value)==false) {this.className="effect-16-validation has-content"}
+	else {this.className="effect-16"}
+}
+
+function validationEmailAC(){
+	if(emailRegex.test(this.value)==false) {this.className="effect-16-validation has-content"}
+	else {this.className="effect-16"}
+}
 
 
 
@@ -122,16 +180,22 @@ function validationAvocatAdv(){
 function changeDisplayF1AD(){
 	if(choixClient.style.display=="block" && dossier.style.display=="none" && procesAD.style.display=="none")	{
 		if(cinRegex.test(cinClientAD.value)==true){
+			$.post("abc",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
+				if(data==1 ){
+					choixClient.style.display="none";
+					dossier.style.display="block";
+					procesAD.style.display="none";
+					changeDisplay2AD.parentElement.style.display="block";
+					changeDisplay1AD.parentElement.className="col-xs-3 col-xs-offset-2 herite-ajout-proces";
+							titre.style.display="none";
+							img.style.display="none";
+							img.nextElementSibling.style.display="none";
+							titre.nextElementSibling.children[0].style.display="none";
+					
+				}else{alert("ce client n'existe pas")}
+			})
 			//if(/*ici on realisera une recherche sur le client saisie par l'utilisateur*/){
-				choixClient.style.display="none";
-				dossier.style.display="block";
-				procesAD.style.display="none";
-				changeDisplay2AD.parentElement.style.display="block";
-				changeDisplay1AD.parentElement.className="col-xs-3 col-xs-offset-2 herite-ajout-proces";
-						titre.style.display="none";
-						img.style.display="none";
-						img.nextElementSibling.style.display="none";
-						titre.nextElementSibling.children[0].style.display="none";
+				
 			//}	
 		}
 		else{alert("veillez saisir un CIN valide");}			
@@ -301,7 +365,62 @@ window.onload = function(){
 	}
 	document.getElementById("creerDossier").className += "active";
 	document.getElementById("creerDossier").parentElement.previousElementSibling.className += " active";
+	$("#dateNais").click(function(){
+        $(this).prop('type','date');
+	})
+    $("#dateNais").blur(function(){
+        $(this).prop('type','text');
+    })
+    
+    
+    $("select#d").focusout(function(){
+         
+      if($(this).children("option:selected").val() !=""){
 
+          $(this).addClass("has-content");
+          $(this).addClass("effect-16");
+          $(this).removeClass("effect-16-validation");
+		}else{
+          $(this).removeClass("has-content");
+          $(this).removeClass("effect-16");
+          $(this).addClass("effect-16-validation");
+		}
+	})
+	$("#nouveauClientAD").click(function(){
+		$.post("abc",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
+			if(data!=1 && confirm("voulez vous ajouter un nouveau client")){
+				document.getElementById("add").style.display="block";
+				choixClient.style.display="none";
+				changeDisplay1AD.style.display="none";
+				changeDisplay2AD.style.display="none";
+				titre.style.display="none";
+				img.style.display="none";
+				img.nextElementSibling.style.display="none";
+				titre.nextElementSibling.children[0].style.display="none";
+			}else{
+				alert("ce client existe deja ")
+			}
+			
+		})
+		
+	})
+   $("#submit").click(function(){
+	   var date = new Date($('#dateNais').val());
+	   day = date.getDate();
+	   month = date.getMonth() + 1;
+	   year = date.getFullYear();
+	   var aniv = [year, month, day].join('/');
+	   var nat = $("select#d").children("option:selected").val();
+	   $.post("Add",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value}, function(data){
+	    	if(data==1){
+	    		
+	    	}else{
+	    		
+	    	}
+	    		
+	    });
+            
+   })
 	
 		
 	
