@@ -33,7 +33,7 @@ public class AjouterProces extends HttpServlet {
 		
 		
 		if(action.equals("choixDossier")) {
-			int exist=daoAjouterProces.chercherDossier(Integer.parseInt(request.getParameter("idDossier")));
+			int exist=daoAjouterProces.chercherDossier(request.getParameter("cinClient"));
 			out.print(exist);
 			
 		}

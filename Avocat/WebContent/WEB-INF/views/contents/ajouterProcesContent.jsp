@@ -10,18 +10,47 @@
 
           <div class="row">
 <!------------------------------formulaire du precision du dossier cible------------------------>                  
-                  <div id="choixDossier" style="display:block">
+                  <div id="choixClient" style="display:block">
                     <div class="col-xs-12 titles-style">
                       <h5>veillez preciser le dossier cible</h5>
                     </div> 
 
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder=""  id="idDossier" name="idDossier" >
-                        <label id="cin1">ID dossier</label>
+                       <input class="effect-16 " type="text" placeholder=""  id="cinClient" name="cinClient" >
+                        <label id="">cin Client</label>
                         <span class="focus-border"></span>
                     </div>
-                  </div> 
+                  </div>
+                  
+                  <div id="choixDossier" style="display:none">
+                    <div class="col-xs-12 titles-style">
+                      <h5>liste des dossiers du client choisit</h5>
+                    </div> 
+
+
+                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+                       <input class="effect-16 " type="text" placeholder=""  name="" >
+                        <label>id dossier</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+                       <input class="effect-16 " type="text" placeholder=""   name="" >
+                        <label >id dossier</label>
+                        <span class="focus-border"></span>
+                    </div>
+                  </div>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                   
 <!------------------------------premier formulaire de remplisssion d'un proces------------------------>
  
                   <div id="proces" style="display:none">                     
@@ -32,19 +61,19 @@
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="nom" id="nom" >
-                        <label id="cin1">Nom</label>
+                        <label id="">Nom</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="prenom" id="prenom" >
-                        <label id="cin1">Prenom</label>
+                        <label id="">Prenom</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="cin" id="cin" >
-                        <label id="cin1">CIN</label>
+                       <input class="effect-16 " type="text" placeholder="" name="cinAdv" id="cinAdv" >
+                        <label id="">CIN</label>
                         <span class="focus-border"></span>
                     </div>
 
@@ -55,13 +84,13 @@
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16" type="text" placeholder="" name="adresse" id="adresse" >
-                        <label id="cin1">Adresse</label>
+                        <label id="">Adresse</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="avocatAdv" id="avocatAdv" >
-                        <label id="cin1">Avocat</label>
+                        <label id="">Avocat</label>
                         <span class="focus-border"></span>
                     </div>
 
@@ -75,7 +104,7 @@
 
                      <div class="col-xs-9 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="description" id="description" >
-                        <label id="cin1">Description</label>
+                        <label id="">Description</label>
                         <span class="focus-border"></span>
                     </div>
 
@@ -139,13 +168,13 @@
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="FMB" id="FMB" >
-                        <label id="cin1">montant de base</label>
+                        <label id="">montant de base</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="FFL" id="FFL" >
-                        <label id="cin1">frais du logement</label>
+                        <label id="">frais du logement</label>
                         <span class="focus-border"></span>
                     </div>
 
@@ -154,13 +183,13 @@
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="FIK" id="FIK" >
-                        <label id="cin1">indemnité kilométrique</label>
+                        <label id="">indemnité kilométrique</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="FPJ" id="FPJ" >
-                        <label id="cin1">prix par jour</label>
+                        <label id="">prix par jour</label>
                         <span class="focus-border"></span>
                     </div>
 
@@ -169,7 +198,7 @@
 
                     <div class="col-xs-5 col-xs-offset-3 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="FMG" id="FMG" >
-                        <label id="cin1">Montant global</label>
+                        <label id="">Montant global</label>
                         <span class="focus-border"></span>
                     </div>
 

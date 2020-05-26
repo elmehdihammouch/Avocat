@@ -10,19 +10,19 @@
  <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
  <link href="./resources/css/headers/style-responsive.css" rel="stylesheet">
  <link href="./resources/css/headers/style.css" rel="stylesheet">
- <link href="./resources/css/contents/ajouterProces.css" rel="stylesheet">
+ <link href="./resources/css/contents/ajouterDossier.css" rel="stylesheet">
 <title>Avocat</title>
 </head>
-<body>
+<body style="background: #ffffff;">
 
-	<%HttpSession ses = request.getSession();
-	 Administrateur admin = null;
-	 admin = (Administrateur)session.getAttribute("admin"); 
-	 if(admin==null)
-				 {
-		 request.getRequestDispatcher("adminAuthentification.jsp").forward(request, response);
-				 }
-	%>
+	 <%// HttpSession ses = request.getSession();
+//	 Administrateur admin = null;
+//	 admin = (Administrateur)session.getAttribute("admin"); 
+//		 if(admin==null)
+//					 {
+//			 request.getRequestDispatcher("adminAuthentification.jsp").forward(request, response);
+		//					 }
+	%>  
 
 
 
