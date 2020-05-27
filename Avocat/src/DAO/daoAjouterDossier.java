@@ -24,11 +24,27 @@ public class daoAjouterDossier {
 		Connexion.disconect();
 		return exist;
 	}
-	public static int ajoutclient(Client client) {
+	public static void ajoutclient(Client client) {
 		Connexion.connect();
-		
+		Connexion.maj("INSERT INTO client (`nom`, `prenom`, `datenais`, `lieunais`, `nat`, `adresse`, `cin`, `municipal`, `tel`) VALUES ('"+client.getNom()+"','"+client.getPrenom()+"','"+client.getDateNais()+"','"+client.getLieuNais()+"','"+client.nationalite+"','"+client.getAdresse()+"','"+client.getCin()+"','"+client.getMunicipale()+"',"+client.getTelephone()+")");
 		Connexion.disconect();
-		return 0;
 		
+	}
+	public static void ajoutcompte(Client client) {
+		ResultSet res;
+		Connexion.connect();
+		res = Connexion.select("SELECT idClient FROM client c WHERE upper(c.cin) LIKE '"+client.getCin().toUpperCase()+"';");
+		
+		try {res.next();
+			String mail = client.getNom()+client.getPrenom();
+			mail = mail.concat(client.getCin().substring(client.getCin().length()-4));
+			mail = mail+"@email.com";
+			int idClient = res.getInt(1);
+			Connexion.maj("INSERT INTO compte (`idClient`, `emailClient`, `passwordCliient`, `statut`) VALUES ("+idClient+",'"+mail+"','"+tools.G_password.generatecode()+"',1)");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Connexion.disconect();	
 	}
 }

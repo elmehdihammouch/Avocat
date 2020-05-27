@@ -33,7 +33,7 @@
 	var nomRegex = /^[a-zA-Z]{2,}$/;
 	var cinRegex = /^([a-zA-Z]{1,2})([0-9]{4,10})$/;
 	var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	var dateRegex = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+	var dateRegex = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
 	var phoneRegex = /(^[0-9]{10}$)|(^(\+)[0-9]{12}$)/;	
 	var adresseRegex = /^[0-9a-zA-Z\s]*$/;
 	var factureRegex = /^[0-9]+$/;
@@ -180,7 +180,7 @@ function validationAvocatAdv(){
 function changeDisplayF1AD(){
 	if(choixClient.style.display=="block" && dossier.style.display=="none" && procesAD.style.display=="none")	{
 		if(cinRegex.test(cinClientAD.value)==true){
-			$.post("abc",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
+			$.post("AD",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
 				if(data==1 ){
 					choixClient.style.display="none";
 					dossier.style.display="block";
@@ -255,7 +255,7 @@ function changeDisplayF1(){
 
 	if( proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 		
-		if( nomRegex.test(nom.value)==true && nomRegex.test(prenom.value)==true && cinRegex.test(cin.value)==true && adresseRegex.test(adresse.value)==true && avocatAdvRegex.test(avocatAdv.value0==true) ){
+		if( nomRegex.test(nomAdv.value)==true && nomRegex.test(prenomAdv.value)==true && cinRegex.test(cinAdv.value)==true && adresseRegex.test(adresseAdv.value)==true && avocatAdvRegex.test(avocatAdv.value==true) ){
 			proces.style.display='none';
 			fileUpload.style.display="block";
 			facture.style.display="none";
@@ -387,8 +387,9 @@ window.onload = function(){
 		}
 	})
 	$("#nouveauClientAD").click(function(){
-		$.post("abc",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
-			if(data!=1 && confirm("voulez vous ajouter un nouveau client")){
+		$.post("AD",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
+			if(cinRegex.test(cinClientAD.value)==true){
+			if(data!=1 && confirm("voulez vous ajouter un nouveau client" )){
 				document.getElementById("add").style.display="block";
 				choixClient.style.display="none";
 				changeDisplay1AD.style.display="none";
@@ -397,9 +398,9 @@ window.onload = function(){
 				img.style.display="none";
 				img.nextElementSibling.style.display="none";
 				titre.nextElementSibling.children[0].style.display="none";
-			}else{
+			}else if(data == 1){
 				alert("ce client existe deja ")
-			}
+			}}else{alert("CIN n'est pas valide")}
 			
 		})
 		
@@ -409,21 +410,22 @@ window.onload = function(){
 	   day = date.getDate();
 	   month = date.getMonth() + 1;
 	   year = date.getFullYear();
-	   var aniv = [year, month, day].join('/');
+	   var aniv = [year, month, day].join('-');
 	   var nat = $("select#d").children("option:selected").val();
-	   $.post("Add",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value}, function(data){
+	   if(nomRegex.test(nomAC.value)==true && nomRegex.test(prenomAC.value)==true && cinRegex.test(cinAC.value)==true && emailRegex.test(emailAC.value)==true && dateRegex.test([day, month, year].join('/'))==true){
+	   $.post("AD",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
 	    	if(data==1){
 	    		
 	    	}else{
 	    		
 	    	}
 	    		
-	    });
+	    });}else{
+	    	alert("nom : "+nomRegex.test(nomAC.value)+"pre" +
+	    			"nom : "+nomRegex.test(prenomAC.value)+"cin : "+cinRegex.test(cinAC.value)+"email : "+emailRegex.test(emailAC.value)+"date : "+dateRegex.test([day, month, year].join('/'))+[day, month, year].join('/')+"  aniv :"+aniv)}
+	    		
             
    })
-	
-		
-	
 
 
 };
