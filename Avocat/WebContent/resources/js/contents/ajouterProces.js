@@ -1,3 +1,7 @@
+//variable globaux
+
+
+
 //ensemble des divs
 	
 	var 	choixClient=document.getElementById("choixClient");
@@ -116,6 +120,8 @@ function changeDisplayF1(){
 						img.style.display="none";
 						img.nextElementSibling.style.display="none";
 						titre.nextElementSibling.children[0].style.display="none";
+						dossierClick();
+						
 					
 				}else {alert("impossible de trouver un client avec le CIN donné")}
 			});	
@@ -157,12 +163,14 @@ function changeDisplayF1(){
 	else if(choixClient.style.display=="none"  && choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
 		
 		
-			choixClient.style.display='none';
+			choixClient.style.display='none';	
 			choixDossier.style.display="none";
 			proces.style.display='none';
 			fileUpload.style.display="none";
 			facture.style.display="block";
-			document.getElementById("changeDisplay1").innerHTML="ajouter ce proces";
+			document.getElementById("changeDisplay1").style.display="none";
+			document.getElementById("submitButton").parentElement.style.display="block";
+			
 			
 		}
 
@@ -208,7 +216,8 @@ function changeDisplayF2(){
 		proces.style.display='none';
 		fileUpload.style.display="block";
 		facture.style.display="none";
-		document.getElementById("changeDisplay1").innerHTML="suivant";	
+		document.getElementById("submitButton").parentElement.style.display="none";
+		document.getElementById("changeDisplay1").style.display="block";	
 	}
 
 	else if(choixClient.style.display=="none" && choixDossier.style.display=="block" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
@@ -230,10 +239,22 @@ function changeDisplayF2(){
 	}
 
 
+//ajout des events sur les dossiers 
 
+function dossierClick(){
+	tabDossier = document.getElementsByClassName("dossierContent");
+	for(i=0;i<tabDossier.length;i++){
+		tabDossier[i].addEventListener("click",hey);
+	}
+}
 
+function hey(){
+	document.getElementById("idDossierClicked").value = this.parentElement.children[0].textContent;
+	}
 
-
+function hh(){
+	alert(document.getElementById("idDossierClicked").value);
+}
 
 
 
@@ -269,6 +290,14 @@ window.onload = function(){
 	document.getElementById("creerProces").parentElement.previousElementSibling.className += " active";
 
 };
+
+
+
+
+
+
+
+
 
 //verification avec le serveur
 window.onload = function(){

@@ -23,22 +23,37 @@
                     </div>
                   </div>
                   
+                
                   <div id="choixDossier" style="display:none">
                     <div class="col-xs-12 titles-style">
                       <h5>liste des dossiers du client choisit</h5>
                     </div> 
 
 
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder=""  name="" >
-                        <label>id dossier</label>
-                        <span class="focus-border"></span>
+                    <div class="col-xs-12  input-effect herite-ajout-proces">
+                               <table class="table table-striped table-bordered table-hover table-sm table-responsive " >
+		<thead class="thead-dark">
+			<tr>
+				
+				<th>id</th>
+				<th>etat avancement</th>
+				<th>type du proces</th>
+			</tr>
+		</thead>
+		
+		<tbody class="">
+			<tr class="trow">
+				
+				<td class="dossierContent">1</td>
+				<td class="dossierContent">en cours</td>
+				<td class="dossierContent">proces du droit de travail</td>
+			</tr>	
+		</tbody>
+		</table>	
+                        
+                       
                     </div>
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder=""   name="" >
-                        <label >id dossier</label>
-                        <span class="focus-border"></span>
-                    </div>
+                   
                   </div>
                   
                   
@@ -52,7 +67,10 @@
                   
                    
 <!------------------------------premier formulaire de remplisssion d'un proces------------------------>
- 
+ <form method="post" action="AjoutProces">
+          <!-- input de precision du dossier cible -->         
+                   <input class="effect-16 " type="hidden" placeholder="" name="nom" id="idDossierClicked" > 
+                  
                   <div id="proces" style="display:none">                     
 
                     <div class="col-xs-12 titles-style">
@@ -60,13 +78,13 @@
                     </div>
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="nom" id="nom" >
+                       <input class="effect-16 " type="text" placeholder="" name="nomAdv" id="nom" >
                         <label id="">Nom</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="prenom" id="prenom" >
+                       <input class="effect-16 " type="text" placeholder="" name="prenomAdv" id="prenom" >
                         <label id="">Prenom</label>
                         <span class="focus-border"></span>
                     </div>
@@ -83,7 +101,7 @@
                     
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16" type="text" placeholder="" name="adresse" id="adresse" >
+                       <input class="effect-16" type="text" placeholder="" name="adresseAdv" id="adresse" >
                         <label id="">Adresse</label>
                         <span class="focus-border"></span>
                     </div>
@@ -210,9 +228,17 @@
                     </div>
 
                    </div> 
-
+                   
                    <div class="col-xs-12">
                    </div>
+                   
+                   <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:none">
+                    <button type="submit" class="btn btn-primary" id="submitButton" value="valider" >Ajouter le proces</button>
+                   </div> 
+                 
+                 </form>  
+			<!-- ---------------------------------------------------------------------------------------- -->
+                   
 
                    <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:none">
                     <button type="button" class="btn btn-primary" id="changeDisplay2" value="precedant" >précedant</button>

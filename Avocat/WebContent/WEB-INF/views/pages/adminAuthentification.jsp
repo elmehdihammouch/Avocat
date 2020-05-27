@@ -6,10 +6,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+   <link href="./resources/css/contents/mainAuth.css" rel="stylesheet">
+  <link href="./resources/css/contents/utilAuth.css" rel="stylesheet">
  <link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
  <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
- <link href="./resources/css/contents/mainAuth.css" rel="stylesheet">
- <link href="./resources/css/contents/utilAuth.css" rel="stylesheet">
+
+
 </head>
 <body>
 <%	 HttpSession ses = request.getSession();
