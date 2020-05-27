@@ -301,5 +301,10 @@ window.onload = function(){
 
 //verification avec le serveur
 window.onload = function(){
-	
+	$("#dateAdd").click(function(){
+        $(this).prop('type','date');
+	})
+    $("#dateAdd").blur(function(){
+        $(this).prop('type','text');
+    })
 }

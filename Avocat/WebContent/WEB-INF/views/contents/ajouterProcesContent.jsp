@@ -129,17 +129,11 @@
                     <div class="col-xs-12">
                     </div>
 
-                    <div class="col-xs-8 col-xs-offset-2 input-effect herite-ajout-proces date form_datetime-component">
-                       <div class="form-group">
-                  <label class="control-label col-md-3"> Date d'ajout </label>
-                  <div class="col-md-4">
-                    <div class="input-group date form_datetime-component">
-                      <input type="text" class="form-control" readonly="" size="16">
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-theme date-set"><i class="fa fa-calendar"></i></button>
-                        </span>
-                    </div>
-                  </div>
+                    <div class="col-xs-4 col-xs-offset-1 input-effect herite mg">
+			        	<input class="effect-16" type="text" placeholder="" id="dateAdd" name="dateAdd">
+			            <label>Date d'ajout</label>
+			            <span class="focus-border"></span>
+			        </div>
                 </div>
                     </div>
                    </div> 
