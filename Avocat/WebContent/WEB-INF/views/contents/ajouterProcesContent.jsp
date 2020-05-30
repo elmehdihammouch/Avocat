@@ -44,7 +44,7 @@
 		<tbody class="">
 			<tr class="trow">
 				
-				<td class="dossierContent">1</td>
+				<td class="dossierContent">2</td>
 				<td class="dossierContent">en cours</td>
 				<td class="dossierContent">proces du droit de travail</td>
 			</tr>	
@@ -67,9 +67,10 @@
                   
                    
 <!------------------------------premier formulaire de remplisssion d'un proces------------------------>
- <form method="post" action="AjoutProces">
+<form action="AjouterProces" method="post" enctype="multipart/form-data">
           <!-- input de precision du dossier cible -->         
-                   <input class="effect-16 " type="hidden" placeholder="" name="nom" id="idDossierClicked" > 
+                   <input class="effect-16 " type="hidden"  name="idDossierClicked" id="idDossierClicked" > 
+                    <input class="effect-16 " type="hidden"  name="action" id="" value="donneesProces" > 
                   
                   <div id="proces" style="display:none">                     
 
@@ -117,6 +118,21 @@
                     <div class="col-xs-12 titles-style">
                       <h5>informatons relatives au proces</h5>
                     </div>
+                    
+                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+	                  <select class="effect-16 input-effect" id="statut" style="width:100%" name="statut"><option></option><option value="premiere Instance">premiere Instance</option> <option value="deuxieme Instance" >deuxieme Instance</option>  <option value="troisieme Instance" >troisieme Instance</option></select>
+	                  <label id="">type du proces</label>
+	                  <span class="focus-border"></span>
+               		 </div>
+                
+                	<div class="col-xs-4 col-xs-offset-1 input-effect herite mg">
+			        	<input class="effect-16" type="text" placeholder="" id="dateNotif" name="dateNotif">
+			            <label>Date de notification</label>
+			            <span class="focus-border"></span>
+			        </div>
+			        
+			         <div class="col-xs-12">
+                    </div>
 
                      
 
@@ -125,18 +141,16 @@
                         <label id="">Description</label>
                         <span class="focus-border"></span>
                     </div>
+                    
+                    
 
                     <div class="col-xs-12">
                     </div>
 
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite mg">
-			        	<input class="effect-16" type="text" placeholder="" id="dateAdd" name="dateAdd">
-			            <label>Date d'ajout</label>
-			            <span class="focus-border"></span>
-			        </div>
+                    
                 </div>
-                    </div>
-                   </div> 
+                    
+                 
                    
                    <div class="col-xs-12">
                   </div>
@@ -184,46 +198,49 @@
                         <span class="focus-border"></span>
                     </div>
 
+                   
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="FFL" id="FFL" >
-                        <label id="">frais du logement</label>
+                       <input class="effect-16 " type="text" placeholder="" name="prixKm" id="prixKm" >
+                        <label id="">prix par Km</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-12">
                     </div>
-
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="FIK" id="FIK" >
-                        <label id="">indemnité kilométrique</label>
+                    
+                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+                       <input class="effect-16 " type="text" placeholder="" name="mtGlobal" id="mtGlobal" >
+                        <label id="">montant global</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    
+                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+                       <input class="effect-16 " type="text" placeholder="" name="mtPaye" id="mtPaye" >
+                        <label id="">montant payé</label>
                         <span class="focus-border"></span>
                     </div>
 
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="FPJ" id="FPJ" >
-                        <label id="">prix par jour</label>
-                        <span class="focus-border"></span>
+                  
+					
+					
+					<div class="col-xs-12">
                     </div>
-
-                    <div class="col-xs-12">
-                    </div>
-
-                    <div class="col-xs-5 col-xs-offset-3 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="FMG" id="FMG" >
-                        <label id="">Montant global</label>
-                        <span class="focus-border"></span>
-                    </div>
-
-                    <div class="col-xs-5 col-xs-offset-3 input-effect herite-ajout-proces date form_datetime-component">
-                        <input type="text" class="form-control" readonly="" size="16">
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-theme date-set"><i class="fa fa-calendar"></i></button>
-                        </span>
-                    </div>
+					
+					
+                    <div class="col-xs-5 col-xs-offset-3 input-effect herite mg">
+			        	<input class="effect-16" type="text" placeholder="" id="datePay" name="datePay">
+			            <label>Date de payement</label>
+			            <span class="focus-border"></span>
+			        </div>
 
                    </div> 
                    
                    <div class="col-xs-12">
+                   </div>
+                   
+                   
+                   <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:none">
+                    <button type="button" class="btn btn-primary" id="changeDisplay2" value="precedant" >précedant</button>
                    </div>
                    
                    <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:none">
@@ -233,11 +250,6 @@
                  </form>  
 			<!-- ---------------------------------------------------------------------------------------- -->
                    
-
-                   <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:none">
-                    <button type="button" class="btn btn-primary" id="changeDisplay2" value="precedant" >précedant</button>
-                   </div>
-
                    <div class="col-xs-3 col-xs-offset-5 herite-ajout-proces">
                     <button type="button" class="btn btn-primary" id="changeDisplay1" value="valider" >Suivant</button>
                    </div>  

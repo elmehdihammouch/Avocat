@@ -301,10 +301,19 @@ window.onload = function(){
 
 //verification avec le serveur
 window.onload = function(){
-	$("#dateAdd").click(function(){
-        $(this).prop('type','date');
+	$("#datePay").click(function(){
+        $(this).prop('type','datetime-local');
 	})
-    $("#dateAdd").blur(function(){
+    $("#datePay").blur(function(){
+        $(this).prop('type','text');
+    })
+}
+
+window.onload = function(){
+	$("#dateNotif").click(function(){
+        $(this).prop('type','datetime-local');
+	})
+    $("#dateNotif").blur(function(){
         $(this).prop('type','text');
     })
 }

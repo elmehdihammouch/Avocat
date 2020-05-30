@@ -1,6 +1,10 @@
 package models;
 
-import java.sql.Date;
+
+import java.util.ArrayList;
+
+
+import tools.Date;
 
 public class Proces {
 	public int idProces;
@@ -8,8 +12,11 @@ public class Proces {
 	public int numP;
 	public Date dateCP;
 	public Date dateAP;
+	public String description;
 	public String adresseAdv;
+	public String cinAdv;
 	public String nomAdv;
+	public String prenomAdv;
 	public String avocatAdv;
 	public String tribunal;
 	public String ville;
@@ -18,20 +25,45 @@ public class Proces {
 	public Date dateSui;
 	public String txtJug;
 	public Date dateJug;
+	public  ArrayList<Files> files;
+	public Facture facture;
+	public Date dateNotif;
+	private int statut;
+	
 	
 	public Proces() {
 		super();
 	}
 
-	public Proces(int idDos, int numP, Date dateCP, Date dateAP, String adresseAdv, String nomAdv, String avocatAdv,
-			String tribunal, String ville, int saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug) {
+	public Proces(int idDos, String description, String adresseAdv, String cinAdv, String nomAdv, String prenomAdv,
+			String avocatAdv, ArrayList<Files> files, Facture facture,Date dateNotif, int statut) {
+		super();
+		this.idDos = idDos;
+		this.description = description;
+		this.adresseAdv = adresseAdv;
+		this.cinAdv = cinAdv;
+		this.nomAdv = nomAdv;
+		this.prenomAdv = prenomAdv;
+		this.avocatAdv = avocatAdv;
+		this.files = files;
+		this.facture = facture;
+		this.dateNotif = dateNotif;
+		this.statut = statut;
+	}
+
+	public Proces(int idDos, int numP, Date dateCP, Date dateAP, String description, String adresseAdv, String cinAdv,
+			String nomAdv, String prenomAdv, String avocatAdv, String tribunal, String ville, int saleNum,
+			Date dateSeance, Date dateSui, String txtJug, Date dateJug, ArrayList<Files> files, Facture facture,Date dateNotif, int statut) {
 		super();
 		this.idDos = idDos;
 		this.numP = numP;
 		this.dateCP = dateCP;
 		this.dateAP = dateAP;
+		this.description = description;
 		this.adresseAdv = adresseAdv;
+		this.cinAdv = cinAdv;
 		this.nomAdv = nomAdv;
+		this.prenomAdv = prenomAdv;
 		this.avocatAdv = avocatAdv;
 		this.tribunal = tribunal;
 		this.ville = ville;
@@ -40,19 +72,27 @@ public class Proces {
 		this.dateSui = dateSui;
 		this.txtJug = txtJug;
 		this.dateJug = dateJug;
+		this.files = files;
+		this.facture = facture;
+		this.dateNotif = dateNotif;
+		this.statut = statut;
 	}
 
-	public Proces(int idProces, int idDos, int numP, Date dateCP, Date dateAP, String adresseAdv, String nomAdv,
-			String avocatAdv, String tribunal, String ville, int saleNum, Date dateSeance, Date dateSui, String txtJug,
-			Date dateJug) {
+	public Proces(int idProces, int idDos, int numP, Date dateCP, Date dateAP, String description, String adresseAdv,
+			String cinAdv, String nomAdv, String prenomAdv, String avocatAdv, String tribunal, String ville,
+			int saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug, ArrayList<Files> files,
+			Facture facture,Date dateNotif, int statut) {
 		super();
 		this.idProces = idProces;
 		this.idDos = idDos;
 		this.numP = numP;
 		this.dateCP = dateCP;
 		this.dateAP = dateAP;
+		this.description = description;
 		this.adresseAdv = adresseAdv;
+		this.cinAdv = cinAdv;
 		this.nomAdv = nomAdv;
+		this.prenomAdv = prenomAdv;
 		this.avocatAdv = avocatAdv;
 		this.tribunal = tribunal;
 		this.ville = ville;
@@ -61,6 +101,10 @@ public class Proces {
 		this.dateSui = dateSui;
 		this.txtJug = txtJug;
 		this.dateJug = dateJug;
+		this.files = files;
+		this.facture = facture;
+		this.dateNotif = dateNotif;
+		this.statut = statut;
 	}
 
 	public int getIdProces() {
@@ -103,6 +147,14 @@ public class Proces {
 		this.dateAP = dateAP;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getAdresseAdv() {
 		return adresseAdv;
 	}
@@ -111,12 +163,28 @@ public class Proces {
 		this.adresseAdv = adresseAdv;
 	}
 
+	public String getCinAdv() {
+		return cinAdv;
+	}
+
+	public void setCinAdv(String cinAdv) {
+		this.cinAdv = cinAdv;
+	}
+
 	public String getNomAdv() {
 		return nomAdv;
 	}
 
 	public void setNomAdv(String nomAdv) {
 		this.nomAdv = nomAdv;
+	}
+
+	public String getPrenomAdv() {
+		return prenomAdv;
+	}
+
+	public void setPrenomAdv(String prenomAdv) {
+		this.prenomAdv = prenomAdv;
 	}
 
 	public String getAvocatAdv() {
@@ -183,10 +251,53 @@ public class Proces {
 		this.dateJug = dateJug;
 	}
 
+	public ArrayList<Files> getFiles() {
+		return files;
+	}
+
+	public void setFiles(ArrayList<Files> files) {
+		this.files = files;
+	}
+
+	public Facture getFacture() {
+		return facture;
+	}
+
+	public void setFacture(Facture facture) {
+		this.facture = facture;
+	}
+
+	public Date getDateNotif() {
+		return dateNotif;
+	}
+
+	public void setDateNotif(Date dateNotif) {
+		this.dateNotif = dateNotif;
+	}
+
+	public int getStatut() {
+		return statut;
+	}
+
+	public void setStatut(int statut) {
+		this.statut = statut;
+	}
+
+	@Override
+	public String toString() {
+		return "Proces [idProces=" + idProces + ", idDos=" + idDos + ", numP=" + numP + ", dateCP=" + dateCP
+				+ ", dateAP=" + dateAP + ", description=" + description + ", adresseAdv=" + adresseAdv + ", cinAdv="
+				+ cinAdv + ", nomAdv=" + nomAdv + ", prenomAdv=" + prenomAdv + ", avocatAdv=" + avocatAdv
+				+ ", tribunal=" + tribunal + ", ville=" + ville + ", saleNum=" + saleNum + ", dateSeance=" + dateSeance
+				+ ", dateSui=" + dateSui + ", txtJug=" + txtJug + ", dateJug=" + dateJug + ", files=" + files
+				+ ", facture=" + facture + ", dateNotif=" + dateNotif + ", statut=" + statut + "]";
+	}
+
 	
+
 	
+		
 	
-	
-	
+
 	
 }
