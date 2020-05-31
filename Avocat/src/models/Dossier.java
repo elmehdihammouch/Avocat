@@ -3,7 +3,7 @@ package models;
 public class Dossier {
 	public  int idDos;
 	public int idClient;
-	public String etatAv;
+	public int etatAv;
 	public String typeProces;
 	public String description;
 	
@@ -13,7 +13,7 @@ public class Dossier {
 	}
 
 
-	public Dossier(int idClient, String etatAv, String typeProces, String description) {
+	public Dossier(int idClient, int etatAv, String typeProces, String description) {
 		super();
 		this.idClient = idClient;
 		this.etatAv = etatAv;
@@ -21,7 +21,7 @@ public class Dossier {
 		this.description = description;
 	}
 	
-	public Dossier(int idDos, int idClient, String etatAv, String typeProces, String description) {
+	public Dossier(int idDos, int idClient, int etatAv, String typeProces, String description) {
 		super();
 		this.idDos = idDos;
 		this.idClient = idClient;
@@ -51,12 +51,12 @@ public class Dossier {
 	}
 
 
-	public String getEtatAv() {
+	public int getEtatAv() {
 		return etatAv;
 	}
 
 
-	public void setEtatAv(String etatAv) {
+	public void setEtatAv(int etatAv) {
 		this.etatAv = etatAv;
 	}
 
@@ -78,6 +78,13 @@ public class Dossier {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Dossier [idDos=" + idDos + ", idClient=" + idClient + ", etatAv=" + etatAv + ", typeProces="
+				+ typeProces + ", description=" + description + "]";
 	}
 	
 	

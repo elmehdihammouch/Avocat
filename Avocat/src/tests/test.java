@@ -8,10 +8,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import DAO.Connexion;
 import DAO.daoAjouterProces;
+import models.Dossier;
 import models.Proces;
 import tools.Date;
 
@@ -60,7 +62,11 @@ public class test {
 		Date d= Date.toDbDate("2020-05-22T22:15");
 		System.out.println(d);
 		
-
+		ArrayList<Dossier> ds= new ArrayList<Dossier>();
+		ds= daoAjouterProces.dossierClient("bh1212");
+		for(Dossier dd : ds) {
+			System.out.println(dd.toString());
+		}
 	}
 
 }

@@ -23,6 +23,7 @@ import org.apache.commons.io.FilenameUtils;
 
 
 import DAO.daoAjouterProces;
+import models.Dossier;
 import models.Facture;
 import models.Files;
 import models.Proces;
@@ -45,7 +46,7 @@ public class AjouterProces extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String action = request.getParameter("action");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
 		
 		
 		
@@ -53,9 +54,24 @@ public class AjouterProces extends HttpServlet {
 		
 		//return du dossier choisit par l'utilisateur
 		if(action.equals("choixDossier")) {
+			
+			
 			int exist=daoAjouterProces.chercherDossier(request.getParameter("cinClient"));
+			if(exist==0) {
 			out.print(exist);
-		}
+			
+			}
+		
+			else {
+				
+			ArrayList<Dossier> dossiers= new ArrayList<Dossier>();
+			dossiers= daoAjouterProces.dossierClient(request.getParameter("cinClient"));
+			
+			request.setAttribute("dossiers", dossiers);
+			//request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces2.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces.jsp").forward(request, response);
+			}
+		}	
 		
 		//traitement d'ajout du proces
 		else if(action.equals("donneesProces")) {

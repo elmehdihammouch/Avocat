@@ -12,21 +12,10 @@
 
           <div class="row">
 <!------------------------------formulaire du precision du dossier cible------------------------>                  
-                  <div id="choixClient" style="display:block">
-                    <div class="col-xs-12 titles-style">
-                      <h5>veillez preciser le dossier cible</h5>
-                    </div> 
-
-
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder=""  id="cinClient" name="cinClient" >
-                        <label id="">cin Client</label>
-                        <span class="focus-border"></span>
-                    </div>
-                  </div>
+                 
                   
                 
-                  <div id="choixDossier" style="display:none">
+                  <div id="choixDossier" style="display:block">
 					
 					<div class="col-xs-12 titles-style">
                       <h5>liste des dossiers du client choisit</h5>
@@ -253,7 +242,7 @@
                    </div>
                    
                    
-                   <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:none">
+                   <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:block">
                     <button type="button" class="btn btn-primary" id="changeDisplay2" value="precedant" >précedant</button>
                    </div>
                    

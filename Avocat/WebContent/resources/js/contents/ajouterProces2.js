@@ -4,7 +4,7 @@
 
 //ensemble des divs
 	
-	var 	choixClient=document.getElementById("choixClient");
+	
 	var 	choixDossier=document.getElementById("choixDossier");
 	var     proces=document.getElementById("proces");
 	var     fileUpload=document.getElementById("file_upload");
@@ -15,7 +15,7 @@
 	var 	img=document.getElementById("img_display");
 
 //ensemble des inputs
-	var 	cinClient=document.getElementById("cinClient");
+
 	var 	nom=document.getElementById("nom");
 	var 	prenom=document.getElementById("prenom");	
 	var 	cinAdv=document.getElementById("cinAdv");
@@ -41,7 +41,7 @@
 nom.addEventListener("keyup",validationNom)	;
 prenom.addEventListener("keyup",validationNom);
 cinAdv.addEventListener("keyup",validationCin);
-cinClient.addEventListener("keyup",validationCin);
+
 adresse.addEventListener("keyup",validationAdresse);
 avocatAdv.addEventListener("keyup",validationAvocatAdv);
 document.getElementById("FMB").addEventListener("keyup",validationFacture);
@@ -103,50 +103,9 @@ function validationAvocatAdv(){
 //fonction qui change le display
 function changeDisplayF1(){
 	
-
-	if(choixClient.style.display=="block" && choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
-		if(cinRegex.test(cinClient.value)==true){
-			//verification de l'existance du client dans la base de données
-			$.post("AjouterProces",{action : "choixDossier" , cinClient : cinClient.value}, function(data){
-				
-    
-
-			
-				if(data==0){
-					alert(data);
-				//	$.post("AjouterProces",{action : "listDossiers" , cinClient : cinClient.value}, function(data){});
-				/*	choixClient.style.display='none';
-					choixDossier.style.display="block";
-					proces.style.display='none';
-					fileUpload.style.display="none";
-					facture.style.display="none";
-					changeDisplay2.parentElement.style.display="block";
-					changeDisplay1.parentElement.className="col-xs-3 col-xs-offset-2 herite-ajout-proces";
-						titre.style.display="none";
-						img.style.display="none";
-						img.nextElementSibling.style.display="none";
-						titre.nextElementSibling.children[0].style.display="none";
-						//fonction qui ajout un eventListener sur les dossiers de ce utilisateur
-						dossierClick();*/
-					alert(data+"impossible de trouver un client avec le CIN donné");
-					
-				}else {document.location.assign('http://localhost:8085/Avocat/APP');}
-					
-			});	
-			
-			
-				
-			
-
-			//*********************
-		}else {alert("veillez saisir un CIN valide")}			
-		
-
-	}
-
-	else if(choixClient.style.display=="none"  && choixDossier.style.display=="block" &&   proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
+	if( choixDossier.style.display=="block" &&   proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 		if(document.getElementById("idDossierClicked").value != ""){
-		choixClient.style.display='none';
+		
 			choixDossier.style.display="none";
 			proces.style.display='block';
 			fileUpload.style.display="none";
@@ -157,10 +116,10 @@ function changeDisplayF1(){
 		
 	}
 
-	else if(choixClient.style.display=="none"  && choixDossier.style.display=="none" && proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
+	else if(choixDossier.style.display=="none" && proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 		
 		if( nomRegex.test(nom.value)==true && nomRegex.test(prenom.value)==true && cinRegex.test(cinAdv.value)==true && adresseRegex.test(adresse.value)==true && avocatAdvRegex.test(avocatAdv.value0==true) ){
-			choixClient.style.display='none';
+			
 			choixDossier.style.display="none";
 			proces.style.display='none';
 			fileUpload.style.display="block";
@@ -175,10 +134,10 @@ function changeDisplayF1(){
 		
 	}
 	
-	else if(choixClient.style.display=="none"  && choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
+	else if(choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
 		
 		
-			choixClient.style.display='none';	
+			
 			choixDossier.style.display="none";
 			proces.style.display='none';
 			fileUpload.style.display="none";
@@ -189,7 +148,7 @@ function changeDisplayF1(){
 			
 		}
 
-	else if(choixClient.style.display=="none"  && choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
+	else if( choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
 		
 		if(factureRegex.test(FMB.value)==true){
 			alert("succes");
@@ -207,9 +166,9 @@ function changeDisplayF1(){
 
 function changeDisplayF2(){
 
-	if(choixClient.style.display=="none" && choixDossier.style.display=="none" && proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
+	if( choixDossier.style.display=="none" && proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 		
-		choixClient.style.display='none';
+		
 		choixDossier.style.display="block";
 		proces.style.display='none';
 		fileUpload.style.display="none";
@@ -217,16 +176,16 @@ function changeDisplayF2(){
 		
 	}
 
-	else if(choixClient.style.display=="none" && choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
-		choixClient.style.display='none';
+	else if(choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
+		
 		choixDossier.style.display="none";
 		proces.style.display='block';
 		fileUpload.style.display="none";
 		facture.style.display="none";		
 	}
 
-	else if(choixClient.style.display=="none" && choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
-		choixClient.style.display='none';
+	else if( choixDossier.style.display=="none" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
+		
 		choixDossier.style.display="none";
 		proces.style.display='none';
 		fileUpload.style.display="block";
@@ -235,19 +194,10 @@ function changeDisplayF2(){
 		document.getElementById("changeDisplay1").style.display="block";	
 	}
 
-	else if(choixClient.style.display=="none" && choixDossier.style.display=="block" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
+	else if(choixDossier.style.display=="block" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 	
-		choixClient.style.display='block';
-		choixDossier.style.display="none";
-		proces.style.display='none';
-		fileUpload.style.display="none";
-		facture.style.display="none";	
-		changeDisplay2.parentElement.style.display="none";
-		changeDisplay1.parentElement.className="col-xs-3 col-xs-offset-5 herite-ajout-proces";
-			titre.style.display="block";
-			img.style.display="block";
-			img.nextElementSibling.style.display="block";
-			titre.nextElementSibling.children[0].style.display="block";
+		
+		$.post("AjouterProces",{action : "backProces1" }, function(data){});
 	}
 
 

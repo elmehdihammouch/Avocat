@@ -2,7 +2,9 @@ package DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import models.Dossier;
 import models.Files;
 import models.Proces;
 
@@ -13,7 +15,7 @@ public class daoAjouterProces {
 		int exist=0;
 		
 		Connexion.connect();
-		res=Connexion.select("select * from dossier where idClient= (select idClient from client where cin='"+cin+"' ); ");
+		res=Connexion.select("select * from dossier where idClient= (select idClient from client where upper(cin)='"+cin.toUpperCase()+"' ); ");
 		try {
 			if(res.next()) {
 				exist=1;
@@ -60,6 +62,23 @@ public class daoAjouterProces {
 		return res;
 	}
 	
-	
+	public static ArrayList<Dossier> dossierClient(String cin){
+		ResultSet res;
+		ArrayList<Dossier> dossiers = new ArrayList<Dossier>();
+		Connexion.connect();
+		res=Connexion.select("select * from dossier where idClient= (select idClient from client where upper(cin)='"+cin.toUpperCase()+"' ); ");
+		try {
+			while(res.next()) {
+				Dossier d = new Dossier(res.getInt(1), res.getInt(2), res.getInt(3), res.getString(4), res.getString(5));
+				dossiers.add(d);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Connexion.disconect();
+		return dossiers;
+	}
 
 }
