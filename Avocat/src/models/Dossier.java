@@ -12,7 +12,12 @@ public class Dossier {
 		super();
 	}
 
-
+	public Dossier(int etatAv, String typeProces, String description) {
+		super();
+		this.etatAv = etatAv;
+		this.typeProces = typeProces;
+		this.description = description;
+	}
 	public Dossier(int idClient, int etatAv, String typeProces, String description) {
 		super();
 		this.idClient = idClient;
