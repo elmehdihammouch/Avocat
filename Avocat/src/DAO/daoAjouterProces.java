@@ -77,7 +77,7 @@ public class daoAjouterProces {
 		//ajout des fichiers dans le cas ou l'ajout de la facture a été realisé avec succes
 		if(res==1) {
 			for (Files f : p.getFiles()) {
-				res=Connexion.maj("INSERT INTO piece (idProces, nomFichier, path) VALUES ("+p.getIdProces()+",'"+f.getNomFichier()+"','"+f.getIdPiece()+"');");	
+				res=Connexion.maj("INSERT INTO piece (idProces, nomFichier, path) VALUES ("+p.getIdProces()+",'"+f.getNomFichier()+"','"+f.getPath()+"');");	
 			}
 		}
 		if(res==1) {System.out.println("tous etaient ajoutés avec succes");}

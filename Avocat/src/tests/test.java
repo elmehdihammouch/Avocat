@@ -12,10 +12,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import org.apache.commons.io.FilenameUtils;
 import org.json.simple.JSONObject;
 
 import DAO.Connexion;
 import DAO.daoAjouterProces;
+import DAO.daoFiles;
 import models.Client;
 import models.Dossier;
 import models.Proces;
@@ -67,7 +69,7 @@ public class test {
 		
 		//Date d= Date.toDbDate("2020-05-22T22:15");
 	
-		      JSONObject obj = new JSONObject();
+		   /*   JSONObject obj = new JSONObject();
 
 		      Client client=daoAjouterProces.chercherClient("bh1212");
 				obj.put("exist", 1 );
@@ -75,7 +77,35 @@ public class test {
 				obj.put("clientNom", client.getNom() );
 				obj.put("clientPrenom", client.getPrenom() );
 
-		      System.out.print(obj);
+		      System.out.print(obj);*/
+	String 	fileName ="aa";
+	
+	//System.out.println(FilenameUtils.removeExtension(fileName)+"."+FilenameUtils.getExtension(fileName));
+	/*-----------------int inc=1;
+	String incS="("+inc+")";
+    String nameWithOutExtension;
+    String extension ;
+    System.out.println("existance "+daoFiles.filesNames(fileName));
+	 while(daoFiles.filesNames(fileName)==1) {
+ 	    nameWithOutExtension = FilenameUtils.removeExtension(fileName);
+ 	    extension = FilenameUtils.getExtension(fileName);
+ 	    if (nameWithOutExtension.endsWith(incS)) {inc++;
+ 	   nameWithOutExtension = nameWithOutExtension.substring(0, nameWithOutExtension.lastIndexOf(incS)-4);
+ 	   nameWithOutExtension = nameWithOutExtension+incS;
+	    fileName = nameWithOutExtension+"."+extension;
+ 	    }
+ 	    else {
+ 	    nameWithOutExtension = nameWithOutExtension+incS;
+ 	    fileName = nameWithOutExtension+"."+extension;
+ 	    inc++;
+ 	    }
+    }------------*/
+	  fileName =fileName+daoFiles.maxId()+1;
+		System.out.println("new name : "+fileName);
+	
+	// lastIndexOf()  endsWith()
+	
 	}
+	
 
 }

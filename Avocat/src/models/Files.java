@@ -12,6 +12,8 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.FilenameUtils;
 
+import DAO.daoFiles;
+
 public class Files {
 	public int idPiece;
 	public int idProces;
@@ -105,9 +107,14 @@ public class Files {
 	public static ArrayList<Files> fileUpload(List<Part> files){
 		//filesList : arraylist des files (fileList) qui seront construit a partir des part (file) arrivons de ma list files
 		ArrayList<Files> filesList = new ArrayList<Files>();
-		
+		String fileName ;
+		String nameWithOutExtension ; 
+		String extension ;
 		for (Part file : files) {
-	       String fileName = Paths.get(file.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+	       fileName = Paths.get(file.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+	       nameWithOutExtension = FilenameUtils.removeExtension(fileName)+(daoFiles.maxId()+1);
+	       extension = FilenameUtils.getExtension(fileName);
+	       fileName = nameWithOutExtension+"."+extension;
 	       Files fileList=new Files(fileName, UPLOAD_DIRECTORY_images + File.separator + fileName);
 	       filesList.add(fileList);
 	       
