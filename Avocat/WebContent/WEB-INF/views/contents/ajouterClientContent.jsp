@@ -34,7 +34,7 @@
         <div class="col-xs-12">
         </div>
         <div class="col-xs-4 col-xs-offset-1 input-effect herite mg">
-        	<input class="effect-16"  type="text" placeholder="" id="cin" name="cinAC">
+        	<input class="effect-16"  type="text" readonly="readonly" placeholder="" id="cin" name="cinAC">
             <label>CIN</label>
             <span class="focus-border"></span>
         </div>
@@ -73,7 +73,10 @@
             <label>Municipale</label>
             <span class="focus-border"></span>      
         </div>
-            <div style="margin-top: 400px;margin-left: 400px" >
+        	<div style="margin-top: 400px;margin-left: 250px" >
+                <button type="button" class="btn btn-primary" id="return" value="return">Return</button>
+            </div>
+            <div style="margin-left: 400px; margin-top: -35px" >
                 <button type="button" class="btn btn-primary" id="submit" value="Confirmer">Confirmer</button>
             </div> 
         

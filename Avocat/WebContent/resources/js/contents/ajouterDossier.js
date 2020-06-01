@@ -12,8 +12,6 @@
 	var     proces=document.getElementById("proces");
 	var     fileUpload=document.getElementById("file_upload");
 	var     facture=document.getElementById("facture");
-	var 	changeDisplay1=document.getElementById("changeDisplay1");
-	var 	changeDisplay2=document.getElementById("changeDisplay2");
 	var 	titre=document.getElementById("titre_display");
 	var 	img=document.getElementById("img_display");
 
@@ -107,8 +105,7 @@ function validationEmailAC(){
 	changeDisplay2AD.addEventListener('click',changeDisplayF2AD);
 
 //listeners pour l'ajout du proces
-	changeDisplay1.addEventListener('click',changeDisplayF1);
-	changeDisplay2.addEventListener('click',changeDisplayF2);
+	
 
 //listeners pour les inputs d'ajout du dossier
 cinClientAD.addEventListener("keyup",validationCin);		
@@ -205,12 +202,48 @@ function changeDisplayF1AD(){
 		choixClient.style.display="none";
 		dossier.style.display="none";
 		procesAD.style.display="block";
-		changeDisplay1AD.parentElement.style.display="none";
-		changeDisplay2AD.parentElement.style.display="none";
+		
 					//proces js
 
 
+	}else if( proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
+		
+		if( nomRegex.test(nomAdv.value)==true && nomRegex.test(prenomAdv.value)==true && cinRegex.test(cinAdv.value)==true && adresseRegex.test(adresseAdv.value)==true && avocatAdvRegex.test(avocatAdv.value==true) ){
+			proces.style.display='none';
+			fileUpload.style.display="block";
+			facture.style.display="none";
+			changeDisplay1AD.focus();
+		}else{
+			alert("certains champs sont vides ou invalides")
+		}
+		
 	}
+
+	else if( proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
+		
+			proces.style.display='none';
+			fileUpload.style.display="none";
+			facture.style.display="block";
+			document.getElementById("SUBMIT").parentElement.style.display="block";
+			changeDisplay1AD.parentElement.style.display="none";
+			document.getElementById("facture").focus();
+		
+	}
+
+	else if( proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
+		
+		if(factureRegex.test(FMB.value)==true){
+			proces.style.display='none';
+			fileUpload.style.display="none";
+			facture.style.display="block";
+			
+		}
+		else {
+			alert("certains champs sont vides ou invalides");
+		}
+		
+	}
+
 }
 
 function changeDisplayF2AD(){
@@ -232,71 +265,13 @@ function changeDisplayF2AD(){
 		procesAD.style.display="none";
 		changeDisplay2AD.parentElement.style.display="none";
 		changeDisplay1AD.parentElement.className="col-xs-3 col-xs-offset-5 herite-ajout-proces";
-				titre.style.display="block";
-				img.style.display="block";
-				img.nextElementSibling.style.display="block";
-				titre.nextElementSibling.children[0].style.display="block";
+		titre.style.display="block";
+		img.style.display="block";
+		img.nextElementSibling.style.display="block";
+		titre.nextElementSibling.children[0].style.display="block";
 
 
-	}
-}
-
-
-
-
-
-
-
-
-
-//----------------------------------------------------fonctions de changement du dysplay d'ajout du proces ----------------------------------------------------
-//fonction qui change le display
-function changeDisplayF1(){
-
-	if( proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
-		
-		if( nomRegex.test(nomAdv.value)==true && nomRegex.test(prenomAdv.value)==true && cinRegex.test(cinAdv.value)==true && adresseRegex.test(adresseAdv.value)==true && avocatAdvRegex.test(avocatAdv.value==true) ){
-			proces.style.display='none';
-			fileUpload.style.display="block";
-			facture.style.display="none";
-			document.getElementById("changeDisplay1").focus();
-		}
-		else {
-			alert("certains champs sont vides ou invalides")
-		}
-		
-	}
-
-	else if( proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
-		
-			proces.style.display='none';
-			fileUpload.style.display="none";
-			facture.style.display="block";
-			document.getElementById("changeDisplay1").innerHTML="ajouter ce proces";
-			document.getElementById("facture").focus();
-		
-	}
-
-	else if( proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
-		
-		if(factureRegex.test(FMB.value)==true){
-			proces.style.display='none';
-			fileUpload.style.display="none";
-			facture.style.display="block";
-			
-		}
-		else {
-			alert("certains champs sont vides ou invalides");
-		}
-		
-	}
-
-}
-
-
-function changeDisplayF2(){
-
-	if( proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
+	}else if( proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 //changement du display des grandes divs 
 		choixClient.style.display="none";
 		dossier.style.display="block";
@@ -315,15 +290,15 @@ function changeDisplayF2(){
 		proces.style.display='none';
 		fileUpload.style.display="block";
 		facture.style.display="none";
-		document.getElementById("changeDisplay1").innerHTML="suivant";	
+		changeDisplay1AD.parentElement.style.display="block";
+		document.getElementById("SUBMIT").parentElement.style.display="none";
 	}
 
 	if(proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 
 	}
 
-
-	}
+}
 
 
 
@@ -365,14 +340,39 @@ window.onload = function(){
 	}
 	document.getElementById("creerDossier").className += "active";
 	document.getElementById("creerDossier").parentElement.previousElementSibling.className += " active";
-	$("#dateNais").click(function(){
+	$("#dateNais").focus(function(){
         $(this).prop('type','date');
 	})
     $("#dateNais").blur(function(){
         $(this).prop('type','text');
     })
     
+inp=document.getElementsByClassName("effect-16");
+	
+	for(i=0;i<inp.length;i++){
+		if(inp[i].value!=""){
+			inp[i].className += " has-content";
+		}
+		
+	}
+	
+	$("#datePay").focus(function(){
+        $(this).prop('type','datetime-local');
+	})
+    $("#datePay").blur(function(){
+        $(this).prop('type','text');
+    })
     
+    $("#dateNotif").focus(function(){
+        $(this).prop('type','datetime-local');
+	})
+    $("#dateNotif").blur(function(){
+        $(this).prop('type','text');
+    })
+
+
+
+	
     $("select#d").focusout(function(){
          
       if($(this).children("option:selected").val() !=""){
@@ -386,6 +386,18 @@ window.onload = function(){
           $(this).addClass("effect-16-validation");
 		}
 	})
+	$("#return").click(function(){
+		choixClient.style.display="block";
+		dossier.style.display="none";
+		procesAD.style.display="none";
+		changeDisplay2AD.parentElement.style.display="none";
+		changeDisplay1AD.style.display="block";
+		titre.style.display="block";
+		img.style.display="block";
+		img.nextElementSibling.style.display="block";
+		titre.nextElementSibling.children[0].style.display="block";
+		document.getElementById("add").style.display="none";
+	})
 	$("#nouveauClientAD").click(function(){
 		$.post("AD",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
 			if(cinRegex.test(cinClientAD.value)==true){
@@ -398,6 +410,8 @@ window.onload = function(){
 				img.style.display="none";
 				img.nextElementSibling.style.display="none";
 				titre.nextElementSibling.children[0].style.display="none";
+				$("#cin").val(cinClientAD.value);
+				$("#cin").addClass("has-content effect-16")
 			}else if(data == 1){
 				alert("ce client existe deja ")
 			}}else{alert("CIN n'est pas valide")}
@@ -415,7 +429,16 @@ window.onload = function(){
 	   if(nomRegex.test(nomAC.value)==true && nomRegex.test(prenomAC.value)==true && cinRegex.test(cinAC.value)==true && emailRegex.test(emailAC.value)==true && dateRegex.test([day, month, year].join('/'))==true){
 	   $.post("AD",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
 	    	if(data==1){
-	    		
+	    		document.getElementById("add").style.display="none";
+	    		choixClient.style.display="none";
+				dossier.style.display="block";
+				procesAD.style.display="none";
+				changeDisplay2AD.parentElement.style.display="block";
+				changeDisplay1AD.style.display="block";
+				titre.style.display="none";
+				img.style.display="none";
+				img.nextElementSibling.style.display="none";
+				titre.nextElementSibling.children[0].style.display="none";
 	    	}else{
 	    		
 	    	}
