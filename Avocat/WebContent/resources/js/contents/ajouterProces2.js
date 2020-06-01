@@ -1,6 +1,5 @@
-//variable globaux
-
-
+//ajout des evenements sur les dossiers chargés
+dossierClick();
 
 //ensemble des divs
 	
@@ -11,6 +10,7 @@
 	var     facture=document.getElementById("facture");
 	var 	changeDisplay1=document.getElementById("changeDisplay1");
 	var 	changeDisplay2=document.getElementById("changeDisplay2");
+	var 	backSubmitButton=document.getElementById("backSubmitButton");
 	var 	titre=document.getElementById("titre_display");
 	var 	img=document.getElementById("img_display");
 
@@ -110,6 +110,9 @@ function changeDisplayF1(){
 			proces.style.display='block';
 			fileUpload.style.display="none";
 			facture.style.display="none";
+			backSubmitButton.style.display = "none";
+			changeDisplay2.style.display = "block";
+			
 			
 		}
 		else{alert("veillez choisir un dossier")}
@@ -173,6 +176,8 @@ function changeDisplayF2(){
 		proces.style.display='none';
 		fileUpload.style.display="none";
 		facture.style.display="none";
+		backSubmitButton.style.display = "block";
+		changeDisplay2.style.display = "none";
 		
 	}
 
@@ -217,9 +222,7 @@ function dossierClicked(){
 	document.getElementById("idDossierClicked").value = this.parentElement.children[0].textContent;
 	}
 
-function hh(){
-	alert(document.getElementById("idDossierClicked").value);
-}
+
 
 
 
@@ -240,7 +243,7 @@ $(window).load(function(){
 	});
 
 window.onload = function(){
-	
+
 	active=document.getElementsByClassName("active");
 	j = active.length;
 /*	while(active.length>0){
@@ -253,6 +256,20 @@ window.onload = function(){
 	}
 	document.getElementById("creerProces").className += "active";
 	document.getElementById("creerProces").parentElement.previousElementSibling.className += " active";
+
+};
+
+window.onload = function(){
+	
+	inp=document.getElementsByClassName("effect-16");
+	
+	for(i=0;i<inp.length;i++){
+		if(inp[i].value!=""){
+			inp[i].className += " has-content";
+		}
+		
+	}
+	
 
 };
 

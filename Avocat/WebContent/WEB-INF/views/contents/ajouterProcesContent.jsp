@@ -12,243 +12,48 @@
 
           <div class="row">
 <!------------------------------formulaire du precision du dossier cible------------------------>                  
+   <form action="AjouterProces" method="post" >
                   <div id="choixClient" style="display:block">
-                    <div class="col-xs-12 titles-style">
-                      <h5>veillez preciser le dossier cible</h5>
-                    </div> 
-
-
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder=""  id="cinClient" name="cinClient" >
-                        <label id="">cin Client</label>
-                        <span class="focus-border"></span>
-                    </div>
+   
+	                    <div class="col-xs-12 titles-style">
+	                      <h5>veillez preciser le dossier cible</h5>
+	                    </div> 
+	
+	
+	                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+	                       <input class="effect-16" type="text"  id="cinClient" name="cinClient" <%if (request.getAttribute("cinClient")!=null){ %>value="<%=request.getAttribute("cinClient")%>"<%} %>>
+	                       <label id="">cin Client</label>
+	                       <span class="focus-border"></span>
+	                    </div>
+	                    
                   </div>
-                  
-                
-                  <div id="choixDossier" style="display:none">
-					
-					<div class="col-xs-12 titles-style">
-                      <h5>liste des dossiers du client choisit</h5>
-                    </div> 
-
-
-                    <div class="col-xs-12  input-effect herite-ajout-proces">
-                               <table class="table table-striped table-bordered table-hover table-sm table-responsive " >
-		<thead class="thead-dark">
-			<tr>
-				
-				<th>id</th>
-				<th>etat avancement</th>
-				<th>type du proces</th>
-			</tr>
-		</thead>
+                   
+                 <div id="clientValide" style="display:none">
+                  <table class="table table-striped table-bordered table-hover table-sm table-responsive " >
+						<thead class="thead-dark">
+							<tr>
+								<th>id</th>
+								<th>etat avancement</th>
+								<th>type du proces</th>
+							</tr>
+						</thead>
 		
-		<tbody class="">
-		                    <%ArrayList<Dossier> dossiers = new ArrayList<Dossier>();
-                  
-		             dossiers = (ArrayList<Dossier>)request.getAttribute("dossiers");
-                    if(dossiers != null){
-                    for(Dossier d : dossiers){%>
-                    	
-                    
-			<tr class="trow">
-				
-				<td class="dossierContent"><%=d.getIdDos()%></td>
-				<td class="dossierContent"><%=d.getEtatAv()%></td>
-				<td class="dossierContent"><%=d.getDescription()%></td>
-			</tr>
-		<% 	}} %>	
-                    
-                    
-		</tbody>
-		</table>	
-                        
-                       
-                    </div>
-                   
-                  </div>
+						<tbody class="">
+
+                    		<tr class="trow">
+								<td id="idClient"></td>
+								<td id="nomClient"></td>
+								<td id="prenomClient"></td>
+							</tr>
+
+                    	</tbody>
+					</table>	 
                   
                   
-                  
-                  
-                  
-                  
-                  
-                  
-                
-                  
-                   
-<!------------------------------premier formulaire de remplisssion d'un proces------------------------>
-<form action="AjouterProces" method="post" enctype="multipart/form-data">
-          <!-- input de precision du dossier cible -->         
-                   <input class="effect-16 " type="hidden"  name="idDossierClicked" id="idDossierClicked" > 
-                    <input class="effect-16 " type="hidden"  name="action" id="" value="donneesProces" > 
-                    
-                  
-                  <div id="proces" style="display:none">                     
-
-                    <div class="col-xs-12 titles-style">
-                      <h5>informatons relatives au advairsaire</h5>
-                    </div>
-
-                    <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="nomAdv" id="nom" >
-                        <label id="">Nom</label>
-                        <span class="focus-border"></span>
-                    </div>
-
-                    <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="prenomAdv" id="prenom" >
-                        <label id="">Prenom</label>
-                        <span class="focus-border"></span>
-                    </div>
-
-                    <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="cinAdv" id="cinAdv" >
-                        <label id="">CIN</label>
-                        <span class="focus-border"></span>
-                    </div>
-
-                    <div class="col-xs-12">
-                    </div>
-
-                    
-
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16" type="text" placeholder="" name="adresseAdv" id="adresse" >
-                        <label id="">Adresse</label>
-                        <span class="focus-border"></span>
-                    </div>
-
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="avocatAdv" id="avocatAdv" >
-                        <label id="">Avocat</label>
-                        <span class="focus-border"></span>
-                    </div>
-
-                     
-
-                    <div class="col-xs-12 titles-style">
-                      <h5>informatons relatives au proces</h5>
-                    </div>
-                    
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-	                  <select class="effect-16 input-effect" id="statut" style="width:100%" name="statut"><option></option><option value="premiere Instance">premiere Instance</option> <option value="deuxieme Instance" >deuxieme Instance</option>  <option value="troisieme Instance" >troisieme Instance</option></select>
-	                  <label id="">type du proces</label>
-	                  <span class="focus-border"></span>
-               		 </div>
-                
-                	<div class="col-xs-4 col-xs-offset-1 input-effect herite mg">
-			        	<input class="effect-16" type="text" placeholder="" id="dateNotif" name="dateNotif">
-			            <label>Date de notification</label>
-			            <span class="focus-border"></span>
-			        </div>
-			        
-			         <div class="col-xs-12">
-                    </div>
-
-                     
-
-                     <div class="col-xs-9 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="description" id="description" >
-                        <label id="">Description</label>
-                        <span class="focus-border"></span>
-                    </div>
-                    
-                    
-
-                    <div class="col-xs-12">
-                    </div>
-
-                    
-                </div>
-                    
-                 
-                   
-                   <div class="col-xs-12">
-                  </div>
-
-                   <div id="file_upload" style="display:none"> 
-
-                    <div class="col-xs-12 titles-style">
-                      <h5>fichiers relatifs au proces</h5>
-                    </div>
-
-                    <div class="col-xs-8 col-xs-offset-1 input-effect herite-ajout-proces ">
-                      <div class="abox">
-                        <div class="aboxv">
-                          <input type="file" name="file" id="video" class="inputfile" data-multiple-caption="{count} files selected" multiple accept="video/*" />
-                          <label for="video" class="f_u_label"><i class="fas fa-video"></i> video</label>
-                        </div>
-
-                        <div class="aboxi">
-                          <input type="file" name="file" id="image" class="inputfile" data-multiple-caption="{count} files selected" multiple  accept="image/*"/>
-                          <label for="image" class="f_u_label"><i class="fas fa-images"></i> photo</label>
-                        </div>
-
-                        <div class="aboxw">
-                          <input type="file" name="file" id="fword" class="inputfile"  accept=".docx,.doc"/>
-                          <label for="fword" class="f_u_label"><i class="fas fa-file-word"></i> document word</label>
-                        </div>
-
-                        <div class="aboxp">
-                          <input type="file" name="file" id="fpdf" class="inputfile" data-multiple-caption="{count} files selected" multiple  accept=".pdf"/>
-                          <label for="fpdf" class="f_u_label"><i class="fas fa-file-pdf"></i> pdf</label>
-                        </div>
-                      </div>    
-                   
-                   </div> </div>
-
-                   <div id="facture" style="display:none"> 
-
-                    <div class="col-xs-12 titles-style">
-                      <h5>informatons relatives à la facture</h5>
-                    </div>
-
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="FMB" id="FMB" >
-                        <label id="">montant de base</label>
-                        <span class="focus-border"></span>
-                    </div>
-
-                   
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="prixKm" id="prixKm" >
-                        <label id="">prix par Km</label>
-                        <span class="focus-border"></span>
-                    </div>
-
-                    <div class="col-xs-12">
-                    </div>
-                    
-                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="mtGlobal" id="mtGlobal" >
-                        <label id="">montant global</label>
-                        <span class="focus-border"></span>
-                    </div>
-                    
-                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="mtPaye" id="mtPaye" >
-                        <label id="">montant payé</label>
-                        <span class="focus-border"></span>
-                    </div>
-
-                  
-					
-					
-					<div class="col-xs-12">
-                    </div>
-					
-					
-                    <div class="col-xs-5 col-xs-offset-3 input-effect herite mg">
-			        	<input class="effect-16" type="text" placeholder="" id="datePay" name="datePay">
-			            <label>Date de payement</label>
-			            <span class="focus-border"></span>
-			        </div>
-
-                   </div> 
-                   
+                  <input type="hidden" name="action" value="validationClient">
+        		</div>        
+             
+                                   
                    <div class="col-xs-12">
                    </div>
                    
@@ -258,19 +63,16 @@
                    </div>
                    
                    <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:none">
-                    <button type="submit" class="btn btn-primary" id="submitButton" value="valider" >Ajouter le proces</button>
+                    <button type="submit" class="btn btn-primary" id="submitButton" value="oui" >chercher dossiers</button>
                    </div> 
                  
-                 </form>  
-			<!-- ---------------------------------------------------------------------------------------- -->
-                   
                    <div class="col-xs-3 col-xs-offset-5 herite-ajout-proces">
                     <button type="button" class="btn btn-primary" id="changeDisplay1" value="valider" >Suivant</button>
                    </div>  
-
+	 </form>  
 
 				</div>  
-          	</div>
+          	</div>   
           </section>
        </section>
     </div>

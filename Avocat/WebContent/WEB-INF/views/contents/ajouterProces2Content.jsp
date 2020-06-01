@@ -23,40 +23,35 @@
 
 
                     <div class="col-xs-12  input-effect herite-ajout-proces">
-                               <table class="table table-striped table-bordered table-hover table-sm table-responsive " >
-		<thead class="thead-dark">
-			<tr>
-				
-				<th>id</th>
-				<th>etat avancement</th>
-				<th>type du proces</th>
-			</tr>
-		</thead>
+                      <table class="table table-striped table-bordered table-hover table-sm table-responsive " >
+						<thead class="thead-dark">
+							<tr>
+								<th>id</th>
+								<th>etat avancement</th>
+								<th>type du proces</th>
+							</tr>
+						</thead>
 		
-		<tbody class="">
-		                    <%ArrayList<Dossier> dossiers = new ArrayList<Dossier>();
-                  
-		             dossiers = (ArrayList<Dossier>)request.getAttribute("dossiers");
-                    if(dossiers != null){
-                    for(Dossier d : dossiers){%>
+						<tbody class="">
+<%ArrayList<Dossier> dossiers = new ArrayList<Dossier>();
+   
+dossiers = (ArrayList<Dossier>)request.getAttribute("dossiers");
+     if(dossiers != null){
+     for(Dossier d : dossiers){%>
                     	
                     
-			<tr class="trow">
-				
-				<td class="dossierContent"><%=d.getIdDos()%></td>
-				<td class="dossierContent"><%=d.getEtatAv()%></td>
-				<td class="dossierContent"><%=d.getDescription()%></td>
-			</tr>
-		<% 	}} %>	
+							<tr class="trow">
+								<td class="dossierContent"><%=d.getIdDos()%></td>
+								<td class="dossierContent"><%=d.getEtatAv()%></td>
+								<td class="dossierContent"><%=d.getDescription()%></td>
+							</tr>
+<% 	}} %>	
                     
                     
-		</tbody>
-		</table>	
-                        
-                       
-                    </div>
-                   
+						</tbody>
+					</table>	
                   </div>
+                </div>
                   
                   
                   
@@ -71,8 +66,9 @@
 <!------------------------------premier formulaire de remplisssion d'un proces------------------------>
 <form action="AjouterProces" method="post" enctype="multipart/form-data">
           <!-- input de precision du dossier cible -->         
-                   <input class="effect-16 " type="hidden"  name="idDossierClicked" id="idDossierClicked" > 
+                   <input class="effect-16 " type="hidden"  name="idDossierClicked" id="idDossierClicked"> 
                     <input class="effect-16 " type="hidden"  name="action" id="" value="donneesProces" > 
+                    
                     
                   
                   <div id="proces" style="display:none">                     
@@ -242,7 +238,7 @@
                    </div>
                    
                    
-                   <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:block">
+                   <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:none">
                     <button type="button" class="btn btn-primary" id="changeDisplay2" value="precedant" >précedant</button>
                    </div>
                    
@@ -252,10 +248,20 @@
                  
                  </form>  
 			<!-- ---------------------------------------------------------------------------------------- -->
+                    <form action="AjouterProces" method="post">
+	                   <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:block">
+	                    <button type="submit" class="btn btn-primary" id="backSubmitButton" name="action" value="backSubmitButton" >précedent</button>
+	                    <input class="effect-16 " type="hidden"  id="cinClient" name="cinClient" <%if (request.getAttribute("cinClient")!=null){ %>value="<%=request.getAttribute("cinClient")%>"<%} %>> 
+	                   </div> 
+	                </form>
                    
-                   <div class="col-xs-3 col-xs-offset-5 herite-ajout-proces">
+                   
+                   <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces">
                     <button type="button" class="btn btn-primary" id="changeDisplay1" value="valider" >Suivant</button>
                    </div>  
+                   
+                  
+                   
 
 
 				</div>  

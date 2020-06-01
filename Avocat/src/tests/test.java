@@ -5,14 +5,18 @@ package tests;
 
 
 import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import org.json.simple.JSONObject;
+
 import DAO.Connexion;
 import DAO.daoAjouterProces;
+import models.Client;
 import models.Dossier;
 import models.Proces;
 import tools.Date;
@@ -20,6 +24,8 @@ import tools.Date;
 
 public class test {
 
+	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws ParseException {
 		
 		/*Connexion.connect();
@@ -59,14 +65,17 @@ public class test {
 		Connexion.disconect();
 		System.out.println(res);*/
 		
-		Date d= Date.toDbDate("2020-05-22T22:15");
-		System.out.println(d);
-		
-		ArrayList<Dossier> ds= new ArrayList<Dossier>();
-		ds= daoAjouterProces.dossierClient("bh1212");
-		for(Dossier dd : ds) {
-			System.out.println(dd.toString());
-		}
+		//Date d= Date.toDbDate("2020-05-22T22:15");
+	
+		      JSONObject obj = new JSONObject();
+
+		      Client client=daoAjouterProces.chercherClient("bh1212");
+				obj.put("exist", 1 );
+				obj.put("clientID", client.getId() );
+				obj.put("clientNom", client.getNom() );
+				obj.put("clientPrenom", client.getPrenom() );
+
+		      System.out.print(obj);
 	}
 
 }

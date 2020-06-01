@@ -20,9 +20,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import org.apache.commons.io.FilenameUtils;
-
+import org.json.simple.JSONObject;
 
 import DAO.daoAjouterProces;
+import models.Client;
 import models.Dossier;
 import models.Facture;
 import models.Files;
@@ -54,24 +55,39 @@ public class AjouterProces extends HttpServlet {
 		
 		//return du dossier choisit par l'utilisateur
 		if(action.equals("choixDossier")) {
+			JSONObject obj=new JSONObject();
 			
+			int exist=daoAjouterProces.clientExist(request.getParameter("cinClient"));
 			
-			int exist=daoAjouterProces.chercherDossier(request.getParameter("cinClient"));
 			if(exist==0) {
-			out.print(exist);
-			
+				out.print(exist);
 			}
 		
 			else {
-				
+				Client client=daoAjouterProces.chercherClient(request.getParameter("cinClient"));
+				obj.put("exist", exist );
+				obj.put("clientID", client.getId() );
+				obj.put("clientNom", client.getNom() );
+				obj.put("clientPrenom", client.getPrenom() );
+			
+				out.print(obj)	;
+			}
+		}	
+		
+		
+		else if(action.equals("validationClient")) {
 			ArrayList<Dossier> dossiers= new ArrayList<Dossier>();
 			dossiers= daoAjouterProces.dossierClient(request.getParameter("cinClient"));
 			
 			request.setAttribute("dossiers", dossiers);
-			//request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces2.jsp").forward(request, response);
+			request.setAttribute("cinClient", request.getParameter("cinClient"));
+			request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces2.jsp").forward(request, response);
+		}
+		
+		else if(action.equals("backSubmitButton")) {
+			request.setAttribute("cinClient", request.getParameter("cinClient"));
 			request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces.jsp").forward(request, response);
-			}
-		}	
+		}
 		
 		//traitement d'ajout du proces
 		else if(action.equals("donneesProces")) {

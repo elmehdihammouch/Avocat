@@ -4,18 +4,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import models.Client;
 import models.Dossier;
 import models.Files;
 import models.Proces;
 
 public class daoAjouterProces {
 
-	public static	int  chercherDossier(String cin) {
+	public static	int  clientExist(String cin) {
 		ResultSet res;
 		int exist=0;
 		
 		Connexion.connect();
-		res=Connexion.select("select * from dossier where idClient= (select idClient from client where upper(cin)='"+cin.toUpperCase()+"' ); ");
+		res=Connexion.select("select * from client  where upper(cin)='"+cin.toUpperCase()+"'; ");
 		try {
 			if(res.next()) {
 				exist=1;
@@ -28,6 +29,29 @@ public class daoAjouterProces {
 		Connexion.disconect();
 		return exist;
 	
+	}
+	
+	public static Client chercherClient(String cin) {
+		
+		ResultSet res;
+		Client c= new Client();
+		
+		Connexion.connect();
+		res=Connexion.select("select * from client where idClient= (select idClient from client where upper(cin)='"+cin.toUpperCase()+"' ); ");
+		try {
+			if(res.next()) {
+				c.setId(res.getInt(1));
+				c.setNom(res.getString(2));
+				c.setPrenom(res.getString(3));
+			}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("erreur dans la select de la methode chercherDossier");
+			}
+		Connexion.disconect();
+		return c;
+		
 	}
 	
 	public static int ajouterProces(Proces p) { 
