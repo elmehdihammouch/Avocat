@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class redirectionDeBase
  */
-@WebServlet("/APP")
+@WebServlet("/APPP")
 public class redirectionDeBase extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces.jsp").forward(request, response);
+		//request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces.jsp").forward(request, response);
 		//request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces.jsp").forward(request, response);
 	}
 }

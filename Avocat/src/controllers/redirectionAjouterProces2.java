@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class redirectionAjouterProces2
  */
-@WebServlet("/APP")
+@WebServlet("/AP2")
 public class redirectionAjouterProces2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
