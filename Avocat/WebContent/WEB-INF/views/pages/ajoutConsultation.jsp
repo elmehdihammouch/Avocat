@@ -5,11 +5,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	 <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
-	  <link href="./resources/css/headers/style.css" rel="stylesheet">
-	 <link href="./resources/css/headers/style-responsive.css" rel="stylesheet">
 	 <link href="./resources/css/contents/ajouterClient.css" rel="stylesheet">
+	 <link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	 <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
+	 <link href="./resources/css/headers/style.css" rel="stylesheet">
+	 <link href="./resources/css/headers/style-responsive.css" rel="stylesheet">
+	 
 </head>
 <body>
 
@@ -20,7 +21,7 @@
 	</div>
 
 
-</body>
+</body style="background: #ffffff;">
 	<script type="text/javascript" src="./resources/jquery/jquery.js"></script>
   	<script type="text/javascript" src="./resources/js/headers/jquery.dcjqaccordion.2.7.js"></script>
   	<script type="text/javascript" src="./resources/js/headers/jquery.scrollTo.min.js"></script>

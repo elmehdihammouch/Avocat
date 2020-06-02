@@ -6,16 +6,17 @@
 <head>
 	<meta charset="ISO-8859-1">
 	 
+	 <link href="./resources/css/contents/ajouterDossier.css" rel="stylesheet">
+	 <link href="./resources/css/contents/ajouterClient.css" rel="stylesheet">
 	 <link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	 <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
 	  <link href="./resources/css/headers/style.css" rel="stylesheet">
 	 <link href="./resources/css/headers/style-responsive.css" rel="stylesheet">
-	<link href="./resources/css/contents/ajouterDossier.css" rel="stylesheet">
-	 <link href="./resources/css/contents/ajouterClient.css" rel="stylesheet">
+	
 	 
 	<title>Avocat</title>
 </head>
-<body>
+<body style="background: #ffffff;">
 
 	<jsp:include page="../headers/headerAfterAuth.jsp"></jsp:include>
 	<jsp:include page="../contents/ajouterDossierContent.jsp"></jsp:include>

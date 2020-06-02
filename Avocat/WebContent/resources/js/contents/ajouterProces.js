@@ -148,6 +148,26 @@ $(window).load(function(){
 		})
 	});
 
+
+
+
+window.onload = function(){
+	
+	inp=document.getElementsByClassName("effect-16");
+	
+	for(i=0;i<inp.length;i++){
+		if(inp[i].value!=""){
+			inp[i].className += " has-content";
+		}
+		
+	}
+	
+
+};
+
+
+//script relative aux relations entre les pages
+
 window.onload = function(){
 	
 	active=document.getElementsByClassName("active");
@@ -166,25 +186,47 @@ window.onload = function(){
 };
 
 
-window.onload = function(){
-	
-	inp=document.getElementsByClassName("effect-16");
-	
-	for(i=0;i<inp.length;i++){
-		if(inp[i].value!=""){
-			inp[i].className += " has-content";
-		}
-		
-	}
-	
+/*
+var creerConsultation = document.getElementById("creerConsultation");
+var creerDossier = document.getElementById("creerDossier");
+var creerProces = document.getElementById("creerProces");
+var consulterConsultation = document.getElementById("consulterConsultation");
+var consulterDossier = document.getElementById("consulterDossier");
+var consulterProces = document.getElementById("consulterProces");
+var consulterFactures = document.getElementById("consulterFactures");
 
-};
-
-
-
-
-
+creerConsultation.addEventListener("click",redirectionCrConsultation);
+creerDossier.addEventListener("click",redirectionCrDossier);
+creerProces.addEventListener("click",redirectionCrProces);
+consulterConsultation.addEventListener("click",redirectionCoConsultation);
+consulterDossier.addEventListener("click",redirectionCoDossier);
+consulterProces.addEventListener("click",redirectionCoProces);
+consulterFactures.addEventListener("click",redirectionCoFactures);
 
 
+function redirectionCrConsultation(){
+	alert(1);
+}
+function redirectionCrDossier(){
+	alert(1);
+}
+function redirectionCrProces(){
+	alert(1);
+}
+function redirectionCoConsultation(){
+	alert(1);
+}
+function redirectionCoDossier(){
+	alert(1);
+}
+function redirectionCoProces(){
+	alert(1);
+}
+function redirectionCoFactures(){
+	alert(1);
+}
+
+
+*/
 
 

@@ -452,3 +452,19 @@ inp=document.getElementsByClassName("effect-16");
 
 
 };
+
+
+//script relative aux relations entre les pages
+
+window.onload = function(){
+	
+	active=document.getElementsByClassName("active");
+
+	for(i=0;i<active.length;i++){
+		active[i].classList.remove("active");
+		i--;
+	}
+	document.getElementById("creerDossier").className += "active";
+	document.getElementById("creerDossier").parentElement.previousElementSibling.className += " active";
+
+};

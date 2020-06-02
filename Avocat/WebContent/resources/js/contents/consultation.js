@@ -211,3 +211,19 @@ $(window).load(function(){
 		
 			
 })
+
+
+//script relative aux relations entre les pages
+
+window.onload = function(){
+	
+	active=document.getElementsByClassName("active");
+
+	for(i=0;i<active.length;i++){
+		active[i].classList.remove("active");
+		i--;
+	}
+	document.getElementById("creerConsultation").className += "active";
+	document.getElementById("creerConsultation").parentElement.previousElementSibling.className += " active";
+
+};

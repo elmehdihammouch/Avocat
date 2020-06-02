@@ -242,22 +242,7 @@ $(window).load(function(){
 		})
 	});
 
-window.onload = function(){
 
-	active=document.getElementsByClassName("active");
-	j = active.length;
-/*	while(active.length>0){
-		active[j-1].classList.remove("active");
-		j--;
-	}*/
-	for(i=0;i<active.length;i++){
-		active[i].classList.remove("active");
-		i--;
-	}
-	document.getElementById("creerProces").className += "active";
-	document.getElementById("creerProces").parentElement.previousElementSibling.className += " active";
-
-};
 
 window.onload = function(){
 	
@@ -275,13 +260,6 @@ window.onload = function(){
 
 
 
-
-
-
-
-
-
-//verification avec le serveur
 window.onload = function(){
 	$("#datePay").click(function(){
         $(this).prop('type','datetime-local');
@@ -299,3 +277,21 @@ window.onload = function(){
         $(this).prop('type','text');
     })
 }
+
+
+
+
+//script relative aux relations entre les pages
+
+window.onload = function(){
+	
+	active=document.getElementsByClassName("active");
+
+	for(i=0;i<active.length;i++){
+		active[i].classList.remove("active");
+		i--;
+	}
+	document.getElementById("creerProces").className += "active";
+	document.getElementById("creerProces").parentElement.previousElementSibling.className += " active";
+
+};

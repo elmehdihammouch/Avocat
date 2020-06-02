@@ -105,8 +105,7 @@
               <span>Gestion Client</span>
               </a>
             <ul class="sub">
-              <li class="active" id="creerClient"><a href="newuser.html">creer un client</a></li>
-              <li id="consulterClient"><a href="">consulter liste clients</a></li>
+            	<li id="consulterClient"><a href="http://localhost:8085/Avocat/ConsultationClients">consulter liste clients</a></li>
             </ul>
            </li>
           
@@ -116,7 +115,7 @@
               <span>Gestion des consultations</span>
             </a>
             <ul class="sub">
-              <li id="creerConsultation"><a href="" >creer une consultation</a></li>
+              <li id="creerConsultation"><a href="http://localhost:8085/Avocat/AC" >creer une consultation</a></li>
               <li id="consulterConsultation"><a href="" > Liste des consultations</a></li>
             </ul>
            </li>
@@ -127,7 +126,7 @@
               <span>Gestion des dossiers</span>
             </a>
             <ul class="sub">
-              <li id="creerDossier"><a href="" >creer un dossier</a></li>
+              <li id="creerDossier"><a href="http://localhost:8085/Avocat/AD" >creer un dossier</a></li>
               <li id="consulterDossier"><a href="" >consulter liste des dossiers</a></li>
             </ul>
            </li>
@@ -138,7 +137,7 @@
               <span>Gestion des Proces</span>
             </a>
             <ul class="sub">
-              <li id="creerProces"><a href="">creer un proces</a></li>
+              <li id="creerProces"><a href="http://localhost:8085/Avocat/AP">creer un proces</a></li>
               <li id="consulterProces"><a href="">consulter liste des proces</a></li>
             </ul>
            </li>
@@ -149,7 +148,7 @@
             
         <li>
             <a href="">
-              <i class="fa fa-percent"></i>
+              <i class="fa fa-percent" id="consulterFactures"></i>
               <span>Liste Facture </span>
               </a>
           </li>

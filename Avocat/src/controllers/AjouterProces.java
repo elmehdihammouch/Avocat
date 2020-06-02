@@ -33,14 +33,14 @@ import tools.Date;
 /**
  * Servlet implementation class AjouterProces
  */
-@WebServlet("/AjouterProces")
+@WebServlet("/AP")
 @MultipartConfig
 public class AjouterProces extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces.jsp").forward(request, response);
 	}
 
 
