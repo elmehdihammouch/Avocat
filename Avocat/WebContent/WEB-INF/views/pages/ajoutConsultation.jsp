@@ -12,7 +12,7 @@
 	 <link href="./resources/css/headers/style-responsive.css" rel="stylesheet">
 	 
 </head>
-<body>
+<body style="background: #ffffff;">
 
 	<jsp:include page="../headers/headerAfterAuth.jsp"></jsp:include>
 	<jsp:include page="../contents/ajoutConsultationContent.jsp"></jsp:include>
@@ -21,7 +21,7 @@
 	</div>
 
 
-</body style="background: #ffffff;">
+</body>
 	<script type="text/javascript" src="./resources/jquery/jquery.js"></script>
   	<script type="text/javascript" src="./resources/js/headers/jquery.dcjqaccordion.2.7.js"></script>
   	<script type="text/javascript" src="./resources/js/headers/jquery.scrollTo.min.js"></script>

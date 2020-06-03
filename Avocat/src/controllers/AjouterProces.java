@@ -33,7 +33,7 @@ import tools.Date;
 /**
  * Servlet implementation class AjouterProces
  */
-@WebServlet("/AP")
+@WebServlet("/AjouterProces")
 @MultipartConfig
 public class AjouterProces extends HttpServlet {
 	private static final long serialVersionUID = 1L;

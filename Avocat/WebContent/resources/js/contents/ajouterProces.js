@@ -151,19 +151,7 @@ $(window).load(function(){
 
 
 
-window.onload = function(){
-	
-	inp=document.getElementsByClassName("effect-16");
-	
-	for(i=0;i<inp.length;i++){
-		if(inp[i].value!=""){
-			inp[i].className += " has-content";
-		}
-		
-	}
-	
 
-};
 
 
 //script relative aux relations entre les pages
@@ -185,6 +173,20 @@ window.onload = function(){
 
 };
 
+
+window.onload = function(){
+	
+	inp=document.getElementsByClassName("effect-16");
+	
+	for(i=0;i<inp.length;i++){
+		if(inp[i].value != ""){
+			inp[i].className += " has-content";
+		}
+		
+	}
+	
+
+};
 
 /*
 var creerConsultation = document.getElementById("creerConsultation");

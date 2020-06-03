@@ -110,8 +110,8 @@ function changeDisplayF1(){
 			proces.style.display='block';
 			fileUpload.style.display="none";
 			facture.style.display="none";
-			backSubmitButton.style.display = "none";
-			changeDisplay2.style.display = "block";
+			backSubmitButton.parentElement.style.display = "none";
+			changeDisplay2.parentElement.style.display = "block";
 			
 			
 		}
@@ -176,8 +176,8 @@ function changeDisplayF2(){
 		proces.style.display='none';
 		fileUpload.style.display="none";
 		facture.style.display="none";
-		backSubmitButton.style.display = "block";
-		changeDisplay2.style.display = "none";
+		backSubmitButton.parentElement.style.display = "block";
+		changeDisplay2.parentElement.style.display = "none";
 		
 	}
 
@@ -196,7 +196,7 @@ function changeDisplayF2(){
 		fileUpload.style.display="block";
 		facture.style.display="none";
 		document.getElementById("submitButton").parentElement.style.display="none";
-		document.getElementById("changeDisplay1").style.display="block";	
+		document.getElementById("changeDisplay1").parentElement.style.display="block";	
 	}
 
 	else if(choixDossier.style.display=="block" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
@@ -244,19 +244,7 @@ $(window).load(function(){
 
 
 
-window.onload = function(){
-	
-	inp=document.getElementsByClassName("effect-16");
-	
-	for(i=0;i<inp.length;i++){
-		if(inp[i].value!=""){
-			inp[i].className += " has-content";
-		}
-		
-	}
-	
 
-};
 
 
 
@@ -293,5 +281,19 @@ window.onload = function(){
 	}
 	document.getElementById("creerProces").className += "active";
 	document.getElementById("creerProces").parentElement.previousElementSibling.className += " active";
+
+};
+
+window.onload = function(){
+	
+	inp=document.getElementsByClassName("effect-16");
+	
+	for(i=0;i<inp.length;i++){
+		if(inp[i].value!=""){
+			inp[i].className += " has-content";
+		}
+		
+	}
+	
 
 };
