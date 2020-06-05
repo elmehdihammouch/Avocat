@@ -5,7 +5,10 @@
 	var     procesAD=document.getElementById("procesAD");
 	var 	changeDisplay1AD=document.getElementById("changeDisplay1AD");
 	var 	changeDisplay2AD=document.getElementById("changeDisplay2AD");
-
+	var 	datenotif = document.getElementById("dateNotif");
+	var 	datePay = document.getElementById("datePay");
+	var 	dateNais = document.getElementById("dateNais");
+	
 //ensemble des divs d'ajout du proces
 	
 	
@@ -26,6 +29,8 @@
 	var 	adresse=document.getElementById("adresseAdv");
 	var 	avocatAdv=document.getElementById("avocatAdv");
 	var 	FMB=document.getElementById("FMB");
+	var 	mtGlobal=document.getElementById("mtGlobal");
+	var 	mtPaye=document.getElementById("mtPaye");
 
 	//ensemble des regexps 
 	var nomRegex = /^[a-zA-Z]{2,}$/;
@@ -36,7 +41,7 @@
 	var adresseRegex = /^[0-9a-zA-Z\s]*$/;
 	var factureRegex = /^[0-9]+$/;
 	var avocatAdvRegex = /^[a-zA-Z\s]{2,}$/;	
-
+	var datelocal = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T(2[0-3]|[01][0-9]):[0-5][0-9]/
 
 	var  	nomAC=document.getElementById("nom");
 	var  	prenomAC=document.getElementById("prenom");
@@ -60,11 +65,10 @@ emailAC.addEventListener("keyup",validationEmailAC);
 phoneAC.addEventListener("keyup",validationPhoneAC);
 //dateNaissanceAC.addEventL0istener("keyup",validationDateAC);
 lieuNaissanceAC.addEventListener("keyup",validationAdresseAC);
-
 municipaleAC.addEventListener("keyup",validationAdresseAC);
 
 
-//fonctions de validation 
+
 
 function validationNomAC(){
 	if(nomRegex.test(this.value)==false) {this.className="effect-16-validation has-content"}
@@ -191,60 +195,42 @@ function changeDisplayF1AD(){
 					
 				}else{alert("ce client n'existe pas")}
 			})
-			//if(/*ici on realisera une recherche sur le client saisie par l'utilisateur*/){
-				
-			//}	
 		}
 		else{alert("veillez saisir un CIN valide");}			
 	}
-
 	else if(choixClient.style.display=="none" && dossier.style.display=="block" && procesAD.style.display=="none"){
+		var typeproc = $("select#typeProces").children("option:selected").val();
+		if( typeproc !=''){
 		choixClient.style.display="none";
 		dossier.style.display="none";
 		procesAD.style.display="block";
-		
-					//proces js
-
-
+		}else {$("select#typeProces").addClass("has-content effect-16-validation")}
 	}else if( proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
-		
-		if( nomRegex.test(nomAdv.value)==true && nomRegex.test(prenomAdv.value)==true && cinRegex.test(cinAdv.value)==true && adresseRegex.test(adresseAdv.value)==true && avocatAdvRegex.test(avocatAdv.value==true) ){
+		var datenotif = $("#dateNotif").val();
+		statut = $("select#statut").children("option:selected").val();
+		if( nomRegex.test(nomAdv.value)==true && nomRegex.test(prenomAdv.value)==true &&  datelocal.test(datenotif) == true  && statut !=""){
 			proces.style.display='none';
 			fileUpload.style.display="block";
 			facture.style.display="none";
 			changeDisplay1AD.focus();
 		}else{
-			alert("certains champs sont vides ou invalides")
-		}
-		
+			if(nomRegex.test(nomAdv.value)==false){$("#nomAdv").addClass("has-content effect-16-validation")}
+			if(nomRegex.test(prenomAdv.value)==false){$("#prenomAdv").addClass("has-content effect-16-validation")}
+			if(datelocal.test(datenotif)==false){$("#dateNotif").addClass("has-content effect-16-validation")}
+			if(statut == ""){$("#statut").addClass("has-content effect-16-validation")}
+		}	
 	}
-
 	else if( proces.style.display=="none" && fileUpload.style.display=="block" && facture.style.display=="none" ){
-		
 			proces.style.display='none';
 			fileUpload.style.display="none";
 			facture.style.display="block";
-			document.getElementById("SUBMIT").parentElement.style.display="block";
+			document.getElementById("SUB").parentElement.style.display="block";
 			changeDisplay1AD.parentElement.style.display="none";
-			document.getElementById("facture").focus();
-		
+			document.getElementById("facture").focus();	
 	}
-
-	else if( proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="block" ){
-		
-		if(factureRegex.test(FMB.value)==true){
-			proces.style.display='none';
-			fileUpload.style.display="none";
-			facture.style.display="block";
-			
-		}
-		else {
-			alert("certains champs sont vides ou invalides");
-		}
-		
-	}
-
+	
 }
+
 
 function changeDisplayF2AD(){
 	/*if(choixClient.style.display=="none" && dossier.style.display=="none" && procesAD.style.display=="none")	{
@@ -291,7 +277,7 @@ function changeDisplayF2AD(){
 		fileUpload.style.display="block";
 		facture.style.display="none";
 		changeDisplay1AD.parentElement.style.display="block";
-		document.getElementById("SUBMIT").parentElement.style.display="none";
+		document.getElementById("SUB").parentElement.style.display="none";
 	}
 
 	if(proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
@@ -300,21 +286,69 @@ function changeDisplayF2AD(){
 
 }
 
-
-
 $(window).load(function(){
-		$(".col-3 input").val("");
+	
+inp=document.getElementsByClassName("effect-16");
+	
+	for(i=0;i<inp.length;i++){
+		if(inp[i].value!=""){
+			inp[i].className += " has-content";
+		}
 		
-		$(".input-effect input").focusout(function(){
-			if($(this).val() != ""){
-				$(this).addClass("has-content");
-			}else{
-				$(this).removeClass("has-content");
+	}
+	$("#dateNotif").change(function(){
+		if(datelocal.test(datenotif)==true){$("#dateNotif").addClass("has-content effect-16-validation")}
+		else{$("#dateNotif").addClass("has-content effect-16")
+			$("#dateNotif").removeClass("effect-16-validation")
 			}
-		})
-	});
+		});
+	$("#datePay").change(function(){
+		if(datelocal.test(datePay)==true){$("#dateNotif").addClass("has-content effect-16-validation")}
+		else{$("#datePay").addClass("has-content effect-16")
+			$("#datePay").removeClass("effect-16-validation")
+			}})
+	$("#dateNais").change(function(){
+		if(datelocal.test(datePay)==true){$("#dateNais").addClass("has-content effect-16-validation")}
+		else{$("#dateNais").addClass("has-content effect-16")
+			$("#dateNais").removeClass("effect-16-validation")
+			}
+		});
+	$("#mtGlobal").change(function(){
+		if(factureRegex.test(this.value)==false) {this.className="effect-16-validation has-content"}
+		else {this.className="effect-16"}
+		});
+	$("#mtPaye").change(function(){
+		if(factureRegex.test(this.value)==false) {this.className="effect-16-validation has-content"}
+		else {this.className="effect-16"}
+		});
+	
 
-$(window).load(function(){
+	$(".col-3 input").val("");
+	
+	$(".input-effect input").focusout(function(){
+		if($(this).val() != ""){
+			$(this).addClass("has-content");
+		}else{
+			$(this).removeClass("has-content");
+		}
+	})
+	$("#SUB").click(function(){
+			var mtg = $("#mtGlobal").val();
+			var datepay = $("#datePay").val();
+			var mtglobal =$("#mtGlobal").val();
+			var mtpaye = $("#mtPaye").val();
+			if(factureRegex.test(FMB.value)==true && factureRegex.test(mtg)==true && factureRegex.test(mtpaye)==true && datelocal.test(datepay) == true){
+				$('#SUB').removeAttr("type").attr("type", "submit");
+			}
+			else {
+				if(factureRegex.test(FMB.value)==false){$("#FMB").addClass("has-content effect-16-validation")}
+				if(factureRegex.test(mtg)==false){$("#mtGlobal").addClass("has-content effect-16-validation")}
+				if(factureRegex.test(mtpaye)==false){$("#mtPaye").addClass("has-content effect-16-validation")}
+				if(datelocal.test(datepay)==false){$("#datePay").addClass("has-content effect-16-validation")}
+				
+			}
+	})
+
 			$(".col-3 input").val("");
 			
 			$(".input-effect select").focusout(function(){
@@ -326,20 +360,8 @@ $(window).load(function(){
 			})
 	});
 
-window.onload = function(){
+
 	
-	active=document.getElementsByClassName("active");
-	j = active.length;
-/*	while(active.length>0){
-		active[j-1].classList.remove("active");
-		j--;
-	}*/
-	for(i=0;i<active.length;i++){
-		active[i].classList.remove("active");
-		i--;
-	}
-	document.getElementById("creerDossier").className += "active";
-	document.getElementById("creerDossier").parentElement.previousElementSibling.className += " active";
 	$("#dateNais").focus(function(){
         $(this).prop('type','date');
 	})
@@ -347,14 +369,7 @@ window.onload = function(){
         $(this).prop('type','text');
     })
     
-inp=document.getElementsByClassName("effect-16");
-	
-	for(i=0;i<inp.length;i++){
-		if(inp[i].value!=""){
-			inp[i].className += " has-content";
-		}
-		
-	}
+
 	
 	$("#datePay").focus(function(){
         $(this).prop('type','datetime-local');
@@ -373,7 +388,7 @@ inp=document.getElementsByClassName("effect-16");
 
 
 	
-    $("select#d").focusout(function(){
+    $("select").focusout(function(){
          
       if($(this).children("option:selected").val() !=""){
 
@@ -405,7 +420,7 @@ inp=document.getElementsByClassName("effect-16");
 				document.getElementById("add").style.display="block";
 				choixClient.style.display="none";
 				changeDisplay1AD.style.display="none";
-				changeDisplay2AD.style.display="none";
+				changeDisplay2AD.style.display="block";
 				titre.style.display="none";
 				img.style.display="none";
 				img.nextElementSibling.style.display="none";
@@ -419,6 +434,14 @@ inp=document.getElementsByClassName("effect-16");
 		})
 		
 	})
+		   active=document.getElementsByClassName("active");
+
+		for(i=0;i<active.length;i++){
+			active[i].classList.remove("active");
+			i--;
+		}
+		document.getElementById("creerDossier").className += "active";
+		document.getElementById("creerDossier").parentElement.previousElementSibling.className += " active";
    $("#submit").click(function(){
 	   var date = new Date($('#dateNais').val());
 	   day = date.getDate();
@@ -426,7 +449,7 @@ inp=document.getElementsByClassName("effect-16");
 	   year = date.getFullYear();
 	   var aniv = [year, month, day].join('-');
 	   var nat = $("select#d").children("option:selected").val();
-	   if(nomRegex.test(nomAC.value)==true && nomRegex.test(prenomAC.value)==true && cinRegex.test(cinAC.value)==true && emailRegex.test(emailAC.value)==true && dateRegex.test([day, month, year].join('/'))==true){
+	   if(nomRegex.test(nomAC.value)==true && nomRegex.test(prenomAC.value)==true && cinRegex.test(cinAC.value)==true && emailRegex.test(emailAC.value)==true&& phoneRegex.test(phoneAC.value)==true && nat != "" && adresseRegex.test(municipaleAC.value)==true && adresseRegex.test(lieuNaissanceAC.value)==true && adresseRegex.test(adresseAC.value)==true && dateRegex.test([day, month, year].join('/'))==true){
 	   $.post("AD",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
 	    	if(data==1){
 	    		document.getElementById("add").style.display="none";
@@ -440,31 +463,21 @@ inp=document.getElementsByClassName("effect-16");
 				img.nextElementSibling.style.display="none";
 				titre.nextElementSibling.children[0].style.display="none";
 	    	}else{
-	    		
+	    		alert("erreur dans dans server");
 	    	}
 	    		
 	    });}else{
-	    	alert("nom : "+nomRegex.test(nomAC.value)+"pre" +
-	    			"nom : "+nomRegex.test(prenomAC.value)+"cin : "+cinRegex.test(cinAC.value)+"email : "+emailRegex.test(emailAC.value)+"date : "+dateRegex.test([day, month, year].join('/'))+[day, month, year].join('/')+"  aniv :"+aniv)}
-	    		
-            
-   })
-
-
-};
-
-
-//script relative aux relations entre les pages
-
-window.onload = function(){
+	    	if(emailRegex.test(emailAC.value)==false){$("#email").addClass("has-content effect-16-validation")}
+	    	if(nomRegex.test(nomAC.value)==false){$("#nom").addClass("has-content effect-16-validation")}
+	    	if(nomRegex.test(prenomAC.value)==false){$("#prenom").addClass("has-content effect-16-validation")}
+	    	if(cinRegex.test(cinAC.value)==false){$("#cin").addClass("has-content effect-16-validation")}
+	    	if(phoneRegex.test(phoneAC.value)==false){$("#telephone").addClass("has-content effect-16-validation")}
+	    	if(adresseRegex.test(adresseAC.value)==false){$("#adresse").addClass("has-content effect-16-validation")}
+	    	if(dateRegex.test([day, month, year].join('/'))==false){$("#dateNais").addClass("has-content effect-16-validation")}
+	    	if(adresseRegex.test(lieuNaissanceAC.value)==false){$("#lieuNais").addClass("has-content effect-16-validation")}
+	    	if(adresseRegex.test(municipaleAC.value)==false){$("#municipale").addClass("has-content effect-16-validation")}
+	    	if(nat==""){$("select#d").addClass("has-content effect-16-validation")}
 	
-	active=document.getElementsByClassName("active");
+	    }
 
-	for(i=0;i<active.length;i++){
-		active[i].classList.remove("active");
-		i--;
-	}
-	document.getElementById("creerDossier").className += "active";
-	document.getElementById("creerDossier").parentElement.previousElementSibling.className += " active";
-
-};
+   })

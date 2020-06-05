@@ -50,7 +50,7 @@
                 </div>-->
 
                 <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                  <select class="effect-16 input-effect" id="" style="width:100%" name="typeProces"><option></option> <option value="proces en droit de la famille" >proces en droit de la famille</option>  <option value="proces en droit civil" >proces en droit civil</option>  <option value="proces en droit du travail" >proces en droit du travail</option>  <option value="procès en droit administratif" >procès en droit administratif</option>  <option value="procès en droit commercial" >procès en droit commercial</option>  <option value="procès en droit pénal" >procès en droit pénal</option></select>
+                  <select class="effect-16 input-effect" id="typeProces" style="width:100%" name="typeProces"><option></option> <option value="proces en droit de la famille" >proces en droit de la famille</option>  <option value="proces en droit civil" >proces en droit civil</option>  <option value="proces en droit du travail" >proces en droit du travail</option>  <option value="procès en droit administratif" >procès en droit administratif</option>  <option value="procès en droit commercial" >procès en droit commercial</option>  <option value="procès en droit pénal" >procès en droit pénal</option></select>
                   <label id="">type du proces</label>
                   <span class="focus-border"></span>
                 </div>
@@ -199,14 +199,14 @@
                     </div>
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="FMB" id="FMB" >
+                       <input class="effect-16 " type="number" placeholder="" name="FMB" id="FMB" >
                         <label id="">montant de base</label>
                         <span class="focus-border"></span>
                     </div>
 
                    
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="prixKm" id="prixKm" >
+                       <input class="effect-16 " type="number" placeholder="" name="prixKm" id="prixKm" >
                         <label id="">prix par Km</label>
                         <span class="focus-border"></span>
                     </div>
@@ -215,13 +215,13 @@
                     </div>
                     
                      <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="mtGlobal" id="mtGlobal" >
+                       <input class="effect-16 " type="number" placeholder="" name="mtGlobal" id="mtGlobal" >
                         <label id="">montant global</label>
                         <span class="focus-border"></span>
                     </div>
                     
                      <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="mtPaye" id="mtPaye" >
+                       <input class="effect-16 " type="number" placeholder="" name="mtPaye" id="mtPaye" >
                         <label id="">montant payé</label>
                         <span class="focus-border"></span>
                     </div>
@@ -261,8 +261,8 @@
             <div class="col-xs-4 col-xs-offset-5 herite-ajout-proces" >
                 <button type="button" class="btn btn-primary" id="changeDisplay1AD" value="suivant">suivant</button>
             </div>
-            <div class="col-xs-4 col-xs-offset-5 herite-ajout-proces" style="display: none" >
-                <button type="submit" class="btn btn-primary" id="SUBMIT" value="Confirmer">Confirmer</button>
+            <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display: none" >
+                <button type="button" class="btn btn-primary" id="SUB" value="Confirmer">Confirmer</button>
             </div>
             </form>   
             </div>  

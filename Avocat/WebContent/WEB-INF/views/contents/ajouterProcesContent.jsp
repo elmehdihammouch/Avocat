@@ -33,8 +33,8 @@
 						<thead class="thead-dark">
 							<tr>
 								<th>id</th>
-								<th>etat avancement</th>
-								<th>type du proces</th>
+								<th>Nom</th>
+								<th>Prenom</th>
 							</tr>
 						</thead>
 		

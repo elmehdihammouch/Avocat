@@ -2,7 +2,7 @@
     <div class="container">
     <section id="main-content">
       <section class="wrapper">
-          <img alt="" src="resources/images/img.jpg">
+          <img alt="" src="resources/images/img.jpg" height="150px" style="margin-top: -168px">
           <hr>
         <h3 style="text-align: center" ><i class="fa fa-angle-right"></i> Ajouter un client</h3>
         <div class="row mt"><hr style="margin-top: -4px">

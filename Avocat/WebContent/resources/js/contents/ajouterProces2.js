@@ -22,6 +22,9 @@ dossierClick();
 	var 	adresse=document.getElementById("adresse");
 	var 	avocatAdv=document.getElementById("avocatAdv");
 	var 	FMB=document.getElementById("FMB");
+	var 	datenotif = document.getElementById("dateNotif");
+	var 	datePay = document.getElementById("datePay");
+	var 	dateNais = document.getElementById("dateNais");
 
 	
 
@@ -34,6 +37,7 @@ dossierClick();
 	var adresseRegex = /^[0-9a-zA-Z\s]*$/;
 	var factureRegex = /^[0-9]+$/;
 	var avocatAdvRegex = /^[a-zA-Z\s]{2,}$/;
+	var datelocal = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T(2[0-3]|[01][0-9]):[0-5][0-9]/;
 //listeners
 	changeDisplay1.addEventListener('click',changeDisplayF1);
 	changeDisplay2.addEventListener('click',changeDisplayF2);
@@ -120,18 +124,20 @@ function changeDisplayF1(){
 	}
 
 	else if(choixDossier.style.display=="none" && proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
-		
-		if( nomRegex.test(nom.value)==true && nomRegex.test(prenom.value)==true && cinRegex.test(cinAdv.value)==true && adresseRegex.test(adresse.value)==true && avocatAdvRegex.test(avocatAdv.value0==true) ){
+		var datenotif = $("#dateNotif").val();
+		statut = $("select#statut").children("option:selected").val();
+		if( nomRegex.test(nom.value)==true && nomRegex.test(prenom.value)==true &&  datelocal.test(datenotif) == true  && statut !="" ){
 			
 			choixDossier.style.display="none";
 			proces.style.display='none';
 			fileUpload.style.display="block";
 			facture.style.display="none";
-			
-			
 		}
 		else {
-			alert("certains champs sont vides ou invalides")
+			if(nomRegex.test(nom.value)==false){$("#nom").addClass("has-content effect-16-validation")}
+			if(nomRegex.test(prenom.value)==false){$("#prenom").addClass("has-content effect-16-validation")}
+			if(datelocal.test(datenotif)==false){$("#dateNotif").addClass("has-content effect-16-validation")}
+			if(statut == ""){$("#statut").addClass("has-content effect-16-validation")}
 		}
 		
 		
@@ -240,6 +246,25 @@ $(window).load(function(){
 				$(this).removeClass("has-content");
 			}
 		})
+		
+		$("#submitButton").click(function(){
+			var mtg = $("#mtGlobal").val();
+			var datepay = $("#datePay").val();
+			var mtglobal =$("#mtGlobal").val();
+			var mtpaye = $("#mtPaye").val();
+			if(factureRegex.test(FMB.value)==true && factureRegex.test(mtg)==true && factureRegex.test(mtpaye)==true && datelocal.test(datepay) == true){
+				$('#submitButton').removeAttr("type").attr("type", "submit");
+			}
+			else {
+				if(factureRegex.test(FMB.value)==false){$("#FMB").addClass("has-content effect-16-validation")}
+				if(factureRegex.test(mtg)==false){$("#mtGlobal").addClass("has-content effect-16-validation")}
+				if(factureRegex.test(mtpaye)==false){$("#mtPaye").addClass("has-content effect-16-validation")}
+				if(datelocal.test(datepay)==false){$("#datePay").addClass("has-content effect-16-validation")}
+				
+			}
+	})
+		
+		
 	});
 
 
@@ -249,30 +274,8 @@ $(window).load(function(){
 
 
 window.onload = function(){
-	$("#datePay").click(function(){
-        $(this).prop('type','datetime-local');
-	})
-    $("#datePay").blur(function(){
-        $(this).prop('type','text');
-    })
-}
 
-window.onload = function(){
-	$("#dateNotif").click(function(){
-        $(this).prop('type','datetime-local');
-	})
-    $("#dateNotif").blur(function(){
-        $(this).prop('type','text');
-    })
-}
-
-
-
-
-//script relative aux relations entre les pages
-
-window.onload = function(){
-	
+	//script relative aux relations entre les pages	
 	active=document.getElementsByClassName("active");
 
 	for(i=0;i<active.length;i++){
@@ -281,10 +284,6 @@ window.onload = function(){
 	}
 	document.getElementById("creerProces").className += "active";
 	document.getElementById("creerProces").parentElement.previousElementSibling.className += " active";
-
-};
-
-window.onload = function(){
 	
 	inp=document.getElementsByClassName("effect-16");
 	
@@ -294,6 +293,46 @@ window.onload = function(){
 		}
 		
 	}
+	// verif date-time
 	
+	$("#dateNotif").change(function(){
+		if(datelocal.test(datenotif)==true){$("#dateNotif").addClass("has-content effect-16-validation")}
+		else{$("#dateNotif").addClass("has-content effect-16")
+			$("#dateNotif").removeClass("effect-16-validation")
+			}
+		});
+	$("#datePay").change(function(){
+		if(datelocal.test(datePay)==true){$("#dateNotif").addClass("has-content effect-16-validation")}
+		else{$("#datePay").addClass("has-content effect-16")
+			$("#datePay").removeClass("effect-16-validation")
+			}})
+	// verif que select est plein
+			
+			
+    $("select").focusout(function(){
+         
+      if($(this).children("option:selected").val() !=""){
 
-};
+          $(this).addClass("has-content");
+          $(this).addClass("effect-16");
+          $(this).removeClass("effect-16-validation");
+		}else{
+          $(this).removeClass("has-content");
+          $(this).removeClass("effect-16");
+          $(this).addClass("effect-16-validation");
+		}
+	})
+	
+	$("#datePay").focus(function(){
+        $(this).prop('type','datetime-local');
+	})
+    $("#datePay").blur(function(){
+        $(this).prop('type','text');
+    })
+    	$("#dateNotif").focus(function(){
+        $(this).prop('type','datetime-local');
+	})
+    $("#dateNotif").blur(function(){
+        $(this).prop('type','text');
+    })
+}

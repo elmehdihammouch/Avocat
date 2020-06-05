@@ -108,7 +108,12 @@ public class AjouterProces extends HttpServlet {
 			List<Part> files = request.getParts().stream().filter(part -> "file".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList());
 			//donnees de la facture
 			int FMB =Integer.parseInt(request.getParameter("FMB"));
-			int prixKm =Integer.parseInt(request.getParameter("prixKm"));
+			int prixKm;
+			try {
+				prixKm =Integer.parseInt(request.getParameter("prixKm"));
+		    } catch (final NumberFormatException e) {
+		         prixKm = -1;
+		    }
 			int mtGlobal =Integer.parseInt(request.getParameter("mtGlobal"));
 			int mtPaye =Integer.parseInt(request.getParameter("mtPaye"));
 			//dates

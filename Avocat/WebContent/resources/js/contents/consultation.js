@@ -73,7 +73,7 @@ $("#changeDisplay1").click(function(){
 			if(cinRegex.test(cin.value)==true && $('#cinAC').hasClass('effect-16')){
 				if(data==1){
 					document.getElementById("add").style.display="none";
-					choixConsultaion.style.display='none';
+					choixConsultaion.style.display='block';
 					consultation.style.display='block';			
 					$("#divadd").hide();
 					$("#divsuiv").hide();
@@ -90,11 +90,16 @@ $("#changeDisplay1").click(function(){
 	
 }})
 $("#confirmer").click(function(){
-	if($("#type").children("option:selected").val()!='' && factureRegex.test($("#frais").val())==true){
+	var	type = $("#type").children("option:selected").val();
+	if(type!='' && factureRegex.test($("#frais").val())==true){
 	   $.post("AC",{"type":$("#type").children("option:selected").val(),"frais":$("#frais").val(),"desc":$("#desc").val(),"operation":"addc","cinClientAD":cin.value}, function(data){
 	    	alert($("select#type").children("option:selected").val())
 	    		
-	   })        }else{alert('remplir form')}
+	   })        }else{
+		   if(factureRegex.test($("#frais").val())==false){$("#frais").addClass("has-content effect-16-validation")}
+		   if(type == ""){$("select#type").addClass("has-content effect-16-validation")}
+		   
+	   }
    })
 
 $("#submit").click(function(){
@@ -103,10 +108,9 @@ $("#submit").click(function(){
 	   month = date.getMonth() + 1;
 	   year = date.getFullYear();
 	   var aniv = [year, month, day].join('-');
-	   alert(aniv)
 	   var nat = $("select#d").children("option:selected").val();
-	   if(nomRegex.test(nomAC.value)==true && nomRegex.test(prenomAC.value)==true && cinRegex.test(cinAC.value)==true && emailRegex.test(emailAC.value)==true && dateRegex.test([day, month, year].join('-'))==true){
-	   $.post("AC",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
+	   if(nomRegex.test(nomAC.value)==true && nomRegex.test(prenomAC.value)==true && cinRegex.test(cinAC.value)==true && emailRegex.test(emailAC.value)==true&& phoneRegex.test(phoneAC.value)==true && nat != "" && adresseRegex.test(municipaleAC.value)==true && adresseRegex.test(lieuNaissanceAC.value)==true && adresseRegex.test(adresseAC.value)==true && dateRegex.test([day, month, year].join('/'))==true){
+	   $.post("AD",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
 	    	if(data==1){
 	    		document.getElementById("add").style.display="none";
 				choixConsultaion.style.display='none';
@@ -120,16 +124,30 @@ $("#submit").click(function(){
 				titre.nextElementSibling.children[0].style.display="none";
 				
 	    	}else{
-	    		
+	    		alert("erreur dans dans server");
 	    	}
 	    		
 	    });}else{
-	    	alert("nom : "+nomRegex.test(nomAC.value)+"pre" +
-	    			"nom : "+nomRegex.test(prenomAC.value)+"cin : "+cinRegex.test(cinAC.value)+"email : "+emailRegex.test(emailAC.value)+"date : "+dateRegex.test([day, month, year].join('/'))+[day, month, year].join('/')+"  aniv :"+aniv)}
-	    		
-            
+	    	if(emailRegex.test(emailAC.value)==false){$("#email").addClass("has-content effect-16-validation")}
+	    	if(nomRegex.test(nomAC.value)==false){$("#nom").addClass("has-content effect-16-validation")}
+	    	if(nomRegex.test(prenomAC.value)==false){$("#prenom").addClass("has-content effect-16-validation")}
+	    	if(cinRegex.test(cinAC.value)==false){$("#cin").addClass("has-content effect-16-validation")}
+	    	if(phoneRegex.test(phoneAC.value)==false){$("#telephone").addClass("has-content effect-16-validation")}
+	    	if(adresseRegex.test(adresseAC.value)==false){$("#adresse").addClass("has-content effect-16-validation")}
+	    	if(dateRegex.test([day, month, year].join('/'))==false){$("#dateNais").addClass("has-content effect-16-validation")}
+	    	if(adresseRegex.test(lieuNaissanceAC.value)==false){$("#lieuNais").addClass("has-content effect-16-validation")}
+	    	if(adresseRegex.test(municipaleAC.value)==false){$("#municipale").addClass("has-content effect-16-validation")}
+	    	if(nat==""){$("select#d").addClass("has-content effect-16-validation")}
+	
+	    }
+
    })
+
 $(window).load(function(){        
+	$("#frais").change(function(){
+		if(factureRegex.test(this.value)==false) {this.className="effect-16-validation has-content"}
+		else {this.className="effect-16"}
+		});
 		$(".col-3 input").val("");
 		$(".input-effect input").focusout(function(){
 			if($(this).val() != ""){

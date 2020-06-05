@@ -1,11 +1,9 @@
 package tools;
 
 
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 
 public class Date {
@@ -294,7 +292,7 @@ public class Date {
 
 
 
-	@SuppressWarnings("deprecation")
+	
 	public  static Date toDbDate(String requestDate)  {
 		
 		LocalDateTime localDate = LocalDateTime.parse(requestDate, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));

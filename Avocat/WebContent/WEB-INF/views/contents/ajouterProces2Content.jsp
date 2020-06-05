@@ -243,7 +243,7 @@ dossiers = (ArrayList<Dossier>)request.getAttribute("dossiers");
                    </div>
                    
                    <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:none">
-                    <button type="submit" class="btn btn-primary" id="submitButton" value="valider" >Ajouter le proces</button>
+                    <button type="button" class="btn btn-primary" id="submitButton" value="valider" >Ajouter le proces</button>
                    </div> 
                  
                  </form>  
