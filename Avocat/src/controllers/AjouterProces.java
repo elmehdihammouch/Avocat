@@ -22,6 +22,7 @@ import javax.servlet.http.Part;
 import org.apache.commons.io.FilenameUtils;
 import org.json.simple.JSONObject;
 
+import DAO.daoAjouterDossier;
 import DAO.daoAjouterProces;
 import models.Client;
 import models.Dossier;
@@ -78,7 +79,8 @@ public class AjouterProces extends HttpServlet {
 		else if(action.equals("validationClient")) {
 			ArrayList<Dossier> dossiers= new ArrayList<Dossier>();
 			dossiers= daoAjouterProces.dossierClient(request.getParameter("cinClient"));
-			
+			System.out.println( daoAjouterDossier.findstatut(dossiers));
+			request.setAttribute("statut", daoAjouterDossier.findstatut(dossiers));
 			request.setAttribute("dossiers", dossiers);
 			request.setAttribute("cinClient", request.getParameter("cinClient"));
 			request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces2.jsp").forward(request, response);

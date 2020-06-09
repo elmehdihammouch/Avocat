@@ -1,3 +1,4 @@
+<%@page import="java.sql.Date"%>
 <%@page import="models.Dossier"%>
 <%@page import="java.util.ArrayList"%>
 <div class="container">
@@ -34,18 +35,20 @@
 		
 						<tbody class="">
 <%ArrayList<Dossier> dossiers = new ArrayList<Dossier>();
-   
-dossiers = (ArrayList<Dossier>)request.getAttribute("dossiers");
+  dossiers = (ArrayList<Dossier>)request.getAttribute("dossiers");
+  int [] statut = new int[dossiers.size()];
+	statut = (int[])request.getAttribute("statut");
      if(dossiers != null){
+    	 int i =0;
      for(Dossier d : dossiers){%>
                     	
                     
 							<tr class="trow">
 								<td class="dossierContent"><%=d.getIdDos()%></td>
-								<td class="dossierContent"><%=d.getEtatAv()%></td>
+								<td class="dossierContent"><%=statut[i]%></td>
 								<td class="dossierContent"><%=d.getDescription()%></td>
 							</tr>
-<% 	}} %>	
+<% i++;	}} %>	
                     
                     
 						</tbody>

@@ -110,7 +110,7 @@ $("#submit").click(function(){
 	   var aniv = [year, month, day].join('-');
 	   var nat = $("select#d").children("option:selected").val();
 	   if(nomRegex.test(nomAC.value)==true && nomRegex.test(prenomAC.value)==true && cinRegex.test(cinAC.value)==true && emailRegex.test(emailAC.value)==true&& phoneRegex.test(phoneAC.value)==true && nat != "" && adresseRegex.test(municipaleAC.value)==true && adresseRegex.test(lieuNaissanceAC.value)==true && adresseRegex.test(adresseAC.value)==true && dateRegex.test([day, month, year].join('/'))==true){
-	   $.post("AD",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
+	   $.post("AC",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
 	    	if(data==1){
 	    		document.getElementById("add").style.display="none";
 				choixConsultaion.style.display='none';

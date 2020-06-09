@@ -93,7 +93,7 @@ public class daoAjouterProces {
 		res=Connexion.select("select * from dossier where idClient= (select idClient from client where upper(cin)='"+cin.toUpperCase()+"' ); ");
 		try {
 			while(res.next()) {
-				Dossier d = new Dossier(res.getInt(1), res.getInt(2), res.getInt(3), res.getString(4), res.getString(5));
+				Dossier d = new Dossier(res.getInt(1), res.getInt(2), res.getString(3), res.getString(4));
 				dossiers.add(d);
 			}
 		} catch (SQLException e) {

@@ -66,7 +66,7 @@ public class AjouterDossier extends HttpServlet {
 		else if(statutR.equals("deuxieme Instance")) {statut=2;}
 		else if(statutR.equals("troisieme Instance")) {statut=3;}
 		cin = request.getParameter("cinClientAD");
-		Dossier dos = new Dossier(statut, request.getParameter("typeProces"), request.getParameter("Description"));	
+		Dossier dos = new Dossier(request.getParameter("typeProces"), request.getParameter("Description"));	
 		daoAjouterDossier.ajoutdossier(dos, cin);
 		if(daoAjouterDossier.chercherEtatCompte(cin)==0) {
 			Client client = new Client();

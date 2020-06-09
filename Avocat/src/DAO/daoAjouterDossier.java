@@ -2,6 +2,8 @@ package DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 import models.Client;
 import models.Dossier;
@@ -46,7 +48,7 @@ public class daoAjouterDossier {
 	}
 	public static void ajoutclient(Client client) {
 		Connexion.connect();
-		Connexion.maj("INSERT INTO client (`nom`, `prenom`, `datenais`, `lieunais`, `nat`, `adresse`, `cin`, `municipal`, `tel`) VALUES ('"+client.getNom()+"','"+client.getPrenom()+"','"+client.getDateNais()+"','"+client.getLieuNais()+"','"+client.nationalite+"','"+client.getAdresse()+"','"+client.getCin()+"','"+client.getMunicipale()+"',"+client.getTelephone()+")");
+		Connexion.maj("INSERT INTO client (`nom`, `prenom`, `datenais`, `lieunais`, `nat`, `adresse`, `cin`, `municipal`, `tel`,`email`) VALUES ('"+client.getNom()+"','"+client.getPrenom()+"','"+client.getDateNais()+"','"+client.getLieuNais()+"','"+client.nationalite+"','"+client.getAdresse()+"','"+client.getCin()+"','"+client.getMunicipale()+"','"+client.getTelephone()+"','"+client.getEmail()+"')");
 		Connexion.disconect();
 		
 	}
@@ -75,7 +77,7 @@ public class daoAjouterDossier {
 		res = Connexion.select("SELECT idClient FROM client c WHERE upper(c.cin) LIKE '"+cin.toUpperCase()+"';");
 		try {res.next();
 			int idClient = res.getInt(1);
-			Connexion.maj("INSERT INTO `dossier`(`idClient`, `etatav`, `typeProces`,description) VALUES ("+idClient+",'"+dos.getEtatAv()+"','"+dos.getTypeProces()+"','"+dos.getDescription()+"')");
+			Connexion.maj("INSERT INTO `dossier`(`idClient`, `typeProces`,description) VALUES ("+idClient+",'"+dos.getTypeProces()+"','"+dos.getDescription()+"')");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -101,19 +103,28 @@ public class daoAjouterDossier {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public static int[] findstatut(ArrayList<Dossier> dossier) {
+		
+		int[] statut = new int[dossier.size()] ;
+		ResultSet res = null;	
+		Connexion.connect();	
+			for (int i =0; i<dossier.size();i++) {
+				res = Connexion.select("SELECT max(`statut`) FROM proces,dossier where proces.idDos = "+dossier.get(i).getIdDos()+" and proces.idDos = dossier.idDos");
+				try {
+					if(res.next()) {
+						statut[i] = res.getInt(1);						
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+			}
+		
+		Connexion.disconect();
+		return statut;
+		}
 	
 	
 	
