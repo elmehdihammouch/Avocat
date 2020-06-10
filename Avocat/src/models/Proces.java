@@ -77,6 +77,38 @@ public class Proces {
 		this.dateNotif = dateNotif;
 		this.statut = statut;
 	}
+	
+	
+	
+	public Proces(int idProces, int idDos, int numP, Date dateCP, Date dateAP, String description, String adresseAdv,
+			String cinAdv, String nomAdv, String prenomAdv, String avocatAdv, String tribunal, String ville,
+			int saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug, 
+			Facture facture,Date dateNotif, int statut) {
+		super();
+		this.idProces = idProces;
+		this.idDos = idDos;
+		this.numP = numP;
+		this.dateCP = dateCP;
+		this.dateAP = dateAP;
+		this.description = description;
+		this.adresseAdv = adresseAdv;
+		this.cinAdv = cinAdv;
+		this.nomAdv = nomAdv;
+		this.prenomAdv = prenomAdv;
+		this.avocatAdv = avocatAdv;
+		this.tribunal = tribunal;
+		this.ville = ville;
+		this.saleNum = saleNum;
+		this.dateSeance = dateSeance;
+		this.dateSui = dateSui;
+		this.txtJug = txtJug;
+		this.dateJug = dateJug;
+		this.facture = facture;
+		this.dateNotif = dateNotif;
+		this.statut = statut;
+	}
+	
+	
 
 	public Proces(int idProces, int idDos, int numP, Date dateCP, Date dateAP, String description, String adresseAdv,
 			String cinAdv, String nomAdv, String prenomAdv, String avocatAdv, String tribunal, String ville,
@@ -106,6 +138,8 @@ public class Proces {
 		this.dateNotif = dateNotif;
 		this.statut = statut;
 	}
+	
+	
 
 	public int getIdProces() {
 		return idProces;
