@@ -76,6 +76,15 @@ public class Facture {
 		this.mtPaye = mtpaye;
 	}
 
+	
+
+	public Facture(int idFacture, int mtGlobal, int mtPaye) {
+		super();
+		this.idFacture = idFacture;
+		this.mtGlobal = mtGlobal;
+		this.mtPaye = mtPaye;
+	}
+
 
 	public int getIdFacture() {
 		return idFacture;

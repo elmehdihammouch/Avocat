@@ -2,7 +2,9 @@ package tools;
 
 
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 
@@ -310,6 +312,27 @@ public class Date {
 		  maDate.setSeconds(localDate.getSecond());
 		
 		return maDate;
+	}
+	
+public  static Date toToolsDate(Timestamp DBDate)  {
+		if(DBDate!=null) {
+		LocalDateTime localDate = DBDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+		
+		Date maDate = new Date();
+	
+		maDate.setDate(DBDate.toString());
+		/*  utilDate = sdf.parse(localDate);
+		  cal.setTime(utilDate);*/
+		  maDate.setDay(localDate.getDayOfMonth());
+		  maDate.setMonth(localDate.getMonth().getValue());
+		  maDate.setYear(localDate.getYear());
+		  maDate.setHeurs(localDate.getHour());
+		  maDate.setMinutes(localDate.getMinute());
+		  maDate.setSeconds(localDate.getSecond());
+		  return maDate;
+		}
+		
+		else {return null;}
 	}
 
 }

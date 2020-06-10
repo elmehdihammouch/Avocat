@@ -4,12 +4,15 @@ package tests;
 
 
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 import org.apache.commons.io.FilenameUtils;
@@ -52,7 +55,7 @@ public class test {
 				}*/
 		
 	
-		java.util.Date datePay = new SimpleDateFormat("yyyy-MM-dd").parse("1776-7-4 04:13:54");
+		//java.util.Date datePay = new SimpleDateFormat("yyyy-MM-dd").parse("1776-7-4 04:13:54");
 		
 		/*java.sql.Date d2 = new java.sql.Date(datePay.getTime());*/
 		
@@ -61,7 +64,7 @@ public class test {
 		/*String d2 = "2000-11-11 12:12:12";
 		Proces p=new Proces(2, "description", "adresseAdv", "cinAdv", "nomAdv", "prenomAdv", "avocatAdv",datePay, 2);*/
 		//daoAjouterProces.ajouterProces(p);
-		int res;
+		//int res;
 		/*Connexion.connect();
 		res=Connexion.maj("insert into proces (idDos, description, adresseAdv, cinAdv, nomAdv, prenomAdv, avocatAdv, dateNotif, statut) values("+p.getIdDos()+",'"+p.getDescription()+"','"+p.getAdresseAdv()+"','"+p.getCinAdv()+"','"+p.getNomAdv()+"','"+p.getPrenomAdv()+"','"+p.getAvocatAdv()+"','"+p.getDateNotifd()+"','"+p.getStatut()+"')");
 		Connexion.disconect();
@@ -78,7 +81,7 @@ public class test {
 				obj.put("clientPrenom", client.getPrenom() );
 
 		      System.out.print(obj);*/
-	String 	fileName ="aa";
+	//String 	fileName ="aa";
 	
 	//System.out.println(FilenameUtils.removeExtension(fileName)+"."+FilenameUtils.getExtension(fileName));
 	/*-----------------int inc=1;
@@ -100,10 +103,38 @@ public class test {
  	    inc++;
  	    }
     }------------*/
-	  fileName =fileName+daoFiles.maxId()+1;
-		System.out.println("new name : "+fileName);
+	  //fileName =fileName+daoFiles.maxId()+1;
+		//System.out.println("new name : "+fileName);
 	
 	// lastIndexOf()  endsWith()
+	
+	/*Connexion.connect();
+	ResultSet res = Connexion.select("SELECT p.idProces, p.idDos, p.numP, p.dateCP, p.dateAP, p.description, p.adresseAdv, p.cinAdv, p.nomAdv, p.prenomAdv, p.avocatAdv, p.tribunal, p.ville, p.saleNum, p.dateSeance, p.dateSui, p.txtJug, p.dateJug, p.dateNotif, p.statut, c.prenom, c.nom, f.idFacture, f.mtGlobal, f.mtPaye, pi.idPiece, pi.nomFichier, pi.path FROM proces p,dossier d, client c, facture f, piece pi  WHERE p.idDos=d.idDos AND d.idClient=c.idClient AND p.idProces=f.idProces AND p.idProces=pi.idProces;");
+	try {
+		res.next();
+		System.out.println(res.getTimestamp(19));
+		System.out.println(Date.toToolsDate(res.getTimestamp(19)).toString());
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	System.out.println();
+	
+	Connexion.disconect();*/
+		
+		HashMap<String, Integer> people = new HashMap<String, Integer>();
+
+
+	    // Add keys and values (Name, Age)
+	   /* people.put("John", 32);
+	    people.put("Steve", 30);
+	    people.put("Angie", 33);*/
+	
+	
+	System.out.println(daoAjouterProces.consulterProces().toString());
+		
+	
 	
 	}
 	
