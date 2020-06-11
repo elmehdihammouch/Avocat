@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-	
+	 <link href="./resources/css/contents/consulterProces.css" rel="stylesheet">
  	 <link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
  	 <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
  	 <!--------- table css ------->
@@ -21,6 +21,7 @@
 
 <jsp:include page="../headers/headerAfterAuth.jsp"></jsp:include>
 <jsp:include page="../contents/consulterProcesContent.jsp"></jsp:include>
+
 
 </body>
 

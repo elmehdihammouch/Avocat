@@ -1,3 +1,8 @@
+<%@page import="tools.Date"%>
+<%@page import="java.util.Map"%>
+<%@page import="models.Proces"%>
+<%@page import="DAO.daoAjouterProces"%>
+<%@page import="java.util.HashMap"%>
 <section id="main-content">
       <section class="wrapper">
         <div class="row mb">
@@ -55,18 +60,25 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th>
-                                                <th>idProces</th>
-                                                <th>idDossier</th>
+                                                <th style="display:none;">idProces</th>
+                                                <th style="display:none;">idDossier</th>
+                                                <th>Client</th>
+                                                <th>Advairsaire</th>
+                                                <th>statut</th>    
+                                                
+                                                <th>Date de creation</th>
+                                                <th>Etat</th>
                                                 <th>Numero du proces</th>
-                                                <th>Nom du Client</th>
-                                                <th>Prenom du Client</th>
-                                                <th>Nom du advairsaire</th>
-                                                <th>Prenom du advairsaire</th>          
-                                                <th>statut</th>
+                                                      
+                                                <th>Etat facture</th>
                                                 <th>operations</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody><!-- <span class="block-email">lori@example.com</span>    green : class="status--process" -->
+                          <% HashMap<String , Proces> map = daoAjouterProces.consulterProces(); 
+                          	for (Map.Entry<String, Proces> e : map.entrySet()){
+                          
+                          		%>              
                                             <tr class="tr-shadow">
                                                 
                                                 <td>
@@ -76,29 +88,38 @@
                                                     </label>
                                                 </td>
 
-                                                <td>1</td>
+                                                <td style="display:none;"><%=e.getValue().getIdProces() %></td>
 
-                                                <td>1</td>
+                                                <td style="display:none;"><%=e.getValue().getIdDos() %></td>
+                                                
+                                                <td ><%=e.getKey() %></td>
+                                                
+                                                <td><%=e.getValue().getNomAdv()+" "+e.getValue().getPrenomAdv() %></td>
+                                                
+                                                <td><%=Proces.statutProces(e.getValue())%></td>
 
-                                                <td>Lori Lynch</td>
+                                                <td><%=Date.toFDate(e.getValue().getDateCP()) %></td>
                                                 
-                                                <td>
-                                                    <span class="block-email">lori@example.com</span>
-                                                </td>
+                                <%if(e.getValue().getDateAP()==null) {%>  
+                                                <td style="color : orange;">en attente</td>
+                                <%}else { %>     
+                                				<td style="color : #00ffcc;">accepté</td>
+                                <%} %>  
                                                 
-                                                <td class="desc">Samsung S8 Black</td>
+                                                <td><%=e.getValue().getNumP() %></td>
                                                 
-                                                <td>2018-09-27 02:12</td>
                                                 
-                                                <td>
-                                                    <span class="status--process">Processed</span>
-                                                </td>
+                                        
                                                 
-                                                <td>$679.00</td>
+                                <%if(e.getValue().getFacture().getMtGlobal()-e.getValue().getFacture().getMtpaye()==0) {%>  
+                                                <td style="color : #00ffcc;">payée</td>
+                                <%}else { %>     
+                                				<td style="color : #ff3333;">pas encore payée</td>
+                                <%} %> 
                                                 
                                                 <td>
                                                     <div class="table-data-feature">
-                                                        <button class="item afficher" data-toggle="tooltip" data-placement="top" title="show" >
+                                                        <button class="item afficher btnPopup" data-toggle="tooltip" data-placement="top" title="show" >
                                                             <i class="zmdi zmdi-eye"></i>
                                                         </button>
                                                         <button class="item modifier" data-toggle="tooltip" data-placement="top" title="Edit">
@@ -112,146 +133,10 @@
                                             </tr>
                                             <tr class="spacer"></tr>
 
-                                            <tr class="tr-shadow">
-                                                
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-
-                                                <td>2</td>
-
-                                                <td>2</td>
-
-                                                <td>Lori Lynch</td>
-                                                
-                                                <td>
-                                                    <span class="block-email">lori@example.com</span>
-                                                </td>
-                                                
-                                                <td class="desc">Samsung S8 Black</td>
-                                                
-                                                <td>2018-09-27 02:12</td>
-                                                
-                                                <td>
-                                                    <span class="status--process">Processed</span>
-                                                </td>
-                                                
-                                                <td>$679.00</td>
-                                                
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item afficher" data-toggle="tooltip" data-placement="top" title="show" >
-                                                            <i class="zmdi zmdi-eye"></i>
-                                                        </button>
-                                                        <button class="item modifier" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item supprimer" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-
-                                                        </div>
-                                                </td>
-                                            </tr>
-                                        <!----------------------------------------------------------------------------------------->   
-
-                                        <tr class="spacer"></tr>
-
-                                            <tr class="tr-shadow">
-                                                
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-
-                                                <td>3</td>
-
-                                                <td>3</td>
-
-                                                <td>Lori Lynch</td>
-                                                
-                                                <td>
-                                                    <span class="block-email">lori@example.com</span>
-                                                </td>
-                                                
-                                                <td class="desc">Samsung S8 Black</td>
-                                                
-                                                <td>2018-09-27 02:12</td>
-                                                
-                                                <td>
-                                                    <span class="status--process">Processed</span>
-                                                </td>
-                                                
-                                                <td>$679.00</td>
-                                                
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                       <button class="item afficher" data-toggle="tooltip" data-placement="top" title="show" >
-                                                            <i class="zmdi zmdi-eye"></i>
-                                                        </button>
-                                                        <button class="item modifier" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item supprimer" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-
-                                                        </div>
-                                                </td>
-                                            </tr>
+                                            
                                         <!-----------------------------------------------------------------------------------------> 
 
-                                        <tr class="spacer"></tr>
-
-                                            <tr class="tr-shadow">
-                                                
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-
-                                                <td>4</td>
-
-                                                <td>4</td>
-
-                                                <td>Lori Lynch</td>
-                                                
-                                                <td>
-                                                    <span class="block-email">lori@example.com</span>
-                                                </td>
-                                                
-                                                <td class="desc">Samsung S8 Black</td>
-                                                
-                                                <td>2018-09-27 02:12</td>
-                                                
-                                                <td>
-                                                    <span class="status--process">Processed</span>
-                                                </td>
-                                                
-                                                <td>$679.00</td>
-                                                
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                      <button class="item afficher" data-toggle="tooltip" data-placement="top" title="show" >
-                                                            <i class="zmdi zmdi-eye"></i>
-                                                        </button>
-                                                        <button class="item modifier" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item supprimer" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-
-                                                        </div>
-                                                </td>
-                                            </tr>
+                                       <%} %>
                                         <!-----------------------------------------------------------------------------------------> 
                                             
                                         </tbody>
