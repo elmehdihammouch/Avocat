@@ -328,7 +328,19 @@ public class Proces {
 	}
 
 	
-
+public static String statutProces(Proces p) {
+	String statut;
+	if(p.getStatut()==1) {
+		statut = "premiere instance";
+	}
+	else if(p.getStatut()==2) {
+		statut = "deuxieme instance";
+	}
+	else  {
+		statut = "troisième instance";
+}
+	return statut;
+}
 	
 		
 	

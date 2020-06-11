@@ -335,4 +335,15 @@ public  static Date toToolsDate(Timestamp DBDate)  {
 		else {return null;}
 	}
 
+public static String toFDate(Date d) {
+	String FrontDate;
+	if(d!=null) {
+		FrontDate = d.getYear()+"-"+d.getMonth()+"-"+d.getDay()+" à "+d.getHeurs()+":"+d.getMinutes();
+	}
+	else {
+	    FrontDate = null;
+	}
+	return FrontDate;
+}
+
 }

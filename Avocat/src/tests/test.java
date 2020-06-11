@@ -131,8 +131,7 @@ public class test {
 	    people.put("Steve", 30);
 	    people.put("Angie", 33);*/
 	
-	
-	System.out.println(daoAjouterProces.consulterProces().toString());
+	daoAjouterProces.consulterProces() ;
 		
 	
 	
