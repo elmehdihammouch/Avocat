@@ -320,7 +320,7 @@ public  static Date toToolsDate(Timestamp DBDate)  {
 		
 		Date maDate = new Date();
 	
-		maDate.setDate(DBDate.toString());
+		
 		/*  utilDate = sdf.parse(localDate);
 		  cal.setTime(utilDate);*/
 		  maDate.setDay(localDate.getDayOfMonth());
@@ -329,6 +329,7 @@ public  static Date toToolsDate(Timestamp DBDate)  {
 		  maDate.setHeurs(localDate.getHour());
 		  maDate.setMinutes(localDate.getMinute());
 		  maDate.setSeconds(localDate.getSecond());
+		  maDate.setDate(toFDate(maDate));
 		  return maDate;
 		}
 		
@@ -338,7 +339,7 @@ public  static Date toToolsDate(Timestamp DBDate)  {
 public static String toFDate(Date d) {
 	String FrontDate;
 	if(d!=null) {
-		FrontDate = d.getYear()+"-"+d.getMonth()+"-"+d.getDay()+" à "+d.getHeurs()+":"+d.getMinutes();
+		FrontDate = d.getYear()+"-"+d.getMonth()+"-"+d.getDay()+"    "+d.getHeurs()+":"+d.getMinutes();
 	}
 	else {
 	    FrontDate = null;

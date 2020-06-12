@@ -23,6 +23,7 @@ import DAO.daoAjouterProces;
 import DAO.daoFiles;
 import models.Client;
 import models.Dossier;
+import models.Files;
 import models.Proces;
 import tools.Date;
 
@@ -131,7 +132,7 @@ public class test {
 	    people.put("Steve", 30);
 	    people.put("Angie", 33);*/
 	
-	daoAjouterProces.consulterProces() ;
+	
 		
 	
 	

@@ -3,6 +3,7 @@
 <%@page import="models.Proces"%>
 <%@page import="DAO.daoAjouterProces"%>
 <%@page import="java.util.HashMap"%>
+<div id="tableDiv">
 <section id="main-content">
       <section class="wrapper">
         <div class="row mb">
@@ -65,11 +66,9 @@
                                                 <th>Client</th>
                                                 <th>Advairsaire</th>
                                                 <th>statut</th>    
-                                                
                                                 <th>Date de creation</th>
                                                 <th>Etat</th>
                                                 <th>Numero du proces</th>
-                                                      
                                                 <th>Etat facture</th>
                                                 <th>operations</th>
                                             </tr>
@@ -153,4 +152,5 @@
           </div> 
         </div>  
       </section> 
-    </section>   
+    </section>  
+ </div>    

@@ -123,8 +123,8 @@ public class AjouterProces extends HttpServlet {
 			Date dateNotif = Date.toDbDate(request.getParameter("dateNotif"));
 			
 			Facture facture = new Facture( datePay, prixKm, FMB, mtGlobal, mtPaye);		
-					
 			ArrayList<Files> filesList = Files.fileUpload(files)	;	
+			for(Files ff : filesList) {System.out.println("nom : "+ff.getNomFichier()+"     path : "+ff.getPath());}
 			Proces p = new Proces(idDos, description, adresseAdv, cinAdv, nomAdv, prenomAdv, avocatAdv, filesList, facture,dateNotif,statut);
 			daoAjouterProces.ajouterProces(p);
 			

@@ -61,7 +61,7 @@ public class daoAjouterProces {
 		int res;
 		ResultSet res1;
 		Connexion.connect();
-		res=Connexion.maj("insert into proces (idDos, description, adresseAdv, cinAdv, nomAdv, prenomAdv, avocatAdv, dateNotif, statut) values("+p.getIdDos()+",'"+p.getDescription()+"','"+p.getAdresseAdv()+"','"+p.getCinAdv()+"','"+p.getNomAdv()+"','"+p.getPrenomAdv()+"','"+p.getAvocatAdv()+"','"+p.getDateNotif().getDate()+"','"+p.getStatut()+"')");
+		res=Connexion.maj("insert into proces (idDos, description, adresseAdv, cinAdv, nomAdv, prenomAdv, avocatAdv, dateNotif, statut) values('"+p.getIdDos()+"','"+p.getDescription()+"','"+p.getAdresseAdv()+"','"+p.getCinAdv()+"','"+p.getNomAdv()+"','"+p.getPrenomAdv()+"','"+p.getAvocatAdv()+"','"+p.getDateNotif().getDate()+"','"+p.getStatut()+"');");
 		//ajout de la facture dans le cas ou l'ajout des donnes du proces ont été realisé avec succes
 		if(res==1) {
 					res1=Connexion.select("select max(idProces) from proces");
@@ -80,7 +80,8 @@ public class daoAjouterProces {
 		//ajout des fichiers dans le cas ou l'ajout de la facture a été realisé avec succes
 		if(res==1) {
 			for (Files f : p.getFiles()) {
-				res=Connexion.maj("INSERT INTO piece (idProces, nomFichier, path) VALUES ("+p.getIdProces()+",'"+f.getNomFichier()+"','"+f.getPath()+"');");	
+				String path = f.getPath().replace("\\", "\\\\");
+				res=Connexion.maj("INSERT INTO piece (idProces, nomFichier, path) VALUES ("+p.getIdProces()+",'"+f.getNomFichier()+"','"+path+"');");	
 			}
 		}
 		if(res==1) {System.out.println("tous etaient ajoutés avec succes");}
@@ -128,8 +129,8 @@ public class daoAjouterProces {
 				//----for each resultSet we check if the proces brought by it doesn't exist in the hashMap procesM
 				int iterator=0;
 				for(Proces p: procesM.values()) {
-					if (p.idProces==res.getInt(1)) {
-						p.files.add(file);
+					if (p.getIdProces()==res.getInt(1)) {
+						p.getFiles().add(file);
 						break;
 					}
 					else {iterator++;}
@@ -164,10 +165,10 @@ public class daoAjouterProces {
 		Proces proces = null ;
 		ResultSet res;
 		Connexion.connect();
-		res=Connexion.select("SELECT p.idProces, p.idDos, p.numP, p.dateCP, p.dateAP, p.description, p.adresseAdv, p.cinAdv, p.nomAdv, p.prenomAdv, p.avocatAdv, p.tribunal, p.ville, p.saleNum, p.dateSeance, p.dateSui, p.txtJug, p.dateJug, p.dateNotif, p.statut, c.prenom, c.nom, f.idFacture, f.mtGlobal, f.mtPaye FROM proces p,dossier d, client c, facture f  WHERE p.idDos=d.idDos AND d.idClient=c.idClient AND p.idProces=f.idProces AND p.idProces="+id+";");
+		res=Connexion.select("SELECT p.idProces, p.idDos, p.numP, p.dateCP, p.dateAP, p.description, p.adresseAdv, p.cinAdv, p.nomAdv, p.prenomAdv, p.avocatAdv, p.tribunal, p.ville, p.saleNum, p.dateSeance, p.dateSui, p.txtJug, p.dateJug, p.dateNotif, p.statut, c.prenom, c.nom, f.idFacture, f.mtGlobal, f.mtPaye,f.mtBase, f.lgKm, f.prKm, f.indemniteKm, f.dureeJr, f.prixJr, f.prixLog,  f.datePayement  FROM proces p,dossier d, client c, facture f  WHERE p.idDos=d.idDos AND d.idClient=c.idClient AND p.idProces=f.idProces AND p.idProces="+id+";");
 		try {
-			if(res.next()) {
-				Facture facture = new Facture(res.getInt(23), res.getInt(24), res.getInt(25)) ;
+			if(res.next()) {//f.idFacture, f.mtGlobal, f.mtPaye,p.mtBase, p.lgKm, p.prKm, p.indemniteKm, p.dureeJr, p.prixJr, p.prixLog, p .datePayement
+				Facture facture = new Facture(res.getInt(23), res.getInt(1), Date.toToolsDate(res.getTimestamp(33)) , res.getInt(29), res.getInt(27), res.getInt(28), res.getInt(32), res.getInt(30), res.getInt(31), res.getInt(26), res.getInt(24), res.getInt(25));
 			    proces = new Proces(res.getInt(1), res.getInt(2), res.getInt(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getInt(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
 				res=Connexion.select("SELECT idPiece, idProces, nomFichier, path FROM piece WHERE idProces="+id+";");
 				ArrayList<Files> files = new ArrayList<Files>();
