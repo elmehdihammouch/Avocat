@@ -15,10 +15,10 @@ import org.apache.commons.io.FilenameUtils;
 import DAO.daoFiles;
 
 public class Files {
-	public int idPiece;
-	public int idProces;
-	public String nomFichier;
-	public String path;
+	private int idPiece;
+	private int idProces;
+	private String nomFichier;
+	private String path;
 	
 	private final static String UPLOAD_DIRECTORY_images = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\images";
 	private final static String UPLOAD_DIRECTORY_videos = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\videos";

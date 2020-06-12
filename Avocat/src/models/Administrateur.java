@@ -3,16 +3,16 @@ package models;
 import java.sql.Date;
 
 public class Administrateur {
-	public int id;
-	public String nom;
-	public String prenom;
-	public Date dateNais;
-	public String lieuNais;
-	public String nationalite;
-	public String cin;
-	public String email;
-	public String password;
-	public String imageUrl;
+	private int id;
+	private String nom;
+	private String prenom;
+	private Date dateNais;
+	private String lieuNais;
+	private String nationalite;
+	private String cin;
+	private String email;
+	private String password;
+	private String imageUrl;
 	
 	public Administrateur(int id, String nom, String prenom, Date dateNais, String lieuNais, String nationalite,
 			String cin, String email, String password, String imageUrl) {

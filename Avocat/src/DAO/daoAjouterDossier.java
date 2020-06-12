@@ -48,7 +48,7 @@ public class daoAjouterDossier {
 	}
 	public static void ajoutclient(Client client) {
 		Connexion.connect();
-		Connexion.maj("INSERT INTO client (`nom`, `prenom`, `datenais`, `lieunais`, `nat`, `adresse`, `cin`, `municipal`, `tel`,`email`) VALUES ('"+client.getNom()+"','"+client.getPrenom()+"','"+client.getDateNais()+"','"+client.getLieuNais()+"','"+client.nationalite+"','"+client.getAdresse()+"','"+client.getCin()+"','"+client.getMunicipale()+"','"+client.getTelephone()+"','"+client.getEmail()+"')");
+		Connexion.maj("INSERT INTO client (`nom`, `prenom`, `datenais`, `lieunais`, `nat`, `adresse`, `cin`, `municipal`, `tel`,`email`) VALUES ('"+client.getNom()+"','"+client.getPrenom()+"','"+client.getDateNais()+"','"+client.getLieuNais()+"','"+client.getNationalite()+"','"+client.getAdresse()+"','"+client.getCin()+"','"+client.getMunicipale()+"','"+client.getTelephone()+"','"+client.getEmail()+"')");
 		Connexion.disconect();
 		
 	}

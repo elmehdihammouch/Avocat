@@ -1,10 +1,10 @@
 package models;
 
 public class Dossier {
-	public  int idDos;
-	public int idClient;
-	public String typeProces;
-	public String description;
+	private int idDos;
+	private int idClient;
+	private String typeProces;
+	private String description;
 	
 	
 	public Dossier() {

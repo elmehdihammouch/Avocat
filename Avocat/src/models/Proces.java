@@ -7,27 +7,27 @@ import java.util.ArrayList;
 import tools.Date;
 
 public class Proces {
-	public int idProces;
-	public int idDos;
-	public int numP;
-	public Date dateCP;
-	public Date dateAP;
-	public String description;
-	public String adresseAdv;
-	public String cinAdv;
-	public String nomAdv;
-	public String prenomAdv;
-	public String avocatAdv;
-	public String tribunal;
-	public String ville;
-	public int saleNum;
-	public Date dateSeance;
-	public Date dateSui;
-	public String txtJug;
-	public Date dateJug;
-	public  ArrayList<Files> files;
-	public Facture facture;
-	public Date dateNotif;
+	private int idProces;
+	private int idDos;
+	private int numP;
+	private Date dateCP;
+	private Date dateAP;
+	private String description;
+	private String adresseAdv;
+	private String cinAdv;
+	private String nomAdv;
+	private String prenomAdv;
+	private String avocatAdv;
+	private String tribunal;
+	private String ville;
+	private int saleNum;
+	private Date dateSeance;
+	private Date dateSui;
+	private String txtJug;
+	private Date dateJug;
+	private  ArrayList<Files> files;
+	private Facture facture;
+	private Date dateNotif;
 	private int statut;
 	
 	

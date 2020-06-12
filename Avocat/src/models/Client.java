@@ -3,21 +3,40 @@ package models;
 import java.sql.Date;
 
 public class Client {
-	public int id;
-	public String nom;
-	public String prenom;
-	public Date dateNais;
-	public String lieuNais;
-	public String nationalite;
-	public String adresse;
-	public String cin;
-	public String municipale;
-	public String telephone;
-	public String email;
-	public String password;
+	private int id;
+	private String nom;
+	private String prenom;
+	private Date dateNais;
+	private String lieuNais;
+	private String nationalite;
+	private String adresse;
+	private String cin;
+	private String municipale;
+	private String telephone;
+	private String email;
+	private String password;
+	private Compte compte;
 	
 	
 	
+	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String nationalite, String adresse,
+			String cin, String municipale, String telephone, String email, Compte compte) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNais = dateNais;
+		this.lieuNais = lieuNais;
+		this.nationalite = nationalite;
+		this.adresse = adresse;
+		this.cin = cin;
+		this.municipale = municipale;
+		this.telephone = telephone;
+		this.email = email;
+		this.compte = compte;
+	}
+
+
 	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String nationalite, String adresse,
 			String cin, String municipale, String telephone, String email, String password) {
 		super();
@@ -193,6 +212,16 @@ public class Client {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
 
 

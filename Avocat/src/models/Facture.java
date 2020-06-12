@@ -3,18 +3,18 @@ package models;
 import tools.Date;
 
 public class Facture {
-	public int idFacture;
-	public int idProces;
-	public Date datePayement;
-	public int indemniteKm;
-	public int lgKm;
-	public int prKm;
-	public int prixLog;
-	public int dureeJr;
-	public int prixJr;
-	public int mtBase;
-	public int mtGlobal;
-	public int mtPaye;
+	private int idFacture;
+	private int idProces;
+	private Date datePayement;
+	private int indemniteKm;
+	private int lgKm;
+	private int prKm;
+	private int prixLog;
+	private int dureeJr;
+	private int prixJr;
+	private int mtBase;
+	private int mtGlobal;
+	private int mtPaye;
 	
 	
 	public Facture() {
