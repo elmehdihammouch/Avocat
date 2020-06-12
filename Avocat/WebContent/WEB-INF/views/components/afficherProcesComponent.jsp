@@ -82,13 +82,8 @@
                 </div>
                 <p></p>
                 <ul class="pricing">
-                  <li><a href="http(s)://C:\Users\Leopard\git\Avocat\Avocat\WebContent\resources\media\images\wallhaven-392ley20.jpg" target ="_blank"> hehehe </a></li>
-                  <li>1 Domain</li>
-                  <li>2 Sub Domains</li>
-                  <li>3 MySQL DBs</li>
-                  <li>2 Emails</li>
-                  <li>WordPress Installation</li>
-                  <li>24/7 Support</li>
+                  
+                  
                 </ul>
                 <a class="btn btn-theme" href="#">Order Now</a>
               </div>

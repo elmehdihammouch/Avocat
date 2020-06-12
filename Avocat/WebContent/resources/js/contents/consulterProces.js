@@ -4,12 +4,14 @@ function afficher(){
 	affClient = this.parentElement.parentElement.parentElement.children[3].textContent;
 	$.post("ConsulterProces",{action : "procesById" , procesToBeShown : procesToBeShown}, function(data){
 		var obj = JSON.parse(data);
+		console.log(obj.idProces);
 		
 		if(obj!=null){
 			document.getElementById("affichageDiv").style.display = "block";
 			document.getElementById("tableDiv").style.display = "none";
             var pb = document.getElementById("procesBox").children[3];
             var fb = document.getElementById("factureBox").children[3];
+            var filesb = document.getElementById("filesBox").children[3];
 			
             //null values check
             for(var key in obj){
@@ -54,8 +56,11 @@ function afficher(){
             fb.children[10].innerHTML += "<div class=\"titlesContent\">"+(obj.facture.mtGlobal-obj.facture.mtPaye)+"</div>";
             fb.children[11].innerHTML += "<div class=\"titlesContent\">"+obj.facture.datePayement.date+"</div>";
 			
-			
-			
+            
+            //remplissage du box des files
+            for(let i=0;i<obj.files.length;i++){
+			filesBox.innerHTML += "<li><a href=\"ConsulterProces?action=fileDownload&filename="+obj.files[i].nomFichier+"\" target=\"_blank\">"+obj.files[i].nomFichier+"</a></li>"
+            }
 			
 		}
 		
