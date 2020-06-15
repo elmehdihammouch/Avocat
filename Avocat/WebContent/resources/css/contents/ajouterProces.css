@@ -40,7 +40,7 @@ select{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-
 /*file upload css*/
 .abox{
 	height: 200px;
-	width: 600px;
+	width: 650px;
 	border: 1px solid #03fcc6;
 	margin: auto;
 }
@@ -55,7 +55,7 @@ select{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-
 
 i.fas{
 	color: #6495ED;
-	font-size: 
+	margin : auto;
 
 	
 }
@@ -63,8 +63,8 @@ i.fas{
 	height: auto;
 	width: 100px;
 	border: 0px solid black;
-	margin-left:30px;
-	margin-top: 50px;
+	/*margin-left:30px;*/
+	margin-top : 13px;
 	border-radius: 50px;
 	background-color: #e6fffa;
 	text-align: center;
@@ -76,7 +76,8 @@ i.fas{
 	height: auto;
 	width: 100px;
 	border: 0px solid black;
-	margin-left:150px ;
+	/*margin-left:150px ;*/
+	margin-top : 10px;
 	border-radius: 50px;
 	background-color: #e6fffa;
 	text-align: center;
@@ -85,10 +86,10 @@ i.fas{
 }
 .aboxw{
 	height: auto;
-	width: 150px;
+	width: 100px;
 	border: 0px solid black;
-	margin-left:270px ;
-	margin-top: ;
+	/*margin-left:270px ;*/
+	margin-top : 10px;
 	border-radius: 50px;
 	background-color: #e6fffa;
 	text-align: center;
@@ -99,14 +100,25 @@ i.fas{
 	height: auto;
 	width: 100px;
 	border: 0px solid black;
-	margin-left:440px ;
+	/*margin-left:440px ;*/
+	margin-top : 10px;
 	border-radius: 50px;
 	background-color: #e6fffa;
 		text-align: center;
 	border: 1px solid 	 #009999;
 	
-
-
+}
+.aboxa{
+	height: auto;
+	width: 100px;
+	border: 0px solid black;
+	/*margin-left:440px ;*/
+	margin-top : 10px;
+	border-radius: 50px;
+	background-color: #e6fffa;
+		text-align: center;
+	border: 1px solid 	 #009999;
+	
 }
 .aboxv:hover .aboxv label{
 	top: -140px;

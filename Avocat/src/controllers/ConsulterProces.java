@@ -66,9 +66,42 @@ public class ConsulterProces extends HttpServlet {
 			    {
 			        throw new ServletException("File doesn't exists on server.");
 			    }
+			    //setting the content type of each file
+			    if(FilenameUtils.getExtension(filename).equals("png") || FilenameUtils.getExtension(filename).equals("jpeg") || FilenameUtils.getExtension(filename).equals("jpg")) {
+			    	response.setContentType("IMAGE");
+				    response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+				    }
+				    
+				    else if(FilenameUtils.getExtension(filename).equals("mp3")) {
+				    	response.setContentType("audio");
+				    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+					    }
+				    
+				    else if(FilenameUtils.getExtension(filename).equals("mp4")) {
+				    	response.setContentType("video/mp4");
+				    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\"");  
+				    }
+				    
+				    else if(FilenameUtils.getExtension(filename).equals("pdf")) {
+				    	response.setContentType("application/pdf");
+				    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+					    }
+				    
+				    else if(FilenameUtils.getExtension(filename).equals("docx") || FilenameUtils.getExtension(filename).equals("doc") || FilenameUtils.getExtension(filename).equals("txt")) {
+				    	response.setContentType("application/msword");
+				    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+				    	System.out.println(1111111111);
+					    }
+				    else {
+				    	response.setContentType("APPLICATION/OCTET-STREAM");
+					    response.setHeader("Content-Disposition","attachment; filename=\"" + filename + "\"");
+				    }
+			    	
 	
-			    response.setContentType("APPLICATION/OCTET-STREAM");
-			    response.setHeader("Content-Disposition","attachment; filename=\"" + filename + "\""); 
+			    
+			  //----------------------
+			    
+			     
 	
 			    java.io.FileInputStream fileInputStream = new java.io.FileInputStream(filepath);
 	

@@ -12,12 +12,13 @@ function afficher(){
             var pb = document.getElementById("procesBox").children[3];
             var fb = document.getElementById("factureBox").children[3];
             var filesb = document.getElementById("filesBox").children[3];
-			
-            //null values check
+			//null values check
             for(var key in obj){
-				if((key != "dateCP" && key != "dateAP" && key != "dateNotif"  && key != "dateJug" && key != "dateSui" && key != "facture.datePayement") && obj[key]==null ){obj[key]="---";}
+				if((key != "dateCP" && key != "dateAP" && key != "dateNotif"  && key != "dateJug" && key != "dateSui" && key != "facture.datePayement") && (obj[key]==null || obj[key]==0 )){obj[key]="---";}
 				else if((key == "dateCP" || key == "dateAP" || key == "dateNotif"  || key == "dateJug" || key == "dateSui" || key == "facture.datePayement") && obj[key]==null){obj[key]=JSON.parse('{ "date":"----/--/--"}');}
-				
+			}
+            for(var key in obj.facture){
+            	if(obj.facture[key]==0){obj.facture[key]="-";}
             }
             //remplissage du Proces boxe
             document.getElementById("procesBox").children[2].innerHTML += "<div >"+obj.description+"</div>";
@@ -59,7 +60,7 @@ function afficher(){
             
             //remplissage du box des files
             for(let i=0;i<obj.files.length;i++){
-			filesBox.innerHTML += "<li><a href=\"ConsulterProces?action=fileDownload&filename="+obj.files[i].nomFichier+"\" target=\"_blank\">"+obj.files[i].nomFichier+"</a></li>"
+			filesb.innerHTML += "<li><a href=\"ConsulterProces?action=fileDownload&filename="+obj.files[i].nomFichier+"\" target=\"_blank\">"+obj.files[i].nomFichier+"</a></li>"
             }
 			
 		}
@@ -76,6 +77,31 @@ function supprimer(){
 }
 
 
+function precedent(){
+	document.getElementById("tableDiv").style.display = "block";
+	document.getElementById("affichageDiv").style.display = "none";
+
+}
+
+
+function imprimer(divName) {
+	// OriginalPrintContents for box
+	var OriginalPrintContents =  document.getElementById(divName).innerHTML;
+	var printContents = document.getElementById(divName);  
+	
+	//remove() for box 
+	 printContents.children[1].remove();
+	 printContents.children[3].remove();
+	
+    var printContents = document.getElementById(divName);    
+ var originalContents = document.body.innerHTML;      
+ document.body.innerHTML = printContents.innerHTML;
+ 
+ window.print();     
+ document.body.innerHTML = originalContents;
+ // for box
+ document.getElementById(divName).innerHTML = OriginalPrintContents;
+ }
 
 
 

@@ -37,7 +37,7 @@
                   <li > <span class="procesTitles">Date du jugement : </span><br></li>
                   <li > <span class="procesTitles">Date de la seance suivante : </span><br></li>
                 </ul>
-                <a class="btn btn-theme" href="#">Order Now</a>
+                <a class="btn btn-theme" href="#" onClick="imprimer('procesBox')">Imprimer</a>
               </div>
               <!-- end custombox -->
             </div>
@@ -51,7 +51,7 @@
                 <div class="icn-main-container">
                   <span class="icn-container">F</span>
                 </div>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+                <p></p>
                 <ul class="pricing">
                   <li > <span class="procesTitles">Numero de la  facture : </span><br></li>
                   <li > <span class="procesTitles">Montant de base :  </span><br></li>
@@ -66,7 +66,7 @@
                   <li > <span class="procesTitles">Montant restant : </span><br></li>
                   <li > <span class="procesTitles">Date de payement : </span><br></li>
                 </ul>
-                <a class="btn btn-theme" href="#">Order Now</a>
+                <a class="btn btn-theme" href="#" onClick="imprimer('factureBox')">Imprimer</a>
               </div>
               <!-- end custombox -->
             </div>
@@ -74,20 +74,25 @@
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <div class="custom-box" id="filesBox">
                 <div class="servicetitle">
-                  <h4>File</h4>
+                  <h4>Files</h4>
                   <hr>
                 </div>
                 <div class="icn-main-container">
-                  <span class="icn-container">P</span>
+                  <span class="icn-container">FS</span>
                 </div>
                 <p></p>
                 <ul class="pricing">
-                  
-                  
+                
                 </ul>
-                <a class="btn btn-theme" href="#">Order Now</a>
+                <a class="btn btn-theme" href="#" onClick="imprimer('filesBox')">Imprimer</a>
               </div>
               <!-- end custombox -->
+            </div>
+            <div class="col-xs-12">
+                    </div>
+            
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 col-lg-offset-6 col-md-offset-6 col-sm-offset-6">
+            <button class="btn btn-theme" onclick="precedent()">Precedent</button>
             </div>
             <!-- end col-4 -->
           </div>

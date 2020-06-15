@@ -25,7 +25,8 @@ public class Files {
 	private final static String UPLOAD_DIRECTORY_docx = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\docx";
 	private final static String UPLOAD_DIRECTORY_pdfs = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\pdfs"; 
 	private final static String UPLOAD_DIRECTORY_audios = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\audios"; 
-	
+	private final static String UPLOAD_DIRECTORY_others = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\others"; 
+
 	
 	public Files() {
 		super();
@@ -161,6 +162,15 @@ public class Files {
 	       else if (FilenameUtils.getExtension(fileName).equals("docx") || FilenameUtils.getExtension(fileName).equals("doc") || FilenameUtils.getExtension(fileName).equals("txt")) {
 	    	   try {
 					file.write(UPLOAD_DIRECTORY_docx + File.separator + fileName);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("erreur lors de l'upload du "+fileName);
+				}
+	       }
+	       else {
+	    	   try {
+					file.write(UPLOAD_DIRECTORY_others + File.separator + fileName);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

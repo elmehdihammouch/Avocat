@@ -49,6 +49,13 @@ cinAdv.addEventListener("keyup",validationCin);
 adresse.addEventListener("keyup",validationAdresse);
 avocatAdv.addEventListener("keyup",validationAvocatAdv);
 document.getElementById("FMB").addEventListener("keyup",validationFacture);
+document.getElementById("FMB").addEventListener("keyup",calcul);
+document.getElementById("mtPaye").addEventListener("keyup",calcul);
+
+var tabDos = document.getElementsByClassName("dossierContent");
+for(let i=0;i<tabDos.length;i++){
+	tabDos[i].addEventListener("click",choixDos)
+}
 
 
 
@@ -229,10 +236,19 @@ function dossierClicked(){
 	}
 
 
+function choixDos(){
+	for(let i=0;i<tabDos.length;i++){
+		tabDos[i].parentElement.style.backgroundColor = "";
+	}
+	this.parentElement.style.backgroundColor = "#ccffe6";
+}
 
 
-
-
+function calcul(){
+	
+	document.getElementById("mtGlobal").value= FMB.value ;
+	document.getElementById("mtRestant").value= (FMB.value) - (document.getElementById("mtPaye").value);
+}
 
 
 
@@ -267,6 +283,7 @@ $(window).load(function(){
 		
 	});
 
+//script du calcul de la facture
 
 
 
