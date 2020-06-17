@@ -124,7 +124,7 @@ public class test {
 	
 	Connexion.disconect();*/
 		
-		HashMap<String, Integer> people = new HashMap<String, Integer>();
+		
 
 
 	    // Add keys and values (Name, Age)
@@ -132,10 +132,10 @@ public class test {
 	    people.put("Steve", 30);
 	    people.put("Angie", 33);*/
 	
-	
 		
-	
-	
+	//System.out.println(Date.toDbDate("2020-06-13T16:01"));
+	//System.out.println(localDate);
+	System.out.println(Date.intTransform(111));
 	}
 	
 

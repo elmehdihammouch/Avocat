@@ -208,8 +208,8 @@ function changeDisplayF2(){
 		proces.style.display='none';
 		fileUpload.style.display="block";
 		facture.style.display="none";
+		document.getElementById("changeDisplay1").style.display="block";
 		document.getElementById("submitButton").parentElement.style.display="none";
-		document.getElementById("changeDisplay1").parentElement.style.display="block";	
 	}
 
 	else if(choixDossier.style.display=="block" && proces.style.display=="none" && fileUpload.style.display=="none" && facture.style.display=="none" ){
@@ -233,6 +233,10 @@ function dossierClick(){
 
 function dossierClicked(){
 	document.getElementById("idDossierClicked").value = this.parentElement.children[0].textContent;
+	/*$.post("AjouterProces",{action : "dossierForCheck" , dossierForCheck : this.parentElement.children[0].textContent}, function(data){
+		if(data==1){document.getElementById("idDossierClicked").value = this.parentElement.children[0].textContent;}
+		else{alert("dossier plein")}
+	});*/
 	}
 
 

@@ -30,6 +30,7 @@
 								<th>id</th>
 								<th>etat avancement</th>
 								<th>type du proces</th>
+								<th>Description</th>
 							</tr>
 						</thead>
 		
@@ -46,10 +47,11 @@
 							<tr class="trow">
 								<td class="dossierContent"><%=d.getIdDos()%></td>
 								<td class="dossierContent"><%=statut[i]%></td>
+								<td class="dossierContent"><%=d.getTypeProces()%></td>
 								<td class="dossierContent"><%=d.getDescription()%></td>
 							</tr>
 <% i++;	}} %>	
-                    
+                   
                     
 						</tbody>
 					</table>	

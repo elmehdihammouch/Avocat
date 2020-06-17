@@ -94,7 +94,7 @@ public class daoAjouterProces {
 		ResultSet res;
 		ArrayList<Dossier> dossiers = new ArrayList<Dossier>();
 		Connexion.connect();
-		res=Connexion.select("select * from dossier where idClient= (select idClient from client where upper(cin)='"+cin.toUpperCase()+"' ); ");
+		res=Connexion.select("select d.idDos, d.idClient, d.typeProces, d.description from dossier d where d.idClient=(select idClient from client where upper(cin)='"+cin.toUpperCase()+"' ) AND 3>(select max(p.statut) from proces p where d.idDos=p.idDos); ");
 		try {
 			while(res.next()) {
 				Dossier d = new Dossier(res.getInt(1), res.getInt(2), res.getString(3), res.getString(4));

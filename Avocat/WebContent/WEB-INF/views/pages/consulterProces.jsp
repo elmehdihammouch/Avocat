@@ -15,7 +15,7 @@
 	 <!-- --------------------- -->
 	 <link href="./resources/css/headers/style.css" rel="stylesheet">
 	 <link href="./resources/css/headers/style-responsive.css" rel="stylesheet">
-	 
+	 <script src="https://kit.fontawesome.com/dc70a27419.js" crossorigin="anonymous"></script>
 </head>
 <body>
 

@@ -4,14 +4,14 @@ function afficher(){
 	affClient = this.parentElement.parentElement.parentElement.children[3].textContent;
 	$.post("ConsulterProces",{action : "procesById" , procesToBeShown : procesToBeShown}, function(data){
 		var obj = JSON.parse(data);
-		console.log(obj.idProces);
+	
 		
 		if(obj!=null){
 			document.getElementById("affichageDiv").style.display = "block";
 			document.getElementById("tableDiv").style.display = "none";
-            var pb = document.getElementById("procesBox").children[3];
-            var fb = document.getElementById("factureBox").children[3];
-            var filesb = document.getElementById("filesBox").children[3];
+            pb = document.getElementById("procesBox").children[3];
+            fb = document.getElementById("factureBox").children[3];
+            filesb = document.getElementById("filesBox").children[3];
 			//null values check
             for(var key in obj){
 				if((key != "dateCP" && key != "dateAP" && key != "dateNotif"  && key != "dateJug" && key != "dateSui" && key != "facture.datePayement") && (obj[key]==null || obj[key]==0 )){obj[key]="---";}
@@ -67,9 +67,73 @@ function afficher(){
 		
 	});
 }
-
+//---------------------------
 function modifier(){
-alert(2);
+	procesToBeEdited = this.parentElement.parentElement.parentElement.children[1].textContent;
+	affClientM = this.parentElement.parentElement.parentElement.children[3].textContent;
+	$.post("ConsulterProces",{action : "procesById" , procesToBeShown : procesToBeEdited}, function(data){
+		var obj = JSON.parse(data);
+		
+		
+		if(obj!=null){
+			document.getElementById("modificationDiv").style.display = "block";
+			document.getElementById("tableDiv").style.display = "none";
+             pb = document.getElementById("procesBoxM").children[3];
+             fb = document.getElementById("factureBoxM").children[3];
+             filesb = document.getElementById("filesBoxM").children[3];
+			//null values check
+            for(var key in obj){
+				if((key != "dateCP" && key != "dateAP" && key != "dateNotif"  && key != "dateJug" && key != "dateSui" && key != "facture.datePayement") && (obj[key]==null || obj[key]==0 )){obj[key]="---";}
+				else if((key == "dateCP" || key == "dateAP" || key == "dateNotif"  || key == "dateJug" || key == "dateSui" || key == "facture.datePayement") && obj[key]==null){obj[key]=JSON.parse('{ "date":"----/--/--"}');}
+			}
+            for(var key in obj.facture){
+            	if(obj.facture[key]==0){obj.facture[key]="-";}
+            }
+            //remplissage du Proces boxe
+           document.getElementById("procesBoxM").children[2].children[0].children[1].textContent = obj.description;
+           pb.children[0].children[0].children[1].textContent = affClientM;
+           pb.children[1].children[0].children[1].value= obj.dateCP.date  ;
+            pb.children[2].children[0].children[1].value = obj.dateAP.date;
+            pb.children[3].children[0].children[1].value = obj.dateNotif.date;
+            pb.children[4].children[0].children[1].value = obj.numP;
+            pb.children[6].children[0].children[1].value = obj.nomAdv;
+            pb.children[7].children[0].children[1].value = obj.prenomAdv;
+            pb.children[8].children[0].children[1].value = obj.cinAdv;
+            pb.children[9].children[0].children[1].value = obj.adresseAdv;
+            pb.children[10].children[0].children[1].value = obj.avocatAdv;
+            pb.children[11].children[0].children[1].value = obj.tribunal;
+            pb.children[12].children[0].children[1].value = obj.ville;
+            pb.children[13].children[0].children[1].value = obj.saleNum;
+            pb.children[14].children[0].children[1].value = obj.dateSeance;
+            pb.children[15].children[0].children[1].value = obj.txtJug;
+            pb.children[16].children[0].children[1].value = obj.dateJug.date;
+            pb.children[17].children[0].children[1].value = obj.dateSui.date;
+            pb.children[18].children[0].children[1].value = obj.description;
+           /* if(obj.statut==1){ pb.children[5].innerHTML += "<div class=\"titlesContent\">Premiere instance</div>";}
+            else if(obj.statut==2){ pb.children[5].innerHTML += "<div class=\"titlesContent\">Deuxieme instance</div>";}
+            else if(obj.statut==3){ pb.children[5].innerHTML += "<div class=\"titlesContent\">Troisieme instance</div>";}*/
+            
+            //remplissage du box de la facture
+             fb.children[0].children[0].children[1].value = obj.facture.idFacture ;
+            fb.children[1].children[0].children[1].value = obj.facture.mtBase ;
+            fb.children[2].children[0].children[1].value = obj.facture.lgKm ;
+            fb.children[3].children[0].children[1].value = obj.facture.prKm ;
+            fb.children[4].children[0].children[1].value = obj.facture.indemniteKm ;
+            fb.children[5].children[0].children[1].value = obj.facture.dureeJr ;
+            fb.children[6].children[0].children[1].value = obj.facture.prixJr ;
+            fb.children[7].children[0].children[1].value = obj.facture.prixLog ;
+            fb.children[8].children[0].children[1].value = obj.facture.mtGlobal ;
+            fb.children[9].children[0].children[1].value = obj.facture.mtPaye ;
+            fb.children[10].children[0].children[1].value = (obj.facture.mtGlobal-obj.facture.mtPaye) ;
+            fb.children[11].children[0].children[1].value = obj.facture.datePayement.date ;
+            //remplissage du box des files
+            for(let i=0;i<obj.files.length;i++){
+			filesb.innerHTML += "<li ><a class=\"spanA\" href=\"ConsulterProces?action=fileDownload&filename="+obj.files[i].nomFichier+"\" target=\"_blank\">"+obj.files[i].nomFichier+" </a><span><span class=\"lp\"> </span><i class=\"fas fa-trash\"></i></span></li>"
+            }
+			Padding();
+		}
+		
+	});
 }
 
 function supprimer(){
@@ -80,7 +144,29 @@ function supprimer(){
 function precedent(){
 	document.getElementById("tableDiv").style.display = "block";
 	document.getElementById("affichageDiv").style.display = "none";
+	document.getElementById("modificationDiv").style.display = "none";
 
+}
+
+function Padding(){
+
+	rightP=document.getElementsByClassName("spanM");
+	leftP=document.getElementsByClassName("lp");
+	rightA=document.getElementsByClassName("spanA");
+
+	//rightPD=document.getElementsByClassName("spanMD");
+	for(let i=0;i<rightP.length;i++){
+		content = rightP[i].textContent.padEnd(60," ");
+		rightP[i].textContent = content;
+		}
+	for(let i=0;i<leftP.length;i++){
+		content = leftP[i].textContent.padStart(28," ");
+		leftP[i].textContent = content;
+		}
+	for(let i=0;i<rightA.length;i++){
+		content = rightA[i].textContent.padEnd(30," ");
+		rightA[i].textContent = content;
+		}
 }
 
 
@@ -131,6 +217,7 @@ function imprimer(divName) {
 
 //window.onload
 window.onload = function(){
+	
 	tabMod = document.getElementsByClassName("modifier");
 	for(let i=0;i<tabMod.length;i++){
 		tabMod[i].addEventListener("click",modifier)
@@ -148,21 +235,4 @@ window.onload = function(){
 }
 
 
-//script du pop up
-/*var overlay = document.getElementById('overlay');
-var btnClose = document.getElementById('btnClose');
-popUp = document.getElementsByClassName("btnPopup");
-
-for(let i=0;i<popUp.length;i++){
-	popUp[i].addEventListener("click",openMoadl)
-}
-
-function openMoadl() {
-overlay.style.display='block';
-}
-
-btnClose.addEventListener('click',closeModal);
-function closeModal() {
-overlay.style.display='none';
-}*/
 

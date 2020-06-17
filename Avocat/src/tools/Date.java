@@ -339,12 +339,21 @@ public  static Date toToolsDate(Timestamp DBDate)  {
 public static String toFDate(Date d) {
 	String FrontDate;
 	if(d!=null) {
-		FrontDate = d.getYear()+"-"+d.getMonth()+"-"+d.getDay()+"    "+d.getHeurs()+":"+d.getMinutes();
+		FrontDate = d.getYear()+"-"+Date.intTransform(d.getMonth())+"-"+Date.intTransform(d.getDay())+"T"+Date.intTransform(d.getHeurs())+":"+Date.intTransform(d.getMinutes());
 	}
 	else {
 	    FrontDate = null;
 	}
+	System.out.println(FrontDate);
 	return FrontDate;
 }
-
+public static String intTransform(int i) {
+	int length = String.valueOf(i).length();
+	String 	result = String.valueOf(i);
+	if(length==1) {
+		result = String.format("%02d", i);
+	}
+	System.out.println("-----------------------------------"+result);
+	return result;
+}
 }
