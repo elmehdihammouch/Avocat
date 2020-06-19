@@ -73,12 +73,12 @@
                                                 <th>operations</th>
                                             </tr>
                                         </thead>
-                                        <tbody><!-- <span class="block-email">lori@example.com</span>    green : class="status--process" -->
+                                        <tbody>
                           <% HashMap<String , Proces> map = daoAjouterProces.consulterProces(); 
                           	for (Map.Entry<String, Proces> e : map.entrySet()){
                           
                           		%>              
-                                            <tr class="tr-shadow">
+                                            <tr class="tr-shadow trowM">
                                                 
                                                 <td>
                                                     <label class="au-checkbox">
@@ -104,11 +104,11 @@
                                 <%}else { %>     
                                 				<td style="color : #00ffcc;">accepté</td>
                                 <%} %>  
-                                                
+                                            <%if(e.getValue().getNumP()!=null) { %>    
                                                 <td><%=e.getValue().getNumP() %></td>
-                                                
-                                                
-                                        
+                                            <%}else { %>    
+                                                <td>---</td>
+                                        	<%} %>
                                                 
                                 <%if(e.getValue().getFacture().getMtGlobal()-e.getValue().getFacture().getMtpaye()==0) {%>  
                                                 <td style="color : #00ffcc;">payée</td>

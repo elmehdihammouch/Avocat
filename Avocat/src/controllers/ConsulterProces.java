@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FilenameUtils;
+import org.json.simple.JSONObject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import DAO.daoAjouterProces;
 import models.Proces;
+import tools.Date;
 
 /**
  * Servlet implementation class ConsulterProces
@@ -120,7 +122,9 @@ public class ConsulterProces extends HttpServlet {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		JSONObject obj=new JSONObject();
 		PrintWriter out = response.getWriter();
 		String action = request.getParameter("action");
 		//class from jackson api to convert objects to json strings
@@ -134,6 +138,24 @@ public class ConsulterProces extends HttpServlet {
 			String json = mapper.writeValueAsString(proces);
 			System.out.println(json);
 			out.print(json);
+		}
+		
+		else if (action.equals("modifierProces")) {
+			
+			
+			Proces p = new Proces(Integer.parseInt(request.getParameter("procesToBeEdited")),request.getParameter("numeroProcesM"), Date.toDbDate(request.getParameter("dateAcceptationM")), request.getParameter("descriptionM"), request.getParameter("adresseAdvM"), request.getParameter("cinAdvM"), request.getParameter("nomAdvM"), request.getParameter("prenomAdvM"), request.getParameter("avocatAdvM"), request.getParameter("tribunalM"), request.getParameter("villeM"), request.getParameter("numeroSalM"), Date.toDbDate(request.getParameter("dateSeaM")), Date.toDbDate(request.getParameter("dateSuivM")), request.getParameter("jugementM"), Date.toDbDate(request.getParameter("dateJugM")), Date.toDbDate(request.getParameter("dateNotifM")));
+			//procesCheck checks if proces's fields are "" or not and then made them null if they are
+			int res = daoAjouterProces.procesUpdate(Proces.procesCheck(p));
+			// returning the proces new data if it has been updated succefully 
+			if(res==1) {
+				Proces pu = daoAjouterProces.procesById(Integer.parseInt(request.getParameter("procesToBeEdited")));
+				obj.put("nomAdv", pu.getNomAdv() );
+				obj.put("prenomAdv", pu.getPrenomAdv());
+				obj.put("dateAP", Date.toFDate(pu.getDateAP()));
+				obj.put("numP", pu.getNumP() );
+			}
+			obj.put("res",res);
+			out.print(obj);
 		}
 	}
 

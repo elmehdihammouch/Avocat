@@ -297,20 +297,20 @@ public class Date {
 	
 	public  static Date toDbDate(String requestDate)  {
 		
-		LocalDateTime localDate = LocalDateTime.parse(requestDate, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));
-		
 		Date maDate = new Date();
 	
-		maDate.setDate(requestDate);
-		/*  utilDate = sdf.parse(localDate);
-		  cal.setTime(utilDate);*/
+		  try {
+			  LocalDateTime localDate = LocalDateTime.parse(requestDate, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));
+		  maDate.setDate(requestDate);
 		  maDate.setDay(localDate.getDayOfMonth());
 		  maDate.setMonth(localDate.getMonth().getValue());
 		  maDate.setYear(localDate.getYear());
 		  maDate.setHeurs(localDate.getHour());
 		  maDate.setMinutes(localDate.getMinute());
 		  maDate.setSeconds(localDate.getSecond());
-		
+		  }catch (Exception e) {
+			maDate = null;
+		}
 		return maDate;
 	}
 	
@@ -344,7 +344,6 @@ public static String toFDate(Date d) {
 	else {
 	    FrontDate = null;
 	}
-	System.out.println(FrontDate);
 	return FrontDate;
 }
 public static String intTransform(int i) {
@@ -353,7 +352,15 @@ public static String intTransform(int i) {
 	if(length==1) {
 		result = String.format("%02d", i);
 	}
-	System.out.println("-----------------------------------"+result);
+	
 	return result;
 }
+
+public static String toDBCheck(Date d) {
+	if(d==null) {return null;}
+	else {return "'"+d.getDate()+"'" ;}
+}
+
+
+
 }

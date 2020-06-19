@@ -139,7 +139,7 @@ public class daoAjouterProces {
 				if(iterator==procesM.size()) {
 					ArrayList<Files> files = new ArrayList<Files>();
 					files.add(file);
-					Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getInt(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getInt(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), files , facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
+					Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), files , facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
 					procesM.put(res.getString(21)+" "+res.getString(22), proces);
 				}
 				//-----------
@@ -149,7 +149,7 @@ public class daoAjouterProces {
 		while(res.next()) {
 			
 			Facture facture = new Facture(res.getInt(23), res.getInt(24), res.getInt(25)) ;
-			Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getInt(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getInt(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
+			Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
 			procesM.put(res.getString(21)+" "+res.getString(22), proces);
 		}
 		
@@ -169,7 +169,7 @@ public class daoAjouterProces {
 		try {
 			if(res.next()) {//f.idFacture, f.mtGlobal, f.mtPaye,p.mtBase, p.lgKm, p.prKm, p.indemniteKm, p.dureeJr, p.prixJr, p.prixLog, p .datePayement
 				Facture facture = new Facture(res.getInt(23), res.getInt(1), Date.toToolsDate(res.getTimestamp(33)) , res.getInt(29), res.getInt(27), res.getInt(28), res.getInt(32), res.getInt(30), res.getInt(31), res.getInt(26), res.getInt(24), res.getInt(25));
-			    proces = new Proces(res.getInt(1), res.getInt(2), res.getInt(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getInt(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
+			    proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
 				res=Connexion.select("SELECT idPiece, idProces, nomFichier, path FROM piece WHERE idProces="+id+";");
 				ArrayList<Files> files = new ArrayList<Files>();
 				while(res.next()) {
@@ -185,6 +185,16 @@ public class daoAjouterProces {
 		}
 		return proces;
 		
+	}
+	
+	
+	public static int procesUpdate(Proces p) {
+		int res;
+		Connexion.connect();
+		System.out.println("------------"+p.toString());
+		res=Connexion.maj("UPDATE proces SET numP="+p.getNumP()+" , dateAP="+Date.toDBCheck(p.getDateAP())+" , description="+p.getDescription()+" , adresseAdv="+p.getAdresseAdv()+" , cinAdv="+p.getCinAdv()+" , nomAdv="+p.getNomAdv()+" , prenomAdv="+p.getPrenomAdv()+" , avocatAdv="+p.getAvocatAdv()+" , tribunal="+p.getTribunal()+" , ville="+p.getVille()+" , saleNum="+p.getSaleNum()+" , dateSeance="+Date.toDBCheck(p.getDateSeance())+" , dateSui="+Date.toDBCheck(p.getDateSui())+" , txtJug="+p.getTxtJug()+" , dateJug="+Date.toDBCheck(p.getDateJug())+" , dateNotif="+Date.toDBCheck(p.getDateNotif())+" where idProces="+p.getIdProces()+" ;");
+		Connexion.disconect();
+		return res;
 	}
 	
 

@@ -135,7 +135,12 @@ public class test {
 		
 	//System.out.println(Date.toDbDate("2020-06-13T16:01"));
 	//System.out.println(localDate);
-	System.out.println(Date.intTransform(111));
+
+Date d = Date.toDbDate("2020-06-13T16:01");
+//Proces p = new Proces(16, "", d, "", "", "", "", "", "", "", "", "", d, d, "1", d, d, 3);
+//daoAjouterProces.procesUpdate(p);
+//Proces.procesCheck(p);
+System.out.println(Date.toDBCheck(d));
 	}
 	
 

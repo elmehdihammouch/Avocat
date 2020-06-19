@@ -1,6 +1,7 @@
 package models;
 
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 
@@ -9,7 +10,7 @@ import tools.Date;
 public class Proces {
 	private int idProces;
 	private int idDos;
-	private int numP;
+	private String numP;
 	private Date dateCP;
 	private Date dateAP;
 	private String description;
@@ -20,7 +21,7 @@ public class Proces {
 	private String avocatAdv;
 	private String tribunal;
 	private String ville;
-	private int saleNum;
+	private String saleNum;
 	private Date dateSeance;
 	private Date dateSui;
 	private String txtJug;
@@ -34,6 +35,34 @@ public class Proces {
 	public Proces() {
 		super();
 	}
+	
+	
+
+	public Proces(int idProces, String numP, Date dateAP, String description, String adresseAdv,
+			String cinAdv, String nomAdv, String prenomAdv, String avocatAdv, String tribunal, String ville,
+			String saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug, Date dateNotif) {
+		super();
+		this.idProces = idProces;
+		this.numP = numP;
+		this.dateAP = dateAP;
+		this.description = description;
+		this.adresseAdv = adresseAdv;
+		this.cinAdv = cinAdv;
+		this.nomAdv = nomAdv;
+		this.prenomAdv = prenomAdv;
+		this.avocatAdv = avocatAdv;
+		this.tribunal = tribunal;
+		this.ville = ville;
+		this.saleNum = saleNum;
+		this.dateSeance = dateSeance;
+		this.dateSui = dateSui;
+		this.txtJug = txtJug;
+		this.dateJug = dateJug;
+		this.dateNotif = dateNotif;
+		this.statut = statut;
+	}
+
+
 
 	public Proces(int idDos, String description, String adresseAdv, String cinAdv, String nomAdv, String prenomAdv,
 			String avocatAdv, ArrayList<Files> files, Facture facture,Date dateNotif, int statut) {
@@ -51,8 +80,8 @@ public class Proces {
 		this.statut = statut;
 	}
 
-	public Proces(int idDos, int numP, Date dateCP, Date dateAP, String description, String adresseAdv, String cinAdv,
-			String nomAdv, String prenomAdv, String avocatAdv, String tribunal, String ville, int saleNum,
+	public Proces(int idDos, String numP, Date dateCP, Date dateAP, String description, String adresseAdv, String cinAdv,
+			String nomAdv, String prenomAdv, String avocatAdv, String tribunal, String ville, String saleNum,
 			Date dateSeance, Date dateSui, String txtJug, Date dateJug, ArrayList<Files> files, Facture facture,Date dateNotif, int statut) {
 		super();
 		this.idDos = idDos;
@@ -80,9 +109,9 @@ public class Proces {
 	
 	
 	
-	public Proces(int idProces, int idDos, int numP, Date dateCP, Date dateAP, String description, String adresseAdv,
+	public Proces(int idProces, int idDos, String numP, Date dateCP, Date dateAP, String description, String adresseAdv,
 			String cinAdv, String nomAdv, String prenomAdv, String avocatAdv, String tribunal, String ville,
-			int saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug, 
+			String saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug, 
 			Facture facture,Date dateNotif, int statut) {
 		super();
 		this.idProces = idProces;
@@ -110,9 +139,9 @@ public class Proces {
 	
 	
 
-	public Proces(int idProces, int idDos, int numP, Date dateCP, Date dateAP, String description, String adresseAdv,
+	public Proces(int idProces, int idDos, String numP, Date dateCP, Date dateAP, String description, String adresseAdv,
 			String cinAdv, String nomAdv, String prenomAdv, String avocatAdv, String tribunal, String ville,
-			int saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug, ArrayList<Files> files,
+			String saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug, ArrayList<Files> files,
 			Facture facture,Date dateNotif, int statut) {
 		super();
 		this.idProces = idProces;
@@ -157,11 +186,11 @@ public class Proces {
 		this.idDos = idDos;
 	}
 
-	public int getNumP() {
+	public String getNumP() {
 		return numP;
 	}
 
-	public void setNumP(int numP) {
+	public void setNumP(String numP) {
 		this.numP = numP;
 	}
 
@@ -245,11 +274,11 @@ public class Proces {
 		this.ville = ville;
 	}
 
-	public int getSaleNum() {
+	public String getSaleNum() {
 		return saleNum;
 	}
 
-	public void setSaleNum(int saleNum) {
+	public void setSaleNum(String saleNum) {
 		this.saleNum = saleNum;
 	}
 
@@ -341,7 +370,29 @@ public static String statutProces(Proces p) {
 }
 	return statut;
 }
+
+
+@SuppressWarnings("unlikely-arg-type")
+public static Proces procesCheck(Proces p) {
+	Field[] fields = Proces.class.getDeclaredFields();
+	for(Field f : fields) {
+		try {
+			if(f.get(p) instanceof String) {
+				if(f.get(p).equals("")) {System.out.println(f+" "+f.get(p)+" 2");f.set(p, null);System.out.println(f+" after "+f.get(p)+" 2");}
+				else  {f.set(p, "'"+f.get(p)+"'");}
+			}
+			else if (f.equals("idProces") || f.equals("statut")) {
+				if( f.get(p).equals("")) {f.set(p,0);}
+			}
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	return p;
 	
+}
+
 		
 	
 
