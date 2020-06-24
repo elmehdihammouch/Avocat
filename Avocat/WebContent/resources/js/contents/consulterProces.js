@@ -1,5 +1,10 @@
+
 //modification box inputs 
-    var nomAdvM=document.getElementById("nomAdvM");
+ 	var montantGlobal;
+ 	var indemniteKilometrique;
+ 	var fraisLogement;
+
+	var nomAdvM=document.getElementById("nomAdvM");
     var prenomAdvM=document.getElementById("prenomAdvM"); 
     var cinAdvM=document.getElementById("cinAdvM");
     var adresseAdvM=document.getElementById("adresseAdvM");
@@ -16,6 +21,19 @@
     var dateJugM = document.getElementById("dateJugM");
     var dateSuivM = document.getElementById("dateSuivM");
     var descriptionM= document.getElementById("descriptionM");
+    	//facture inputs 
+    var 	mtGlobalM = document.getElementById("mtGlobalM");
+    var     IndemniteKmM = document.getElementById("IndemniteKmM");
+    var     fraisLogM = document.getElementById("fraisLogM"); 
+    var     montantBaseM = document.getElementById("montantBaseM");
+    var 	lgKmM = document.getElementById("lgKmM");
+    var 	prixKmM = document.getElementById("prixKmM");
+    var 	dureeJrM = document.getElementById("dureeJrM");
+    var 	prixJrM = document.getElementById("prixJrM");
+    var 	mtPayeM = document.getElementById("mtPayeM");
+    var 	mtRestantM = document.getElementById("mtRestantM");
+    var 	datePayM = document.getElementById("datePayM");
+
 
 
 
@@ -33,6 +51,7 @@
 	var factureRegex = /^[0-9]+$/;
 	var avocatAdvRegex = /^[a-zA-Z\s]{2,}$/;
 	var datelocal = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T(2[0-3]|[01][0-9]):[0-5][0-9]/;
+	var numberRegex = /^[0-9\.]*$/;
 
 
 
@@ -44,7 +63,30 @@
     prenomAdvM.addEventListener("keyup",validationNom);                           
     cinAdvM.addEventListener("keyup",validationCin);                           
     adresseAdvM.addEventListener("keyup",validationAdresse);                           
-    avocatAdvM.addEventListener("keyup",validationAvocatAdv);                           
+    avocatAdvM.addEventListener("keyup",validationAvocatAdv); 
+    lgKmM.addEventListener("keyup",validationNumber);
+    prixKmM.addEventListener("keyup",validationNumber);
+    dureeJrM.addEventListener("keyup",validationNumber);
+    prixJrM.addEventListener("keyup",validationNumber);
+    mtPayeM.addEventListener("keyup",validationNumber);
+    
+    //calcul 
+    lgKmM.addEventListener("keyup",calculMontantGlobal);
+    prixKmM.addEventListener("keyup",calculMontantGlobal);
+    dureeJrM.addEventListener("keyup",calculMontantGlobal);
+    prixJrM.addEventListener("keyup",calculMontantGlobal);
+    	
+    lgKmM.addEventListener("keyup",calculIdmKm);
+    prixKmM.addEventListener("keyup",calculIdmKm);
+    dureeJrM.addEventListener("keyup",calculFrLog);
+    prixJrM.addEventListener("keyup",calculFrLog);
+    	//calcule du reste
+    lgKmM.addEventListener("keyup",calculRest);
+    prixKmM.addEventListener("keyup",calculRest);
+    dureeJrM.addEventListener("keyup",calculRest);
+    prixJrM.addEventListener("keyup",calculRest);
+    mtPayeM.addEventListener("keyup",calculRest);
+    
    // dateNotifM.addEventListener("keyup",validationDate);                           
    // dateAcceptationM.addEventListener("keyup",validationDate);                           
    // numeroProcesM.addEventListener("keyup",);                           
@@ -158,7 +200,7 @@ function modifier(){
 				else if((key == "dateCP" || key == "dateAP" || key == "dateNotif"  || key == "dateJug" || key == "dateSui" || key == "facture.datePayement") && obj[key]==null){obj[key]=JSON.parse('{ "date":"----/--/--"}');}
 			}
             for(var key in obj.facture){
-            	if(obj.facture[key]==0){obj.facture[key]="-";}
+            	if(obj.facture[key]<1){obj.facture[key]="0";}
             }
             //remplissage du Proces boxe
           // document.getElementById("procesBoxM").children[2].children[0].children[1].textContent = obj.description;
@@ -185,15 +227,15 @@ function modifier(){
             else if(obj.statut==3){ pb.children[5].children[0].children[1].textContent = "Troisieme Instance"; }
             
             //remplissage du box de la facture
-             fb.children[0].children[0].children[1].textContent = obj.facture.idFacture ;
-            fb.children[1].children[0].children[1].value = obj.facture.mtBase ;
-            fb.children[2].children[0].children[1].value = obj.facture.lgKm ;
-            fb.children[3].children[0].children[1].value = obj.facture.prKm ;
+            fb.children[0].children[0].children[1].textContent = obj.facture.idFacture ;
+            fb.children[1].children[0].children[1].textContent = obj.facture.mtBase ;
+            /*fb.children[2].children[0].children[1].value = obj.facture.lgKm ;
+            fb.children[3].children[0].children[1].value = obj.facture.prKm ;*/
             fb.children[4].children[0].children[1].textContent = obj.facture.indemniteKm ;
-            fb.children[5].children[0].children[1].value = obj.facture.dureeJr ;
-            fb.children[6].children[0].children[1].value = obj.facture.prixJr ;
+            /*fb.children[5].children[0].children[1].value = obj.facture.dureeJr ;
+            fb.children[6].children[0].children[1].value = obj.facture.prixJr ;*/
             fb.children[7].children[0].children[1].textContent = obj.facture.prixLog ;
-            fb.children[8].children[0].children[1].value = obj.facture.mtGlobal ;
+            fb.children[8].children[0].children[1].textContent = obj.facture.mtGlobal ;
             fb.children[9].children[0].children[1].value = obj.facture.mtPaye ;
             fb.children[10].children[0].children[1].textContent = (obj.facture.mtGlobal-obj.facture.mtPaye) ;
             fb.children[11].children[0].children[1].value = obj.facture.datePayement.date ;
@@ -203,6 +245,11 @@ function modifier(){
             }
 			Padding();
 			
+		    montantGlobal = obj.facture.mtGlobal;
+		    indemniteKilometrique = obj.facture.indemniteKm;
+		    fraisLogement = obj.facture.prixLog;
+		    
+			
 		}
 		
 	});
@@ -211,7 +258,7 @@ function modifier(){
 //traitement du modification avec le serveur 
 
 function modifierProces(){
-	 	var statutMN;
+	 	//var statutMN;
 		if(nomRegex.test(nomAdvM.value)==true && nomRegex.test(prenomAdvM.value)==true  && cinRegex.test(cinAdvM.value)==true && adresseRegex.test(adresseAdvM.value)==true && avocatAdvRegex.test(avocatAdvRegex.value)==true && adresseRegex.test(tribunalM.value)==true && adresseRegex.test(villeM.value)==true && adresseRegex.test(jugementM.value)==true && adresseRegex.test(descriptionM.value)==true &&  numSalRegex.test(numeroSalM.value)==true &&  numSalRegex.test(numeroProcesM.value)==true){
 			/*if(statutM.value==="premiere Instance"){statutMN = 1;}
 			else if(statutM.value==="deuxieme Instance"){statutMN = 2;}
@@ -258,7 +305,13 @@ function modifierProces(){
 }
 
 function modifierFacture(){
-	alert("f");
+	if(numberRegex.test(prixJrM.value)==true &&  numberRegex.test(prixKmM.value)==true &&  numberRegex.test(lgKmM.value)==true &&  numberRegex.test(dureeJrM.value)==true &&  numberRegex.test(mtPayeM.value)==true &&  numberRegex.test(mtGlobalM.textContent)==true &&  numberRegex.test(mtRestantM.textContent)==true &&numberRegex.test(IndemniteKmM.textContent)==true &&    numberRegex.test(fraisLogM.textContent)==true &&  numberRegex.test(montantBaseM.textContent)==true &&   datelocal.test(datePayM.value)==true ){
+		 $.post("ConsulterProces",{action : "modifierFacture", procesToBeEdited : procesToBeEdited , montantBaseM : montantBaseM.textContent , lgKmM : lgKmM.value , prixKmM : prixKmM.value , IndemniteKmM : IndemniteKmM.textContent , dureeJrM : dureeJrM.value , prixJrM : prixJrM.value , fraisLogM : fraisLogM.textContent , mtGlobalM : mtGlobalM.textContent ,  mtPayeM : mtPayeM.value , datePayM : datePayM.value }, function(data){});
+	}
+	else{
+		alert("no");
+	}
+
 }
 
 
@@ -333,6 +386,23 @@ function imprimer(divName) {
  }
 
 
+//fonctions de calcul 
+function calculMontantGlobal(){
+	mtGlobalM.textContent = parseFloat((parseFloat(montantGlobal) +  (parseFloat( parseFloat(indemniteKilometrique) + (lgKmM.value*prixKmM.value))) + (parseFloat( parseFloat(fraisLogement) + (dureeJrM.value*prixJrM.value))))).toFixed(3); 
+}
+
+function calculIdmKm(){
+	IndemniteKmM.textContent  = parseFloat(parseFloat( parseFloat(indemniteKilometrique) + (lgKmM.value*prixKmM.value))).toFixed(3);
+}
+
+function calculFrLog(){
+	fraisLogM.textContent  = parseFloat(parseFloat( parseFloat(fraisLogement) + (dureeJrM.value*prixJrM.value))).toFixed(3);
+}
+
+function calculRest(){
+	mtRestantM.textContent = parseFloat(parseFloat(mtGlobalM.textContent) - mtPayeM.value).toFixed(3);
+}
+
 
 
 
@@ -370,6 +440,11 @@ function validationFacture(){
 
 function validationAvocatAdv(){
 	if(avocatAdvRegex.test(this.value)==false)  {this.style.color = "red"}
+	else {this.style.color = "#333"}
+}
+
+function validationNumber(){
+	if(numberRegex.test(this.value)==false)  {this.style.color = "red"}
 	else {this.style.color = "#333"}
 }
 

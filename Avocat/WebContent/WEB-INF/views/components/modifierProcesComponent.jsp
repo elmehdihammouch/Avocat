@@ -55,14 +55,14 @@
                 <p></p>
                 <ul class="pricingM">
                   <li > <span class="procesTitles"><span class="spanM">Numero de la  facture : </span><span id="idFacture"></span></span><br></li>
-                <li > <span class="procesTitles"><span class="spanM">Montant de base :  </span><input type="text" placeholder="-" value="" name="montantBaseM" id="montantBaseM"></span><br></li>
+                <li > <span class="procesTitles"><span class="spanM">Montant de base :  </span><span id="montantBaseM"></span></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Longueur par Km :</span><input type="text" placeholder="-" value="" name="lgKmM" id="lgKmM"></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Prix par Km : </span><input type="text" placeholder="-" value="" name="prixKmM" id="prixKmM"></span><br></li>
-                <li > <span class="procesTitles"><span class="spanM">Indemnité kilométrique :</span><span id="IndemniteKmM">-</span></span><br></li>
+                <li > <span class="procesTitles"><span class="spanM">Indemnité kilométrique :</span><span id="IndemniteKmM"></span></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Duree par jour par jour :</span><input type="text" placeholder="-" value="" name="dureeJrM" id="dureeJrM"></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Prix par jour :</span><input type="text" placeholder="-" value="" name="prixJrM" id="prixJrM"></span><br></li>
-                <li > <span class="procesTitles"><span class="spanM">Frais du logement:</span><span id="fraisLogM">-</span></span><br></li>
-                <li > <span class="procesTitles"><span class="spanM">Montant Global :  </span><span  id="mtGlobalM">-</span></span><br></li>
+                <li > <span class="procesTitles"><span class="spanM">Frais du logement:</span><span id="fraisLogM"></span></span><br></li>
+                <li > <span class="procesTitles"><span class="spanM">Montant Global :  </span><span  id="mtGlobalM"></span></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Montant payé : </span><input type="text" placeholder="-" value="" name="mtPayeM" id="mtPayeM"></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Montant restant : </span><span id="mtRestantM"></span></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Date de payement : </span><input type="datetime-local" value="" name="datePayM" id="datePayM"></span><br></li>

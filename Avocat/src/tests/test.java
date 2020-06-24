@@ -26,6 +26,7 @@ import models.Dossier;
 import models.Files;
 import models.Proces;
 import tools.Date;
+import tools.TypeChecker;
 
 
 public class test {
@@ -140,7 +141,7 @@ Date d = Date.toDbDate("2020-06-13T16:01");
 //Proces p = new Proces(16, "", d, "", "", "", "", "", "", "", "", "", d, d, "1", d, d, 3);
 //daoAjouterProces.procesUpdate(p);
 //Proces.procesCheck(p);
-System.out.println(Date.toDBCheck(d));
+System.out.println(TypeChecker.floatChecker(null));
 	}
 	
 

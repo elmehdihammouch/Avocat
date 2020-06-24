@@ -75,7 +75,7 @@ public class daoAjouterProces {
 							e.printStackTrace();
 							System.out.println("erreur lors de la selection du max(idProces)");
 						}
-		res=Connexion.maj("INSERT INTO facture (idProces, prKm, mtGlobal, mtBase, mtPaye, datePayement) values("+p.getIdProces()+","+p.getFacture().getPrKm()+","+p.getFacture().getMtGlobal()+","+p.getFacture().getMtBase()+","+p.getFacture().getMtpaye()+",'"+p.getFacture().getDatePayement().getDate()+"');");	
+		res=Connexion.maj("INSERT INTO facture (idProces, mtGlobal, mtBase, mtPaye, datePayement) values("+p.getIdProces()+","+p.getFacture().getMtGlobal()+","+p.getFacture().getMtBase()+","+p.getFacture().getMtpaye()+",'"+p.getFacture().getDatePayement().getDate()+"');");	
 		}else {System.out.println("ajout du proces a echoué");}
 		//ajout des fichiers dans le cas ou l'ajout de la facture a été realisé avec succes
 		if(res==1) {
@@ -120,7 +120,7 @@ public class daoAjouterProces {
 			
 			while(res.next()) {
 				
-				Facture facture = new Facture(res.getInt(23), res.getInt(24), res.getInt(25)) ;
+				Facture facture = new Facture(res.getInt(23), res.getFloat(24), res.getFloat(25)) ;
 				
 				
 				Files file = new Files(res.getInt(26), res.getInt(1), res.getString(27), res.getString(28));
@@ -148,7 +148,7 @@ public class daoAjouterProces {
 		res=Connexion.select("SELECT p.idProces, p.idDos, p.numP, p.dateCP, p.dateAP, p.description, p.adresseAdv, p.cinAdv, p.nomAdv, p.prenomAdv, p.avocatAdv, p.tribunal, p.ville, p.saleNum, p.dateSeance, p.dateSui, p.txtJug, p.dateJug, p.dateNotif, p.statut, c.prenom, c.nom, f.idFacture, f.mtGlobal, f.mtPaye FROM proces p,dossier d, client c, facture f WHERE p.idDos=d.idDos AND d.idClient=c.idClient AND p.idProces=f.idProces AND p.idProces not in (select pi.idProces from piece pi)");
 		while(res.next()) {
 			
-			Facture facture = new Facture(res.getInt(23), res.getInt(24), res.getInt(25)) ;
+			Facture facture = new Facture(res.getInt(23), res.getFloat(24), res.getFloat(25)) ;
 			Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
 			procesM.put(res.getString(21)+" "+res.getString(22), proces);
 		}
@@ -168,8 +168,7 @@ public class daoAjouterProces {
 		res=Connexion.select("SELECT p.idProces, p.idDos, p.numP, p.dateCP, p.dateAP, p.description, p.adresseAdv, p.cinAdv, p.nomAdv, p.prenomAdv, p.avocatAdv, p.tribunal, p.ville, p.saleNum, p.dateSeance, p.dateSui, p.txtJug, p.dateJug, p.dateNotif, p.statut, c.prenom, c.nom, f.idFacture, f.mtGlobal, f.mtPaye,f.mtBase, f.lgKm, f.prKm, f.indemniteKm, f.dureeJr, f.prixJr, f.prixLog,  f.datePayement  FROM proces p,dossier d, client c, facture f  WHERE p.idDos=d.idDos AND d.idClient=c.idClient AND p.idProces=f.idProces AND p.idProces="+id+";");
 		try {
 			if(res.next()) {//f.idFacture, f.mtGlobal, f.mtPaye,p.mtBase, p.lgKm, p.prKm, p.indemniteKm, p.dureeJr, p.prixJr, p.prixLog, p .datePayement
-				Facture facture = new Facture(res.getInt(23), res.getInt(1), Date.toToolsDate(res.getTimestamp(33)) , res.getInt(29), res.getInt(27), res.getInt(28), res.getInt(32), res.getInt(30), res.getInt(31), res.getInt(26), res.getInt(24), res.getInt(25));
-			    proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
+				Facture facture = new Facture(res.getInt(23), res.getInt(1), Date.toToolsDate(res.getTimestamp(33)) , res.getFloat(29), res.getFloat(27), res.getFloat(28), res.getFloat(32), res.getFloat(30), res.getFloat(31), res.getFloat(26), res.getFloat(24), res.getFloat(25));			    proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
 				res=Connexion.select("SELECT idPiece, idProces, nomFichier, path FROM piece WHERE idProces="+id+";");
 				ArrayList<Files> files = new ArrayList<Files>();
 				while(res.next()) {

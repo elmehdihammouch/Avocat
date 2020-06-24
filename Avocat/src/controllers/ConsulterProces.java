@@ -124,6 +124,7 @@ public class ConsulterProces extends HttpServlet {
 	
 	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		JSONObject obj=new JSONObject();
 		PrintWriter out = response.getWriter();
 		String action = request.getParameter("action");
@@ -139,6 +140,7 @@ public class ConsulterProces extends HttpServlet {
 			System.out.println(json);
 			out.print(json);
 		}
+		
 		
 		else if (action.equals("modifierProces")) {
 			
@@ -158,5 +160,13 @@ public class ConsulterProces extends HttpServlet {
 			out.print(obj);
 		}
 	}
+
+
+	
+
+
+
+
+
 
 }

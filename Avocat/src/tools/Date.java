@@ -9,13 +9,13 @@ import java.time.format.DateTimeFormatter;
 
 
 public class Date {
-	public String date;
-	public int day;
-	public int year;
-	public int month;
-	public int heurs;
-	public int minutes;
-	public int seconds;
+	private String date;
+	private int day;
+	private int year;
+	private int month;
+	private int heurs;
+	private int minutes;
+	private int seconds;
 	
 	
 	

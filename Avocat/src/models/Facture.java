@@ -3,18 +3,18 @@ package models;
 import tools.Date;
 
 public class Facture {
-	private int idFacture;
-	private int idProces;
-	private Date datePayement;
-	private int indemniteKm;
-	private int lgKm;
-	private int prKm;
-	private int prixLog;
-	private int dureeJr;
-	private int prixJr;
-	private int mtBase;
-	private int mtGlobal;
-	private int mtPaye;
+	  private int idFacture;
+	  private int idProces;
+	  private Date datePayement;
+	  private Float indemniteKm;
+	  private Float lgKm;
+	  private Float prKm;
+	  private Float prixLog;
+	  private Float dureeJr;
+	  private Float prixJr;
+	  private Float mtBase;
+	  private Float mtGlobal;
+	  private Float mtPaye;
 	
 	
 	public Facture() {
@@ -22,16 +22,15 @@ public class Facture {
 	}
 
 
-	public Facture(Date datePayement, int prKm, int mtBase, int mtGlobal, int mtpaye) {
+	public Facture(Date datePayement, Float mtBase, Float mtGlobal, Float mtpaye) {
 		super();
 		this.datePayement = datePayement;
-		this.prKm = prKm;
 		this.mtBase = mtBase;
 		this.mtGlobal = mtGlobal;
 		this.mtPaye = mtpaye;
 	}
 	
-	public Facture(int idProces, Date datePayement, int prKm, int mtBase, int mtGlobal, int mtpaye) {
+	public Facture(int idProces, Date datePayement, Float prKm, Float mtBase, Float mtGlobal, Float mtpaye) {
 		super();
 		this.idProces = idProces;
 		this.datePayement = datePayement;
@@ -42,8 +41,8 @@ public class Facture {
 	}
 
 
-	public Facture(int idProces, Date datePayement, int indemniteKm, int lgKm, int prKm, int prixLog, int dureeJr,
-			int prixJr, int mtBase, int mtGlobal, int mtpaye) {
+	public Facture(int idProces, Date datePayement, Float indemniteKm, Float lgKm, Float prKm, Float prixLog, Float dureeJr,
+			Float prixJr, Float mtBase, Float mtGlobal, Float mtpaye) {
 		super();
 		this.idProces = idProces;
 		this.datePayement = datePayement;
@@ -59,8 +58,8 @@ public class Facture {
 	}
 
 
-	public Facture(int idFacture, int idProces, Date datePayement, int indemniteKm, int lgKm, int prKm, int prixLog,
-			int dureeJr, int prixJr, int mtBase, int mtGlobal, int mtpaye) {
+	public Facture(int idFacture, int idProces, Date datePayement, Float indemniteKm, Float lgKm, Float prKm, Float prixLog,
+			Float dureeJr, Float prixJr, Float mtBase, Float mtGlobal, Float mtpaye) {
 		super();
 		this.idFacture = idFacture;
 		this.idProces = idProces;
@@ -78,7 +77,7 @@ public class Facture {
 
 	
 
-	public Facture(int idFacture, int mtGlobal, int mtPaye) {
+	public Facture(int idFacture, Float mtGlobal, Float mtPaye) {
 		super();
 		this.idFacture = idFacture;
 		this.mtGlobal = mtGlobal;
@@ -116,102 +115,102 @@ public class Facture {
 	}
 
 
-	public int getIndemniteKm() {
+	public Float getIndemniteKm() {
 		return indemniteKm;
 	}
 
 
-	public void setIndemniteKm(int indemniteKm) {
+	public void setIndemniteKm(Float indemniteKm) {
 		this.indemniteKm = indemniteKm;
 	}
 
 
-	public int getLgKm() {
+	public Float getLgKm() {
 		return lgKm;
 	}
 
 
-	public void setLgKm(int lgKm) {
+	public void setLgKm(Float lgKm) {
 		this.lgKm = lgKm;
 	}
 
 
-	public int getPrKm() {
+	public Float getPrKm() {
 		return prKm;
 	}
 
 
-	public void setPrKm(int prKm) {
+	public void setPrKm(Float prKm) {
 		this.prKm = prKm;
 	}
 
 
-	public int getPrixLog() {
+	public Float getPrixLog() {
 		return prixLog;
 	}
 
 
-	public void setPrixLog(int prixLog) {
+	public void setPrixLog(Float prixLog) {
 		this.prixLog = prixLog;
 	}
 
 
-	public int getDureeJr() {
+	public Float getDureeJr() {
 		return dureeJr;
 	}
 
 
-	public void setDureeJr(int dureeJr) {
+	public void setDureeJr(Float dureeJr) {
 		this.dureeJr = dureeJr;
 	}
 
 
-	public int getPrixJr() {
+	public Float getPrixJr() {
 		return prixJr;
 	}
 
 
-	public void setPrixJr(int prixJr) {
+	public void setPrixJr(Float prixJr) {
 		this.prixJr = prixJr;
 	}
 
 
-	public int getMtBase() {
+	public Float getMtBase() {
 		return mtBase;
 	}
 
 
-	public void setMtBase(int mtBase) {
+	public void setMtBase(Float mtBase) {
 		this.mtBase = mtBase;
 	}
 
 
-	public int getMtGlobal() {
+	public Float getMtGlobal() {
 		return mtGlobal;
 	}
 
 
-	public void setMtGlobal(int mtGlobal) {
+	public void setMtGlobal(Float mtGlobal) {
 		this.mtGlobal = mtGlobal;
 	}
 
 
-	public int getMtpaye() {
+	public Float getMtpaye() {
 		return mtPaye;
 	}
 
 
-	public void setMtpaye(int mtpaye) {
+	public void setMtpaye(Float mtpaye) {
 		this.mtPaye = mtpaye;
 	}
 
 
-	public int getMtPaye() {
+	public Float getMtPaye() {
 		return mtPaye;
 	}
 
 
-	public void setMtPaye(int mtPaye) {
+	public void setMtPaye(Float mtPaye) {
 		this.mtPaye = mtPaye;
 	}
 
