@@ -1,5 +1,8 @@
 
 			
+			<span id="idProcesFile" style="display : none"><%=request.getAttribute("idProces")%></span>
+			
+			
 				
 				
 <div id="modificationDiv"	style="display:none;"	>
@@ -63,7 +66,8 @@
                 <li > <span class="procesTitles"><span class="spanM">Prix par jour :</span><input type="text" placeholder="-" value="" name="prixJrM" id="prixJrM"></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Frais du logement:</span><span id="fraisLogM"></span></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Montant Global :  </span><span  id="mtGlobalM"></span></span><br></li>
-                <li > <span class="procesTitles"><span class="spanM">Montant payé : </span><input type="text" placeholder="-" value="" name="mtPayeM" id="mtPayeM"></span><br></li>
+                <li > <span class="procesTitles"><span class="spanM">ancien montant paye :  </span><span  id="mtPayeAncienM"></span></span><br></li>
+                <li > <span class="procesTitles"><span class="spanM">Montant payé à ajouter : </span><input type="text" placeholder="-" value="" name="mtPayeM" id="mtPayeM"></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Montant restant : </span><span id="mtRestantM"></span></span><br></li>
                 <li > <span class="procesTitles"><span class="spanM">Date de payement : </span><input type="datetime-local" value="" name="datePayM" id="datePayM"></span><br></li>
                 </ul>
@@ -85,7 +89,14 @@
                 <ul class="pricingM">
                 
                 </ul>
-                <button class="btn btn-theme" >modifier</button>
+                
+                <form action="ConsulterProces" method="post" enctype="multipart/form-data">
+	                <ul class="pricingM">
+	                <li><input type="hidden" name="action" value="fileUpload"><input type="hidden" name="fileProces" id="fileProces"></li>
+	                <li><input type="file" name="file" id="files" class="inputfile" data-multiple-caption="{count} files selected" multiple /></li>
+	                </ul>
+	               <button class="btn btn-theme" type="submit">Ajouter une piece</button>
+                </form>
               </div>
               <!-- end custombox -->
             </div>

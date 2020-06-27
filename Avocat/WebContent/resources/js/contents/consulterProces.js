@@ -3,6 +3,9 @@
  	var montantGlobal;
  	var indemniteKilometrique;
  	var fraisLogement;
+ 	var montantPayeAncien;
+ 	var factTdToBeEdited;
+ 	
 
 	var nomAdvM=document.getElementById("nomAdvM");
     var prenomAdvM=document.getElementById("prenomAdvM"); 
@@ -33,6 +36,7 @@
     var 	mtPayeM = document.getElementById("mtPayeM");
     var 	mtRestantM = document.getElementById("mtRestantM");
     var 	datePayM = document.getElementById("datePayM");
+    var		mtPayeAncienM = document.getElementById("mtPayeAncienM");	
 
 
 
@@ -182,6 +186,11 @@ function afficher(){
 }
 //---------------------------------------------------------------------------------------------------------------------
 function modifier(){
+	//actualisation**
+	 mtPayeM.value.remove;
+	 factTdToBeEdited = this.parentElement.parentElement.parentElement.children[1].textContent
+	//**
+	
 	procesToBeEdited = this.parentElement.parentElement.parentElement.children[1].textContent;
 	affClientM = this.parentElement.parentElement.parentElement.children[3].textContent;
 	$.post("ConsulterProces",{action : "procesById" , procesToBeShown : procesToBeEdited}, function(data){
@@ -229,25 +238,34 @@ function modifier(){
             //remplissage du box de la facture
             fb.children[0].children[0].children[1].textContent = obj.facture.idFacture ;
             fb.children[1].children[0].children[1].textContent = obj.facture.mtBase ;
-            /*fb.children[2].children[0].children[1].value = obj.facture.lgKm ;
-            fb.children[3].children[0].children[1].value = obj.facture.prKm ;*/
-            fb.children[4].children[0].children[1].textContent = obj.facture.indemniteKm ;
-            /*fb.children[5].children[0].children[1].value = obj.facture.dureeJr ;
-            fb.children[6].children[0].children[1].value = obj.facture.prixJr ;*/
-            fb.children[7].children[0].children[1].textContent = obj.facture.prixLog ;
+            fb.children[2].children[0].children[1].value = "" ;
+            fb.children[3].children[0].children[1].value = "" ;
+            fb.children[4].children[0].children[1].textContent = "";
+            fb.children[5].children[0].children[1].value = "" ;
+            fb.children[6].children[0].children[1].value = "" ;
+            fb.children[7].children[0].children[1].textContent = "";
             fb.children[8].children[0].children[1].textContent = obj.facture.mtGlobal ;
-            fb.children[9].children[0].children[1].value = obj.facture.mtPaye ;
-            fb.children[10].children[0].children[1].textContent = (obj.facture.mtGlobal-obj.facture.mtPaye) ;
-            fb.children[11].children[0].children[1].value = obj.facture.datePayement.date ;
+            fb.children[9].children[0].children[1].textContent = obj.facture.mtPaye;
+            fb.children[10].children[0].children[1].value = "";
+            fb.children[11].children[0].children[1].textContent = (obj.facture.mtGlobal-obj.facture.mtPaye) ;
+            fb.children[12].children[0].children[1].value = obj.facture.datePayement.date ;
             //remplissage du box des files
             for(let i=0;i<obj.files.length;i++){
-			filesb.innerHTML += "<li ><a class=\"spanA\" href=\"ConsulterProces?action=fileDownload&filename="+obj.files[i].nomFichier+"\" target=\"_blank\">"+obj.files[i].nomFichier+" </a><span><span class=\"lp\"> </span><i class=\"fas fa-trash\"></i></span></li>"
+			filesb.innerHTML += "<li ><a class=\"spanA\" href=\"ConsulterProces?action=fileDownload&filename="+obj.files[i].nomFichier+"\" target=\"_blank\">"+obj.files[i].nomFichier+" </a><span><span class=\"lp\"> </span><i class=\"fas fa-trash pieceIcon\"></i></span></li>"
             }
+            document.getElementById("fileProces").value=procesToBeEdited;
+            
 			Padding();
 			
 		    montantGlobal = obj.facture.mtGlobal;
 		    indemniteKilometrique = obj.facture.indemniteKm;
 		    fraisLogement = obj.facture.prixLog;
+		    montantPayeAncien = obj.facture.mtPaye;
+		    
+		    var pieceIconTab = document.getElementsByClassName("pieceIcon");
+		    for(let i=0;i<pieceIconTab.length;i++){
+		    	pieceIconTab[i].addEventListener("click",supprimerPiece);
+		    }
 		    
 			
 		}
@@ -259,11 +277,11 @@ function modifier(){
 
 function modifierProces(){
 	 	//var statutMN;
-		if(nomRegex.test(nomAdvM.value)==true && nomRegex.test(prenomAdvM.value)==true  && cinRegex.test(cinAdvM.value)==true && adresseRegex.test(adresseAdvM.value)==true && avocatAdvRegex.test(avocatAdvRegex.value)==true && adresseRegex.test(tribunalM.value)==true && adresseRegex.test(villeM.value)==true && adresseRegex.test(jugementM.value)==true && adresseRegex.test(descriptionM.value)==true &&  numSalRegex.test(numeroSalM.value)==true &&  numSalRegex.test(numeroProcesM.value)==true){
+	if(nomRegex.test(nomAdvM.value)==true && nomRegex.test(prenomAdvM.value)==true  && cinRegex.test(cinAdvM.value)==true && adresseRegex.test(adresseAdvM.value)==true && avocatAdvRegex.test(avocatAdvRegex.value)==true && adresseRegex.test(tribunalM.value)==true && adresseRegex.test(villeM.value)==true && adresseRegex.test(jugementM.value)==true && adresseRegex.test(descriptionM.value)==true &&  numSalRegex.test(numeroSalM.value)==true &&  numSalRegex.test(numeroProcesM.value)==true){
 			/*if(statutM.value==="premiere Instance"){statutMN = 1;}
 			else if(statutM.value==="deuxieme Instance"){statutMN = 2;}
 			else if(statutM.value==="troisieme Instance"){statutMN = 3;}*/
-			
+		if ( confirm( "êtes vous sûr de vouloir modifier les données de ce proces?" ) ) {
 			$.post("ConsulterProces",{action : "modifierProces", procesToBeEdited : procesToBeEdited , nomAdvM : nomAdvM.value , prenomAdvM : prenomAdvM.value , cinAdvM : cinAdvM.value , adresseAdvM : adresseAdvM.value , avocatAdvM : avocatAdvM.value , dateNotifM  : dateNotifM.value , dateAcceptationM : dateAcceptationM.value , numeroProcesM : numeroProcesM.value , tribunalM : tribunalM.value , villeM : villeM.value , numeroSalM : numeroSalM.value , dateSeaM : dateSeaM.value , jugementM : jugementM.value , dateJugM : dateJugM.value , dateSuivM : dateSuivM.value , descriptionM : descriptionM.value }, function(data){
 				var obj = JSON.parse(data);
 				if(obj.res==1){
@@ -296,7 +314,7 @@ function modifierProces(){
 				else{alert("modification échouée");}
 			}); 		
 			}
-		
+	}	
 		else{
 			alert("veillez remplir les champs importants");
 		}
@@ -306,10 +324,39 @@ function modifierProces(){
 
 function modifierFacture(){
 	if(numberRegex.test(prixJrM.value)==true &&  numberRegex.test(prixKmM.value)==true &&  numberRegex.test(lgKmM.value)==true &&  numberRegex.test(dureeJrM.value)==true &&  numberRegex.test(mtPayeM.value)==true &&  numberRegex.test(mtGlobalM.textContent)==true &&  numberRegex.test(mtRestantM.textContent)==true &&numberRegex.test(IndemniteKmM.textContent)==true &&    numberRegex.test(fraisLogM.textContent)==true &&  numberRegex.test(montantBaseM.textContent)==true &&   datelocal.test(datePayM.value)==true ){
-		 $.post("ConsulterProces",{action : "modifierFacture", procesToBeEdited : procesToBeEdited , montantBaseM : montantBaseM.textContent , lgKmM : lgKmM.value , prixKmM : prixKmM.value , IndemniteKmM : IndemniteKmM.textContent , dureeJrM : dureeJrM.value , prixJrM : prixJrM.value , fraisLogM : fraisLogM.textContent , mtGlobalM : mtGlobalM.textContent ,  mtPayeM : mtPayeM.value , datePayM : datePayM.value }, function(data){});
+		
+			if ( confirm( "êtes vous sûr de vouloir modifier les données de cette facture?" ) ) {
+			$.post("ConsulterProces",{action : "modifierFacture", procesToBeEdited : procesToBeEdited , montantBaseM : montantBaseM.textContent , lgKmM : lgKmM.value , prixKmM : prixKmM.value , IndemniteKmM : IndemniteKmM.textContent , dureeJrM : dureeJrM.value , prixJrM : prixJrM.value , fraisLogM : fraisLogM.textContent , mtGlobalM : mtGlobalM.textContent ,  mtPayeM : mtPayeM.value , mtPayeAncienM : mtPayeAncienM.textContent , datePayM : datePayM.value }, function(data){
+				var obj = JSON.parse(data);
+				if(obj.res==1){
+						alert("Modification terminée");
+						var factTdToBeEditedTab = document.getElementsByClassName("etatFacture");
+						
+						console.log(factTdToBeEdited);
+								for(let i=0;i<factTdToBeEditedTab.length;i++){
+									if(factTdToBeEditedTab[i].parentElement.children[1].textContent==factTdToBeEdited){
+										if(parseFloat(obj.mtGblobal)-parseFloat(obj.mtPaye)==0){
+										factTdToBeEditedTab[i].textContent="payee";
+										factTdToBeEditedTab[i].style.color ="#00ffcc";
+										}
+										else{
+											factTdToBeEditedTab[i].textContent="pas encore payee";
+											factTdToBeEditedTab[i].style.color ="#ff3333";
+										}
+									}
+								}
+							
+				}
+				
+				else{
+						alert("La modification de la facture a échoué");
+				}
+				
+			});
+			}	
 	}
 	else{
-		alert("no");
+		alert("certains champs ne sont pas valides");
 	}
 
 }
@@ -333,7 +380,30 @@ function modifierFacture(){
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 function supprimer(){
-	alert(3);
+	procesToBeDeleted = this.parentElement.parentElement.parentElement.children[1].textContent;
+	rowToDelete = this.parentElement.parentElement.parentElement;
+	if ( confirm( "êtes vous sûr de vouloir supprimer ce proces?" ) ) {
+		$.post("ConsulterProces",{action : "supprimerProces", procesToBeDeleted : procesToBeDeleted }, function(data){
+				if(data==1){
+					alert("le proces a été suprimé avec succes");
+					rowToDelete.remove();
+				}
+				else{alert("suppression echouée");}
+			});
+	}	
+}
+
+function supprimerPiece(){
+	pieceToBeDeleted = this.parentElement.parentElement;
+	if ( confirm( "êtes vous sûr de vouloir supprimer cette piece jointe?" ) ) {
+		$.post("ConsulterProces",{action : "supprimerPiece", pieceToBeDeleted : pieceToBeDeleted.children[0].textContent }, function(data){
+			if(data==1){
+				pieceToBeDeleted.remove();
+				alert("piece supprimée");
+			}
+			else{alert("suppression echouée");}
+		});
+	}
 }
 
 
@@ -388,22 +458,32 @@ function imprimer(divName) {
 
 //fonctions de calcul 
 function calculMontantGlobal(){
-	mtGlobalM.textContent = parseFloat((parseFloat(montantGlobal) +  (parseFloat( parseFloat(indemniteKilometrique) + (lgKmM.value*prixKmM.value))) + (parseFloat( parseFloat(fraisLogement) + (dureeJrM.value*prixJrM.value))))).toFixed(3); 
+	if(numberRegex.test(lgKmM.value)==false || numberRegex.test(prixKmM.value)==false  || numberRegex.test(dureeJrM.value)==false  || numberRegex.test(prixJrM.value)==false )
+	{mtGlobalM.textContent=0;}
+	else{mtGlobalM.textContent = parseFloat( parseFloat(montantGlobal) +  parseFloat((lgKmM.value*prixKmM.value)) + parseFloat((dureeJrM.value*prixJrM.value)) ).toFixed(3); }
 }
 
 function calculIdmKm(){
-	IndemniteKmM.textContent  = parseFloat(parseFloat( parseFloat(indemniteKilometrique) + (lgKmM.value*prixKmM.value))).toFixed(3);
+	if(numberRegex.test(lgKmM.value)==false || lgKmM.value=="" || numberRegex.test(prixKmM.value)==false || prixKmM.value=="")
+	{IndemniteKmM.textContent  = 0;}
+	else{IndemniteKmM.textContent  = parseFloat((lgKmM.value*prixKmM.value)).toFixed(3);}
 }
 
 function calculFrLog(){
-	fraisLogM.textContent  = parseFloat(parseFloat( parseFloat(fraisLogement) + (dureeJrM.value*prixJrM.value))).toFixed(3);
+	if(numberRegex.test(dureeJrM.value)==false || dureeJrM.value=="" || numberRegex.test(prixJrM.value)==false || prixJrM.value=="")
+	{fraisLogM.textContent  = 0;}
+	else{fraisLogM.textContent  = parseFloat((dureeJrM.value*prixJrM.value)).toFixed(3);}
 }
 
 function calculRest(){
-	mtRestantM.textContent = parseFloat(parseFloat(mtGlobalM.textContent) - mtPayeM.value).toFixed(3);
+	if(numberRegex.test(mtPayeM.value)==false || mtPayeM.value=="")
+	{mtRestantM.textContent = parseFloat(parseFloat(mtGlobalM.textContent) - (0 + parseFloat(montantPayeAncien) ) ).toFixed(3);}
+	else{mtRestantM.textContent = parseFloat(parseFloat(mtGlobalM.textContent) - (parseFloat(mtPayeM.value) + parseFloat(montantPayeAncien) ) ).toFixed(3);}
+
+	
+	
+
 }
-
-
 
 
 // validation des inputs 
@@ -485,6 +565,16 @@ window.onload = function(){
 	for(let i=0;i<tabSup.length;i++){
 		tabSup[i].addEventListener("click",supprimer)
 	}
+	
+	if(document.getElementById("idProcesFile").textContent!="null"){
+		trowMod = document.getElementsByClassName("trowM");
+		for(let i=0;i<trowMod.length;i++){
+			if(trowMod[i].children[1].textContent==document.getElementById("idProcesFile").textContent){
+				trowMod[i].children[10].children[0].children[1].click();
+			}
+		}
+	}
+	
 }
 
 

@@ -3,12 +3,17 @@ package controllers;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.apache.commons.io.FilenameUtils;
 import org.json.simple.JSONObject;
@@ -16,13 +21,17 @@ import org.json.simple.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import DAO.daoAjouterProces;
+import models.Facture;
+import models.Files;
 import models.Proces;
 import tools.Date;
+import tools.TypeChecker;
 
 /**
  * Servlet implementation class ConsulterProces
  */
 @WebServlet("/ConsulterProces")
+@MultipartConfig
 public class ConsulterProces extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -159,6 +168,44 @@ public class ConsulterProces extends HttpServlet {
 			obj.put("res",res);
 			out.print(obj);
 		}
+		
+		
+		else if (action.equals("modifierFacture")) {
+			Facture f = new Facture(Integer.parseInt(request.getParameter("procesToBeEdited")), Date.toDbDate(request.getParameter("datePayM")), TypeChecker.floatChecker(request.getParameter("lgKmM")), TypeChecker.floatChecker(request.getParameter("prixKmM")), TypeChecker.floatChecker(request.getParameter("dureeJrM")),TypeChecker.floatChecker(request.getParameter("prixJrM")), TypeChecker.floatChecker(request.getParameter("montantBaseM")), Float.parseFloat("0"), TypeChecker.floatChecker(request.getParameter("mtPayeAncienM")), TypeChecker.floatChecker(request.getParameter("mtPayeM")) );
+			System.out.println(f.toString());
+			int res =daoAjouterProces.factureUpdate(f);
+			
+			obj.put("res", res);
+			if(res==1) {
+				Facture fa = daoAjouterProces.FactureByIdProces(Integer.parseInt(request.getParameter("procesToBeEdited")));
+				obj.put("mtGblobal", fa.getMtGlobal());
+				obj.put("mtPaye",fa.getMtpaye());
+			}
+			out.print(obj);
+			
+		}
+		
+		else if(action.equals("supprimerProces")) {
+			int res = daoAjouterProces.supprimerProces(Integer.parseInt(request.getParameter("procesToBeDeleted")));
+			out.print(res);
+		}
+		
+		else if(action.equals("supprimerPiece")) {
+			int res = daoAjouterProces.supprimerPiece(request.getParameter("pieceToBeDeleted"));
+			System.out.println(request.getParameter("pieceToBeDeleted"));
+			out.print(res);
+		}
+		
+		else if(action.equals("fileUpload")) {
+			List<Part> files = request.getParts().stream().filter(part -> "file".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList());
+			ArrayList<Files> filesList = Files.fileUpload(files)	;	
+			for(Files ff : filesList) {System.out.println("nom : "+ff.getNomFichier()+"     path : "+ff.getPath());}
+			daoAjouterProces.fileUploadDB(filesList, Integer.parseInt(request.getParameter("fileProces")));
+			
+			request.setAttribute("idProces", Integer.parseInt(request.getParameter("fileProces")));
+			request.getRequestDispatcher("/WEB-INF/views/pages/consulterProces.jsp").forward(request, response);
+			
+		}		
 	}
 
 

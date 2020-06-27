@@ -111,9 +111,9 @@
                                         	<%} %>
                                                 
                                 <%if(e.getValue().getFacture().getMtGlobal()-e.getValue().getFacture().getMtpaye()==0) {%>  
-                                                <td style="color : #00ffcc;">payée</td>
+                                                <td style="color : #00ffcc;" class="etatFacture">payée</td>
                                 <%}else { %>     
-                                				<td style="color : #ff3333;">pas encore payée</td>
+                                				<td style="color : #ff3333;" class="etatFacture">pas encore payée</td>
                                 <%} %> 
                                                 
                                                 <td>

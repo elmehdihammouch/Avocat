@@ -36,6 +36,25 @@ public class Proces {
 		super();
 	}
 	
+	//constructor of procesArch
+	public Proces(int idProces, String adresseAdv, String nomAdv, String prenomAdv, String avocatAdv, String tribunal,
+			String ville, String saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug) {
+		super();
+		this.idProces = idProces;
+		this.adresseAdv = adresseAdv;
+		this.nomAdv = nomAdv;
+		this.prenomAdv = prenomAdv;
+		this.avocatAdv = avocatAdv;
+		this.tribunal = tribunal;
+		this.ville = ville;
+		this.saleNum = saleNum;
+		this.dateSeance = dateSeance;
+		this.dateSui = dateSui;
+		this.txtJug = txtJug;
+		this.dateJug = dateJug;
+	}
+	
+	
 	
 
 	public Proces(int idProces, String numP, Date dateAP, String description, String adresseAdv,
@@ -63,6 +82,8 @@ public class Proces {
 	}
 
 
+
+	
 
 	public Proces(int idDos, String description, String adresseAdv, String cinAdv, String nomAdv, String prenomAdv,
 			String avocatAdv, ArrayList<Files> files, Facture facture,Date dateNotif, int statut) {

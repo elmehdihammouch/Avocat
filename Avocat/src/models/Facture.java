@@ -6,15 +6,14 @@ public class Facture {
 	  private int idFacture;
 	  private int idProces;
 	  private Date datePayement;
-	  private Float indemniteKm;
 	  private Float lgKm;
 	  private Float prKm;
-	  private Float prixLog;
 	  private Float dureeJr;
 	  private Float prixJr;
 	  private Float mtBase;
 	  private Float mtGlobal;
 	  private Float mtPaye;
+	  private Float mtPayeAjoute;
 	
 	
 	public Facture() {
@@ -41,15 +40,13 @@ public class Facture {
 	}
 
 
-	public Facture(int idProces, Date datePayement, Float indemniteKm, Float lgKm, Float prKm, Float prixLog, Float dureeJr,
+	public Facture(int idProces, Date datePayement, Float lgKm, Float prKm, Float dureeJr,
 			Float prixJr, Float mtBase, Float mtGlobal, Float mtpaye) {
 		super();
 		this.idProces = idProces;
 		this.datePayement = datePayement;
-		this.indemniteKm = indemniteKm;
 		this.lgKm = lgKm;
 		this.prKm = prKm;
-		this.prixLog = prixLog;
 		this.dureeJr = dureeJr;
 		this.prixJr = prixJr;
 		this.mtBase = mtBase;
@@ -58,20 +55,58 @@ public class Facture {
 	}
 
 
-	public Facture(int idFacture, int idProces, Date datePayement, Float indemniteKm, Float lgKm, Float prKm, Float prixLog,
-			Float dureeJr, Float prixJr, Float mtBase, Float mtGlobal, Float mtpaye) {
+	public Facture(int idFacture, int idProces, Date datePayement, Float lgKm, Float prKm,
+			Float dureeJr, Float prixJr, Float mtBase, Float mtGlobal, Float mtpaye, Float mtpayeajoute) {
 		super();
 		this.idFacture = idFacture;
 		this.idProces = idProces;
 		this.datePayement = datePayement;
-		this.indemniteKm = indemniteKm;
 		this.lgKm = lgKm;
 		this.prKm = prKm;
-		this.prixLog = prixLog;
 		this.dureeJr = dureeJr;
 		this.prixJr = prixJr;
 		this.mtBase = mtBase;
 		this.mtGlobal = mtGlobal;
+		this.mtPaye = mtpaye;
+		this.mtPayeAjoute = mtpayeajoute;
+		
+	}
+	
+	public Facture( int idProces, Date datePayement, Float lgKm, Float prKm,
+			Float dureeJr, Float prixJr, Float mtBase, Float mtGlobal, Float mtpaye, Float mtpayeajoute) {
+		super();
+		this.idProces = idProces;
+		this.datePayement = datePayement;
+		this.lgKm = lgKm;
+		this.prKm = prKm;
+		this.dureeJr = dureeJr;
+		this.prixJr = prixJr;
+		this.mtBase = mtBase;
+		this.mtPaye = mtpaye;
+		this.mtPayeAjoute = mtpayeajoute;
+		
+	}
+	
+	public Facture(int idFacture, int idProces, Date datePayement, Float mtBase, Float mtGlobal, Float mtpaye) {
+		super();
+		this.idFacture = idFacture;
+		this.idProces = idProces;
+		this.datePayement = datePayement;
+		this.mtBase = mtBase;
+		this.mtGlobal = mtGlobal;
+		this.mtPaye = mtpaye;
+	}
+	
+	public Facture(int idProces, Date datePayement, Float lgKm, Float prKm,
+			Float dureeJr, Float prixJr, Float mtBase, Float mtpaye) {
+		super();
+		this.idProces = idProces;
+		this.datePayement = datePayement;
+		this.lgKm = lgKm;
+		this.prKm = prKm;
+		this.dureeJr = dureeJr;
+		this.prixJr = prixJr;
+		this.mtBase = mtBase;
 		this.mtPaye = mtpaye;
 	}
 
@@ -115,14 +150,7 @@ public class Facture {
 	}
 
 
-	public Float getIndemniteKm() {
-		return indemniteKm;
-	}
-
-
-	public void setIndemniteKm(Float indemniteKm) {
-		this.indemniteKm = indemniteKm;
-	}
+	
 
 
 	public Float getLgKm() {
@@ -145,14 +173,7 @@ public class Facture {
 	}
 
 
-	public Float getPrixLog() {
-		return prixLog;
-	}
-
-
-	public void setPrixLog(Float prixLog) {
-		this.prixLog = prixLog;
-	}
+	
 
 
 	public Float getDureeJr() {
@@ -213,15 +234,28 @@ public class Facture {
 	public void setMtPaye(Float mtPaye) {
 		this.mtPaye = mtPaye;
 	}
+	
+
+
+	public Float getMtPayeAjoute() {
+		return mtPayeAjoute;
+	}
+
+
+	public void setMtPayeAjoute(Float mtPayeAjoute) {
+		this.mtPayeAjoute = mtPayeAjoute;
+	}
 
 
 	@Override
 	public String toString() {
 		return "Facture [idFacture=" + idFacture + ", idProces=" + idProces + ", datePayement=" + datePayement
-				+ ", indemniteKm=" + indemniteKm + ", lgKm=" + lgKm + ", prKm=" + prKm + ", prixLog=" + prixLog
-				+ ", dureeJr=" + dureeJr + ", prixJr=" + prixJr + ", mtBase=" + mtBase + ", mtGlobal=" + mtGlobal
-				+ ", mtPaye=" + mtPaye + "]";
+				+ ", lgKm=" + lgKm + ", prKm=" + prKm + ", dureeJr=" + dureeJr + ", prixJr=" + prixJr + ", mtBase="
+				+ mtBase + ", mtGlobal=" + mtGlobal + ", mtPaye=" + mtPaye + ", mtPayeAjoute=" + mtPayeAjoute + "]";
 	}
+
+
+	
 	
 	
 	
