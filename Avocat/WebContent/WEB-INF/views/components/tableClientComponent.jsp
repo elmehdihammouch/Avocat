@@ -1,4 +1,8 @@
-<section id="main-content">
+<%@page import="models.Client"%>
+<%@page import="DAO.daoClient"%>
+<%@page import="java.util.ArrayList"%>
+<div id="tab" >
+
 	<section class="wrapper">
 	        <div class="row mb">
 	          <!-- page start-->
@@ -64,37 +68,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="tr-shadow">
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td>Jilali</td>
-                                                <td>
-                                                    FERH
-                                                </td>
-                                                <td class="desc">BH10217</td>
-                                                <td><span class="block-email">lori@example.com</span></td>
-                                                <td>
-                                                    <span style="font-size: 1em">Salmia 2 rue 32 app 4 imm 29</span>
-                                                </td>
-                                                <td>0627378661</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item afficher" data-toggle="tooltip" data-placement="top" title="Eye" >
-                                                            <i class="zmdi zmdi-eye"></i>
-                                                        </button>
-                                                        <button class="item modifier" data-toggle="tooltip" data-placement="top" title="Edit" >
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item supprimer" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                        </div>
-                                                </td>
-                                            </tr>
+                                        <%ArrayList<Client> list = daoClient.listClient();
+                                        	for(int i =0 ; i<list.size();i++){%>
                                                   <tr class="tr-shadow">
                                                 <td>
                                                     <label class="au-checkbox">
@@ -102,19 +77,20 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </td>
-                                                <td>Jilali</td>
+                                                <td style="display: none"><input type="text" readonly="readonly" value="<%=list.get(i).getId()%>"></td>
+                                                <td><%=list.get(i).getNom()%></td>
                                                 <td>
-                                                    FERH
+                                                    <%=list.get(i).getPrenom()%>
                                                 </td>
-                                                <td class="desc">BH10217</td>
-                                                <td><span class="block-email">lori@example.com</span></td>
+                                                <td class="desc"><%=list.get(i).getCin() %></td>
+                                                <td><span class="block-email"><%=list.get(i).getEmail() %></span></td>
                                                 <td>
-                                                    <span style="font-size: 1em">Salmia 2 rue 32 app 4 imm 29</span>
+                                                    <span style="font-size: 1em"><%=list.get(i).getAdresse() %></span>
                                                 </td>
-                                                <td>0627378662</td>
+                                                <td><%=list.get(i).getTelephone() %></td>
                                                 <td>
                                                     <div class="table-data-feature">
-                                                        <button class="item afficher" data-toggle="tooltip" data-placement="top" title="Eye" >
+                                                        <button class="item afficher btnPopup" data-toggle="tooltip" data-placement="top" title="Eye" >
                                                             <i class="zmdi zmdi-eye"></i>
                                                         </button>
                                                         <button class="item modifier" data-toggle="tooltip" data-placement="top" title="Edit" >
@@ -126,70 +102,8 @@
                                                         </div>
                                                 </td>
                                             </tr>
-                                            <tr class="tr-shadow">
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td>Jilali</td>
-                                                <td>
-                                                    FERH
-                                                </td>
-                                                <td class="desc">BH10217</td>
-                                                <td><span class="block-email">lori@example.com</span></td>
-                                                <td>
-                                                    <span style="font-size: 1em">Salmia 2 rue 32 app 4 imm 29</span>
-                                                </td>
-                                                <td>0627378663</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item afficher" data-toggle="tooltip" data-placement="top" title="Eye" >
-                                                            <i class="zmdi zmdi-eye"></i>
-                                                        </button>
-                                                        <button class="item modifier" data-toggle="tooltip" data-placement="top" title="Edit" >
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item supprimer" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                        </div>
-                                                </td>
-                                            </tr>
-                                            
-                                                  <tr class="tr-shadow">
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td>Jilali</td>
-                                                <td>
-                                                    FERH
-                                                </td>
-                                                <td class="desc">BH10217</td>
-                                                <td><span class="block-email">lori@example.com</span></td>
-                                                <td>
-                                                    <span style="font-size: 1em">Salmia 2 rue 32 app 4 imm 29</span>
-                                                </td>
-                                                <td>0627378664</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item afficher" data-toggle="tooltip" data-placement="top" title="Eye" >
-                                                            <i class="zmdi zmdi-eye"></i>
-                                                        </button>
-                                                        <button class="item modifier" data-toggle="tooltip" data-placement="top" title="Edit" >
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item supprimer" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                        </div>
-                                                </td>
-                                            </tr>
-                                            
+                                            <tr class="spacer"></tr>
+                                            <%} %>
                                         </tbody>
                                     </table>
                                 </div>
@@ -201,4 +115,4 @@
         	</div>
     	</div>
 	</section>            
-</section>
+</div>

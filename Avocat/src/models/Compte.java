@@ -14,6 +14,17 @@ public class Compte {
 		this.passwordCl = passwordCl;
 		this.statut = statut;
 	}
+	
+	
+	public Compte(int idClient, String emailCl, String passwordCl, int statut) {
+		super();
+		this.idClient = idClient;
+		this.emailCl = emailCl;
+		this.passwordCl = passwordCl;
+		this.statut = statut;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Compte [idCompte=" + idCompte + ", idClient=" + idClient + ", emailCl=" + emailCl + ", passwordCl="

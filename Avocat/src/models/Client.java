@@ -19,6 +19,52 @@ public class Client {
 	
 	
 	
+	
+	
+
+
+	public Client(int id, String nom, String prenom, String cin, String telephone, String email) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.telephone = telephone;
+		this.email = email;
+	}
+
+
+	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String adresse, String municipale,
+			String telephone, String email) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNais = dateNais;
+		this.lieuNais = lieuNais;
+		this.adresse = adresse;
+		this.municipale = municipale;
+		this.telephone = telephone;
+		this.email = email;
+	}
+
+
+	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String adresse, String municipale,
+			String telephone, String email, Compte compte) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNais = dateNais;
+		this.lieuNais = lieuNais;
+		this.adresse = adresse;
+		this.municipale = municipale;
+		this.telephone = telephone;
+		this.email = email;
+		this.compte = compte;
+	}
+
+
 	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String nationalite, String adresse,
 			String cin, String municipale, String telephone, String email, Compte compte) {
 		super();

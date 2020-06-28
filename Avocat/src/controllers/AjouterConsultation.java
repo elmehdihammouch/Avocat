@@ -41,7 +41,7 @@ public class AjouterConsultation extends HttpServlet {
 			DAO.daoAjouterConsultation.ajoutclient(client);
 			out.println("1") ;
 		}else if(request.getParameter("operation").equals("addc")){
-			Consultation cons = new Consultation(request.getParameter("type"),request.getParameter("desc"),Integer.parseInt(request.getParameter("frais")));
+			Consultation cons = new Consultation(request.getParameter("type"),request.getParameter("desc"),Float.parseFloat(request.getParameter("frais")));
 			String cin=request.getParameter("cinClientAD") ;
 			DAO.daoAjouterConsultation.ajoutConsultation(cons, cin);
 			

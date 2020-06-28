@@ -5,19 +5,37 @@ public class Consultation {
 	private int idConsultation;
 	private String typeProces;
 	private String description;
-	private int frais;
-	public Consultation(int idConsultation, String typeProces, String description, int frais) {
+	private float frais;
+	private Client client;
+	public Consultation(int idConsultation, String typeProces, String description, float frais) {
 		super();
 		this.idConsultation = idConsultation;
 		this.typeProces = typeProces;
 		this.description = description;
 		this.frais = frais;
 	}
-	public Consultation(String typeProces, String description, int frais) {
+	public Consultation(String typeProces, String description, float frais) {
 		super();
 		this.typeProces = typeProces;
 		this.description = description;
 		this.frais = frais;
+	}
+	
+	
+	public Consultation(String typeProces, String description, float frais, Client client) {
+		super();
+		this.typeProces = typeProces;
+		this.description = description;
+		this.frais = frais;
+		this.client = client;
+	}
+	public Consultation(int idConsultation, String typeProces, String description, float frais, Client client) {
+		super();
+		this.idConsultation = idConsultation;
+		this.typeProces = typeProces;
+		this.description = description;
+		this.frais = frais;
+		this.client = client;
 	}
 	public Consultation() {
 		super();
@@ -41,11 +59,18 @@ public class Consultation {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getFrais() {
+	
+	public float getFrais() {
 		return frais;
 	}
-	public void setFrais(int frais) {
+	public void setFrais(float frais) {
 		this.frais = frais;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	
 	

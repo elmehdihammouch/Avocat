@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import models.Client;
 import models.Consultation;
@@ -53,4 +54,27 @@ public class daoAjouterConsultation {
 		
 		Connexion.disconect();
 	}
+	
+	
+	public static ArrayList<Consultation> listConsultation(){
+		ResultSet res;
+		ArrayList<Consultation> consultation = new ArrayList<Consultation>();
+		Connexion.connect();
+		res=Connexion.select("select cl.nom,cl.prenom,cl.cin ,cl.tel,cl.email, co.* from consultation co left outer join client cl ON cl.idClient = co.idClient");
+		try {
+			while(res.next()) { 
+				Client client = new Client(res.getInt(7), res.getString(1), res.getString(2),res.getString(3), res.getString(4), res.getString(5));
+				Consultation consultations = new Consultation(res.getInt(6), res.getString(8), res.getString(9), res.getFloat(10), client);
+				consultation.add(consultations);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Connexion.disconect();
+		return consultation;
+		
+	}
+	
 }

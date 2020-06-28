@@ -83,20 +83,14 @@ public class AjouterDossier extends HttpServlet {
 			//fichiers du proces
 			List<Part> files = request.getParts().stream().filter(part -> "file".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList());
 			//donnees de la facture
-			int FMB =Integer.parseInt(request.getParameter("FMB"));
-			int prixKm;
-			try {
-				prixKm =Integer.parseInt(request.getParameter("prixKm"));
-		    } catch (final NumberFormatException e) {
-		         prixKm = -1;
-		    }
-			int mtGlobal =Integer.parseInt(request.getParameter("mtGlobal"));
-			int mtPaye =Integer.parseInt(request.getParameter("mtPaye"));
+			Float FMB =Float.parseFloat(request.getParameter("FMB"));
+			Float mtGlobal =Float.parseFloat(request.getParameter("mtGlobal"));
+			Float mtPaye =Float.parseFloat(request.getParameter("mtPaye"));
 			//dates
 			tools.Date datePay = tools.Date.toDbDate(request.getParameter("datePay"));
 			tools.Date dateNotif = tools.Date.toDbDate(request.getParameter("dateNotif"));
 			
-			Facture facture = new Facture( datePay, prixKm, FMB, mtGlobal, mtPaye);		
+			Facture facture = new Facture( datePay, FMB, mtGlobal, mtPaye);		
 					
 			ArrayList<Files> filesList = Files.fileUpload(files)	;	
 			Proces p = new Proces(idDos, description, adresseAdv, cinAdv, nomAdv, prenomAdv, avocatAdv, filesList, facture,dateNotif,statut);
