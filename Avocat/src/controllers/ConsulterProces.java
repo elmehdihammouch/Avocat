@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import DAO.daoAjouterProces;
 import models.Facture;
+import models.FactureArch;
 import models.Files;
 import models.Proces;
 import tools.Date;
@@ -37,96 +38,101 @@ public class ConsulterProces extends HttpServlet {
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
-		if(action.equals("fileDownload")) {
-			String filename=null;
-			String filepath = null;
-	
-			try
-			{
-			    filename = request.getParameter("filename");        
-	
-			    if(filename == null || filename.equals(""))
-			    {
-			        throw new ServletException("File Name can't be null or empty");
-			    }
-			    //gestion des extensions
-			    if(FilenameUtils.getExtension(filename).equals("png") || FilenameUtils.getExtension(filename).equals("jpeg") || FilenameUtils.getExtension(filename).equals("jpg")) {
-			    filepath = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\images\\"+filename;   //change your directory path
-			    }
-			    
-			    else if(FilenameUtils.getExtension(filename).equals("mp3")) {
-				    filepath = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\audios\\"+filename;   //change your directory path
+		try {
+			String action = request.getParameter("action");
+			if(action.equals("fileDownload")) {
+				String filename=null;
+				String filepath = null;
+		
+				try
+				{
+				    filename = request.getParameter("filename");        
+		
+				    if(filename == null || filename.equals(""))
+				    {
+				        throw new ServletException("File Name can't be null or empty");
 				    }
-			    
-			    else if(FilenameUtils.getExtension(filename).equals("mp4")) {
-				    filepath = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\videos\\"+filename;   //change your directory path
-				    }
-			    
-			    else if(FilenameUtils.getExtension(filename).equals("pdf")) {
-				    filepath = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\pdfs\\"+filename;   //change your directory path
-				    }
-			    
-			    else if(FilenameUtils.getExtension(filename).equals("docx") || FilenameUtils.getExtension(filename).equals("doc") || FilenameUtils.getExtension(filename).equals("txt")) {
-				    filepath = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\docx\\"+filename;   //change your directory path
-				    }
-			    
-			    //-----------------------
-			    File file = new File(filepath);
-			    if(!file.exists())
-			    {
-			        throw new ServletException("File doesn't exists on server.");
-			    }
-			    //setting the content type of each file
-			    if(FilenameUtils.getExtension(filename).equals("png") || FilenameUtils.getExtension(filename).equals("jpeg") || FilenameUtils.getExtension(filename).equals("jpg")) {
-			    	response.setContentType("IMAGE");
-				    response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+				    //gestion des extensions
+				    if(FilenameUtils.getExtension(filename).equals("png") || FilenameUtils.getExtension(filename).equals("jpeg") || FilenameUtils.getExtension(filename).equals("jpg")) {
+				    filepath = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\images\\"+filename;   //change your directory path
 				    }
 				    
 				    else if(FilenameUtils.getExtension(filename).equals("mp3")) {
-				    	response.setContentType("audio");
-				    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+					    filepath = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\audios\\"+filename;   //change your directory path
 					    }
 				    
 				    else if(FilenameUtils.getExtension(filename).equals("mp4")) {
-				    	response.setContentType("video/mp4");
-				    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\"");  
-				    }
+					    filepath = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\videos\\"+filename;   //change your directory path
+					    }
 				    
 				    else if(FilenameUtils.getExtension(filename).equals("pdf")) {
-				    	response.setContentType("application/pdf");
-				    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+					    filepath = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\pdfs\\"+filename;   //change your directory path
 					    }
 				    
 				    else if(FilenameUtils.getExtension(filename).equals("docx") || FilenameUtils.getExtension(filename).equals("doc") || FilenameUtils.getExtension(filename).equals("txt")) {
-				    	response.setContentType("application/msword");
-				    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
-				    	System.out.println(1111111111);
+					    filepath = "C:\\Users\\Leopard\\git\\Avocat\\Avocat\\WebContent\\resources\\media\\docx\\"+filename;   //change your directory path
 					    }
-				    else {
-				    	response.setContentType("APPLICATION/OCTET-STREAM");
-					    response.setHeader("Content-Disposition","attachment; filename=\"" + filename + "\"");
+				    
+				    //-----------------------
+				    File file = new File(filepath);
+				    if(!file.exists())
+				    {
+				        throw new ServletException("File doesn't exists on server.");
 				    }
-			    	
-	
-			    
-			  //----------------------
-			    
-			     
-	
-			    java.io.FileInputStream fileInputStream = new java.io.FileInputStream(filepath);
-	
-			    int i; 
-			    while ((i=fileInputStream.read()) != -1) 
-			    {
-			         response.getWriter().write(i); 
-			    } 
-			    fileInputStream.close();
-			}
-			catch(Exception e)
-			{
-			    System.err.println("Error while downloading file["+filename+"]"+e);
-			}
+				    //setting the content type of each file
+				    if(FilenameUtils.getExtension(filename).equals("png") || FilenameUtils.getExtension(filename).equals("jpeg") || FilenameUtils.getExtension(filename).equals("jpg")) {
+				    	response.setContentType("IMAGE");
+					    response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+					    }
+					    
+					    else if(FilenameUtils.getExtension(filename).equals("mp3")) {
+					    	response.setContentType("audio");
+					    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+						    }
+					    
+					    else if(FilenameUtils.getExtension(filename).equals("mp4")) {
+					    	response.setContentType("video/mp4");
+					    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\"");  
+					    }
+					    
+					    else if(FilenameUtils.getExtension(filename).equals("pdf")) {
+					    	response.setContentType("application/pdf");
+					    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+						    }
+					    
+					    else if(FilenameUtils.getExtension(filename).equals("docx") || FilenameUtils.getExtension(filename).equals("doc") || FilenameUtils.getExtension(filename).equals("txt")) {
+					    	response.setContentType("application/msword");
+					    	response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\""); 
+					    	System.out.println(1111111111);
+						    }
+					    else {
+					    	response.setContentType("APPLICATION/OCTET-STREAM");
+						    response.setHeader("Content-Disposition","attachment; filename=\"" + filename + "\"");
+					    }
+				    	
+		
+				    
+				  //----------------------
+				    
+				     
+		
+				    java.io.FileInputStream fileInputStream = new java.io.FileInputStream(filepath);
+		
+				    int i; 
+				    while ((i=fileInputStream.read()) != -1) 
+				    {
+				         response.getWriter().write(i); 
+				    } 
+				    fileInputStream.close();
+				}
+				catch(Exception e)
+				{
+				    System.err.println("Error while downloading file["+filename+"]"+e);
+				}
+			}	
+
+		} catch (Exception e) {
+			request.getRequestDispatcher("/WEB-INF/views/pages/consulterProces.jsp").forward(request, response);
 		}	
 	}
 
@@ -171,15 +177,19 @@ public class ConsulterProces extends HttpServlet {
 		
 		
 		else if (action.equals("modifierFacture")) {
-			Facture f = new Facture(Integer.parseInt(request.getParameter("procesToBeEdited")), Date.toDbDate(request.getParameter("datePayM")), TypeChecker.floatChecker(request.getParameter("lgKmM")), TypeChecker.floatChecker(request.getParameter("prixKmM")), TypeChecker.floatChecker(request.getParameter("dureeJrM")),TypeChecker.floatChecker(request.getParameter("prixJrM")), TypeChecker.floatChecker(request.getParameter("montantBaseM")), Float.parseFloat("0"), TypeChecker.floatChecker(request.getParameter("mtPayeAncienM")), TypeChecker.floatChecker(request.getParameter("mtPayeM")) );
-			System.out.println(f.toString());
-			int res =daoAjouterProces.factureUpdate(f);
+			//Facture f = new Facture(Integer.parseInt(request.getParameter("procesToBeEdited")), Date.toDbDate(request.getParameter("datePayM")), TypeChecker.floatChecker(request.getParameter("lgKmM")), TypeChecker.floatChecker(request.getParameter("prixKmM")), TypeChecker.floatChecker(request.getParameter("dureeJrM")),TypeChecker.floatChecker(request.getParameter("prixJrM")), TypeChecker.floatChecker(request.getParameter("montantBaseM")), Float.parseFloat("0"), TypeChecker.floatChecker(request.getParameter("mtPayeAncienM")), TypeChecker.floatChecker(request.getParameter("mtPayeM")) );
+			Facture fid = daoAjouterProces.FactureByIdProces(Integer.parseInt(request.getParameter("procesToBeEdited")));
+			//Facture f= new Facture(fid.getIdFacture(), Integer.parseInt(request.getParameter("procesToBeEdited")), TypeChecker.floatChecker(request.getParameter("montantBaseM")), fid.getMtGlobal(), mtPaye) 
+			FactureArch fa = new FactureArch(fid.getIdFacture(),  Date.toDbDate(request.getParameter("datePayM")), TypeChecker.floatChecker(request.getParameter("lgKmM")), TypeChecker.floatChecker(request.getParameter("prixKmM")), TypeChecker.floatChecker(request.getParameter("dureeJrM")), TypeChecker.floatChecker(request.getParameter("prixJrM")), TypeChecker.floatChecker(request.getParameter("mtPayeM")));
+			
+			
+			int res =daoAjouterProces.factureUpdate(fid, fa);
 			
 			obj.put("res", res);
 			if(res==1) {
-				Facture fa = daoAjouterProces.FactureByIdProces(Integer.parseInt(request.getParameter("procesToBeEdited")));
-				obj.put("mtGblobal", fa.getMtGlobal());
-				obj.put("mtPaye",fa.getMtpaye());
+				Facture f = daoAjouterProces.FactureByIdProces(Integer.parseInt(request.getParameter("procesToBeEdited")));
+				obj.put("mtGblobal", f.getMtGlobal());
+				obj.put("mtPaye",f.getMtpaye());
 			}
 			out.print(obj);
 			

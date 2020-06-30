@@ -346,6 +346,17 @@ public static String toFDate(Date d) {
 	}
 	return FrontDate;
 }
+
+public static String toFDateXH(Date d) {
+	String FrontDate;
+	if(d!=null) {
+		FrontDate = d.getYear()+"-"+Date.intTransform(d.getMonth())+"-"+Date.intTransform(d.getDay());
+	}
+	else {
+	    FrontDate = null;
+	}
+	return FrontDate;
+}
 public static String intTransform(int i) {
 	int length = String.valueOf(i).length();
 	String 	result = String.valueOf(i);

@@ -4,6 +4,7 @@ package tests;
 
 
 
+import java.awt.desktop.SystemEventListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import org.apache.commons.io.FilenameUtils;
 import org.json.simple.JSONObject;
@@ -25,6 +27,7 @@ import models.Client;
 import models.Dossier;
 import models.Files;
 import models.Proces;
+import models.ProcesArch;
 import tools.Date;
 import tools.TypeChecker;
 
@@ -141,8 +144,29 @@ Date d = Date.toDbDate("2020-06-13T16:01");
 //Proces p = new Proces(16, "", d, "", "", "", "", "", "", "", "", "", d, d, "1", d, d, 3);
 //daoAjouterProces.procesUpdate(p);
 //Proces.procesCheck(p);
-System.out.println(TypeChecker.floatChecker(null));
+/*HashMap<HashMap<String, Proces>, ProcesArch> map = daoAjouterProces.procesArvhive(); 
+		for (Map.Entry<HashMap<String, Proces>, ProcesArch> e : map.entrySet()){ 
+			for (Map.Entry<String, Proces> ei : e.getKey().entrySet()){ 
+			System.out.println(ei.getKey());
+			System.out.println(ei.getValue().getIdProces());
+			System.out.println(e.getValue().getIdProces());
+			System.out.println(e.getValue().getIdProcesArch());
+			if(ei.getValue().getStatut()==1) {
+				
+			}
+			else if(ei.getValue().getStatut()==1) {
+				
+			}
+			else {
+				
+			}
+			}
+		}*/
+
+/*HashMap<String, Proces> p = daoAjouterProces.consulterProces();
+System.out.println(p.keySet().toString());*/
+String a="soufiane kanane,2";
+System.out.println(a.split(",")[0]);
 	}
-	
 
 }

@@ -10,7 +10,7 @@
       <section class="wrapper site-min-height">
         <div class="row">
           <div class="col-lg-10 col-lg-offset-2">
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
               <div class="custom-box" id="procesBoxM">
                 <div class="servicetitle">
                   <h4>Proces</h4>
@@ -103,8 +103,8 @@
             <div class="col-xs-12">
                     </div>
             
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 col-lg-offset-6 col-md-offset-6 col-sm-offset-6">
-            <button class="btn btn-theme" onclick="precedent()">Precedent</button>
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12  ">
+            <button class="btn btn-theme" style="white-space: pre;padding-left:315px;padding-right:295px;" onclick="precedent()">Precedent</button>
             </div>
             <!-- end col-4 -->
           </div>

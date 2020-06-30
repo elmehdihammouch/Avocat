@@ -46,7 +46,13 @@
                     
 							<tr class="trow">
 								<td class="dossierContent"><%=d.getIdDos()%></td>
-								<td class="dossierContent"><%=statut[i]%></td>
+		<%if(statut[i]==1){	%>					
+							    <td class="dossierContent">Premiere instance</td>	
+		<%}else if(statut[i]==2){ %>					
+							    <td class="dossierContent">Deuxieme instance</td>	
+		<%} else{ %>					
+							    <td class="dossierContent">Troisieme instance</td>	
+		<%} %>		
 								<td class="dossierContent"><%=d.getTypeProces()%></td>
 								<td class="dossierContent"><%=d.getDescription()%></td>
 							</tr>

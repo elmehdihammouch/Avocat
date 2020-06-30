@@ -6,7 +6,7 @@
 	<section id="main-content">
       <section class="wrapper site-min-height">
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-10 col-lg-offset-2">
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
               <div class="custom-box" id="procesBox">
                 <div class="servicetitle">
@@ -42,7 +42,7 @@
               <!-- end custombox -->
             </div>
             <!-- end col-4 -->
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
               <div class="custom-box" id="factureBox">
                 <div class="servicetitle">
                   <h4>Facture</h4>
@@ -55,12 +55,6 @@
                 <ul class="pricing">
                   <li > <span class="procesTitles">Numero de la  facture : </span><br></li>
                   <li > <span class="procesTitles">Montant de base :  </span><br></li>
-                  <li > <span class="procesTitles">Longueur par Km </span><br></li>
-                  <li > <span class="procesTitles">Prix par Km : </span><br></li>
-                  <li > <span class="procesTitles">Indemnité kilométrique :</span><br></li>
-                  <li > <span class="procesTitles">Duree par jour par jour :</span><br></li>
-                  <li > <span class="procesTitles">Prix par jour :</span><br></li>
-                  <li > <span class="procesTitles">Frais du logement:</span><br></li>
                   <li > <span class="procesTitles">Montant Global :  </span><br></li>
                   <li > <span class="procesTitles">Montant payé : </span><br></li>
                   <li > <span class="procesTitles">Montant restant : </span><br></li>
@@ -71,7 +65,7 @@
               <!-- end custombox -->
             </div>
             <!-- end col-4 -->
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
               <div class="custom-box" id="filesBox">
                 <div class="servicetitle">
                   <h4>Files</h4>
@@ -91,8 +85,8 @@
             <div class="col-xs-12">
                     </div>
             
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 col-lg-offset-6 col-md-offset-6 col-sm-offset-6">
-            <button class="btn btn-theme" onclick="precedent()">Precedent</button>
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12  ">
+            <button class="btn btn-theme" style="white-space: pre;padding-left:315px;padding-right:295px;" onclick="precedent()">Precedent</button>
             </div>
             <!-- end col-4 -->
           </div>

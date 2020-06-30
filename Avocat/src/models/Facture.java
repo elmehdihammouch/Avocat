@@ -13,12 +13,34 @@ public class Facture {
 	  private Float mtBase;
 	  private Float mtGlobal;
 	  private Float mtPaye;
-	  private Float mtPayeAjoute;
+	  
 	
 	
 	public Facture() {
 		super();
 	}
+	
+	
+
+
+	public Facture(int idFacture, int idProces, Float mtBase, Float mtGlobal, Float mtPaye) {
+		super();
+		this.idFacture = idFacture;
+		this.idProces = idProces;
+		this.mtBase = mtBase;
+		this.mtGlobal = mtGlobal;
+		this.mtPaye = mtPaye;
+	}
+	
+	public Facture( int idProces, Float mtBase, Float mtGlobal, Float mtPaye) {
+		super();
+		this.idProces = idProces;
+		this.mtBase = mtBase;
+		this.mtGlobal = mtGlobal;
+		this.mtPaye = mtPaye;
+	}
+
+
 
 
 	public Facture(Date datePayement, Float mtBase, Float mtGlobal, Float mtpaye) {
@@ -55,37 +77,7 @@ public class Facture {
 	}
 
 
-	public Facture(int idFacture, int idProces, Date datePayement, Float lgKm, Float prKm,
-			Float dureeJr, Float prixJr, Float mtBase, Float mtGlobal, Float mtpaye, Float mtpayeajoute) {
-		super();
-		this.idFacture = idFacture;
-		this.idProces = idProces;
-		this.datePayement = datePayement;
-		this.lgKm = lgKm;
-		this.prKm = prKm;
-		this.dureeJr = dureeJr;
-		this.prixJr = prixJr;
-		this.mtBase = mtBase;
-		this.mtGlobal = mtGlobal;
-		this.mtPaye = mtpaye;
-		this.mtPayeAjoute = mtpayeajoute;
-		
-	}
 	
-	public Facture( int idProces, Date datePayement, Float lgKm, Float prKm,
-			Float dureeJr, Float prixJr, Float mtBase, Float mtGlobal, Float mtpaye, Float mtpayeajoute) {
-		super();
-		this.idProces = idProces;
-		this.datePayement = datePayement;
-		this.lgKm = lgKm;
-		this.prKm = prKm;
-		this.dureeJr = dureeJr;
-		this.prixJr = prixJr;
-		this.mtBase = mtBase;
-		this.mtPaye = mtpaye;
-		this.mtPayeAjoute = mtpayeajoute;
-		
-	}
 	
 	public Facture(int idFacture, int idProces, Date datePayement, Float mtBase, Float mtGlobal, Float mtpaye) {
 		super();
@@ -237,21 +229,14 @@ public class Facture {
 	
 
 
-	public Float getMtPayeAjoute() {
-		return mtPayeAjoute;
-	}
-
-
-	public void setMtPayeAjoute(Float mtPayeAjoute) {
-		this.mtPayeAjoute = mtPayeAjoute;
-	}
+	
 
 
 	@Override
 	public String toString() {
 		return "Facture [idFacture=" + idFacture + ", idProces=" + idProces + ", datePayement=" + datePayement
 				+ ", lgKm=" + lgKm + ", prKm=" + prKm + ", dureeJr=" + dureeJr + ", prixJr=" + prixJr + ", mtBase="
-				+ mtBase + ", mtGlobal=" + mtGlobal + ", mtPaye=" + mtPaye + ", mtPayeAjoute=" + mtPayeAjoute + "]";
+				+ mtBase + ", mtGlobal=" + mtGlobal + ", mtPaye=" + mtPaye + "]";
 	}
 
 

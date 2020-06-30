@@ -91,7 +91,7 @@
 
                                                 <td style="display:none;"><%=e.getValue().getIdDos() %></td>
                                                 
-                                                <td ><%=e.getKey() %></td>
+                                                <td ><%=e.getKey().split(",")[0] %></td>
                                                 
                                                 <td><%=e.getValue().getNomAdv()+" "+e.getValue().getPrenomAdv() %></td>
                                                 

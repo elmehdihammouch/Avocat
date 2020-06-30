@@ -152,7 +152,7 @@ function afficher(){
             pb.children[11].innerHTML += "<div class=\"titlesContent\">"+obj.tribunal+"</div>";
             pb.children[12].innerHTML += "<div class=\"titlesContent\">"+obj.ville+"</div>";
             pb.children[13].innerHTML += "<div class=\"titlesContent\">"+obj.saleNum+"</div>";
-            pb.children[14].innerHTML += "<div class=\"titlesContent\">"+obj.dateSeance+"</div>";
+            pb.children[14].innerHTML += "<div class=\"titlesContent\">"+obj.dateSeance.date+"</div>";
             pb.children[15].innerHTML += "<div class=\"titlesContent\">"+obj.txtJug+"</div>";
             pb.children[16].innerHTML += "<div class=\"titlesContent\">"+obj.dateJug.date+"</div>";
             pb.children[17].innerHTML += "<div class=\"titlesContent\">"+obj.dateSui.date+"</div>";
@@ -163,16 +163,10 @@ function afficher(){
             //remplissage du box de la facture
             fb.children[0].innerHTML += "<div class=\"titlesContent\">"+obj.facture.idFacture+"</div>";
             fb.children[1].innerHTML += "<div class=\"titlesContent\">"+obj.facture.mtBase+"</div>";
-            fb.children[2].innerHTML += "<div class=\"titlesContent\">"+obj.facture.lgKm+"</div>";
-            fb.children[3].innerHTML += "<div class=\"titlesContent\">"+obj.facture.prKm+"</div>";
-            fb.children[4].innerHTML += "<div class=\"titlesContent\">"+obj.facture.indemniteKm+"</div>";
-            fb.children[5].innerHTML += "<div class=\"titlesContent\">"+obj.facture.dureeJr+"</div>";
-            fb.children[6].innerHTML += "<div class=\"titlesContent\">"+obj.facture.prixJr+"</div>";
-            fb.children[7].innerHTML += "<div class=\"titlesContent\">"+obj.facture.prixLog+"</div>";
-            fb.children[8].innerHTML += "<div class=\"titlesContent\">"+obj.facture.mtGlobal+"</div>";
-            fb.children[9].innerHTML += "<div class=\"titlesContent\">"+obj.facture.mtPaye+"</div>";
-            fb.children[10].innerHTML += "<div class=\"titlesContent\">"+(obj.facture.mtGlobal-obj.facture.mtPaye)+"</div>";
-            fb.children[11].innerHTML += "<div class=\"titlesContent\">"+obj.facture.datePayement.date+"</div>";
+            fb.children[2].innerHTML += "<div class=\"titlesContent\">"+obj.facture.mtGlobal+"</div>";
+            fb.children[3].innerHTML += "<div class=\"titlesContent\">"+obj.facture.mtPaye+"</div>";
+            fb.children[4].innerHTML += "<div class=\"titlesContent\">"+(obj.facture.mtGlobal-obj.facture.mtPaye)+"</div>";
+            fb.children[5].innerHTML += "<div class=\"titlesContent\">"+obj.facture.datePayement.date+"</div>";
 			
             
             //remplissage du box des files

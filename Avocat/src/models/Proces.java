@@ -54,6 +54,24 @@ public class Proces {
 		this.dateJug = dateJug;
 	}
 	
+	public Proces(int idDos, int idProces, String adresseAdv, String nomAdv, String prenomAdv, String avocatAdv, String tribunal,
+			String ville, String saleNum, Date dateSeance, Date dateSui, String txtJug, Date dateJug) {
+		super();
+		this.idDos = idDos;
+		this.idProces = idProces;
+		this.adresseAdv = adresseAdv;
+		this.nomAdv = nomAdv;
+		this.prenomAdv = prenomAdv;
+		this.avocatAdv = avocatAdv;
+		this.tribunal = tribunal;
+		this.ville = ville;
+		this.saleNum = saleNum;
+		this.dateSeance = dateSeance;
+		this.dateSui = dateSui;
+		this.txtJug = txtJug;
+		this.dateJug = dateJug;
+	}
+	
 	
 	
 

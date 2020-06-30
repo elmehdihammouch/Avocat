@@ -8,8 +8,10 @@ import java.util.HashMap;
 import models.Client;
 import models.Dossier;
 import models.Facture;
+import models.FactureArch;
 import models.Files;
 import models.Proces;
+import models.ProcesArch;
 import tools.Date;
 
 public class daoAjouterProces {
@@ -63,19 +65,22 @@ public class daoAjouterProces {
 		Connexion.connect();
 		res=Connexion.maj("insert into proces (idDos, description, adresseAdv, cinAdv, nomAdv, prenomAdv, avocatAdv, dateNotif, statut) values('"+p.getIdDos()+"','"+p.getDescription()+"','"+p.getAdresseAdv()+"','"+p.getCinAdv()+"','"+p.getNomAdv()+"','"+p.getPrenomAdv()+"','"+p.getAvocatAdv()+"','"+p.getDateNotif().getDate()+"','"+p.getStatut()+"');");
 		//ajout de la facture dans le cas ou l'ajout des donnes du proces ont été realisé avec succes
-		if(res==1) {
-					res1=Connexion.select("select max(idProces) from proces");
-						try {
-							if(res1.next()) {
-								p.setIdProces(res1.getInt(1)) ;
-								
-										}
-						
-						} catch (SQLException e) {
-							e.printStackTrace();
-							System.out.println("erreur lors de la selection du max(idProces)");
-						}
-		res=Connexion.maj("INSERT INTO facture (idProces, mtGlobal, mtBase, mtPaye, datePayement) values("+p.getIdProces()+","+p.getFacture().getMtGlobal()+","+p.getFacture().getMtBase()+","+p.getFacture().getMtpaye()+",'"+p.getFacture().getDatePayement().getDate()+"');");	
+			if(res==1) {
+						res1=Connexion.select("select max(idProces) from proces");
+							try {
+								if(res1.next()) {
+									p.setIdProces(res1.getInt(1)) ;
+									
+											}
+							
+							} catch (SQLException e) {
+								e.printStackTrace();
+								System.out.println("erreur lors de la selection du max(idProces)");
+							}
+			res=Connexion.maj("INSERT INTO facture (idProces, mtGlobal, mtBase, mtPaye, datePayement) values("+p.getIdProces()+","+p.getFacture().getMtGlobal()+","+p.getFacture().getMtBase()+","+p.getFacture().getMtpaye()+",'"+p.getFacture().getDatePayement().getDate()+"');");
+				if(res==1) {
+					res = Connexion.maj("INSERT INTO facturearch(idFacture, datePayement, lgKm, prKm, dureeJr, prixJr, mtPaye) VALUES ((select max(idFacture) from facture),'"+p.getFacture().getDatePayement().getDate()+"',0,0,0,0, "+p.getFacture().getMtpaye()+");");
+				}
 		}else {System.out.println("ajout du proces a echoué");}
 		//ajout des fichiers dans le cas ou l'ajout de la facture a été realisé avec succes
 		if(res==1) {
@@ -112,7 +117,7 @@ public class daoAjouterProces {
 	public static HashMap<String, Proces> consulterProces(){
 		ResultSet res;
 		HashMap<String, Proces> procesM = new HashMap<String, Proces>();
-		
+		int it=0;
 		Connexion.connect();
 		//adding proces objects which had files on it to the hashMAP
 		res=Connexion.select("SELECT p.idProces, p.idDos, p.numP, p.dateCP, p.dateAP, p.description, p.adresseAdv, p.cinAdv, p.nomAdv, p.prenomAdv, p.avocatAdv, p.tribunal, p.ville, p.saleNum, p.dateSeance, p.dateSui, p.txtJug, p.dateJug, p.dateNotif, p.statut, c.prenom, c.nom, f.idFacture, f.mtGlobal, f.mtPaye, pi.idPiece, pi.nomFichier, pi.path FROM proces p,dossier d, client c, facture f, piece pi  WHERE p.idDos=d.idDos AND d.idClient=c.idClient AND p.idProces=f.idProces AND p.idProces=pi.idProces;");
@@ -140,7 +145,8 @@ public class daoAjouterProces {
 					ArrayList<Files> files = new ArrayList<Files>();
 					files.add(file);
 					Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), files , facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
-					procesM.put(res.getString(21)+" "+res.getString(22), proces);
+					procesM.put(res.getString(21)+" "+res.getString(22)+","+it, proces);
+					it++;
 				}
 				//-----------
 			}
@@ -150,7 +156,8 @@ public class daoAjouterProces {
 			
 			Facture facture = new Facture(res.getInt(23), res.getFloat(24), res.getFloat(25)) ;
 			Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
-			procesM.put(res.getString(21)+" "+res.getString(22), proces);
+			procesM.put(res.getString(21)+" "+res.getString(22)+","+it, proces);
+			it++;
 		}
 		
 		} catch (SQLException e) {
@@ -193,13 +200,14 @@ public class daoAjouterProces {
 		int result = 0;
 		Connexion.connect();
 		try {
-		//selection des donnes du proces pour les mettre dans procesArch
-		res = Connexion.select("SELECT  idProces, adresseAdv, nomAdv, prenomAdv, avocatAdv, tribunal, ville, saleNum, dateSeance, dateSui, txtJug, dateJug FROM proces WHERE idProces="+p.getIdProces()+" ;");
+		//selection des donnes du proces pour les mettre dans ProcesArch
+		res = Connexion.select("SELECT  idProces, adresseAdv, nomAdv, prenomAdv, avocatAdv, tribunal, ville, saleNum, dateSeance, dateSui, txtJug, dateJug, dateNotif, description FROM proces WHERE idProces="+p.getIdProces()+" ;");
 		
 				if(res.next()) {
-					Proces pi=new Proces(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), Date.toToolsDate(res.getTimestamp(9)), Date.toToolsDate(res.getTimestamp(10)),res.getString(11), Date.toToolsDate(res.getTimestamp(12)));
-					pi = Proces.procesCheck(pi);
-					result = Connexion.maj("INSERT INTO procesarch(idProces, adresseAdv, nomAdv, prenomAdv, avocatAdv, tribunal, ville, saleNum, dateSeance, dateSui, txtJug, dateJug) VALUES ("+pi.getIdProces()+", "+pi.getAdresseAdv()+", "+pi.getNomAdv()+", "+pi.getPrenomAdv()+", "+pi.getAvocatAdv()+", "+pi.getTribunal()+", "+pi.getVille()+", "+pi.getSaleNum()+", "+Date.toDBCheck(pi.getDateSeance())+", "+Date.toDBCheck(pi.getDateSui())+", "+pi.getTxtJug()+", "+Date.toDBCheck(pi.getDateJug())+");");
+				//	Proces pi=new Proces(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), Date.toToolsDate(res.getTimestamp(9)), Date.toToolsDate(res.getTimestamp(10)),res.getString(11), Date.toToolsDate(res.getTimestamp(12)));
+					ProcesArch pi=new ProcesArch(res.getInt(1), res.getString(14), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), Date.toToolsDate(res.getTimestamp(9)), Date.toToolsDate(res.getTimestamp(10)),res.getString(11), Date.toToolsDate(res.getTimestamp(12)), Date.toToolsDate(res.getTimestamp(13)));
+					pi = ProcesArch.procesArchCheck(pi);
+					result = Connexion.maj("INSERT INTO ProcesArch(idProces, adresseAdv, nomAdv, prenomAdv, avocatAdv, tribunal, ville, saleNum, dateSeance, dateSui, txtJug, dateJug, dateNotif, description) VALUES ("+pi.getIdProces()+", "+pi.getAdresseAdv()+", "+pi.getNomAdv()+", "+pi.getPrenomAdv()+", "+pi.getAvocatAdv()+", "+pi.getTribunal()+", "+pi.getVille()+", "+pi.getSaleNum()+", "+Date.toDBCheck(pi.getDateSeance())+", "+Date.toDBCheck(pi.getDateSui())+", "+pi.getTxtJug()+", "+Date.toDBCheck(pi.getDateJug())+", "+Date.toDBCheck(pi.getDateNotif())+", "+pi.getDescription()+");");
 				}
 		//modification dans proces
 				if(result==1) {
@@ -212,12 +220,14 @@ public class daoAjouterProces {
 		return result;
 	}
 	
-	public static int factureUpdate(Facture f) {
+	public static int factureUpdate(Facture f, FactureArch fa) {
 		int res=0;
 		Connexion.connect();
-		res = Connexion.maj("INSERT INTO facturearch(idFacture, datePayement, lgKm, prKm, dureeJr, prixJr, mtPaye) VALUES ( (select idFacture FROM facture WHERE idProces="+f.getIdProces()+"), "+Date.toDBCheck(f.getDatePayement())+", "+f.getLgKm()+", "+f.getPrKm()+", "+f.getDureeJr()+", "+f.getPrixJr()+", "+f.getMtPayeAjoute()+" );");
+		res = Connexion.maj("INSERT INTO facturearch(idFacture, datePayement, lgKm, prKm, dureeJr, prixJr, mtPaye) VALUES ("+fa.getIdFacture()+","+Date.toDBCheck(fa.getDatePayement())+", "+fa.getLgKm()+", "+fa.getPrKm()+", "+fa.getDureeJr()+", "+fa.getPrixJr()+", "+fa.getMtPaye()+" );");
 		if(res==1) {
-			res = Connexion.maj("UPDATE facture SET mtGlobal= (select mtGlobal from facture where idProces="+f.getIdProces()+")+("+f.getLgKm()*f.getPrKm()+")+("+f.getPrixJr()*f.getDureeJr()+"), mtPaye="+(f.getMtpaye()+f.getMtPayeAjoute())+", datePayement="+Date.toDBCheck(f.getDatePayement())+" where idProces="+f.getIdProces()+";");
+			//res = Connexion.maj("UPDATE facture SET mtGlobal= (select mtGlobal from facture where idProces="+f.getIdProces()+")+("+f.getLgKm()*f.getPrKm()+")+("+f.getPrixJr()*f.getDureeJr()+"), mtPaye="+(f.getMtpaye()+f.getMtPayeAjoute())+", datePayement="+Date.toDBCheck(f.getDatePayement())+" where idProces="+f.getIdProces()+";");
+			res = Connexion.maj("UPDATE facture SET mtGlobal="+(f.getMtGlobal()+(fa.getLgKm()*fa.getPrKm())+(fa.getDureeJr()*fa.getPrixJr()))+", mtPaye="+(f.getMtPaye()+fa.getMtPaye())+", datePayement="+Date.toDBCheck(f.getDatePayement())+" where idProces="+f.getIdProces()+";");
+
 			if(res==0) {
 				Connexion.maj("DELETE FROM facturearch WHERE idFactureArch=(select max(idFactureArch) from facturearch)");
 			}
@@ -251,7 +261,7 @@ public class daoAjouterProces {
 		Connexion.maj("DELETE FROM piece WHERE idProces="+idProces+";");
 		Connexion.maj("DELETE FROM facture WHERE idProces="+idProces+";");
 		Connexion.maj("DELETE FROM facturearch WHERE idFacture = (select idFacture from facture where idProces="+idProces+");");
-		Connexion.maj("DELETE FROM procesarch WHERE idProces="+idProces+";");
+		Connexion.maj("DELETE FROM ProcesArch WHERE idProces="+idProces+";");
 		res=Connexion.maj("DELETE FROM proces WHERE idProces="+idProces+";");
 			
 		Connexion.disconect();
@@ -277,6 +287,60 @@ public class daoAjouterProces {
 		Connexion.disconect();
 		return res;
 	}
+//*****************************************	
+	public static HashMap<HashMap<String, Proces>, ProcesArch> procesArvhive(){
+		ResultSet res;
+		HashMap<String, Proces> procesM ;
+		HashMap<HashMap<String, Proces>, ProcesArch> ProcesArch = new HashMap<HashMap<String, Proces>, ProcesArch>();
+		int it=0;
+		Connexion.connect();
+		res=Connexion.select("select c.nom, c.prenom, d.idDos, p.dateCP, p.dateAP, p.cinAdv, p.statut, a.idProcesArch, a.idProces, a.adresseAdv, a.nomAdv, a.prenomAdv, a.avocatAdv, a.tribunal, a.ville, a.saleNum, a.dateSeance, a.dateSui, a.txtJug, a.dateJug, a.dateNotif, a.description, p.numP, a.dateModifcation from client c, dossier d, proces p, ProcesArch a where c.idClient=d.idClient and d.idDos=p.idDos and p.idProces=a.idProces");
+		try {
+			while(res.next()) {
+				//remplissage de HashMap<String, Proces>
+				Proces p = new Proces();
+				p.setIdDos(res.getInt(3));
+				p.setDateCP(Date.toToolsDate(res.getTimestamp(4)));
+				p.setDateAP(Date.toToolsDate(res.getTimestamp(5)));
+				p.setCinAdv(res.getString(6));
+				p.setStatut(res.getInt(7));
+				p.setNumP(res.getString(23));
+				
+				procesM = new HashMap<String, Proces>();
+				procesM.put(res.getString(1)+" "+res.getString(2)+","+it, p);
+				it++;
+				//remplissage de HashMap<HashMap<String, Proces>, ProcesArch>
+				ProcesArch pa = new ProcesArch(res.getInt(8), res.getInt(9), res.getString(22), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), res.getString(15), res.getString(16), Date.toToolsDate(res.getTimestamp(17)), Date.toToolsDate(res.getTimestamp(18)), res.getString(19), Date.toToolsDate(res.getTimestamp(20)), Date.toToolsDate(res.getTimestamp(21)), Date.toToolsDate(res.getTimestamp(24))); 
+				ProcesArch.put(procesM, pa);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		Connexion.disconect();
+		return ProcesArch;
 	
-
+	}
+	
+	
+	
+//**************************************
+	public static ArrayList<FactureArch> factureArchive() {
+		ResultSet res;
+		ArrayList<FactureArch> fa = new ArrayList<FactureArch>();
+		Connexion.connect();
+		res=Connexion.select("SELECT idFactureArch, idFacture, datePayement, lgKm, prKm, dureeJr, prixJr, mtPaye, dateModifcation FROM facturearch ;");
+			try {
+				while(res.next()) {
+					FactureArch f = new FactureArch(res.getInt(1), res.getInt(2), Date.toToolsDate(res.getTimestamp(3)), res.getFloat(4), res.getFloat(5), res.getFloat(6), res.getFloat(7), res.getFloat(8), Date.toToolsDate(res.getTimestamp(9)));
+					fa.add(f);
+				}
+			} catch (SQLException e) {
+			
+				e.printStackTrace();
+			}
+		
+		Connexion.disconect();
+		return fa;
+	}
 }
