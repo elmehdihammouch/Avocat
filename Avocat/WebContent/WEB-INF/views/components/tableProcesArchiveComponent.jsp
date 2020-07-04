@@ -53,7 +53,7 @@
                   
                   
                                  
-                                        <button class="au-btn-filter"><i class="zmdi zmdi-filter-list"></i>filters</button>
+                                        <button class="au-btn-filter" onClick="deleteAll()"><i class="fas fa-dumpster"></i></button>
                                     </div>
                                     
                                     <div class="table-data__tool-right" >
@@ -95,7 +95,8 @@
                                         
                                     </div>
                                 </div>
-                                <div class="table-data__tool"> <div class="table-data__tool-left" ><div class="rs-select2--light rs-select2--md"  > <input type="text" id ="search" class="form-control round-form" style="width : 630px" placeholder="search"></div></div></div>
+                                <div class="table-data__tool"> <div class="table-data__tool-left" ><div class="rs-select2--light rs-select2--md"> <input type="text" id ="search" class="form-control round-form" style="width : 630px" placeholder="search"></div></div></div>
+                                
                                 <div class="table-responsive">
    <%HashMap<HashMap<String, Proces>, ProcesArch> map = daoAjouterProces.procesArvhive(); %>
    <span style="display : none" id="mapSize"><%=map.size()%></span> 
@@ -103,8 +104,8 @@
                                         <thead>
                                             <tr>
                                                 <th style="color : #4ecdc4" >
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
+                                                    <label class="au-checkbox" onClick="selectAll()">
+                                                        <input type="checkbox" id="check">
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th>
@@ -145,7 +146,7 @@
                                                 
                                                 <td>
                                                     <label class="au-checkbox">
-                                                        <input type="checkbox">
+                                                        <input type="checkbox" class="check">
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </td>

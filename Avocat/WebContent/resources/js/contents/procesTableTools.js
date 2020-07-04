@@ -1,5 +1,10 @@
 
 function pagination1(){
+	//unchecking selectAll
+	document.getElementById("check").checked=false;
+	selectAll();
+	//********		
+	
 	tabP=document.getElementById("pagination1").value;
 	tabT=document.getElementsByClassName("trow");
 	select=document.getElementById("pagination2");
@@ -39,6 +44,10 @@ pages.innerHTML+="<input type=\"text\" value=\""+(i+1)+"\" class=\"inp\">";
 
 
 function pagination2(){
+//unchecking selectAll
+document.getElementById("check").checked=false;
+selectAll();
+//********	
 tabP1=document.getElementById("pagination1").value;
 tabT=document.getElementsByClassName("trow");
 tabP2=document.getElementById("pagination2").value;
@@ -112,12 +121,42 @@ tri=document.getElementById("tri").value;
 		} );
 	}
 	}
-//}
+
+function selectAll(){
+    tabch=document.getElementsByClassName("check");
+    check=document.getElementById("check");
+    if(check.checked==true){
+			    for(i=0;i<tabch.length;i++){
+			    	if(tabch[i].parentElement.parentElement.parentElement.style.display == "table-row"){
+			    	tabch[i].checked=true;
+			    	}
+			    }
+}
+	else{
+		 for(i=0;i<tabch.length;i++){
+			    	tabch[i].checked=false;
+			    }
+	}
+
+}
+
+function deleteAll(){
+	count();
+}
+function count(){
+	j=0;
+	tabch=document.getElementsByClassName("check");
+	for(i=0;i<tabch.length;i++){
+		if(tabch[i].checked==true ){
+			j++;
+		}
+	}
+	alert(j);
+	return j;
+	}
 
 
-
-
-window.onload = function(){
+//onload
 //sorting by procesArchId Onloading
 	$(document).ready(function() {
 	    $('#tableAvocat').DataTable( {
@@ -131,7 +170,9 @@ window.onload = function(){
 	    } );
 	} );
 //*********************	
-
 	document.getElementById("search").addEventListener("keyup",search);
 	pagination1();
-}
+	tabch=document.getElementsByClassName("check");
+	for(i=0;i<tabch.length;i++){
+		tabch[i].addEventListener("click", function(){document.getElementById("check").checked=false;} )
+	}

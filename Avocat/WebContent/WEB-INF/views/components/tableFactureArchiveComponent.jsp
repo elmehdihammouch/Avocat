@@ -60,7 +60,7 @@
                   
                   
                                  
-                                        <button class="au-btn-filter"><i class="zmdi zmdi-filter-list"></i>filters</button>
+                                        <button class="au-btn-filter" onClick="deleteAll()"><i class="fas fa-dumpster"></i></button>
                                     </div>
                                     
                                     <div class="table-data__tool-right" >
@@ -102,8 +102,8 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
+                                                    <label class="au-checkbox" onClick="selectAll()">
+                                                        <input type="checkbox" id="check">
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th>
@@ -130,7 +130,7 @@
                                                 
                                                 <td>
                                                     <label class="au-checkbox">
-                                                        <input type="checkbox">
+                                                        <input type="checkbox" class="check">
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </td>
