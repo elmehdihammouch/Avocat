@@ -26,6 +26,7 @@
 </body>
 
  	<script type="text/javascript" src="./resources/jquery/jquery.js"></script>
+ 	<script type="text/javascript" src="./resources/js/contents/tableJs/jquery.dataTables.min.js"></script>
  	<script type="text/javascript" src="./resources/js/headers/jquery.dcjqaccordion.2.7.js"></script>
   	<script type="text/javascript" src="./resources/js/headers/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="./resources/js/headers/jquery.nicescroll.js"></script>
@@ -37,6 +38,8 @@
     <script type="text/javascript" src="./resources/js/contents/tableJs/table.js"></script>
    <!--------------------->
    <script type="text/javascript" src="./resources/js/contents/procesArchive.js"></script>
+   <script type="text/javascript" src="./resources/js/contents/procesTableTools.js"></script>
+   
      
       
       

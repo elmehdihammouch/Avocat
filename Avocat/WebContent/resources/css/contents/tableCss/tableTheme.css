@@ -4339,6 +4339,18 @@ section {
 .table-style1 .table tr td:last-child {
     padding-right: 30px;
 }
+td{
+white-space:nowrap;
+}
+td br{
+    display:none;
+}
+th{
+white-space:nowrap;
+}
+th br{
+    display:none;
+}
 
 .table-style1 .table td {
     font-size: 14px;

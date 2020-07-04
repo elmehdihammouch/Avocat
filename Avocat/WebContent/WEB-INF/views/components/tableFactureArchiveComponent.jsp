@@ -16,46 +16,89 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         
-                        <div class="row">
+                               <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
                                 <h3 class="title-5 m-b-35">data table</h3>
                                 <div class="table-data__tool">
-                                    <div class="table-data__tool-left">
-                                        <div class="rs-select2--light rs-select2--md">
-                                            <select class="js-select2" name="property">
-                                                <option selected="selected">All Properties</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
+                                    <div class="table-data__tool-left" >
+                        <!-- ******************************pagination**************************************** -->    
+                              <div class="rs-select2--light rs-select2--md"  onChange="pagination1()">  
+                                   
+                                            <select class="js-select2" name="" id="pagination1" >
+                                                <option selected="selected" value="0">All Properties</option>
+                                                <option value="1">3</option>
+                                                <option value="2">5</option>
+                                                <option value="7">7</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                              	<option value="10">10</option>
+                                                <option value="20">20</option>
+                                                <option value="30">30</option>
+                                                <option value="40">40</option>
+                                                <option value="50">50</option>
+                                                <option value="60">60</option>
+                                                <option value="70">70</option>
+                                                <option value="80">80</option>
+                                                <option value="90">90</option>
+                                                <option value="100">100</option>
                                             </select>
+                       <!-- ************************************************************************************ -->     
                                             <div class="dropDownSelect2"></div>
                                         </div>
-                                        <div class="rs-select2--light rs-select2--sm">
-                                            <select class="js-select2" name="time">
-                                                <option selected="selected">Today</option>
-                                                <option value="">3 Days</option>
-                                                <option value="">1 Week</option>
+                 	 <!-- ******************************pagination**************************************** --> 
+                                        <div class="rs-select2--light rs-select2--sm"  onChange="pagination2()">
+                         
+                                            <select class="js-select2" name="" id="pagination2">
+                                                
                                             </select>
+                       
                                             <div class="dropDownSelect2"></div>
                                         </div>
-                                        <button class="au-btn-filter">
-                                            <i class="zmdi zmdi-filter-list"></i>filters</button>
+                     <!-- *********************************************************************************** --> 
+                     
+                  
+                  
+                                 
+                                        <button class="au-btn-filter"><i class="zmdi zmdi-filter-list"></i>filters</button>
                                     </div>
-                                    <div class="table-data__tool-right">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                            <i class="zmdi zmdi-plus"></i>add item</button>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                            <select class="js-select2" name="type">
-                                                <option selected="selected">Export</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
+                                    
+                                    <div class="table-data__tool-right" >
+                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2" style="width:100px" onChange="trier()">
+                                            <select class="js-select2" id="filter" style="width:100px" >
+                                                <option selected="selected" value="filters">filters</option>
+                                                <option value="1">Numero de la facture</option>
+                                                <option value="2">Numero de la sous-facture</option>
+                                                <option value="3">Longueur Km</option>
+                                                <option value="4">Prix par Km</option>
+                                                <option value="5">Indemnité kilométrique</option>
+                                                <option value="6">Durée du logement</option>
+                                                <option value="7">Frais par jour</option>
+                                                <option value="8">Frais du logement</option>
+                                                <option value="9">Montant Payée</option>
+                                                <option value="10">Date de payement</option>
+                                                <option value="11">Date de modification</option>
                                             </select>
                                             <div class="dropDownSelect2"></div>
                                         </div>
+                              			<div class="rs-select2--light rs-select2--sm"  onChange="trier()">
+                         
+                                            <select class="js-select2" name="" id="tri">
+                                            	<option value="desactive">Tri dessactivé</option>
+                                                <option value="croissant">Croissant</option>
+                                                <option value="decroissant">Decroissant</option>
+                                            </select>
+                       
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
+                                <div class="table-data__tool"> <div class="table-data__tool-left" ><div class="rs-select2--light rs-select2--md"  > <input type="text" id ="search" class="form-control round-form" style="width : 630px" placeholder="search"></div></div></div>
                                 <div class="table-responsive">
-                                    <table class="table table-data2 ">
+     <%ArrayList<FactureArch> fa = daoAjouterProces.factureArchive(); %>
+     								<span style="display : none" id="mapSize"><%=fa.size()%></span>   
+                                    <table class="table table-data2 " id="tableAvocat">
                                         <thead>
                                             <tr>
                                                 <th>
@@ -78,13 +121,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-  <%ArrayList<FactureArch> fa = daoAjouterProces.factureArchive();
-  	for(FactureArch f : fa){
-                                         %>
+  
+  <% 	for(FactureArch f : fa){ %>
                                              
                                        		
                                        
-                                            <tr class="tr-shadow trowM">
+                                            <tr class="tr-shadow trowM trow">
                                                 
                                                 <td>
                                                     <label class="au-checkbox">
@@ -93,53 +135,53 @@
                                                     </label>
                                                 </td>
 
-                                                <td><%=f.getIdFacture() %></td>
+                                                <td class="1"><%=f.getIdFacture() %></td>
                                   
-                                                <td><%=f.getIdFactureArch() %></td>
+                                                <td class="2"><%=f.getIdFactureArch() %></td>
  <%if(f.getLgKm()!=0) {%>                                              
-                                                <td><%=f.getLgKm() %></td>
+                                                <td class="3"><%=f.getLgKm() %></td>
  <%}else { %>         
-												<td>-</td>  
+												<td class="3">-</td>  
                                                  
                                                 
   <%}if(f.getPrKm()!=0) {%>
-                                                <td><%=f.getPrKm() %></td>
+                                                <td class="4"><%=f.getPrKm() %></td>
    <%}else { %>         
-												<td>-</td>                                              
+												<td class="4">-</td>                                              
                                                 
   <%}if(f.getPrKm()!=0 || f.getLgKm()!=0) {%>                                              
-                                                <td style="color:#ff6666"><%=f.getPrKm()*f.getLgKm() %></td>
+                                                <td style="color:#ff6666" class="5"><%=f.getPrKm()*f.getLgKm() %></td>
   <%}else { %>         
-												<td style="color:#ff6666">-</td> 
+												<td style="color:#ff6666" class="5">-</td> 
   
   <%}if(f.getDureeJr()!=0) {%>                                               
-                                                <td><%=f.getDureeJr() %></td>
+                                                <td class="6"><%=f.getDureeJr() %></td>
    <%}else { %>         
-												<td>-</td> 
+												<td class="6">-</td> 
    
    <%}if(f.getPrixJr()!=0) {%>                                             
-                                                <td><%=f.getPrixJr() %></td>
+                                                <td class="7"><%=f.getPrixJr() %></td>
    <%}else { %>         
-												<td>-</td>    
+												<td class="7">-</td>    
       
    <%}if(f.getPrixJr()!=0 || f.getDureeJr()!=0) {%>                                             
-                                                <td style="color:#ff6666"><%=f.getPrixJr()*f.getDureeJr() %></td>
+                                                <td style="color:#ff6666" class="8"><%=f.getPrixJr()*f.getDureeJr() %></td>
     <%}else { %>         
-												<td style="color:#ff6666">-</td> 
+												<td style="color:#ff6666" class="8">-</td> 
     
     <%}if(f.getMtPaye()!=0) {%>                                            
-                                                <td style="color: #66ffcc"><%=f.getMtPaye() %></td>
+                                                <td style="color: #66ffcc" class="9"><%=f.getMtPaye() %></td>
     <%}else { %>         
-												<td style="color: #66ffcc">-</td> 
+												<td style="color: #66ffcc" class="9">-</td> 
 	<%}if(Date.toFDateXH(f.getDatePayement())!=null) {%>											                                            
-                                                <td><%=Date.toFDateXH(f.getDatePayement()) %></td>
+                                                <td class="10"><%=Date.toFDateXH(f.getDatePayement()) %></td>
      <%}else { %>         
-												<td>---</td> 
+												<td class="10">---</td> 
 	<%} %>											                                           
-                                                <td><%=Date.toFDateXH(f.getDateModifcation()) %></td>
+                                                <td class="11"><%=Date.toFDateXH(f.getDateModifcation()) %></td>
                                               
                                             </tr>
-                                            <tr class="spacer"></tr>
+                                            
 
                                           <%}%>
                                         <!-----------------------------------------------------------------------------------------> 

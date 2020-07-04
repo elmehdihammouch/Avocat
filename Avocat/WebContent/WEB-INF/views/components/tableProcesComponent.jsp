@@ -13,46 +13,85 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         
-                        <div class="row">
+                               <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
                                 <h3 class="title-5 m-b-35">data table</h3>
                                 <div class="table-data__tool">
-                                    <div class="table-data__tool-left">
-                                        <div class="rs-select2--light rs-select2--md">
-                                            <select class="js-select2" name="property">
-                                                <option selected="selected">All Properties</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
+                                    <div class="table-data__tool-left" >
+                        <!-- ******************************pagination**************************************** -->    
+                              <div class="rs-select2--light rs-select2--md"  onChange="pagination1()">  
+                                   
+                                            <select class="js-select2" name="" id="pagination1" >
+                                                <option selected="selected" value="0">All Properties</option>
+                                                <option value="3">3</option>
+                                                <option value="5">5</option>
+                                                <option value="7">7</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                              	<option value="10">10</option>
+                                                <option value="20">20</option>
+                                                <option value="30">30</option>
+                                                <option value="40">40</option>
+                                                <option value="50">50</option>
+                                                <option value="60">60</option>
+                                                <option value="70">70</option>
+                                                <option value="80">80</option>
+                                                <option value="90">90</option>
+                                                <option value="100">100</option>
                                             </select>
+                       <!-- ************************************************************************************ -->     
                                             <div class="dropDownSelect2"></div>
                                         </div>
-                                        <div class="rs-select2--light rs-select2--sm">
-                                            <select class="js-select2" name="time">
-                                                <option selected="selected">Today</option>
-                                                <option value="">3 Days</option>
-                                                <option value="">1 Week</option>
+                 	 <!-- ******************************pagination**************************************** --> 
+                                        <div class="rs-select2--light rs-select2--sm"  onChange="pagination2()">
+                         
+                                            <select class="js-select2" name="" id="pagination2">
+                                                
                                             </select>
+                       
                                             <div class="dropDownSelect2"></div>
                                         </div>
-                                        <button class="au-btn-filter">
-                                            <i class="zmdi zmdi-filter-list"></i>filters</button>
+                     <!-- *********************************************************************************** --> 
+                     
+                  
+                  
+                                 
+                                        <button class="au-btn-filter"><i class="zmdi zmdi-filter-list"></i>filters</button>
                                     </div>
-                                    <div class="table-data__tool-right">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                            <i class="zmdi zmdi-plus"></i>add item</button>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                            <select class="js-select2" name="type">
-                                                <option selected="selected">Export</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
+                                    
+                                    <div class="table-data__tool-right" >
+                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2" style="width:100px" onChange="trier()">
+                                            <select class="js-select2" id="filter" style="width:100px" >
+                                                <option selected="selected" value="filters">filters</option>
+                                                <option value="3">Client</option>
+                                                <option value="4">Advairsaire</option>
+                                                <option value="5">Etat d'avancement</option>
+                                                <option value="6">Date de creation</option>
+                                                <option value="7">Etat du proces</option>
+												<option value="8">Numero du proces</option>
+                                                <option value="9">Etat de la facture</option>
                                             </select>
                                             <div class="dropDownSelect2"></div>
                                         </div>
+                              			<div class="rs-select2--light rs-select2--sm"  onChange="trier()">
+                         
+                                            <select class="js-select2" name="" id="tri">
+                                            	<option value="desactive">Tri dessactivé</option>
+                                                <option value="croissant">Croissant</option>
+                                                <option value="decroissant">Decroissant</option>
+                                            </select>
+                       
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2 ">
+                                <div class="table-data__tool"> <div class="table-data__tool-left" ><div class="rs-select2--light rs-select2--md"  > <input type="text" id ="search" class="form-control round-form" style="width : 630px" placeholder="search"></div></div></div>
+                                <div class="table-responsive">
+    <% HashMap<String , Proces> map = daoAjouterProces.consulterProces(); %>
+   								<span style="display : none" id="mapSize"><%=map.size()%></span>   
+                                <table class="table table-data2 " id="tableAvocat">
                                         <thead>
                                             <tr>
                                                 <th>
@@ -61,24 +100,24 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th>
-                                                <th style="display:none;">idProces</th>
-                                                <th style="display:none;">idDossier</th>
+                                                <th style="display:;">idProces</th>
+                                                <th style="display:;">idDossier</th>
                                                 <th>Client</th>
                                                 <th>Advairsaire</th>
-                                                <th>statut</th>    
+                                                <th>Etat d'avancement</th>    
                                                 <th>Date de creation</th>
-                                                <th>Etat</th>
+                                                <th>Etat du proces</th>
                                                 <th>Numero du proces</th>
-                                                <th>Etat facture</th>
+                                                <th>Etat de la facture</th>
                                                 <th>operations</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                          <% HashMap<String , Proces> map = daoAjouterProces.consulterProces(); 
-                          	for (Map.Entry<String, Proces> e : map.entrySet()){
+                          
+  <% 	for (Map.Entry<String, Proces> e : map.entrySet()){
                           
                           		%>              
-                                            <tr class="tr-shadow trowM">
+                                            <tr class="tr-shadow trowM trow">
                                                 
                                                 <td>
                                                     <label class="au-checkbox">
@@ -87,33 +126,33 @@
                                                     </label>
                                                 </td>
 
-                                                <td style="display:none;"><%=e.getValue().getIdProces() %></td>
+                                                <td style="display:;"><%=e.getValue().getIdProces()%></td>
 
-                                                <td style="display:none;"><%=e.getValue().getIdDos() %></td>
+                                                <td style="display:;"><%=e.getValue().getIdDos()%></td>
                                                 
-                                                <td ><%=e.getKey().split(",")[0] %></td>
+                                                <td class="3"><%=e.getKey().split(",")[0] %></td>
                                                 
-                                                <td><%=e.getValue().getNomAdv()+" "+e.getValue().getPrenomAdv() %></td>
+                                                <td class="4"><%=e.getValue().getNomAdv()+" "+e.getValue().getPrenomAdv() %></td>
                                                 
-                                                <td><%=Proces.statutProces(e.getValue())%></td>
+                                                <td class="5"><%=Proces.statutProces(e.getValue())%></td>
 
-                                                <td><%=Date.toFDate(e.getValue().getDateCP()) %></td>
+                                                <td class="6"><%=Date.toFDate(e.getValue().getDateCP()) %></td>
                                                 
                                 <%if(e.getValue().getDateAP()==null) {%>  
-                                                <td style="color : orange;">en attente</td>
+                                                <td style="color : orange;" class="7">en attente</td>
                                 <%}else { %>     
-                                				<td style="color : #00ffcc;">accepté</td>
+                                				<td style="color : #00ffcc;" class="7">accepté</td>
                                 <%} %>  
                                             <%if(e.getValue().getNumP()!=null) { %>    
-                                                <td><%=e.getValue().getNumP() %></td>
+                                                <td class="8"><%=e.getValue().getNumP() %></td>
                                             <%}else { %>    
-                                                <td>---</td>
+                                                <td class="8">---</td>
                                         	<%} %>
                                                 
                                 <%if(e.getValue().getFacture().getMtGlobal()-e.getValue().getFacture().getMtpaye()==0) {%>  
-                                                <td style="color : #00ffcc;" class="etatFacture">payée</td>
+                                                <td style="color : #00ffcc;" class="etatFacture" class="9">payée</td>
                                 <%}else { %>     
-                                				<td style="color : #ff3333;" class="etatFacture">pas encore payée</td>
+                                				<td style="color : #ff3333;" class="etatFacture" class="9">pas encore payée</td>
                                 <%} %> 
                                                 
                                                 <td>
@@ -130,7 +169,7 @@
                                                         </div>
                                                 </td>
                                             </tr>
-                                            <tr class="spacer"></tr>
+                                            
 
                                             
                                         <!-----------------------------------------------------------------------------------------> 
