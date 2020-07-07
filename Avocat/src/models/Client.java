@@ -15,7 +15,7 @@ public class Client {
 	private String telephone;
 	private String email;
 	private String password;
-	private Compte compte;
+	
 	
 	
 	
@@ -34,6 +34,24 @@ public class Client {
 	}
 
 
+	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String nationalite, String adresse,
+			String cin, String municipale, String telephone, String email) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNais = dateNais;
+		this.lieuNais = lieuNais;
+		this.nationalite = nationalite;
+		this.adresse = adresse;
+		this.cin = cin;
+		this.municipale = municipale;
+		this.telephone = telephone;
+		this.email = email;
+
+	}
+
+
 	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String adresse, String municipale,
 			String telephone, String email) {
 		super();
@@ -49,38 +67,6 @@ public class Client {
 	}
 
 
-	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String adresse, String municipale,
-			String telephone, String email, Compte compte) {
-		super();
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNais = dateNais;
-		this.lieuNais = lieuNais;
-		this.adresse = adresse;
-		this.municipale = municipale;
-		this.telephone = telephone;
-		this.email = email;
-		this.compte = compte;
-	}
-
-
-	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String nationalite, String adresse,
-			String cin, String municipale, String telephone, String email, Compte compte) {
-		super();
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNais = dateNais;
-		this.lieuNais = lieuNais;
-		this.nationalite = nationalite;
-		this.adresse = adresse;
-		this.cin = cin;
-		this.municipale = municipale;
-		this.telephone = telephone;
-		this.email = email;
-		this.compte = compte;
-	}
 
 
 	public Client(int id, String nom, String prenom, Date dateNais, String lieuNais, String nationalite, String adresse,
@@ -261,14 +247,6 @@ public class Client {
 	}
 
 
-	public Compte getCompte() {
-		return compte;
-	}
-
-
-	public void setCompte(Compte compte) {
-		this.compte = compte;
-	}
 
 
 	

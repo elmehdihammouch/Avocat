@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-	 <link href="./resources/css/contents/consultationClient.css" rel="stylesheet">
+	<link href="./resources/css/contents/consultationClient.css" rel="stylesheet">
  	 <link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
  	 <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
  	 <!--------- table css ------->
@@ -16,11 +16,12 @@
 	 <link href="./resources/css/headers/style.css" rel="stylesheet">
 	 <link href="./resources/css/headers/style-responsive.css" rel="stylesheet">
 	 <script src="https://kit.fontawesome.com/dc70a27419.js" crossorigin="anonymous"></script>
+	 
 </head>
 <body>
 
 <jsp:include page="../headers/headerAfterAuth.jsp"></jsp:include>
-<jsp:include page="../contents/consulterClientContent.jsp"></jsp:include>
+<jsp:include page="../contents/consulterdossier.jsp"></jsp:include>
 
 </body>
 
@@ -34,9 +35,11 @@
     <script type="text/javascript" src="./resources/js/contents/tableJs/animsition.min.js"></script>
     <script type="text/javascript" src="./resources/js/contents/tableJs/select2.min.js"></script>
    	<script type="text/javascript" src="./resources/js/contents/tableJs/main.js"></script>
+    
    <!--------------------->
-     <script type="text/javascript" src="./resources/js/contents/consulterClient.js"></script> 
+     <script type="text/javascript" src="./resources/js/contents/consulterdossier.js"></script> 
      <script type="text/javascript" src="./resources/js/contents/procesTableTools.js"></script>
+      
       
     
 </html>

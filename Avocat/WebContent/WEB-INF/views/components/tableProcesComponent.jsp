@@ -116,9 +116,9 @@
                           
   <% 	for (Map.Entry<String, Proces> e : map.entrySet()){
                           
-                          		%>              
+                          		%>         <% if(request.getParameter("idDos") == null){%>     
                                             <tr class="tr-shadow trowM trow">
-                                                
+                                                <%}else if(Integer.parseInt(request.getParameter("idDos"))!=0){%><tr class="tr-shadow trowM trow" style="visibility: collapse;"><%} %>
                                                 <td>
                                                     <label class="au-checkbox">
                                                         <input type="checkbox" class="check">

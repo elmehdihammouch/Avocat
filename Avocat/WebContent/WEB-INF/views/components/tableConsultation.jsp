@@ -1,9 +1,10 @@
-<%@page import="models.Compte"%>
+<%@page import="DAO.daoAjouterConsultation"%>
+<%@page import="models.Consultation"%>
 <%@page import="models.Client"%>
 <%@page import="DAO.daoClient"%>
 <%@page import="java.util.ArrayList"%>
 <div id="tab" >
-
+<%ArrayList<Consultation> list = daoAjouterConsultation.listConsultation(); %>
 	<section class="wrapper">
 	        <div class="row mb">
 	          <!-- page start-->
@@ -12,7 +13,7 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         
-						<div class="row">
+                        <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
                                 <h3 class="title-5 m-b-35">data table</h3>
@@ -59,9 +60,8 @@
                                                 <option value="2">Nom</option>
                                                 <option value="3">Prenom</option>
                                                 <option value="4">Cin</option>
-                                                <option value="5">Email</option>
-                                                <option value="6">Adresse </option>
-                                                <option value="7">Telephone </option>
+                                                <option value="5">Type Proces</option>
+                                                <option value="6">Frais </option>
                                             </select>
                                             <div class="dropDownSelect2"></div>
                                         </div>
@@ -80,7 +80,6 @@
                                 </div>
                                 <div class="table-data__tool"> <div class="table-data__tool-left" ><div class="rs-select2--light rs-select2--md"  > <input type="text" id ="search" class="form-control round-form" style="width : 630px" placeholder="search"></div></div></div>
                                 <div class="table-responsive">
-                                <%ArrayList<Compte> list = daoClient.listClient(); %>
                                 <span style="display : none" id="mapSize"><%=list.size()%></span>
                                     <table class="table table-data2" id="tableAvocat">
                                         <thead>
@@ -91,43 +90,38 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th>
-                                                <th>Id Client</th>
+                                                <th>Id Consultation</th>
                                                 <th>nom</th>
                                                 <th>prenom</th>
                                                 <th>CIN</th>
-                                                <th>email</th>
-                                                <th>Adresse</th>
-                                                <th>Telephone</th>
-                                                <th>Operation</th>
+                                                <th>Type de procés</th>
+                                                <th>Frais</th>
+                                                <th>Operation </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <%for(int i =0 ; i<list.size();i++){%>
-                                            <tr class="tr-shadow trowM trow">
+                                                  <tr class="tr-shadow trowM trow">
                                                 <td>
                                                     <label class="au-checkbox">
                                                         <input type="checkbox" class="check">
                                                         <span class="au-checkmark"></span>
                                                     </label>
-                             					</td>
-                                                <td><%=list.get(i).getClient().getId()%></td>
+                                                </td>
+                                                <td style="display:;"><%=list.get(i).getIdConsultation()%></td>
                                                 <td class="2"><%=list.get(i).getClient().getNom()%></td>
                                                 <td class="3">
-                                                    <%=list.get(i).getClient().getPrenom()%>
+                                                    <%=list.get(i).getClient().getPrenom() %>
                                                 </td>
                                                 <td class="desc" class="4"><%=list.get(i).getClient().getCin() %></td>
-                                                <td class=""><span class="block-email" class="5"><%=list.get(i).getClient().getEmail() %></span></td>
+                                                <td class="5"><%=list.get(i).getTypeProces() %></td>
                                                 <td class="6">
-                                                    <span style="font-size: 1em"><%=list.get(i).getClient().getAdresse() %></span>
+                                                    <span style="font-size: 1em"><%=list.get(i).getFrais() %></span>
                                                 </td>
-                                                <td class="7"><%=list.get(i).getClient().getTelephone() %></td>
                                                 <td>
                                                     <div class="table-data-feature">
                                                         <button class="item afficher btnPopup" data-toggle="tooltip" data-placement="top" title="Eye" >
                                                             <i class="zmdi zmdi-eye"></i>
-                                                        </button>
-                                                        <button class="item modifier" data-toggle="tooltip" data-placement="top" title="Edit" >
-                                                            <i class="zmdi zmdi-edit"></i>
                                                         </button>
                                                         <button class="item supprimer" data-toggle="tooltip" data-placement="top" title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>

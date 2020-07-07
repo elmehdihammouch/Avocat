@@ -6,6 +6,7 @@ public class Compte {
 	private String emailCl;
 	private String passwordCl;
 	private int statut;
+	private Client client;
 	public Compte(int idCompte, int idClient, String emailCl, String passwordCl, int statut) {
 		super();
 		this.idCompte = idCompte;
@@ -16,6 +17,32 @@ public class Compte {
 	}
 	
 	
+	
+	
+	public Compte(int idClient, String emailCl, String passwordCl, int statut, Client client) {
+		super();
+		this.idClient = idClient;
+		this.emailCl = emailCl;
+		this.passwordCl = passwordCl;
+		this.statut = statut;
+		this.client = client;
+	}
+
+
+
+
+	public Compte(int idCompte, int idClient, String emailCl, String passwordCl, int statut, Client client) {
+		super();
+		this.idCompte = idCompte;
+		this.idClient = idClient;
+		this.emailCl = emailCl;
+		this.passwordCl = passwordCl;
+		this.statut = statut;
+		this.client = client;
+	}
+
+
+
 	public Compte(int idClient, String emailCl, String passwordCl, int statut) {
 		super();
 		this.idClient = idClient;
@@ -59,6 +86,18 @@ public class Compte {
 	}
 	public void setStatut(int statut) {
 		this.statut = statut;
+	}
+
+
+
+	public Client getClient() {
+		return client;
+	}
+
+
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	
 }

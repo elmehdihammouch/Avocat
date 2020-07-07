@@ -6,7 +6,11 @@ import java.util.ArrayList;
 
 
 import models.Client;
+import models.Compte;
 import models.Dossier;
+
+
+
 
 public class daoAjouterDossier {
 	public static	int  chercherDossier(String CIN) {
@@ -127,5 +131,91 @@ public class daoAjouterDossier {
 		}
 	
 	
+	public static ArrayList<MyResult> listDossier(){
+		ResultSet res;
+		Dossier dossier = null;
+		MyResult result = null;
+		int statut = 0;
+		ArrayList<MyResult> dossiers = new ArrayList<MyResult>();
+		Connexion.connect();
+		res=Connexion.select("select cl.nom,cl.prenom,cl.cin ,cl.tel,cl.email , do.*,max(statut) as 'statut' from dossier do left outer join client cl ON cl.idClient = do.idClient left outer join proces po ON po.idDos = do.idDos GROUP BY do.idDos");
+		try {
+			while(res.next()) { 
+				Client client = new Client(res.getInt(7), res.getString(1), res.getString(2),res.getString(3), res.getString(4), res.getString(5));
+				dossier = new Dossier(res.getInt("idDos"), res.getInt("idClient"), res.getString("typeProces"), res.getString("description"),client);
+				statut = res.getInt("statut");
+				result = new MyResult(dossier, statut);
+				dossiers.add(result);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Connexion.disconect();
+		return dossiers;
+		
+	}
+	
+	
+	
+	
+	public static class MyResult {
+	    private Dossier dossier;
+	    private int statut;
+		public Dossier getDossier() {
+			return dossier;
+		}
+		public int getStatut() {
+			return statut;
+		}
+		public MyResult(Dossier dossier, int statut) {
+			super();
+			this.dossier = dossier;
+			this.statut = statut;
+		}
+	}	
+	
+	public static int modif(MyResult res) {
+		Connexion.connect();
+		int nbr = Connexion.maj("UPDATE `dossier` left outer join proces ON proces.idDos = dossier.idDos SET dossier.typeProces ='"+res.getDossier().getTypeProces()+"',dossier.description='"+res.getDossier().getDescription()+"',proces.statut='"+res.getStatut()+"' WHERE dossier.idDos ="+res.getDossier().getIdClient());
+		Connexion.disconect();
+		return nbr;
+	}
+
+	public static int delete(int id){
+		int idProces , nbr = 0;
+		ResultSet res;
+		Connexion.connect();
+		res=Connexion.select("select idProces from proces where idDos = "+id+"");
+		
+		try {
+			res.next();
+			idProces = res.getInt("idProces");
+			
+	
+			nbr += Connexion.maj("DELETE FROM `proces` WHERE idDos = "+id+"");
+			nbr += Connexion.maj("DELETE FROM `facture` WHERE idProces = "+idProces+"");
+			nbr += Connexion.maj("DELETE FROM `piece` WHERE idProces = "+idProces+"");
+					
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			nbr += Connexion.maj("DELETE FROM `dossier` WHERE idDos = "+id+"");
+		}
+		
+		
+		return nbr;
+	}
+	
+	
+	
+	
+	
 	
 }
+
+
+
+

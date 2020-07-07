@@ -77,4 +77,11 @@ public class daoAjouterConsultation {
 		
 	}
 	
+	public static int delete(int id){
+		int nbr = 0;
+		Connexion.connect();
+		nbr += Connexion.maj("DELETE FROM `consultation` WHERE idConsultation = "+id+"");		
+		return nbr;
+	}
+	
 }

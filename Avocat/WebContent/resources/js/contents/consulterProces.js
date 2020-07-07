@@ -105,7 +105,7 @@
    // descriptionM.addEventListener("keyup",);
 
 
-
+    var url = window.location.search
 
 
 
@@ -546,6 +546,19 @@ function validationNumber(){
 
 //window.onload
 window.onload = function(){
+	if(url != ''){
+		var idDos = url.split('=');
+		$(".tr-shadow").each(function(){
+			  var index = $(this).children().eq(2).text();
+			  console.log(idDos[1] +" :::  "+ index)
+			  if(idDos[1] == index){
+				  $(this).css("visibility", "visible");
+			  }
+				  
+		  });
+		
+	}
+	
 	
 	tabMod = document.getElementsByClassName("modifier");
 	for(let i=0;i<tabMod.length;i++){
@@ -570,6 +583,7 @@ window.onload = function(){
 			}
 		}
 	}
+	
 	
 }
 

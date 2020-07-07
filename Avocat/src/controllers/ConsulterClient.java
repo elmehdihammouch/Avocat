@@ -3,15 +3,11 @@ package controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import DAO.daoAjouterDossier;
 import DAO.daoClient;
 import models.Client;
 import models.Compte;
@@ -29,7 +25,7 @@ public class ConsulterClient extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.getRequestDispatcher("/WEB-INF/views/pages/consulterClient.jsp").forward(request, response);	
 		
 	}
 
@@ -37,11 +33,11 @@ public class ConsulterClient extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		if(request.getParameter("operation").equals("modifier")) {			
-			Compte compte = new Compte(Integer.parseInt(request.getParameter("id")), request.getParameter("emailCl"), request.getParameter("password"), Integer.parseInt(request.getParameter("statut")));
 			Client client = new Client(Integer.parseInt(request.getParameter("id")),request.getParameter("nom"), request.getParameter("prenom"),
 			Date.valueOf(request.getParameter("datenais")),request.getParameter("lieunais"), request.getParameter("adresse"), request.getParameter("municipale"), 
-			request.getParameter("telephone"), request.getParameter("email"), compte);
-			daoClient.modif(client);
+			request.getParameter("telephone"), request.getParameter("email"));
+			Compte compte = new Compte(Integer.parseInt(request.getParameter("id")), request.getParameter("emailCl"), request.getParameter("password"), Integer.parseInt(request.getParameter("statut")),client);
+			daoClient.modif(compte);
 			out.println(1);
 			
 			

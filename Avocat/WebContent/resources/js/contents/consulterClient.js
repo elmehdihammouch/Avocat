@@ -6,10 +6,32 @@
 	  
 	  
 $(document).ready(function(){
-	  
+	
+	$("#print").on("click",function(){
+		var OriginalPrintContents =  document.getElementById("ClientBox").innerHTML;
+		var printContents = document.getElementById("ClientBox");  
+		
+		//remove() for box 
+		 printContents.children[1].remove();
+		 
+		
+	    var printContents = document.getElementById("ClientBox");    
+	 var originalContents = document.body.innerHTML;      
+	 document.body.innerHTML = printContents.innerHTML;
+	 
+	 window.print();     
+	 document.body.innerHTML = originalContents;
+	 // for box
+	 document.getElementById("ClientBox").innerHTML = OriginalPrintContents;
+		  
+		  
+	  })   
+	
+	
+	
   $(".afficher").on("click", function(){
 	  // prendre la valeur l'id qui se trouve dans la page hidden
-	  var index = $(this).parent().parent().parent().children().eq(1).children().val();
+	  var index = $(this).parent().parent().parent().children().eq(1).text();
 	  $(".search").each(function(){
 		  // each : fonctionne comme une boucle il fait la fonction dans tous les balise qui contiennent balise search
 		  if($(this).children().children().val() == index){
@@ -32,11 +54,7 @@ $(document).ready(function(){
   })
   
   
-  $("#previous").on("click",function(){
-	  $("#mod").hide();
-	  $("#tab").show();
   
-  })
   
   /* 
   $("#btnClose").on("click", function(){
@@ -49,7 +67,7 @@ $(document).ready(function(){
   
   
   $(".modifier").on("click", function(){
-	  var index = $(this).parent().parent().parent().children().eq(1).children().val();
+	  var index = $(this).parent().parent().parent().children().eq(1).text();
 	  $("#modifierCl").unbind();
 	  $(".update").each(function(){
 		  if($(this).children().children().val() == index){
@@ -92,11 +110,26 @@ $(document).ready(function(){
 					  if(statutNV.val()!=0 && statutNV.val()!=1) {statutNV.css("color","red")}	else {statutNV.css("color","#333")}
 				  
 				  	})
+				  	$("#previous").on("click",function(){
+						$("#mod").hide();
+						$("#tab").show();
+						nomNV.val(nom)
+					  	prenomNV.val(prenom)
+					  	adresseNV.val(adresse)
+					  	datenaisNV.val(datenais)
+					  	emailclientNV.val(emailclient)
+					  	emailNV.val(email)
+				  		municipaleNV.val(municipale)
+						lieunaisNV.val(lieunais)
+						telNV.val(tel)
+						passwordNV.val(password)
+						statutNV.val(statut)
+				  	}) 
 				  	
 				  $("#modifierCl").bind("click", function(){
-					  alert($(that).children().children().val())
 					  if(nomRegex.test(nomNV.val()) && nomRegex.test(prenomNV.val()) && adresseRegex.test(lieunaisNV.val()) && adresseRegex.test(municipaleNV.val()) && adresseRegex.test(adresseNV.val()) && emailRegex.test(emailNV.val()) && phoneRegex.test(telNV.val()) && ( emailRegex.test(emailclientNV.val()) ) && ( passRegex.test(passwordNV.val()) ) && (statutNV.val() == 1 || statutNV.val() == 0 ) && (nomNV.val() != nom || prenomNV.val() != prenom || emailNV.val() != email || adresseNV.val() != adresse || emailclientNV.val() != emailclient || municipaleNV.val() != municipale || passwordNV.val() != password || statutNV.val()!= statut || telNV.val() != tel || lieunais != lieunaisNV.val() || datenais != datenaisNV.val())   ){
-						$.post("ConsulterClient",{"id":index,"datenais":datenaisNV.val(),"nom":nomNV.val(),"prenom":prenomNV.val(),"email":emailNV.val(),"adresse":adresseNV.val(),"municipale":municipaleNV.val(),"lieunais":lieunaisNV.val(),"telephone":telNV.val(),"emailCl":emailclientNV.val(),"password":passwordNV.val(),"statut":statutNV.val(),"operation":"modifier"}, function(data){
+						if(confirm('voulez vous vraiment modifier les donnes')){
+						  $.post("ConsulterClient",{"id":index,"datenais":datenaisNV.val(),"nom":nomNV.val(),"prenom":prenomNV.val(),"email":emailNV.val(),"adresse":adresseNV.val(),"municipale":municipaleNV.val(),"lieunais":lieunaisNV.val(),"telephone":telNV.val(),"emailCl":emailclientNV.val(),"password":passwordNV.val(),"statut":statutNV.val(),"operation":"modifier"}, function(data){
 					    	if(data==1){
 					    		$("#mod").hide();
 					    		$("#tab").show();
@@ -120,8 +153,8 @@ $(document).ready(function(){
 					    		})
 					    		$(".afficher").each(function(){
 										  
-										  if(index == $(this).parent().parent().parent().children().eq(1).children().val()){
-											  alert($(this).parent().parent().parent().children().eq(1).children().val())
+										  if(index == $(this).parent().parent().parent().children().eq(1).text()){
+											  
 											  	$(this).parent().parent().parent().children().eq(2).text(nomNV.val())
 							    				$(this).parent().parent().parent().children().eq(3).text(prenomNV.val())
 							    				$(this).parent().parent().parent().children().eq(5).children().text(emailNV.val())
@@ -132,14 +165,32 @@ $(document).ready(function(){
 					    	}else {
 					    		alert('un erreur est du lors du modification');
 					    	}
-					    })
+					    })}else{
+					    	$("#mod").hide();
+					    	$("#tab").show();
+					    	
+					    	nomNV.val(nom)
+					    	prenomNV.val(prenom)
+					    	adresseNV.val(adresse)
+					    	datenaisNV.val(datenais)
+					    	emailclientNV.val(emailclient)
+					    	emailNV.val(email)
+					    	municipaleNV.val(municipale)
+							lieunaisNV.val(lieunais)
+							telNV.val(tel)
+							passwordNV.val(password)
+							statutNV.val(statut)
+					    	
+					    	
+					    }
 			  	  
 				  }else if( nomNV.val() == nom && prenomNV.val() == prenom && emailNV.val() == email && adresseNV.val() == adresse && emailclientNV.val() == emailclient && municipaleNV.val() == municipale && passwordNV.val() == password && statutNV.val()== statut && telNV.val() == tel && lieunais == lieunaisNV.val() && datenais == datenaisNV.val()   ){
 			  		  $("#mod").hide();
 			  		  $("#tab").show();
 			  		  
 			  	  }else if(nomRegex.test(nomNV.val()) && nomRegex.test(prenomNV.val()) && adresseRegex.test(lieunaisNV.val()) && adresseRegex.test(municipaleNV.val()) && adresseRegex.test(adresseNV.val()) && emailRegex.test(emailNV.val()) && phoneRegex.test(telNV.val()) && emailclient == undefined && password == undefined && statut == undefined && (nomNV.val() != nom || prenomNV.val() != prenom || emailNV.val() != email || adresseNV.val() != adresse || municipaleNV.val() != municipale || telNV.val() != tel || lieunais != lieunaisNV.val() || datenais != datenaisNV.val())   ){
-						$.post("ConsulterClient",{"id":index,"datenais":datenaisNV.val(),"nom":nomNV.val(),"prenom":prenomNV.val(),"email":emailNV.val(),"adresse":adresseNV.val(),"municipale":municipaleNV.val(),"lieunais":lieunaisNV.val(),"telephone":telNV.val(),"operation":"mod"}, function(data){
+			  		if(confirm('voulez vous vraiment modifier les donnes')){
+			  		  $.post("ConsulterClient",{"id":index,"datenais":datenaisNV.val(),"nom":nomNV.val(),"prenom":prenomNV.val(),"email":emailNV.val(),"adresse":adresseNV.val(),"municipale":municipaleNV.val(),"lieunais":lieunaisNV.val(),"telephone":telNV.val(),"operation":"mod"}, function(data){
 					    	if(data==1){
 					    		$("#mod").hide();
 					    		$("#tab").show();
@@ -160,7 +211,7 @@ $(document).ready(function(){
 					    		})
 					    		$(".afficher").each(function(){
 										  
-										  if(index == $(this).parent().parent().parent().children().eq(1).children().val()){
+										  if(index == $(this).parent().parent().parent().children().eq(1).text()){
 											  
 											  	$(this).parent().parent().parent().children().eq(2).text(nomNV.val())
 							    				$(this).parent().parent().parent().children().eq(3).text(prenomNV.val())
@@ -172,16 +223,31 @@ $(document).ready(function(){
 					    	}else {
 					    		alert('un erreur est du lors du modification');
 					    	}
-					    })}
+					    })}else{
+					    	$("#mod").hide();
+					    	$("#tab").show();
+					    	
+					    	nomNV.val(nom)
+					    	prenomNV.val(prenom)
+					    	adresseNV.val(adresse)
+					    	datenaisNV.val(datenais)
+					    	emailclientNV.val(emailclient)
+					    	emailNV.val(email)
+					    	municipaleNV.val(municipale)
+							lieunaisNV.val(lieunais)
+							telNV.val(tel)
+							passwordNV.val(password)
+							statutNV.val(statut)
+					    }
 				 
-			  })
+			  	  }})
 		  }else{
 			  $(this).hide()
 			  
 		  }
 	  })
 	  
-	  
+	 
 	  
   });
   
@@ -191,9 +257,9 @@ $(document).ready(function(){
   
   
   $(".supprimer").on("click", function(){
-	  var index = $(this).parent().parent().parent().children().eq(1).children().val();
+	  var index = $(this).parent().parent().parent().children().eq(1).text();
 	  var supp = this;
-	  
+	  if(confirm('voulez vous vraiment supprimer ce client')){
 	  $.post("ConsulterClient",{"id":index,"operation":"delete"}, function(data){
 	    	if(data==1){
 	    		$(supp).parent().parent().parent().remove();
@@ -201,7 +267,7 @@ $(document).ready(function(){
 	    		alert('un erreur est du lors dans suppression');
 	    	}
 
-	  })
+	  })}
 	  
   });
 

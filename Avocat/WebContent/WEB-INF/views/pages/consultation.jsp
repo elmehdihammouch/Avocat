@@ -20,7 +20,7 @@
 <body>
 
 <jsp:include page="../headers/headerAfterAuth.jsp"></jsp:include>
-<jsp:include page="../contents/consulterClientContent.jsp"></jsp:include>
+<jsp:include page="../contents/consulterconsultation.jsp"></jsp:include>
 
 </body>
 
@@ -34,9 +34,10 @@
     <script type="text/javascript" src="./resources/js/contents/tableJs/animsition.min.js"></script>
     <script type="text/javascript" src="./resources/js/contents/tableJs/select2.min.js"></script>
    	<script type="text/javascript" src="./resources/js/contents/tableJs/main.js"></script>
+   
    <!--------------------->
-     <script type="text/javascript" src="./resources/js/contents/consulterClient.js"></script> 
-     <script type="text/javascript" src="./resources/js/contents/procesTableTools.js"></script>
+     <script type="text/javascript" src="./resources/js/contents/consultc.js"></script> 
+	<script type="text/javascript" src="./resources/js/contents/procesTableTools.js"></script>      
       
     
 </html>

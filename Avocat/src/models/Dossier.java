@@ -5,7 +5,7 @@ public class Dossier {
 	private int idClient;
 	private String typeProces;
 	private String description;
-	
+	private Client client;
 	
 	public Dossier() {
 		super();
@@ -23,6 +23,16 @@ public class Dossier {
 		this.description = description;
 	}
 	
+	
+	public Dossier(int idDos, int idClient, String typeProces, String description, Client client) {
+		super();
+		this.idDos = idDos;
+		this.idClient = idClient;
+		this.typeProces = typeProces;
+		this.description = description;
+		this.client = client;
+	}
+
 	public Dossier(int idDos, int idClient, String typeProces, String description) {
 		super();
 		this.idDos = idDos;
@@ -73,6 +83,14 @@ public class Dossier {
 		this.description = description;
 	}
 
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	@Override
 	public String toString() {
