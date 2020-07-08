@@ -39,6 +39,7 @@ $(document).ready(function(){
 		  if($(this).children().children().val() == index){
 			  $("#affichage").show();
 			  $("#tab").hide();
+			  $(".20").show();
 			  $(this).show();
 			  
 		  }else{
@@ -52,7 +53,7 @@ $(document).ready(function(){
   $("#prev").click(function(){
 	  $("#affichage").hide();
 	  $("#tab").show();
-  
+	  $(".20").hide();
   })
   
   
@@ -64,6 +65,7 @@ $(document).ready(function(){
 				  $(this).show();
 				  $("#mod").show();
 				  $("#tab").hide();
+				  $(".1").show();
 				  etatav = $(this).children().eq(1).children().eq(0).children().children().eq(1).val();
 				  typeproc = $(this).children().eq(1).children().eq(1).children().children().eq(1).val();
 				  desc = $(this).children().eq(1).children().eq(2).children().children().eq(1).val();
@@ -74,6 +76,7 @@ $(document).ready(function(){
 				  $("#previous").click(function(){
 					  $("#mod").hide();
 					  $("#tab").show();
+					  $(".1").hide();
 					  etatavNV.val(etatav)
 					  typeprocNV.val(typeproc)
 					  descNV.val(desc)
@@ -86,6 +89,7 @@ $(document).ready(function(){
 					    	if(data==1){
 					    		$("#mod").hide();
 					    		$("#tab").show();
+					    		$(".1").hide();
 					    		$(".search").each(function(){  
 					    			  if($(this).children().children().val() == index){
 					    				  
@@ -110,6 +114,7 @@ $(document).ready(function(){
 						}else{
 							$("#mod").hide();
 					  		$("#tab").show();
+					  		$(".1").hide();
 					  		etatavNV.val(etatav)
 							typeprocNV.val(typeproc)
 							descNV.val(desc)
@@ -117,7 +122,7 @@ $(document).ready(function(){
 				  }else if( desc == descNV.val() && typeproc == typeprocNV.val() && etatav == etatavNV.val()   ){
 			  		  $("#mod").hide();
 			  		  $("#tab").show();
-			  		  
+			  		  $(".1").hide();
 			  	  }
 			})
 		  }else{

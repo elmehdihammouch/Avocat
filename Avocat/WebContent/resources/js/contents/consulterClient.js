@@ -47,6 +47,7 @@ $(document).ready(function(){
 		  // each : fonctionne comme une boucle il fait la fonction dans tous les balise qui contiennent balise search
 		  if($(this).children().children().val() == index){
 			  $("#affichage").show();
+			  $(".000").show();
 			  $("#tab").hide();
 			  $(this).show();
 			  
@@ -61,7 +62,7 @@ $(document).ready(function(){
   $("#prev").on("click",function(){
 	  $("#affichage").hide();
 	  $("#tab").show();
-  
+	  $(".000").hide();
   })
   
   
@@ -85,6 +86,7 @@ $(document).ready(function(){
 				  $(this).show();
 				  $("#mod").show();
 				  $("#tab").hide();
+				  $(".001").show();
 				  nom = $(this).children().eq(1).children().eq(0).children().children().eq(1).val();
 				  prenom = $(this).children().eq(1).children().eq(1).children().children().eq(1).val();
 				  email = $(this).children().eq(1).children().eq(2).children().children().eq(1).val();
@@ -124,6 +126,7 @@ $(document).ready(function(){
 				  	$("#previous").on("click",function(){
 						$("#mod").hide();
 						$("#tab").show();
+						$(".001").hide();
 						nomNV.val(nom)
 					  	prenomNV.val(prenom)
 					  	adresseNV.val(adresse)
@@ -144,6 +147,7 @@ $(document).ready(function(){
 					    	if(data==1){
 					    		$("#mod").hide();
 					    		$("#tab").show();
+					    		$(".001").hide();
 					    		$(".search").each(function(){  
 					    			  if($(this).children().children().val() == index){
 					    				  
@@ -179,7 +183,7 @@ $(document).ready(function(){
 					    })}else{
 					    	$("#mod").hide();
 					    	$("#tab").show();
-					    	
+					    	$(".001").hide();
 					    	nomNV.val(nom)
 					    	prenomNV.val(prenom)
 					    	adresseNV.val(adresse)
@@ -198,6 +202,7 @@ $(document).ready(function(){
 				  }else if( nomNV.val() == nom && prenomNV.val() == prenom && emailNV.val() == email && adresseNV.val() == adresse && emailclientNV.val() == emailclient && municipaleNV.val() == municipale && passwordNV.val() == password && statutNV.val()== statut && telNV.val() == tel && lieunais == lieunaisNV.val() && datenais == datenaisNV.val()   ){
 			  		  $("#mod").hide();
 			  		  $("#tab").show();
+			  		  $(".001").hide();
 			  		  
 			  	  }else if(nomRegex.test(nomNV.val()) && nomRegex.test(prenomNV.val()) && adresseRegex.test(lieunaisNV.val()) && adresseRegex.test(municipaleNV.val()) && adresseRegex.test(adresseNV.val()) && emailRegex.test(emailNV.val()) && phoneRegex.test(telNV.val()) && emailclient == undefined && password == undefined && statut == undefined && (nomNV.val() != nom || prenomNV.val() != prenom || emailNV.val() != email || adresseNV.val() != adresse || municipaleNV.val() != municipale || telNV.val() != tel || lieunais != lieunaisNV.val() || datenais != datenaisNV.val())   ){
 			  		if(confirm('voulez vous vraiment modifier les donnes')){
@@ -237,6 +242,7 @@ $(document).ready(function(){
 					    })}else{
 					    	$("#mod").hide();
 					    	$("#tab").show();
+					    	$(".001").hide();
 					    	
 					    	nomNV.val(nom)
 					    	prenomNV.val(prenom)

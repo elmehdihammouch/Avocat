@@ -120,7 +120,7 @@
                                                 <td><%=list.get(i).getDossier().getIdDos()%></td>
                                                 <td class="2"><%=list.get(i).getDossier().getClient().getNom()%></td>
                                                 <td class="3">
-                                                    <%=list.get(i).getDossier().getClient().getPrenom() %>
+                                                    <%=list.get(i).getDossier().getClient().getPrenom()%>
                                                 </td>
                                                 <td class="desc 4"><%=list.get(i).getDossier().getClient().getCin() %></td>
                                                 <td class="5"><%=list.get(i).getDossier().getTypeProces() %></td>

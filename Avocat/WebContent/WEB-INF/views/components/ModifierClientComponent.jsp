@@ -4,7 +4,7 @@
 <%@page import="models.Client"%>
 
 
-    <section class="wrapper site-min-height">
+    <section class="wrapper site-min-height 001" style="display : none">
      <div class="row" id="mod" style="display: none;">
 			<div class="col-lg-12">
 				<div class="col-lg-8 col-md-8 col col-sm-8 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
