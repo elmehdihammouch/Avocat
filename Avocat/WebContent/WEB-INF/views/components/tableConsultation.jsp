@@ -4,7 +4,7 @@
 <%@page import="DAO.daoClient"%>
 <%@page import="java.util.ArrayList"%>
 <div id="tab" >
-<%ArrayList<Consultation> list = daoAjouterConsultation.listConsultation(); %>
+
 	<section class="wrapper">
 	        <div class="row mb">
 	          <!-- page start-->
@@ -80,6 +80,7 @@
                                 </div>
                                 <div class="table-data__tool"> <div class="table-data__tool-left" ><div class="rs-select2--light rs-select2--md"  > <input type="text" id ="search" class="form-control round-form" style="width : 630px" placeholder="search"></div></div></div>
                                 <div class="table-responsive">
+								<%ArrayList<Consultation> list = daoAjouterConsultation.listConsultation(); %>
                                 <span style="display : none" id="mapSize"><%=list.size()%></span>
                                     <table class="table table-data2" id="tableAvocat">
                                         <thead>

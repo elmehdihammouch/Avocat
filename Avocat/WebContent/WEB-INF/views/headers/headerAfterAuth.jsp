@@ -105,7 +105,7 @@
               <span>Gestion Client</span>
               </a>
             <ul class="sub">
-            	<li id="consulterClient"><a href="http://localhost:8085/Avocat/ConsultationClients">consulter liste clients</a></li>
+            	<li id="consulterClient"><a href="http://localhost:8085/Avocat/ConsulterClient">consulter liste clients</a></li>
             </ul>
            </li>
           
@@ -116,7 +116,7 @@
             </a>
             <ul class="sub">
               <li id="creerConsultation"><a href="http://localhost:8085/Avocat/AC" >creer une consultation</a></li>
-              <li id="consulterConsultation"><a href="" > Liste des consultations</a></li>
+              <li id="consulterConsultation"><a href="http://localhost:8085/Avocat/CC" > Liste des consultations</a></li>
             </ul>
            </li>
 
@@ -127,7 +127,7 @@
             </a>
             <ul class="sub">
               <li id="creerDossier"><a href="http://localhost:8085/Avocat/AD" >creer un dossier</a></li>
-              <li id="consulterDossier"><a href="" >consulter liste des dossiers</a></li>
+              <li id="consulterDossier"><a href="http://localhost:8085/Avocat/CD" >consulter liste des dossiers</a></li>
             </ul>
            </li>
 
@@ -137,8 +137,8 @@
               <span>Gestion des Proces</span>
             </a>
             <ul class="sub">
-              <li id="creerProces"><a href="http://localhost:8085/Avocat/AP">Créer un proces</a></li>
-              <li id="consulterProces"><a href="">consulter liste des proces</a></li>
+              <li id="creerProces"><a href="http://localhost:8085/Avocat/AjouterProces">Créer un proces</a></li>
+              <li id="consulterProces"><a href="http://localhost:8085/Avocat/ConsulterProces">consulter liste des proces</a></li>
             </ul>
            </li>
            
@@ -148,21 +148,13 @@
               <span>Archive</span>
             </a>
             <ul class="sub">
-              <li id="creerProces"><a href="http://localhost:8085/Avocat/AP">Archive des proces</a></li>
-              <li id="consulterProces"><a href="">Archive des factures</a></li>
+              <li id="procesArchive"><a href="http://localhost:8085/Avocat/ProcesArchive">Archive des proces</a></li>
+              <li id="factureArchive"><a href="http://localhost:8085/Avocat/FactureArchive">Archive des factures</a></li>
             </ul>
            </li>
 
             
-            
-            
-            
-        <li>
-            <a href="">
-              <i class="fa fa-percent" id="consulterFactures"></i>
-              <span>Liste Facture </span>
-              </a>
-          </li>
+           
 
           
        </ul>
