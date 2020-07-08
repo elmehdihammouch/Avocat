@@ -137,8 +137,19 @@
               <span>Gestion des Proces</span>
             </a>
             <ul class="sub">
-              <li id="creerProces"><a href="http://localhost:8085/Avocat/AP">creer un proces</a></li>
+              <li id="creerProces"><a href="http://localhost:8085/Avocat/AP">Créer un proces</a></li>
               <li id="consulterProces"><a href="">consulter liste des proces</a></li>
+            </ul>
+           </li>
+           
+           <li class="sub-menu">
+            <a href="javascript:;" class="active" >
+              <i class="fa fa-gavel"></i>
+              <span>Archive</span>
+            </a>
+            <ul class="sub">
+              <li id="creerProces"><a href="http://localhost:8085/Avocat/AP">Archive des proces</a></li>
+              <li id="consulterProces"><a href="">Archive des factures</a></li>
             </ul>
            </li>
 
