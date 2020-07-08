@@ -5,6 +5,17 @@
 	  var passRegex = /^[0-9a-zA-Z]{2,}$/;
 	  
 	  
+//header js
+	  active=document.getElementsByClassName("active");
+		
+		for(i=0;i<active.length;i++){
+			active[i].classList.remove("active");
+			i--;
+		}
+		document.getElementById("consulterClient").className += "active";
+		document.getElementById("consulterClient").parentElement.previousElementSibling.className += " active";	  
+//	  
+	  
 $(document).ready(function(){
 	
 	$("#print").on("click",function(){

@@ -157,13 +157,8 @@ $(window).load(function(){
 //script relative aux relations entre les pages
 
 window.onload = function(){
-	
 	active=document.getElementsByClassName("active");
-	j = active.length;
-/*	while(active.length>0){
-		active[j-1].classList.remove("active");
-		j--;
-	}*/
+	
 	for(i=0;i<active.length;i++){
 		active[i].classList.remove("active");
 		i--;
@@ -188,47 +183,6 @@ window.onload = function(){
 
 };
 
-/*
-var creerConsultation = document.getElementById("creerConsultation");
-var creerDossier = document.getElementById("creerDossier");
-var creerProces = document.getElementById("creerProces");
-var consulterConsultation = document.getElementById("consulterConsultation");
-var consulterDossier = document.getElementById("consulterDossier");
-var consulterProces = document.getElementById("consulterProces");
-var consulterFactures = document.getElementById("consulterFactures");
 
-creerConsultation.addEventListener("click",redirectionCrConsultation);
-creerDossier.addEventListener("click",redirectionCrDossier);
-creerProces.addEventListener("click",redirectionCrProces);
-consulterConsultation.addEventListener("click",redirectionCoConsultation);
-consulterDossier.addEventListener("click",redirectionCoDossier);
-consulterProces.addEventListener("click",redirectionCoProces);
-consulterFactures.addEventListener("click",redirectionCoFactures);
-
-
-function redirectionCrConsultation(){
-	alert(1);
-}
-function redirectionCrDossier(){
-	alert(1);
-}
-function redirectionCrProces(){
-	alert(1);
-}
-function redirectionCoConsultation(){
-	alert(1);
-}
-function redirectionCoDossier(){
-	alert(1);
-}
-function redirectionCoProces(){
-	alert(1);
-}
-function redirectionCoFactures(){
-	alert(1);
-}
-
-
-*/
 
 

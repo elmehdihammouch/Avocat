@@ -1,3 +1,15 @@
+//header js
+active=document.getElementsByClassName("active");
+
+	for(i=0;i<active.length;i++){
+		active[i].classList.remove("active");
+		i--;
+	}
+	document.getElementById("consulterConsultation").className += "active";
+	document.getElementById("consulterConsultation").parentElement.previousElementSibling.className += " active";
+//
+
+
 $(document).ready(function(){
 	$("#print").on("click",function(){
 		var OriginalPrintContents =  document.getElementById("ConsultationBox").innerHTML;

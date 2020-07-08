@@ -1,4 +1,13 @@
-
+//header js
+active=document.getElementsByClassName("active");
+	
+	for(i=0;i<active.length;i++){
+		active[i].classList.remove("active");
+		i--;
+	}
+	document.getElementById("consulterProces").className += "active";
+	document.getElementById("consulterProces").parentElement.previousElementSibling.className += " active";
+//
 //modification box inputs 
  	var montantGlobal;
  	var indemniteKilometrique;
