@@ -1,3 +1,14 @@
+//header js
+active=document.getElementsByClassName("active");
+	
+	for(i=0;i<active.length;i++){
+		active[i].classList.remove("active");
+		i--;
+	}
+	document.getElementById("createProces").className += "active";
+	document.getElementById("createProces").parentElement.previousElementSibling.className += " active";
+//
+
 //ajout des evenements sur les dossiers chargés
 dossierClick();
 
@@ -297,14 +308,7 @@ $(window).load(function(){
 window.onload = function(){
 
 	//script relative aux relations entre les pages	
-	active=document.getElementsByClassName("active");
-
-	for(i=0;i<active.length;i++){
-		active[i].classList.remove("active");
-		i--;
-	}
-	document.getElementById("creerProces").className += "active";
-	document.getElementById("creerProces").parentElement.previousElementSibling.className += " active";
+	
 	
 	inp=document.getElementsByClassName("effect-16");
 	

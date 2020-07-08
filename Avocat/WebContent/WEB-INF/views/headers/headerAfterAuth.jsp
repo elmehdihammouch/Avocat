@@ -132,18 +132,18 @@
            </li>
 
            <li class="sub-menu">
-            <a href="javascript:;" class="active" >
+            <a href="javascript:;" >
               <i class="fa fa-gavel"></i>
               <span>Gestion des Proces</span>
             </a>
             <ul class="sub">
-              <li id="creerProces"><a href="http://localhost:8085/Avocat/AjouterProces">Créer un proces</a></li>
+              <li id="createProces"><a href="http://localhost:8085/Avocat/AjouterProces">Créer un proces</a></li>
               <li id="consulterProces"><a href="http://localhost:8085/Avocat/ConsulterProces">consulter liste des proces</a></li>
             </ul>
            </li>
            
            <li class="sub-menu">
-            <a href="javascript:;" class="active" >
+            <a href="javascript:;" >
               <i class="fa fa-gavel"></i>
               <span>Archive</span>
             </a>
