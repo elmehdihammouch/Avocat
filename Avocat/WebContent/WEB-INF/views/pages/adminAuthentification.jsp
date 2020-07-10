@@ -23,5 +23,6 @@
 	<jsp:include page="../contents/adminauth.jsp"></jsp:include>
 </body>
 	<script type="text/javascript" src="./resources/jquery/jquery.js"></script>
+	
 	<script type="text/javascript" src="./resources/js/contents/auth.js"></script>
 </html>

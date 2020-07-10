@@ -559,8 +559,11 @@ window.onload = function(){
 		var idDos = url.split('=');
 		$(".tr-shadow").each(function(){
 			  var index = $(this).children().eq(2).text();
-			  console.log(idDos[1] +" :::  "+ index)
-			  if(idDos[1] == index){
+			  console.log(idDos[1] +" :::  "+ $(this).children().eq(1).text())
+			  if(idDos[1] == index && idDos[0] =='?idDos'){
+				  $(this).css("visibility", "visible");
+			  }else  if(idDos[1] == $(this).children().eq(1).text() && idDos[0] =='?idProc'){
+				  
 				  $(this).css("visibility", "visible");
 			  }
 				  

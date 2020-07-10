@@ -3,7 +3,13 @@ package DAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.naming.NoInitialContextException;
 
 import models.Client;
 import models.Dossier;
@@ -343,4 +349,100 @@ public class daoAjouterProces {
 		Connexion.disconect();
 		return fa;
 	}
+	public static class notif {
+		private String nom;
+		private int duree;
+		private int idproces;
+		public String getNom() {
+			return nom;
+		}
+		
+		
+		
+
+
+		public notif(String nom, int duree, int idproces) {
+			super();
+			this.nom = nom;
+			this.duree = duree;
+			this.idproces = idproces;
+		}
+
+		public void setNom(String nom) {
+			this.nom = nom;
+		}
+		public int getDuree() {
+			return duree;
+		}
+		public void setDuree(int duree) {
+			this.duree = duree;
+		}
+
+
+
+
+
+		public int getIdproces() {
+			return idproces;
+		}
+
+
+
+
+
+		public void setIdproces(int idproces) {
+			this.idproces = idproces;
+		}
+		
+		
+
+
+
+		
+	}
+	
+	public static ArrayList<notif> listdenotif(){
+		ResultSet res;
+		
+		notif notification = null;
+		ArrayList<notif> notif = new ArrayList<notif>();
+		Connexion.connect();
+		res  = Connexion.select("SELECT TIMESTAMPDIFF(HOUR,sysdate(),datenotif),idProces from proces");
+		
+			try {
+				while(res.next()) {
+					notification = new notif("date notif", res.getInt(1),res.getInt(2));
+					if(notification.duree <= 72 && notification.duree >= 0 ) {
+						notif.add(notification);
+					}
+				}
+		res.close();
+		res = Connexion.select("SELECT TIMESTAMPDIFF(HOUR,sysdate(),datesui),idProces from proces ");
+				while(res.next()) {
+					notification = new notif("date suivant", res.getInt(1),res.getInt(2));
+					if(notification.duree <= 72 && notification.duree >= 0 ) {
+						notif.add(notification);
+					}
+				}
+			} catch (SQLException e) {
+			
+				e.printStackTrace();
+			}
+		
+		Connexion.disconect();
+		Collections.sort(notif,new Comparator<notif>() {
+
+			@Override
+			public int compare(notif o1, notif o2) {
+				return String.valueOf(o1.getDuree()).compareTo(String.valueOf(o2.getDuree()));
+				
+			}
+		});
+		
+		
+		return notif;
+
+	}
+	
+	
 }

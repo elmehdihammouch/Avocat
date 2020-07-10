@@ -42,6 +42,7 @@
   	<script type="text/javascript" src="./resources/js/headers/jquery.dcjqaccordion.2.7.js"></script>
   	<script type="text/javascript" src="./resources/js/headers/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="./resources/js/headers/jquery.nicescroll.js"></script>
+    <script type="text/javascript" src="./resources/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./resources/js/headers/common-scripts.js"></script>
       <script type="text/javascript" src="./resources/js/contents/ajouterProces.js"></script>
 
