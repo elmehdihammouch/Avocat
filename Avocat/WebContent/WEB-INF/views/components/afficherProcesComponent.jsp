@@ -16,26 +16,26 @@
                 <div class="icn-main-container">
                   <span class="icn-container">P</span>
                 </div>
-                <p><span class="procesTitles">Description : </span> </p>
+                <p></p>
                 <ul class="pricing">
-                 <li id="client" ><span class="procesTitles">Client : </span><br></li>
-                  <li > <span class="procesTitles">Date de creation : </span><br></li>
-                  <li > <span class="procesTitles">Date d'acceptation :  </span><br></li>
-                  <li > <span class="procesTitles">Date de notification : </span><br></li>
-                  <li > <span class="procesTitles">Numero du proces : </span><br></li>
-                  <li > <span class="procesTitles">Instance :</span><br></li>
-                  <li > <span class="procesTitles">Nom du advairsaire :</span><br></li>
-                  <li > <span class="procesTitles">Prenom du advairsaire : </span><br></li>
-                  <li > <span class="procesTitles">CIN advairsaire :</span><br></li>
-                  <li > <span class="procesTitles">Adresse adversaire : </span><br></li>
-                  <li > <span class="procesTitles">Avocat advairsaire : </span><br></li>
-                  <li > <span class="procesTitles">Tribunal :</span><br></li>
-                  <li > <span class="procesTitles">Ville : </span><br></li>
-                  <li > <span class="procesTitles">Numero de la salle : </span><br></li>
-                  <li > <span class="procesTitles">Date de la seance :</span><br></li>
-                  <li > <span class="procesTitles">Jugement : </span><br></li>
-                  <li > <span class="procesTitles">Date du jugement : </span><br></li>
-                  <li > <span class="procesTitles">Date de la seance suivante : </span><br></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
                 </ul>
                 <a class="btn btn-theme" href="#" onClick="imprimer('procesBox')">Imprimer</a>
               </div>
@@ -53,12 +53,12 @@
                 </div>
                 <p></p>
                 <ul class="pricing">
-                  <li > <span class="procesTitles">Numero de la  facture : </span><br></li>
-                  <li > <span class="procesTitles">Montant de base :  </span><br></li>
-                  <li > <span class="procesTitles">Montant Global :  </span><br></li>
-                  <li > <span class="procesTitles">Montant payé : </span><br></li>
-                  <li > <span class="procesTitles">Montant restant : </span><br></li>
-                  <li > <span class="procesTitles">Date de payement : </span><br></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
                 </ul>
                 <a class="btn btn-theme" href="#" onClick="imprimer('factureBox')">Imprimer</a>
               </div>
