@@ -69,11 +69,11 @@ function validationEmailAC(){
 
 $("#changeDisplay1").click(function(){
 	if(choixConsultaion.style.display=="block" && consultation.style.display=="none" && $('#cinAC').hasClass('effect-16') ){
-		$.post("AC",{"operation":"check","cinClientAD":cin.value}, function(data){
+		$.post("AjouterConsultation",{"operation":"check","cinClientAD":cin.value}, function(data){
 			if(cinRegex.test(cin.value)==true && $('#cinAC').hasClass('effect-16')){
 				if(data==1){
 					document.getElementById("add").style.display="none";
-					choixConsultaion.style.display='block';
+					choixConsultaion.style.display='none';
 					consultation.style.display='block';			
 					$("#divadd").hide();
 					$("#divsuiv").hide();
@@ -83,7 +83,7 @@ $("#changeDisplay1").click(function(){
 					img.nextElementSibling.style.display="none";
 					titre.nextElementSibling.children[0].style.display="none";
 				}else if(data != 1){
-					alert("ce client n'existe deja ")
+					alert("ce client n'existe pas ")
 				}}
 	
 		})
@@ -92,8 +92,9 @@ $("#changeDisplay1").click(function(){
 $("#confirmer").click(function(){
 	var	type = $("#type").children("option:selected").val();
 	if(type!='' && factureRegex.test($("#frais").val())==true){
-	   $.post("AC",{"type":$("#type").children("option:selected").val(),"frais":$("#frais").val(),"desc":$("#desc").val(),"operation":"addc","cinClientAD":cin.value}, function(data){
-	    	alert($("select#type").children("option:selected").val())
+	   $.post("AjouterConsultation",{"type":$("#type").children("option:selected").val(),"frais":$("#frais").val(),"desc":$("#desc").val(),"operation":"addc","cinClientAD":cin.value}, function(data){
+		   if(data==1){
+			   alert("Cette consultation a ete ajoutee avec succes")}
 	    		
 	   })        }else{
 		   if(factureRegex.test($("#frais").val())==false){$("#frais").addClass("has-content effect-16-validation")}
@@ -110,7 +111,7 @@ $("#submit").click(function(){
 	   var aniv = [year, month, day].join('-');
 	   var nat = $("select#d").children("option:selected").val();
 	   if(nomRegex.test(nomAC.value)==true && nomRegex.test(prenomAC.value)==true && cinRegex.test(cinAC.value)==true && emailRegex.test(emailAC.value)==true&& phoneRegex.test(phoneAC.value)==true && nat != "" && adresseRegex.test(municipaleAC.value)==true && adresseRegex.test(lieuNaissanceAC.value)==true && adresseRegex.test(adresseAC.value)==true && dateRegex.test([day, month, year].join('/'))==true){
-	   $.post("AC",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
+	   $.post("AjouterConsultation",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
 	    	if(data==1){
 	    		document.getElementById("add").style.display="none";
 				choixConsultaion.style.display='none';
@@ -204,7 +205,7 @@ $(window).load(function(){
 			
 		})
 		$("#nouveauClientAD").click(function(){
-			$.post("AC",{"operation":"check","cinClientAD":cin.value}, function(data){
+			$.post("AjouterConsultation",{"operation":"check","cinClientAD":cin.value}, function(data){
 				if(cinRegex.test(cin.value)==true){
 					if(data!=1 && confirm("voulez vous ajouter un nouveau client" )){
 						document.getElementById("add").style.display="block";

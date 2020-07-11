@@ -181,7 +181,7 @@ function validationAvocatAdv(){
 function changeDisplayF1AD(){
 	if(choixClient.style.display=="block" && dossier.style.display=="none" && procesAD.style.display=="none")	{
 		if(cinRegex.test(cinClientAD.value)==true){
-			$.post("AD",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
+			$.post("AjouterDossier",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
 				if(data==1 ){
 					choixClient.style.display="none";
 					dossier.style.display="block";
@@ -208,14 +208,12 @@ function changeDisplayF1AD(){
 	}else if( proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 		var datenotif = $("#dateNotif").val();
 		statut = $("select#statut").children("option:selected").val();
-		if( nomRegex.test(nomAdv.value)==true && nomRegex.test(prenomAdv.value)==true &&  datelocal.test(datenotif) == true  && statut !=""){
+		if(  datelocal.test(datenotif) == true  && statut !=""){
 			proces.style.display='none';
 			fileUpload.style.display="block";
 			facture.style.display="none";
 			changeDisplay1AD.focus();
-		}else{
-			if(nomRegex.test(nomAdv.value)==false){$("#nomAdv").addClass("has-content effect-16-validation")}
-			if(nomRegex.test(prenomAdv.value)==false){$("#prenomAdv").addClass("has-content effect-16-validation")}
+		}else{		
 			if(datelocal.test(datenotif)==false){$("#dateNotif").addClass("has-content effect-16-validation")}
 			if(statut == ""){$("#statut").addClass("has-content effect-16-validation")}
 		}	
@@ -414,7 +412,7 @@ inp=document.getElementsByClassName("effect-16");
 		document.getElementById("add").style.display="none";
 	})
 	$("#nouveauClientAD").click(function(){
-		$.post("AD",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
+		$.post("AjouterDossier",{"cinClientAD":cinClientAD.value,"operation":"check"}, function(data){
 			if(cinRegex.test(cinClientAD.value)==true){
 			if(data!=1 && confirm("voulez vous ajouter un nouveau client" )){
 				document.getElementById("add").style.display="block";
@@ -450,7 +448,7 @@ inp=document.getElementsByClassName("effect-16");
 	   var aniv = [year, month, day].join('-');
 	   var nat = $("select#d").children("option:selected").val();
 	   if(nomRegex.test(nomAC.value)==true && nomRegex.test(prenomAC.value)==true && cinRegex.test(cinAC.value)==true && emailRegex.test(emailAC.value)==true&& phoneRegex.test(phoneAC.value)==true && nat != "" && adresseRegex.test(municipaleAC.value)==true && adresseRegex.test(lieuNaissanceAC.value)==true && adresseRegex.test(adresseAC.value)==true && dateRegex.test([day, month, year].join('/'))==true){
-	   $.post("AD",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
+	   $.post("AjouterDossier",{"lieuNais":lieuNaissanceAC.value,"nom":nomAC.value,"nationalite":nat,"prenom":prenomAC.value,"dateNais":aniv,"cin":cinAC.value,"telephone":phoneAC.value,"email":emailAC.value,"adresse":adresseAC.value,"municipale":municipaleAC.value,"operation":"add"}, function(data){
 	    	if(data==1){
 	    		document.getElementById("add").style.display="none";
 	    		choixClient.style.display="none";

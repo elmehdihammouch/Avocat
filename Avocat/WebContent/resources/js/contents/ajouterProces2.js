@@ -144,7 +144,7 @@ function changeDisplayF1(){
 	else if(choixDossier.style.display=="none" && proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 		var datenotif = $("#dateNotif").val();
 		statut = $("select#statut").children("option:selected").val();
-		if( nomRegex.test(nom.value)==true && nomRegex.test(prenom.value)==true &&  datelocal.test(datenotif) == true  && statut !="" ){
+		if(  datelocal.test(datenotif) == true  && statut !="" ){
 			
 			choixDossier.style.display="none";
 			proces.style.display='none';
@@ -152,8 +152,6 @@ function changeDisplayF1(){
 			facture.style.display="none";
 		}
 		else {
-			if(nomRegex.test(nom.value)==false){$("#nom").addClass("has-content effect-16-validation")}
-			if(nomRegex.test(prenom.value)==false){$("#prenom").addClass("has-content effect-16-validation")}
 			if(datelocal.test(datenotif)==false){$("#dateNotif").addClass("has-content effect-16-validation")}
 			if(statut == ""){$("#statut").addClass("has-content effect-16-validation")}
 		}

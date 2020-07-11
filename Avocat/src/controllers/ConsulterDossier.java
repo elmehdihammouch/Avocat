@@ -14,7 +14,7 @@ import models.Dossier;
 /**
  * Servlet implementation class ConsulterDossier
  */
-@WebServlet("/CD")
+@WebServlet("/ConsulterDossier")
 public class ConsulterDossier extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

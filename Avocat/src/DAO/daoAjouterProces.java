@@ -353,21 +353,23 @@ public class daoAjouterProces {
 		private String nom;
 		private int duree;
 		private int idproces;
+		private String nomclient;
+		private String  date;
 		public String getNom() {
 			return nom;
 		}
-		
-		
-		
-
-
-		public notif(String nom, int duree, int idproces) {
-			super();
-			this.nom = nom;
-			this.duree = duree;
-			this.idproces = idproces;
+		public String getDate() {
+			return date;
 		}
-
+		public void setDate(String date) {
+			this.date = date;
+		}
+		public String getNomclient() {
+			return nomclient;
+		}
+		public void setNomclient(String nomclient) {
+			this.nomclient = nomclient;
+		}
 		public void setNom(String nom) {
 			this.nom = nom;
 		}
@@ -377,21 +379,19 @@ public class daoAjouterProces {
 		public void setDuree(int duree) {
 			this.duree = duree;
 		}
-
-
-
-
-
 		public int getIdproces() {
 			return idproces;
 		}
-
-
-
-
-
 		public void setIdproces(int idproces) {
 			this.idproces = idproces;
+		}
+		public notif(String nom, int duree, int idproces, String nomclient, String date) {
+			super();
+			this.nom = nom;
+			this.duree = duree;
+			this.idproces = idproces;
+			this.nomclient = nomclient;
+			this.date = date;
 		}
 		
 		
@@ -401,30 +401,39 @@ public class daoAjouterProces {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static ArrayList<notif> listdenotif(){
 		ResultSet res;
-		
 		notif notification = null;
 		ArrayList<notif> notif = new ArrayList<notif>();
 		Connexion.connect();
-		res  = Connexion.select("SELECT TIMESTAMPDIFF(HOUR,sysdate(),datenotif),idProces from proces");
-		
+		res  = Connexion.select("SELECT TIMESTAMPDIFF(HOUR,sysdate(),datenotif),idProces, nom , prenom ,dateNotif from client JOIN dossier on dossier.idClient=client.idClient RIGHT OUTER JOIN proces on dossier.idDos = proces.idDos");
 			try {
 				while(res.next()) {
-					notification = new notif("date notif", res.getInt(1),res.getInt(2));
-					if(notification.duree <= 72 && notification.duree >= 0 ) {
+					if(res.getDate(5) != null && res.getString(3)!=null && res.getString(4)!=null) {
+					notification = new notif("date notif", res.getInt(1),res.getInt(2),res.getString(3)+" "+res.getString(4),res.getTimestamp(5).toString());
+					if(notification.getDuree() <= 72 && notification.getDuree() >= 0 ) {
 						notif.add(notification);
 					}
-				}
-		res.close();
-		res = Connexion.select("SELECT TIMESTAMPDIFF(HOUR,sysdate(),datesui),idProces from proces ");
+				}}
+		res = Connexion.select("SELECT TIMESTAMPDIFF(HOUR,sysdate(),datesui),idProces, nom , prenom ,dateSui from client JOIN dossier on dossier.idClient=client.idClient RIGHT OUTER JOIN proces on dossier.idDos = proces.idDos");
+				while(res.next()) { 
+					if(res.getDate(5) != null && res.getString(3)!=null && res.getString(4)!=null) {
+					if(res.getInt(1) <= 72 && res.getInt(1) >= 0 ) {
+						notification = new notif("date suivant", res.getInt(1),res.getInt(2),res.getString(3)+" "+res.getString(4),res.getTimestamp(5).toString());
+						notif.add(notification);
+					}
+				}}
+				
+		res = Connexion.select("SELECT TIMESTAMPDIFF(HOUR,sysdate(),datepayement),facture.idProces, nom , prenom ,datePayement from client JOIN dossier on dossier.idClient=client.idClient  JOIN proces on dossier.idDos = proces.idDos right outer join facture on facture.idProces = proces.idProces");
 				while(res.next()) {
-					notification = new notif("date suivant", res.getInt(1),res.getInt(2));
-					if(notification.duree <= 72 && notification.duree >= 0 ) {
+					if(res.getDate(5) != null && res.getString(3)!=null && res.getString(4)!=null) {
+					notification = new notif("date payement", res.getInt(1),res.getInt(2),res.getString(3)+" "+res.getString(4),res.getTimestamp(5).toString());
+					if(notification.getDuree() <= 72 && notification.getDuree() >= 0 ) {
 						notif.add(notification);
-					}
+					}}
 				}
-			} catch (SQLException e) {
+			} catch (SQLException  e) {
 			
 				e.printStackTrace();
 			}

@@ -39,6 +39,6 @@
    <!--------------------->
      <script type="text/javascript" src="./resources/js/contents/consultc.js"></script> 
 	<script type="text/javascript" src="./resources/js/contents/procesTableTools.js"></script>      
-      
+    <script type="text/javascript" src="./resources/js/headers/test.js"></script>  
     
 </html>

@@ -15,7 +15,7 @@ import models.Client;
 import models.Consultation;
 
 
-@WebServlet("/AC")
+@WebServlet("/AjouterConsultation")
 public class AjouterConsultation extends HttpServlet {
 	private static final long serialVersionUID = 1L;       
     public AjouterConsultation() {
@@ -44,6 +44,7 @@ public class AjouterConsultation extends HttpServlet {
 			Consultation cons = new Consultation(request.getParameter("type"),request.getParameter("desc"),Float.parseFloat(request.getParameter("frais")));
 			String cin=request.getParameter("cinClientAD") ;
 			DAO.daoAjouterConsultation.ajoutConsultation(cons, cin);
+			out.println("1") ;
 			
 		}
 		

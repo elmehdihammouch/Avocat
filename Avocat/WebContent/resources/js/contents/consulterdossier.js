@@ -84,7 +84,7 @@ $(document).ready(function(){
 				  $("#modifierCl").bind("click", function(){
 					  if( desc != descNV.val() || typeproc != typeprocNV.val() || etatav != etatavNV.val()  ){
 						if(confirm('vouler vous vraiment modifier ce dossier')){
-						$.post("CD",{"id":index,"type":typeprocNV.val(),"desc":descNV.val(),"etat":etatavNV.val(),"operation":"modifier"}, function(data){
+						$.post("ConsulterDossier",{"id":index,"type":typeprocNV.val(),"desc":descNV.val(),"etat":etatavNV.val(),"operation":"modifier"}, function(data){
  if(etatavNV.val()==1){stat = "premier instance"}else if(etatavNV.val()==2){stat = "deuxieme instance"}else if(etatavNV.val()==3){stat="troisieme instance"}							
 					    	if(data==1){
 					    		$("#mod").hide();
@@ -140,7 +140,7 @@ $(document).ready(function(){
 	  var index = $(this).parent().parent().parent().children().eq(1).text();
 	  var supp = this;
 	  if(confirm('voulez vous vraiment supprimer cette dossier')){
-	  $.post("CD",{"id":index,"operation":"delete"}, function(data){
+	  $.post("ConsulterDossier",{"id":index,"operation":"delete"}, function(data){
 	    	if(data==1){
 	    		$(supp).parent().parent().parent().remove();
 	    	}else {

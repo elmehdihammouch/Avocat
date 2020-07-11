@@ -91,7 +91,7 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th>
-                                                <th>Id Consultation</th>
+                                                <th>Num Consultation</th>
                                                 <th>nom</th>
                                                 <th>prenom</th>
                                                 <th>CIN</th>

@@ -27,7 +27,7 @@ import models.Proces;
 /**
  * Servlet implementation class AjouterDossier
  */
-@WebServlet("/AD")
+@WebServlet("/AjouterDossier")
 @MultipartConfig
 public class AjouterDossier extends HttpServlet {
 	private static final long serialVersionUID = 1L;

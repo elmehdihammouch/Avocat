@@ -131,7 +131,7 @@
                     
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
 	                  <select class="effect-16 input-effect" id="statut" style="width:100%" name="statut"><option></option><option value="premiere Instance">premiere Instance</option> <option value="deuxieme Instance" >deuxieme Instance</option>  <option value="troisieme Instance" >troisieme Instance</option></select>
-	                  <label id="">type du proces</label>
+	                  <label id="">Instance</label>
 	                  <span class="focus-border"></span>
                		 </div>
                 

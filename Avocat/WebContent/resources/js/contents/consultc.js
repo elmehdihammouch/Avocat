@@ -65,7 +65,7 @@ $(document).ready(function(){
 	  var index = $(this).parent().parent().parent().children().eq(1).text();
 	  var supp = this;
 	  if(confirm('voulez vous supprimer cette ligne')){
-	  $.post("CC",{"id":index,"operation":"delete"}, function(data){
+	  $.post("ConsulterConsultation",{"id":index,"operation":"delete"}, function(data){
 	    	if(data==1){
 	    		$(supp).parent().parent().parent().remove();
 	    	}else {

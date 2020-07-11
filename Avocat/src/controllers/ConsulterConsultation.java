@@ -18,7 +18,7 @@ import models.Compte;
 /**
  * Servlet implementation class ConsulterConsultation
  */
-@WebServlet("/CC")
+@WebServlet("/ConsulterConsultation")
 public class ConsulterConsultation extends HttpServlet {
 	private static final long serialVersionUID = 1L;       
     public ConsulterConsultation() {

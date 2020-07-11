@@ -91,8 +91,8 @@
               <span>Gestion des consultations</span>
             </a>
             <ul class="sub">
-              <li id="creerConsultation"><a href="http://localhost:8085/Avocat/AC" >creer une consultation</a></li>
-              <li id="consulterConsultation"><a href="http://localhost:8085/Avocat/CC" > Liste des consultations</a></li>
+              <li id="creerConsultation"><a href="http://localhost:8085/Avocat/AjouterConsultation" >creer une consultation</a></li>
+              <li id="consulterConsultation"><a href="http://localhost:8085/Avocat/ConsulterConsultation" > Liste des consultations</a></li>
             </ul>
            </li>
 
@@ -102,8 +102,8 @@
               <span>Gestion des dossiers</span>
             </a>
             <ul class="sub">
-              <li id="creerDossier"><a href="http://localhost:8085/Avocat/AD" >creer un dossier</a></li>
-              <li id="consulterDossier"><a href="http://localhost:8085/Avocat/CD" >consulter liste des dossiers</a></li>
+              <li id="creerDossier"><a href="http://localhost:8085/Avocat/AjouterDossier" >creer un dossier</a></li>
+              <li id="consulterDossier"><a href="http://localhost:8085/Avocat/ConsulterDossier" >consulter liste des dossiers</a></li>
             </ul>
            </li>
 
