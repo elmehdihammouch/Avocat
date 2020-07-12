@@ -330,7 +330,7 @@ function modifierProces(){
 function modifierFacture(){
 	if(numberRegex.test(prixJrM.value)==true &&  numberRegex.test(prixKmM.value)==true &&  numberRegex.test(lgKmM.value)==true &&  numberRegex.test(dureeJrM.value)==true &&  numberRegex.test(mtPayeM.value)==true &&  numberRegex.test(mtGlobalM.textContent)==true &&  numberRegex.test(mtRestantM.textContent)==true &&numberRegex.test(IndemniteKmM.textContent)==true &&    numberRegex.test(fraisLogM.textContent)==true &&  numberRegex.test(montantBaseM.textContent)==true &&   datelocal.test(datePayM.value)==true ){
 		
-			if ( confirm( "êtes vous sûr de vouloir modifier les données de cette facture?" ) ) {
+			if ( confirm( "etes vous sur de vouloir modifier les donnees de cette facture?" ) ) {
 			$.post("ConsulterProces",{action : "modifierFacture", procesToBeEdited : procesToBeEdited , montantBaseM : montantBaseM.textContent , lgKmM : lgKmM.value , prixKmM : prixKmM.value , IndemniteKmM : IndemniteKmM.textContent , dureeJrM : dureeJrM.value , prixJrM : prixJrM.value , fraisLogM : fraisLogM.textContent , mtGlobalM : mtGlobalM.textContent ,  mtPayeM : mtPayeM.value , mtPayeAncienM : mtPayeAncienM.textContent , datePayM : datePayM.value }, function(data){
 				var obj = JSON.parse(data);
 				if(obj.res==1){
@@ -387,24 +387,24 @@ function modifierFacture(){
 function supprimer(){
 	procesToBeDeleted = this.parentElement.parentElement.parentElement.children[1].textContent;
 	rowToDelete = this.parentElement.parentElement.parentElement;
-	if ( confirm( "êtes vous sûr de vouloir supprimer ce proces?" ) ) {
+	if ( confirm( "etes vous sur de vouloir supprimer ce proces?" ) ) {
 		$.post("ConsulterProces",{action : "supprimerProces", procesToBeDeleted : procesToBeDeleted }, function(data){
 				if(data==1){
-					alert("le proces a été suprimé avec succes");
+					alert("le proces a ete suprime avec succes");
 					rowToDelete.remove();
 				}
-				else{alert("suppression echouée");}
+				else{alert("suppression echouee");}
 			});
 	}	
 }
 
 function supprimerPiece(){
 	pieceToBeDeleted = this.parentElement.parentElement;
-	if ( confirm( "êtes vous sûr de vouloir supprimer cette piece jointe?" ) ) {
+	if ( confirm( "etes vous sur de vouloir supprimer cette piece jointe?" ) ) {
 		$.post("ConsulterProces",{action : "supprimerPiece", pieceToBeDeleted : pieceToBeDeleted.children[0].textContent }, function(data){
 			if(data==1){
 				pieceToBeDeleted.remove();
-				alert("piece supprimée");
+				alert("piece supprimee");
 			}
 			else{alert("suppression echouee");}
 		});
