@@ -161,36 +161,67 @@
                    <div class="col-xs-12">
                   </div>
 
-                   <div id="file_upload" style="display:none"> 
+<div id="file_upload" style="display:none"> 
 
                     <div class="col-xs-12 titles-style">
                       <h5>fichiers relatifs au proces</h5>
                     </div>
 
-                    <div class="col-xs-8 col-xs-offset-1 input-effect herite-ajout-proces ">
-                      <div class="abox">
+                    <div class="col-xs-10 col-xs-offset-1 input-effect herite-ajout-proces ">
+                      <div class="container-fluid">
+                         <div class="row">
+                         	 <div class="abox ">
+
+                     
+                      <div class="col-xs-2 col-xs-offset-1">  
                         <div class="aboxv">
                           <input type="file" name="file" id="video" class="inputfile" data-multiple-caption="{count} files selected" multiple accept="video/*" />
                           <label for="video" class="f_u_label"><i class="fas fa-video"></i> video</label>
                         </div>
-
-                        <div class="aboxi">
+                      </div>  
+<div class="col-xs-12"></div>
+                    
+                    <div class="col-xs-2 col-xs-offset-3">
+                        <div class="aboxi ">
                           <input type="file" name="file" id="image" class="inputfile" data-multiple-caption="{count} files selected" multiple  accept="image/*"/>
                           <label for="image" class="f_u_label"><i class="fas fa-images"></i> photo</label>
                         </div>
-
-                        <div class="aboxw">
-                          <input type="file" name="file" id="fword" class="inputfile"  accept=".docx,.doc"/>
-                          <label for="fword" class="f_u_label"><i class="fas fa-file-word"></i> document word</label>
+                    </div> 
+                       
+    <div class="col-xs-12"></div>
+                       
+                    <div class="col-xs-2 col-xs-offset-5">                 
+						<div class="aboxw">
+                          <input type="file" name="file" id="fword" class="inputfile"  accept=".docx,.doc,.txt"/>
+                          <label for="fword" class="f_u_label"><i class="fas fa-file-word"></i> text</label>
                         </div>
+                    </div>    
+                    
+<div class="col-xs-12"></div>
 
+                    <div class="col-xs-2 col-xs-offset-7">
                         <div class="aboxp">
                           <input type="file" name="file" id="fpdf" class="inputfile" data-multiple-caption="{count} files selected" multiple  accept=".pdf"/>
                           <label for="fpdf" class="f_u_label"><i class="fas fa-file-pdf"></i> pdf</label>
                         </div>
+                    </div>  
+                      
+   <div class="col-xs-12"></div>
+   
+                    <div class="col-xs-2 col-xs-offset-9">                   
+                        <div class="aboxa ">
+                          <input type="file" name="file" id="faudio" class="inputfile" data-multiple-caption="{count} files selected" multiple  accept="audio/*"/>
+                          <label for="faudio" class="f_u_label"><i class="fas fa-file-audio"></i>audio</label>
+                        </div>
+                    </div>    
+<div class="col-xs-12"></div>
+                                      
+                        
+                       </div> 
                       </div>    
-                   
-                   </div> </div>
+                   	</div>
+                   </div> 
+              </div>
 
                    <div id="facture" style="display:none"> 
 
@@ -199,14 +230,14 @@
                     </div>
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="number" placeholder="" name="FMB" id="FMB" >
+                       <input class="effect-16 " type="text" placeholder="" name="FMB" id="FMB" >
                         <label id="">montant de base</label>
                         <span class="focus-border"></span>
                     </div>
 
                    
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="number" placeholder="" name="prixKm" id="prixKm" >
+                       <input class="effect-16 " type="text" placeholder="" name="prixKm" id="prixKm" >
                         <label id="">prix par Km</label>
                         <span class="focus-border"></span>
                     </div>
@@ -214,22 +245,29 @@
                     <div class="col-xs-12">
                     </div>
                     
-                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="number" placeholder="" name="mtGlobal" id="mtGlobal" >
+                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+                       <input class="effect-16 " type="text" placeholder="" name="mtGlobal" id="mtGlobal" value="0" >
                         <label id="">montant global</label>
                         <span class="focus-border"></span>
                     </div>
                     
-                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="number" placeholder="" name="mtPaye" id="mtPaye" >
+                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+                       <input class="effect-16 " type="text" placeholder="" name="mtPaye" id="mtPaye" >
                         <label id="">montant payé</label>
                         <span class="focus-border"></span>
                     </div>
-
-                  
-					
-					
-					<div class="col-xs-12">
+                    
+                    <div class="col-xs-12">
+                    </div>
+                    
+                    <div class="col-xs-5 col-xs-offset-3 input-effect herite-ajout-proces">
+                       <input class="effect-16 " type="text" placeholder="" name="mtRestant" id="mtRestant" value="0" >
+                        <label id="">montant Restant</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    
+                     
+                   <div class="col-xs-12">
                     </div>
 					
 					
@@ -238,12 +276,11 @@
 			            <label>Date de payement</label>
 			            <span class="focus-border"></span>
 			        </div>
-			
-                   </div> 
 
+                   </div> 
+                   
                    <div class="col-xs-12">
                    </div>
-
 
             </div>
             <input type="hidden" name="operation" value="addDF">

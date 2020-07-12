@@ -200,7 +200,7 @@ function changeDisplayF1AD(){
 	}
 	else if(choixClient.style.display=="none" && dossier.style.display=="block" && procesAD.style.display=="none"){
 		var typeproc = $("select#typeProces").children("option:selected").val();
-		if( typeproc !=''){
+		if( typeproc !='' ){
 		choixClient.style.display="none";
 		dossier.style.display="none";
 		procesAD.style.display="block";
@@ -208,7 +208,7 @@ function changeDisplayF1AD(){
 	}else if( proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 		var datenotif = $("#dateNotif").val();
 		statut = $("select#statut").children("option:selected").val();
-		if(  datelocal.test(datenotif) == true  && statut !=""){
+		if(  datelocal.test(datenotif) == true  && statut !="" && (!$('#nomAdv').hasClass('effect-16-validation') && $('#nomAdv').hasClass('has-content') ||(!$('#nomAdv').hasClass('has-content')))&& (!$('#prenomAdv').hasClass('effect-16-validation') && $('#prenomAdv').hasClass('has-content') ||(!$('#prenomAdv').hasClass('has-content'))) && (!$('#cinAdv').hasClass('effect-16-validation') && $('#cinAdv').hasClass('has-content') ||(!$('#cinAdv').hasClass('has-content')))  && (!$('#avocatAdv').hasClass('effect-16-validation') && $('#avocatAdv').hasClass('has-content') ||(!$('#avocatAdv').hasClass('has-content'))) && (!$('#adresseAdv').hasClass('effect-16-validation') && $('#adresseAdv').hasClass('has-content') ||(!$('#adresseAdv').hasClass('has-content')))){
 			proces.style.display='none';
 			fileUpload.style.display="block";
 			facture.style.display="none";

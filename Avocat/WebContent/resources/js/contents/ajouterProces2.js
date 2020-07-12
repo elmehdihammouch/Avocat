@@ -144,7 +144,7 @@ function changeDisplayF1(){
 	else if(choixDossier.style.display=="none" && proces.style.display=="block" && fileUpload.style.display=="none" && facture.style.display=="none" ){
 		var datenotif = $("#dateNotif").val();
 		statut = $("select#statut").children("option:selected").val();
-		if(  datelocal.test(datenotif) == true  && statut !="" ){
+		if(  datelocal.test(datenotif) == true  && statut !="" && (!$('#nom').hasClass('effect-16-validation') && $('#nom').hasClass('has-content') ||(!$('#nom').hasClass('has-content')))&& (!$('#prenom').hasClass('effect-16-validation') && $('#prenom').hasClass('has-content') ||(!$('#prenom').hasClass('has-content'))) && (!$('#cinAdv').hasClass('effect-16-validation') && $('#cinAdv').hasClass('has-content') ||(!$('#cinAdv').hasClass('has-content')))  && (!$('#avocatAdv').hasClass('effect-16-validation') && $('#avocatAdv').hasClass('has-content') ||(!$('#avocatAdv').hasClass('has-content'))) && (!$('#adresse').hasClass('effect-16-validation') && $('#adresse').hasClass('has-content') ||(!$('#adresse').hasClass('has-content')))){
 			
 			choixDossier.style.display="none";
 			proces.style.display='none';

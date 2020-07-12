@@ -90,19 +90,19 @@
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="nomAdv" id="nom" >
-                        <label id="">Nom</label>
+                        <label id="cin1">Nom</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="prenomAdv" id="prenom" >
-                        <label id="">Prenom</label>
+                        <label id="cin1">Prenom</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-2 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="cinAdv" id="cinAdv" >
-                        <label id="">CIN</label>
+                        <label id="cin1">CIN</label>
                         <span class="focus-border"></span>
                     </div>
 
@@ -113,13 +113,13 @@
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16" type="text" placeholder="" name="adresseAdv" id="adresse" >
-                        <label id="">Adresse</label>
+                        <label id="cin1">Adresse</label>
                         <span class="focus-border"></span>
                     </div>
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="avocatAdv" id="avocatAdv" >
-                        <label id="">Avocat</label>
+                        <label id="cin1">Avocat</label>
                         <span class="focus-border"></span>
                     </div>
 
@@ -129,36 +129,46 @@
                       <h5>informatons relatives au proces</h5>
                     </div>
                     
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+					<div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
 	                  <select class="effect-16 input-effect" id="statut" style="width:100%" name="statut"><option></option><option value="premiere Instance">premiere Instance</option> <option value="deuxieme Instance" >deuxieme Instance</option>  <option value="troisieme Instance" >troisieme Instance</option></select>
 	                  <label id="">Instance</label>
 	                  <span class="focus-border"></span>
                		 </div>
-                
-                	<div class="col-xs-4 col-xs-offset-1 input-effect herite mg">
+               		 <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
 			        	<input class="effect-16" type="text" placeholder="" id="dateNotif" name="dateNotif">
 			            <label>Date de notification</label>
 			            <span class="focus-border"></span>
 			        </div>
-			        
-			         <div class="col-xs-12">
+                    <!-- <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+                       <input class="effect-16 " type="text" placeholder="" name="" id="cin" >
+                        <label id="cin1">Type de dossier</label>
+                        <span class="focus-border"></span>
+                    </div>-->
+                    <div class="col-xs-12">
                     </div>
-
-                     
-
-                     <div class="col-xs-9 col-xs-offset-1 input-effect herite-ajout-proces">
+                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
                        <input class="effect-16 " type="text" placeholder="" name="description" id="description" >
-                        <label id="">Description</label>
+                        <label id="cin1">Description</label>
                         <span class="focus-border"></span>
                     </div>
-                    
-                    
 
                     <div class="col-xs-12">
                     </div>
 
-                    
+                    <!--<div class="col-xs-8 col-xs-offset-2 input-effect herite-ajout-proces date form_datetime-component">
+                       <div class="form-group">
+                  <label class="control-label col-md-3"> Date d'ajout </label>
+                  <div class="col-md-4">
+                    <div class="input-group date form_datetime-component">
+                      <input type="text" class="form-control" readonly="" size="16">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-theme date-set"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                  </div>
                 </div>
+                    </div>-->
+                   </div> 
                     
                  
                    

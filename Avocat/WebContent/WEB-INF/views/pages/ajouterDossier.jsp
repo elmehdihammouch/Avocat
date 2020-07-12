@@ -12,7 +12,7 @@
 	 <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
 	  <link href="./resources/css/headers/style.css" rel="stylesheet">
 	 <link href="./resources/css/headers/style-responsive.css" rel="stylesheet">
-	
+	 <script src="https://kit.fontawesome.com/dc70a27419.js" crossorigin="anonymous"></script>
 	 
 	<title>Avocat</title>
 </head>
