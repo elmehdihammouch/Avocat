@@ -27,7 +27,7 @@
               <i class="fa fa-bell-o"></i>
               <span class="badge bg-warning nbnotif">0</span>
             </a>
-            <ul class="dropdown-menu extended notification">
+            <ul class="dropdown-menu extended notification" style="overflow: auto;max-height: 90vh;">
               <div class="notify-arrow notify-arrow-yellow"></div>
               <li>
                 
