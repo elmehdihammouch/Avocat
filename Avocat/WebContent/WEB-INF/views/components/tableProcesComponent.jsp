@@ -137,7 +137,8 @@
                                          		<td class="4">---</td>
                                          <%}else {%>          
                                          <td class="4"><%=e.getValue().getNomAdv()+" "+e.getValue().getPrenomAdv() %></td>   
-                                          <%} %>   
+                                          <%} %> 
+                                            
                                                 <td class="5"><%=Proces.statutProces(e.getValue())%></td>
 
                                                 <td class="6"><%=Date.toFDate(e.getValue().getDateCP()) %></td>
