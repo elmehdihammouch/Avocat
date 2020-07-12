@@ -54,15 +54,15 @@ active=document.getElementsByClassName("active");
 
 
 //ensemble des regexps 
-	var nomRegex = /^[a-zA-Z]{2,}$/;
-	var cinRegex = /^([a-zA-Z]{1,2})([0-9]{4,10})$/;
+	var nomRegex = /^([a-zA-Z]{2,})*$/;
+	var cinRegex = /^(([a-zA-Z]{1,2})([0-9]{4,10}))*$/;
 	var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	var dateRegex = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
 	var phoneRegex = /(^[0-9]{10}$)|(^(\+)[0-9]{12}$)/;	
 	var adresseRegex = /^[0-9a-zA-Z\s\-]*$/;
 	var numSalRegex = /^[0-9a-zA-Z\s\-]*$/;
 	var factureRegex = /^[0-9]+$/;
-	var avocatAdvRegex = /^[a-zA-Z\s]{2,}$/;
+	var avocatAdvRegex = /^([a-zA-Z\s]{2,})*$/;
 	var datelocal = /[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T(2[0-3]|[01][0-9]):[0-5][0-9]/;
 	var numberRegex = /^[0-9\.]*$/;
 
@@ -138,10 +138,10 @@ function afficher(){
             pb = document.getElementById("procesBox").children[3];
             fb = document.getElementById("factureBox").children[3];
             filesb = document.getElementById("filesBox").children[3];
-			//null values check
+          //null values check
             for(var key in obj){
-				if((key != "dateCP" && key != "dateAP" && key != "dateNotif"  && key != "dateJug" && key != "dateSui" && key != "facture.datePayement") && (obj[key]==null || obj[key]==0 )){obj[key]="---";}
-				else if((key == "dateCP" || key == "dateAP" || key == "dateNotif"  || key == "dateJug" || key == "dateSui" || key == "facture.datePayement") && obj[key]==null){obj[key]=JSON.parse('{ "date":"----/--/--"}');}
+				if((key != "dateCP" && key != "dateSeance" && key != "dateAP" && key != "dateNotif"  && key != "dateJug" && key != "dateSui" && key != "facture.datePayement") && (obj[key]==null || obj[key]==0 )){obj[key]="---";}
+				else if((key == "dateCP" || key == "dateSeance" || key == "dateAP" || key == "dateNotif"  || key == "dateJug" || key == "dateSui" || key == "facture.datePayement") && obj[key]==null){obj[key]=JSON.parse('{ "date":"----/--/--"}');}
 			}
             for(var key in obj.facture){
             	if(obj.facture[key]==0){obj.facture[key]="-";}
@@ -286,7 +286,7 @@ function modifierProces(){
 			/*if(statutM.value==="premiere Instance"){statutMN = 1;}
 			else if(statutM.value==="deuxieme Instance"){statutMN = 2;}
 			else if(statutM.value==="troisieme Instance"){statutMN = 3;}*/
-		if ( confirm( "êtes vous sûr de vouloir modifier les données de ce proces?" ) ) {
+		if ( confirm( " &eacutetes vous s&ucircr de vouloir modifier les donn&eacutees de ce proces?" ) ) {
 			$.post("ConsulterProces",{action : "modifierProces", procesToBeEdited : procesToBeEdited , nomAdvM : nomAdvM.value , prenomAdvM : prenomAdvM.value , cinAdvM : cinAdvM.value , adresseAdvM : adresseAdvM.value , avocatAdvM : avocatAdvM.value , dateNotifM  : dateNotifM.value , dateAcceptationM : dateAcceptationM.value , numeroProcesM : numeroProcesM.value , tribunalM : tribunalM.value , villeM : villeM.value , numeroSalM : numeroSalM.value , dateSeaM : dateSeaM.value , jugementM : jugementM.value , dateJugM : dateJugM.value , dateSuivM : dateSuivM.value , descriptionM : descriptionM.value }, function(data){
 				var obj = JSON.parse(data);
 				if(obj.res==1){
@@ -316,12 +316,12 @@ function modifierProces(){
 						}
 					}
 				
-				else{alert("modification échouée");}
+				else{alert("modification echouee");}
 			}); 		
 			}
 	}	
 		else{
-			alert("veillez remplir les champs importants");
+			alert("Certains champs sont invalides");
 		}
 		
 		
@@ -334,7 +334,7 @@ function modifierFacture(){
 			$.post("ConsulterProces",{action : "modifierFacture", procesToBeEdited : procesToBeEdited , montantBaseM : montantBaseM.textContent , lgKmM : lgKmM.value , prixKmM : prixKmM.value , IndemniteKmM : IndemniteKmM.textContent , dureeJrM : dureeJrM.value , prixJrM : prixJrM.value , fraisLogM : fraisLogM.textContent , mtGlobalM : mtGlobalM.textContent ,  mtPayeM : mtPayeM.value , mtPayeAncienM : mtPayeAncienM.textContent , datePayM : datePayM.value }, function(data){
 				var obj = JSON.parse(data);
 				if(obj.res==1){
-						alert("Modification terminée");
+						alert("Modification terminee");
 						var factTdToBeEditedTab = document.getElementsByClassName("etatFacture");
 						
 						console.log(factTdToBeEdited);
@@ -354,7 +354,7 @@ function modifierFacture(){
 				}
 				
 				else{
-						alert("La modification de la facture a échoué");
+						alert("La modification de la facture a echoue");
 				}
 				
 			});
@@ -406,7 +406,7 @@ function supprimerPiece(){
 				pieceToBeDeleted.remove();
 				alert("piece supprimée");
 			}
-			else{alert("suppression echouée");}
+			else{alert("suppression echouee");}
 		});
 	}
 }
