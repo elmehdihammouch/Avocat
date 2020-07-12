@@ -76,15 +76,14 @@ public class daoClient {
 		ResultSet res;
 		Connexion.connect();
 		res=Connexion.select("select idProces from proces where idDos in (select idDos from dossier where idClient = "+id+")");
-		
+		nbr += Connexion.maj("DELETE FROM `client` WHERE idClient = "+id+"");
+		nbr += Connexion.maj("DELETE FROM `dossier` WHERE idClient = "+id+"");
+		nbr += Connexion.maj("DELETE FROM `compte` WHERE idClient = "+id+"");
+		nbr += Connexion.maj("DELETE FROM `consultation` WHERE idClient = "+id+"");
 		try {
 			res.next();
 			idProces = res.getInt("idProces");
-			nbr += Connexion.maj("DELETE FROM `client` WHERE idClient = "+id+"");
-			nbr += Connexion.maj("DELETE FROM `dossier` WHERE idClient = "+id+"");
-			nbr += Connexion.maj("DELETE FROM `proces` WHERE idProces = "+idProces+"");
-			nbr += Connexion.maj("DELETE FROM `compte` WHERE idClient = "+id+"");
-			nbr += Connexion.maj("DELETE FROM `consultation` WHERE idClient = "+id+"");
+			nbr += Connexion.maj("DELETE FROM `proces` WHERE idProces = "+idProces+"");			
 			nbr += Connexion.maj("DELETE FROM `facture` WHERE idProces = "+idProces+"");
 			nbr += Connexion.maj("DELETE FROM `piece` WHERE idProces = "+idProces+"");
 			

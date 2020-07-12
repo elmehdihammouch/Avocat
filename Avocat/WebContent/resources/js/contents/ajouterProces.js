@@ -82,7 +82,7 @@ function changeDisplayF1(){
 
 			
 				if(data==0){
-					alert("impossible de trouver un client avec le CIN donné");
+					alert("impossible de trouver un client avec le CIN donnee");
 				}else {	
 					//remplissage des donnes client 
 					var obj = JSON.parse(data);
