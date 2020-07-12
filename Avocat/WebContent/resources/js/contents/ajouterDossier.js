@@ -66,7 +66,8 @@ phoneAC.addEventListener("keyup",validationPhoneAC);
 //dateNaissanceAC.addEventL0istener("keyup",validationDateAC);
 lieuNaissanceAC.addEventListener("keyup",validationAdresseAC);
 municipaleAC.addEventListener("keyup",validationAdresseAC);
-
+document.getElementById("FMB").addEventListener("keyup",calcul);
+document.getElementById("mtPaye").addEventListener("keyup",calcul);
 
 
 
@@ -282,6 +283,13 @@ function changeDisplayF2AD(){
 
 	}
 
+}
+
+
+function calcul(){
+	
+	document.getElementById("mtGlobal").value= FMB.value ;
+	document.getElementById("mtRestant").value= (FMB.value) - (document.getElementById("mtPaye").value);
 }
 
 $(window).load(function(){
