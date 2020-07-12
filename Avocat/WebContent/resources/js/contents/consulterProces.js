@@ -286,7 +286,7 @@ function modifierProces(){
 			/*if(statutM.value==="premiere Instance"){statutMN = 1;}
 			else if(statutM.value==="deuxieme Instance"){statutMN = 2;}
 			else if(statutM.value==="troisieme Instance"){statutMN = 3;}*/
-		if ( confirm( " &eacutetes vous s&ucircr de vouloir modifier les donn&eacutees de ce proces?" ) ) {
+		if ( confirm( "etes vous sur de vouloir modifier les donnees de ce proces?" ) ) {
 			$.post("ConsulterProces",{action : "modifierProces", procesToBeEdited : procesToBeEdited , nomAdvM : nomAdvM.value , prenomAdvM : prenomAdvM.value , cinAdvM : cinAdvM.value , adresseAdvM : adresseAdvM.value , avocatAdvM : avocatAdvM.value , dateNotifM  : dateNotifM.value , dateAcceptationM : dateAcceptationM.value , numeroProcesM : numeroProcesM.value , tribunalM : tribunalM.value , villeM : villeM.value , numeroSalM : numeroSalM.value , dateSeaM : dateSeaM.value , jugementM : jugementM.value , dateJugM : dateJugM.value , dateSuivM : dateSuivM.value , descriptionM : descriptionM.value }, function(data){
 				var obj = JSON.parse(data);
 				if(obj.res==1){
