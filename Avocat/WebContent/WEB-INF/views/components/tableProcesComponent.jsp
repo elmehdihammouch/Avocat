@@ -132,8 +132,12 @@
                                                 
                                                 <td class="3"><%=e.getKey().split(",")[0] %></td>
                                                 
-                                                <td class="4"><%=e.getValue().getNomAdv()+" "+e.getValue().getPrenomAdv() %></td>
-                                                
+                                        
+                                         <%if(e.getValue().getNomAdv().equals("") || e.getValue().getPrenomAdv().equals("")) { %> 
+                                         		<td class="4">---</td>
+                                         <%}else {%>          
+                                         <td class="4"><%=e.getValue().getNomAdv()+" "+e.getValue().getPrenomAdv() %></td>   
+                                          <%} %>   
                                                 <td class="5"><%=Proces.statutProces(e.getValue())%></td>
 
                                                 <td class="6"><%=Date.toFDate(e.getValue().getDateCP()) %></td>
