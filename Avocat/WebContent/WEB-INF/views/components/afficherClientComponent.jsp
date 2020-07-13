@@ -31,9 +31,9 @@
 													<li > <span class="procesTitles">Nationalité : </span><div class="titlesContent"><%=list.get(i).getClient().getNationalite()%></div></li>
 													<li > <span class="procesTitles">Telephone :</span><div class="titlesContent"><%=list.get(i).getClient().getTelephone()%></div></li>
 													<li > <span class="procesTitles">Date de naissance : </span><div class="titlesContent"><%=list.get(i).getClient().getDateNais()%></div></li>
-													<li > <span class="procesTitles">EMAIL Client : </span><div class="titlesContent"><%if(list.get(i).getEmailCl() != null){%><%=list.get(i).getEmailCl()%><%}else{ %><%="Compte desactivé ou ne pas crée "%><%} %></div></li>
-													<li > <span class="procesTitles">Password :</span><div class="titlesContent"><%if(list.get(i).getEmailCl() != null){%><%=list.get(i).getPasswordCl()%><%}else{ %><%="Compte desactivé ou ne pas crée "%><%} %></div></li>
-													<li > <span class="procesTitles">Statut : </span><div class="titlesContent"><%if(list.get(i).getEmailCl() != null){%><%=list.get(i).getStatut()%><%}else{ %><%="Compte desactivé ou ne pas crée "%><%} %></div></li>
+													<li > <span class="procesTitles">EMAIL Client : </span><div class="titlesContent"><%if(list.get(i).getEmailCl() != null){%><%=list.get(i).getEmailCl()%><%}else{ %><%="-----------------------------"%><%} %></div></li>
+													<li > <span class="procesTitles">Password :</span><div class="titlesContent"><%if(list.get(i).getEmailCl() != null){%><%=list.get(i).getPasswordCl()%><%}else{ %><%="----------------------------- "%><%} %></div></li>
+													<li > <span class="procesTitles">Statut : </span><div class="titlesContent"><%if(list.get(i).getEmailCl() != null){%><%=list.get(i).getStatut()%><%}else{ %><%="Compte  pas crée "%><%} %></div></li>
 												</ul>
 												
                                         	
