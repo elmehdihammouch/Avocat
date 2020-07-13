@@ -27,7 +27,15 @@ public class Authentification extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	if(request.getParameter("operation")==null){
+    		request.getRequestDispatcher("/WEB-INF/views/pages/adminAuthentification.jsp").forward(request, response);}
+    	else if(request.getParameter("operation").equals("disconnect")) {
+			HttpSession ses = request.getSession();
+			ses.invalidate();
+			request.getRequestDispatcher("/WEB-INF/views/pages/adminAuthentification.jsp").forward(request, response);		
+		}		
+	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -53,6 +61,7 @@ public class Authentification extends HttpServlet {
 			
 			
 		}
+		
 	}
 
 }

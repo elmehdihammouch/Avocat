@@ -18,7 +18,7 @@
 	 Administrateur admin = null;
 	 admin = (Administrateur)session.getAttribute("admin"); 
 	 if(admin!=null){
-	 request.getRequestDispatcher("ajouterProces.jsp").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}	 %>
 	<jsp:include page="../contents/adminauth.jsp"></jsp:include>
 </body>

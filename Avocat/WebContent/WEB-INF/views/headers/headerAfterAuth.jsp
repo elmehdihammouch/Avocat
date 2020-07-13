@@ -42,12 +42,14 @@
         </ul>
         <!--  notification end -->
       </div>
-      
+   <form action="Authentification" method="get">   
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="">deconnexion</a></li>
+          <li><a class="logout" id="dis" href="#">deconnexion</a></li>
+          <input type="hidden" value="disconnect" name="operation">
         </ul>
       </div>
+      </form>
     </header>
     <!--header end-->
     <!-- **********************************************************************************************************************************************************

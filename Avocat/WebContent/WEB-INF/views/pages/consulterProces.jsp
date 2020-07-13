@@ -1,3 +1,4 @@
+<%@page import="models.Administrateur"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -18,7 +19,14 @@
 	 <script src="https://kit.fontawesome.com/dc70a27419.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
+<% HttpSession ses = request.getSession();
+	 Administrateur admin = null;
+	 admin = (Administrateur)session.getAttribute("admin"); 
+		 if(admin==null)
+					 {
+			 request.getRequestDispatcher("adminAuthentification.jsp").forward(request, response);
+					 }
+	%> 
 <jsp:include page="../headers/headerAfterAuth.jsp"></jsp:include>
 <jsp:include page="../contents/consulterProcesContent.jsp"></jsp:include>
 

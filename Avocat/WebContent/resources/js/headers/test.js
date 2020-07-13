@@ -36,6 +36,8 @@ $(window).load(function() {
 	post();  
 	setInterval('post()',10000)
 
-
+	  $("#dis").on("click", function(){
+		  $(this).parent().parent().parent().parent().submit()	  
+	  });
 
 });

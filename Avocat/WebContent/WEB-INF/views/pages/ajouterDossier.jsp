@@ -17,7 +17,14 @@
 	<title>Avocat</title>
 </head>
 <body style="background: #ffffff;">
-
+<% HttpSession ses = request.getSession();
+	 Administrateur admin = null;
+	 admin = (Administrateur)session.getAttribute("admin"); 
+		 if(admin==null)
+					 {
+			 request.getRequestDispatcher("adminAuthentification.jsp").forward(request, response);
+					 }
+	%> 
 	<jsp:include page="../headers/headerAfterAuth.jsp"></jsp:include>
 	<jsp:include page="../contents/ajouterDossierContent.jsp"></jsp:include>
 <div id="add" style="display:none">

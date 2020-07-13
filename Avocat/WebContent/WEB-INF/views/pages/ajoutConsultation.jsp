@@ -1,3 +1,4 @@
+<%@page import="models.Administrateur"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -13,7 +14,14 @@
 	 
 </head>
 <body style="background: #ffffff;">
-
+<% HttpSession ses = request.getSession();
+	 Administrateur admin = null;
+	 admin = (Administrateur)session.getAttribute("admin"); 
+		 if(admin==null)
+					 {
+			 request.getRequestDispatcher("adminAuthentification.jsp").forward(request, response);
+					 }
+	%> 
 	<jsp:include page="../headers/headerAfterAuth.jsp"></jsp:include>
 	<jsp:include page="../contents/ajoutConsultationContent.jsp"></jsp:include>
 	<div id="add" style="display:none">

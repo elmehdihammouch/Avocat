@@ -477,7 +477,7 @@ public class daoAjouterProces {
 
 			@Override
 			public int compare(notif o1, notif o2) {
-				return String.valueOf(o1.getDuree()).compareTo(String.valueOf(o2.getDuree()));
+				return Integer.compare(o1.getDuree(), o2.getDuree());
 				
 			}
 		});
@@ -535,7 +535,7 @@ public class daoAjouterProces {
 
 			@Override
 			public int compare(notif o1, notif o2) {
-				return String.valueOf(o1.getDuree()).compareTo(String.valueOf(o2.getDuree()));
+				return Integer.compare(o1.getDuree(), o2.getDuree());
 				
 			}
 		});

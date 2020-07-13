@@ -17,14 +17,14 @@
 </head>
 <body style="background: #ffffff;">
 
-	 <%// HttpSession ses = request.getSession();
-//	 Administrateur admin = null;
-//	 admin = (Administrateur)session.getAttribute("admin"); 
-//		 if(admin==null)
-//					 {
-//			 request.getRequestDispatcher("adminAuthentification.jsp").forward(request, response);
-		//					 }
-	%>  
+<% HttpSession ses = request.getSession();
+	 Administrateur admin = null;
+	 admin = (Administrateur)session.getAttribute("admin"); 
+		 if(admin==null)
+					 {
+			 request.getRequestDispatcher("adminAuthentification.jsp").forward(request, response);
+					 }
+	%> 
 
 
 
