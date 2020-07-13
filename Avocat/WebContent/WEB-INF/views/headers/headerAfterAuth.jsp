@@ -13,7 +13,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="index.html" class="logo"><b>AVOC<span>AT</span></b></a>
+      <a href="index.jsp" class="logo"><b>AVOC<span>AT</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
@@ -87,7 +87,7 @@
           
            <li class="sub-menu">
             <a href="javascript:;">
-              <i class="fa fa-gavel"></i>
+              <i class="fa fa-handshake-o"></i>
               <span>Gestion des consultations</span>
             </a>
             <ul class="sub">

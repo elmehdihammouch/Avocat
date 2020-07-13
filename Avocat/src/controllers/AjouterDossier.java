@@ -66,7 +66,7 @@ public class AjouterDossier extends HttpServlet {
 		else if(statutR.equals("deuxieme Instance")) {statut=2;}
 		else if(statutR.equals("troisieme Instance")) {statut=3;}
 		cin = request.getParameter("cinClientAD");
-		Dossier dos = new Dossier(request.getParameter("typeProces"), request.getParameter("Description"));	
+		Dossier dos = new Dossier(request.getParameter("typeProces"), request.getParameter("Description").replace("'", "\\'"));	
 		daoAjouterDossier.ajoutdossier(dos, cin);
 		if(daoAjouterDossier.chercherEtatCompte(cin)==0) {
 			Client client = new Client();
@@ -78,7 +78,7 @@ public class AjouterDossier extends HttpServlet {
 			String cinAdv = request.getParameter("cinAdv");
 			String adresseAdv = request.getParameter("adresseAdv");
 			String avocatAdv = request.getParameter("avocatAdv");
-			String description = request.getParameter("description");
+			String description = request.getParameter("description").replace("'", "\\'");
 			
 			//fichiers du proces
 			List<Part> files = request.getParts().stream().filter(part -> "file".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList());

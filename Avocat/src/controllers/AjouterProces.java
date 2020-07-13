@@ -100,7 +100,7 @@ public class AjouterProces extends HttpServlet {
 			String cinAdv = request.getParameter("cinAdv");
 			String adresseAdv = request.getParameter("adresseAdv");
 			String avocatAdv = request.getParameter("avocatAdv");
-			String description = request.getParameter("description");
+			String description = request.getParameter("description").replace("'", "\\'");
 			String statutR = request.getParameter("statut");
 			//traitement du statut du dossier
 			int statut=0;	

@@ -223,55 +223,48 @@
                    </div> 
               </div>
 
-                   <div id="facture" style="display:none"> 
+                   <div id="facture" style="display: none;"> 
 
                     <div class="col-xs-12 titles-style">
                       <h5>informatons relatives à la facture</h5>
                     </div>
 
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="FMB" id="FMB" >
+                       <input class="effect-16 has-content" type="text" placeholder="" name="FMB" id="FMB">
                         <label id="">montant de base</label>
                         <span class="focus-border"></span>
                     </div>
 
                    
-                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="prixKm" id="prixKm" >
-                        <label id="">prix par Km</label>
-                        <span class="focus-border"></span>
-                    </div>
+                    
 
-                    <div class="col-xs-12">
-                    </div>
+                    
                     
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="mtGlobal" id="mtGlobal" value="0" >
+                       <input class="effect-16  has-content" type="text" placeholder="" name="mtGlobal" id="mtGlobal" value="0">
                         <label id="">montant global</label>
                         <span class="focus-border"></span>
                     </div>
                     
                     <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="mtPaye" id="mtPaye" >
+                       <input class="effect-16  has-content" type="text" placeholder="" name="mtPaye" id="mtPaye">
                         <label id="">montant payé</label>
                         <span class="focus-border"></span>
                     </div>
                     
-                    <div class="col-xs-12">
-                    </div>
                     
-                    <div class="col-xs-5 col-xs-offset-3 input-effect herite-ajout-proces">
-                       <input class="effect-16 " type="text" placeholder="" name="mtRestant" id="mtRestant" value="0" >
+                    
+                    <div class="col-xs-4 col-xs-offset-1 input-effect herite-ajout-proces">
+                       <input class="effect-16  has-content" type="text" placeholder="" name="mtRestant" id="mtRestant" value="0">
                         <label id="">montant Restant</label>
                         <span class="focus-border"></span>
                     </div>
                     
                      
-                   <div class="col-xs-12">
-                    </div>
+                   
 					
 					
-                    <div class="col-xs-5 col-xs-offset-3 input-effect herite mg">
+                    <div class="col-xs-5 col-xs-offset-4 input-effect herite mg">
 			        	<input class="effect-16" type="text" placeholder="" id="datePay" name="datePay">
 			            <label>Date de payement</label>
 			            <span class="focus-border"></span>
@@ -290,7 +283,7 @@
             <div class="col-xs-12">
             </div>
 
-            <div class="col-xs-3 col-xs-offset-2 herite-ajout-proces" style="display:none;">
+            <div class="col-xs-3 col-xs-offset-3 herite-ajout-proces" style="display:none;">
                 <button type="button" class="btn btn-primary" id="changeDisplay2AD" value="precedant">précedant</button>
             </div>
 
