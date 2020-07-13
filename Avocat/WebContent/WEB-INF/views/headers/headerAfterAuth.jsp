@@ -71,7 +71,7 @@
            <li id="accueil">
                 <a href="./" class="">
                 <i class="fa fa-home"></i>
-                <span>Accueil </span>
+                <span id="AccueilSB">Accueil </span>
                 </a>
            </li>
           

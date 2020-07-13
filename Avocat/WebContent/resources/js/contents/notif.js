@@ -1,12 +1,12 @@
+//header js
 active=document.getElementsByClassName("active");
 	
 	for(i=0;i<active.length;i++){
 		active[i].classList.remove("active");
 		i--;
 	}
-	alert(1)
-	document.getElementById("accueil").className += "active";
-	//document.getElementById("accueil").parentElement.previousElementSibling.className += " active";
+	document.getElementById("AccueilSB").parentElement.className += " active";
+//
 
 
 $(".tr-shadow").on("dblclick", function(){

@@ -21,7 +21,7 @@
                                         <div class="rs-select2--light rs-select2--md"  onChange="pagination1()">  
                                    
                                             <select class="js-select2" name="" id="pagination1" >
-                                                <option selected="selected" value="0">All Properties</option>
+                                                <option selected="selected" value="0">Tous</option>
                                                 <option value="3">3</option>
                                                 <option value="5">5</option>
                                                 <option value="7">7</option>
