@@ -76,7 +76,7 @@
         	<div style="margin-top: 400px;margin-left: 250px" >
                 <button type="button" class="btn btn-primary" id="return" value="return">Return</button>
             </div>
-            <div style="margin-left: 400px; margin-top: -35px" >
+            <div style="margin-left: 550px; margin-top: -35px" >
                 <button type="button" class="btn btn-primary" id="submit" value="Confirmer">Confirmer</button>
             </div> 
         

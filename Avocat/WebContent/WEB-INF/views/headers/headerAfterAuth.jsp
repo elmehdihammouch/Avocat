@@ -124,8 +124,8 @@
               <span>Archive</span>
             </a>
             <ul class="sub">
-              <li id="procesArchive"><a href="http://localhost:8085/Avocat/ProcesArchive">Archive des proces</a></li>
-              <li id="factureArchive"><a href="http://localhost:8085/Avocat/FactureArchive">Archive des factures</a></li>
+              <li id="procesArchive"><a href="http://localhost:8085/Avocat/ProcesArchive">Archives des proces</a></li>
+              <li id="factureArchive"><a href="http://localhost:8085/Avocat/FactureArchive">Archives des factures</a></li>
             </ul>
            </li>
 
