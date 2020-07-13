@@ -13,7 +13,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="index.jsp" class="logo"><b>AVOC<span>AT</span></b></a>
+      <a href="./" class="logo"><b>AVOC<span>AT</span></b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
@@ -68,8 +68,8 @@
           <%=admin.getPrenom() %>
           <%} %></h5>
             
-           <li >
-                <a href="#" class="">
+           <li id="accueil">
+                <a href="./" class="">
                 <i class="fa fa-home"></i>
                 <span>Accueil </span>
                 </a>

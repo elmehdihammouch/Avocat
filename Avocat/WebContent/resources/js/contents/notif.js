@@ -1,4 +1,15 @@
-  $(".tr-shadow").on("dblclick", function(){
+active=document.getElementsByClassName("active");
+	
+	for(i=0;i<active.length;i++){
+		active[i].classList.remove("active");
+		i--;
+	}
+	alert(1)
+	document.getElementById("accueil").className += "active";
+	//document.getElementById("accueil").parentElement.previousElementSibling.className += " active";
+
+
+$(".tr-shadow").on("dblclick", function(){
 	  var index = $(this).children().eq(1).text();
 	  location.assign("./ConsulterProces?idProc="+index);
 	  	  

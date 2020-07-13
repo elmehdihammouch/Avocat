@@ -24,7 +24,7 @@ function post(){
 				
 				
 			 // }
-		}$('.notification').append('<li class="i"><a href="#">See all notifications</a></li>');
+		}$('.notification').append('<li class="i"><a href="./">Tous les notifications</a></li>');
 			
 		})
 		
