@@ -10,7 +10,7 @@
 		  var index = $("select#aff").children("option:selected").val();
 		  if(index == $(this).children().eq(6).text()){
 			  $(this).show();
-		  }else if($(this).children().eq(6).text() == ""){
+		  }else if(index == ""){
 			  $(this).show();
 		  }else{
 			  $(this).hide();

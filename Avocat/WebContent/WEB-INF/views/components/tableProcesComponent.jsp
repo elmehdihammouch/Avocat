@@ -16,14 +16,14 @@
                                <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">data table</h3>
+                                <h3 class="title-5 m-b-35">Proces</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left" >
                         <!-- ******************************pagination**************************************** -->    
                               <div class="rs-select2--light rs-select2--md"  onChange="pagination1()">  
                                    
                                             <select class="js-select2" name="" id="pagination1" >
-                                                <option selected="selected" value="0">All Properties</option>
+                                                <option selected="selected" value="0">Proces</option>
                                                 <option value="3">3</option>
                                                 <option value="5">5</option>
                                                 <option value="7">7</option>

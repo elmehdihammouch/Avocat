@@ -30,7 +30,7 @@ public class ConsulterDossier extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		if(request.getParameter("operation").equals("modifier")) {	
 			System.out.println(request.getParameter("id"));
-			Dossier dos = new Dossier(Integer.parseInt(request.getParameter("id")), request.getParameter("type"), request.getParameter("desc"));
+			Dossier dos = new Dossier(Integer.parseInt(request.getParameter("id")), request.getParameter("type"), request.getParameter("desc").replace("'", "\\'"));
 			int stat = Integer.parseInt(request.getParameter("etat"));
 			MyResult res = new MyResult(dos, stat);
 			daoAjouterDossier.modif(res);
