@@ -1,0 +1,243 @@
+/*-----------header-------------*/
+.header{
+	 min-height:110px;
+	/*background-color: #00FA9A;*/
+	background: linear-gradient(315deg,#D8BFD8,	#8A2BE2);
+}
+.btn{
+	background-color: red;
+	width: 200px;
+	height: 40px;
+	margin-top: 80px;
+	margin-left: 20px;
+	border-top-right-radius: 25%;
+	background-color: #061826;
+	color: #00FA9A;
+
+}
+.mlogo{
+	color:black;
+	background-color:#061829;
+	background-image:url(./images/logo2.jpeg);
+	background-repeat:no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	
+
+	
+}
+.fondi{
+	background-color:#060c21;
+	min-height: 740px;
+	
+	 opacity: 0.9;
+}
+
+
+/*-----------content-----------*/
+.content{
+	
+	  background-color:#222;
+    color: #e6e6e6;
+    border-color: #e6e6e6;
+}
+.content1{
+	
+	
+	min-height: 500px;
+
+
+	color:black;
+	background-color:#222;
+	background-image:url(./images/law5.jpg);
+	background-repeat:no-repeat;
+	background-position:center ;
+	background-size: cover;
+	 
+	
+
+
+}
+.fond{
+	background-color:#060c21;
+	min-height: 600px;
+	
+	 opacity: 0.9;
+}
+/*#content1Image{
+padding-top:100px;
+margin: auto; 
+min-height: 300px;
+color:black;
+	background-color:#222;
+	background-image:url(./images/law4.jpg);
+	background-repeat:no-repeat;
+	background-position:center ;
+	background-size: cover;
+}*/
+
+.content2{
+	color:black;
+	background-color:#222;
+	background-image:url(./images/law3.jpg);
+	background-repeat:no-repeat;
+	background-position:center ;
+	background-size: cover;
+	
+	min-height: 500px;
+}
+.content3{
+	color:black;
+	background-color:#222;
+	background-image:url(./images/law6.jpg);
+	background-repeat:no-repeat;
+	background-position:center ;
+	background-size: cover;
+	
+	min-height: 500px;
+}
+img {
+  margin-top:20px; 
+  margin-left: 50px;
+ 
+  width: 50%;
+  height: 40%;
+  border-radius:2%;
+  opacity: 90X%; 
+
+}
+   
+
+	
+
+.con:2nd-child {
+	font-family: 'poppins',sans-serif;
+	margin:0; 
+	padding: 0;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	min-height: 100vh;
+	background:#060c21;
+	
+}
+
+.services{
+	margin: 100px;
+	position: relative;
+	width:90%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+	grid-template-rows: auto;
+	grid-gap: 0 40px;
+}
+.services .box{
+	position: relative;
+	height: 400px;
+	background:#060c21;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	border: 1px solid #000; 
+
+}
+
+.services .box:before 
+{
+	content: '';
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	background: #fff;
+	transform: skew(2deg ,2deg);
+	z-index:-1 ;
+}
+
+.container .box:nth-child(1):before 
+{background: linear-gradient(315deg,#ff0057,#e64a19);}
+.container .box:nth-child(2):before 
+{background: linear-gradient(315deg,#89ff00,#00bcd4);}
+.container .box:nth-child(3):before 
+{background: linear-gradient(315deg,#e91e63,#5d02ff);}
+.container .box:nth-child(4):before 
+{background: linear-gradient(315deg,#ff0000,#ffc107);}
+
+.services .box:after
+{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 50%;
+	background: rgba(255,255,255,0);
+	pointer-events: none;
+
+}
+
+
+.boxContent{
+	position: relative;
+	padding: 20px;
+	transform: translateY(40px);
+}
+
+.boxContent h2{
+	position: absolute;
+	top: -60px;
+	right: 20px;
+	margin: 0;
+	padding: 0;
+	font-size: 10em;
+	color: rgb(255,255,255,.05);
+	transition: 0.5s;
+}
+.box:hover .boxContent h2{
+	top: -140px;
+}
+
+.box .boxContent h3{
+	margin: 0 0 10px;
+	padding: 0;
+	font-size: 25px;
+	font-weight: 500;
+	color: #fff; 
+}
+
+.box .boxContent p{
+	margin: 0 ;
+	padding: 0;
+	font-size: 16px;
+	
+	color: #fff;
+	}
+
+.box .boxContent a{
+	position: relative;
+	margin: 20px 0 0;
+	padding: 10px 20px;
+	text-decoration: none;
+	border: 1px solid #fff;
+	display: inline-block;
+	color: #fff;
+	transition: 0.5s;
+	transform: translateY(-40px);
+	opacity: 0;
+	visibility: hidden;
+	 
+}
+
+.box:hover .boxContent a{
+	transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
+}
+.box .boxContent a:hover{
+    color:#000;
+    background:#fff;
+	}
+
+	
