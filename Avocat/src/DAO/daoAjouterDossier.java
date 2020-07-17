@@ -209,7 +209,31 @@ public class daoAjouterDossier {
 		return nbr;
 	}
 	
-	
+	public static ArrayList<MyResult> listDossier(int idClient){
+		ResultSet res;
+		Dossier dossier = null;
+		MyResult result = null;
+		int statut = 0;
+		ArrayList<MyResult> dossiers = new ArrayList<MyResult>();
+		Connexion.connect();
+		res=Connexion.select("select cl.nom,cl.prenom,cl.cin ,cl.tel,cl.email , do.*,max(statut) as 'statut' from dossier do left outer join client cl ON cl.idClient = do.idClient left outer join proces po ON po.idDos = do.idDos where cl.idClient="+idClient+" GROUP BY do.idDos");
+		try {
+			while(res.next()) { 
+				Client client = new Client(res.getInt(7), res.getString(1), res.getString(2),res.getString(3), res.getString(4), res.getString(5));
+				dossier = new Dossier(res.getInt("idDos"), res.getInt("idClient"), res.getString("typeProces"), res.getString("description"),client);
+				statut = res.getInt("statut");
+				result = new MyResult(dossier, statut);
+				dossiers.add(result);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Connexion.disconect();
+		return dossiers;
+		
+	}
 	
 	
 	

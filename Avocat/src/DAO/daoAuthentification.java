@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import models.Administrateur;
 import models.Client;
+import models.Compte;
 
 
 public class daoAuthentification {
@@ -42,28 +43,19 @@ public class daoAuthentification {
 			return administrateur;
 		}
 		
-		public static Client clientAuthentification(String email, String password) {
+		public static Compte clientAuthentification(String email, String password) {
 			ResultSet res;
-			Client client=new Client();
+			Compte client=new Compte();
 			
 			Connexion.connect();
-			res=Connexion.select("select * from administrateur where email="+email+" and password="+password+"; ");
-			
+			res=Connexion.select("select * from compte where emailClient='"+email+"' and passwordCliient='"+password+"' and statut =1 ");			
 			try {
 				if(res.next()) {
-					client.setId(res.getInt(1));
-					client.setNom(res.getString(2));
-					client.setPrenom(res.getString(3));
-					client.setDateNais(res.getDate(4));
-					client.setLieuNais(res.getString(5));
-					client.setNationalite(res.getString(6));
-					client.setAdresse(res.getString(7));
-					client.setCin(res.getString(8));
-					client.setMunicipale(res.getString(9));
-					client.setMunicipale(res.getString(10));
-					client.setTelephone(res.getString(11));
-					client.setEmail(res.getString(12));
-					client.setPassword(res.getString(13));
+					client.setIdCompte(res.getInt(1));
+					client.setIdClient(res.getInt(2));
+					client.setEmailCl(res.getString(3));
+					client.setPasswordCl(res.getString(4));
+					client.setStatut(res.getInt(5));
 					
 				}
 				else return null;

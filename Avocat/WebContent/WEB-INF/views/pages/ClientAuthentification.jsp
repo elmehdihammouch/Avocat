@@ -1,3 +1,4 @@
+<%@page import="models.Compte"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
@@ -10,8 +11,18 @@
 <link href="./resources/css/client/utilAuth.css" rel="stylesheet">
 <link href="./resources/css/client/mainAuth.css" rel="stylesheet">
 <link href="./resources/css/client/pfeInterfaceCss.css" rel="stylesheet">
+<link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
 </head>
-<body class="con">
+<body class="con">	
+	<% HttpSession ses = request.getSession();
+	 Compte client = null;
+	 client = (Compte)session.getAttribute("client"); 
+		 if(client!=null)
+					 {
+			 request.getRequestDispatcher("accueil.jsp").forward(request, response);
+					 }
+	%> 
+	
 <jsp:include page="../contents/servicecontent.jsp"></jsp:include>
 <jsp:include page="../contents/authentification.jsp"></jsp:include>
 <jsp:include page="../contents/contactercontent.jsp"></jsp:include>

@@ -33,7 +33,7 @@ public class Authentification extends HttpServlet {
     	else if(request.getParameter("operation").equals("disconnect")) {
 			HttpSession ses = request.getSession();
 			ses.invalidate();
-			request.getRequestDispatcher("/WEB-INF/views/pages/adminAuthentification.jsp").forward(request, response);		
+			request.getRequestDispatcher("/WEB-INF/views/pages/").forward(request, response);		
 		}		
 	}
 	
@@ -51,7 +51,7 @@ public class Authentification extends HttpServlet {
 			
 			if(admin!=null) {
 				ses.setAttribute("admin", admin);
-				request.getRequestDispatcher("/WEB-INF/views/pages/ajouterProces.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/views/pages/").forward(request, response);
 			}
 			else {
 				request.setAttribute("ERROR", "Login ou Mot de passe incorrecte");

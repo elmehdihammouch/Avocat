@@ -16,9 +16,10 @@ public class Compte {
 		this.statut = statut;
 	}
 	
-	
-	
-	
+	public Compte() {
+		super();
+	}
+
 	public Compte(int idClient, String emailCl, String passwordCl, int statut, Client client) {
 		super();
 		this.idClient = idClient;
@@ -27,9 +28,6 @@ public class Compte {
 		this.statut = statut;
 		this.client = client;
 	}
-
-
-
 
 	public Compte(int idCompte, int idClient, String emailCl, String passwordCl, int statut, Client client) {
 		super();
@@ -41,8 +39,6 @@ public class Compte {
 		this.client = client;
 	}
 
-
-
 	public Compte(int idClient, String emailCl, String passwordCl, int statut) {
 		super();
 		this.idClient = idClient;
@@ -50,7 +46,6 @@ public class Compte {
 		this.passwordCl = passwordCl;
 		this.statut = statut;
 	}
-
 
 	@Override
 	public String toString() {
@@ -87,15 +82,9 @@ public class Compte {
 	public void setStatut(int statut) {
 		this.statut = statut;
 	}
-
-
-
 	public Client getClient() {
 		return client;
 	}
-
-
-
 	public void setClient(Client client) {
 		this.client = client;
 	}

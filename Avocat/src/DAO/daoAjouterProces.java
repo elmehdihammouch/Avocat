@@ -174,6 +174,114 @@ public class daoAjouterProces {
 		return procesM;
 	}
 	
+	public static HashMap<String, Proces> consulterProces(int idClient){
+		ResultSet res;
+		HashMap<String, Proces> procesM = new HashMap<String, Proces>();
+		int it=0;
+		Connexion.connect();
+		//adding proces objects which had files on it to the hashMAP
+		res=Connexion.select("SELECT p.idProces, p.idDos, p.numP, p.dateCP, p.dateAP, p.description, p.adresseAdv, p.cinAdv, p.nomAdv, p.prenomAdv, p.avocatAdv, p.tribunal, p.ville, p.saleNum, p.dateSeance, p.dateSui, p.txtJug, p.dateJug, p.dateNotif, p.statut, c.prenom, c.nom, f.idFacture, f.mtGlobal, f.mtPaye, pi.idPiece, pi.nomFichier, pi.path FROM proces p,dossier d, client c, facture f, piece pi  WHERE p.idDos=d.idDos AND d.idClient=c.idClient AND p.idProces=f.idProces AND p.idProces=pi.idProces and d.idDos="+idClient+";");
+		try {
+			
+			while(res.next()) {
+				
+				Facture facture = new Facture(res.getInt(23), res.getFloat(24), res.getFloat(25)) ;
+				
+				
+				Files file = new Files(res.getInt(26), res.getInt(1), res.getString(27), res.getString(28));
+				
+				//------------ making proces objects and adding them to the hashMap procesM
+				//----for each resultSet we check if the proces brought by it doesn't exist in the hashMap procesM
+				int iterator=0;
+				for(Proces p: procesM.values()) {
+					if (p.getIdProces()==res.getInt(1)) {
+						p.getFiles().add(file);
+						break;
+					}
+					else {iterator++;}
+				}
+				//------------------ if it doesn't we wreate a new set in that hashMap procesM
+				if(iterator==procesM.size()) {
+					ArrayList<Files> files = new ArrayList<Files>();
+					files.add(file);
+					Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), files , facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
+					procesM.put(res.getString(21)+" "+res.getString(22)+","+it, proces);
+					it++;
+				}
+				//-----------
+			}
+		//	adding proces objects which doesn not have files on it to the hashMAP
+		res=Connexion.select("SELECT p.idProces, p.idDos, p.numP, p.dateCP, p.dateAP, p.description, p.adresseAdv, p.cinAdv, p.nomAdv, p.prenomAdv, p.avocatAdv, p.tribunal, p.ville, p.saleNum, p.dateSeance, p.dateSui, p.txtJug, p.dateJug, p.dateNotif, p.statut, c.prenom, c.nom, f.idFacture, f.mtGlobal, f.mtPaye FROM proces p,dossier d, client c, facture f WHERE p.idDos=d.idDos AND d.idClient=c.idClient AND p.idProces=f.idProces AND p.idProces not in (select pi.idProces from piece pi) and d.idDos="+idClient+";");
+		while(res.next()) {
+			
+			Facture facture = new Facture(res.getInt(23), res.getFloat(24), res.getFloat(25)) ;
+			Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
+			procesM.put(res.getString(21)+" "+res.getString(22)+","+it, proces);
+			it++;
+		}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Connexion.disconect();
+		return procesM;
+	}
+	public static HashMap<String, Proces> consulterProcesCl(int idClient){
+		ResultSet res;
+		HashMap<String, Proces> procesM = new HashMap<String, Proces>();
+		int it=0;
+		Connexion.connect();
+		//adding proces objects which had files on it to the hashMAP
+		res=Connexion.select("SELECT p.idProces, p.idDos, p.numP, p.dateCP, p.dateAP, p.description, p.adresseAdv, p.cinAdv, p.nomAdv, p.prenomAdv, p.avocatAdv, p.tribunal, p.ville, p.saleNum, p.dateSeance, p.dateSui, p.txtJug, p.dateJug, p.dateNotif, p.statut, c.prenom, c.nom, f.idFacture, f.mtGlobal, f.mtPaye, pi.idPiece, pi.nomFichier, pi.path FROM proces p,dossier d, client c, facture f, piece pi  WHERE p.idDos=d.idDos AND d.idClient=c.idClient AND p.idProces=f.idProces AND p.idProces=pi.idProces and c.idClient="+idClient+";");
+		try {
+			
+			while(res.next()) {
+				
+				Facture facture = new Facture(res.getInt(23), res.getFloat(24), res.getFloat(25)) ;
+				
+				
+				Files file = new Files(res.getInt(26), res.getInt(1), res.getString(27), res.getString(28));
+				
+				//------------ making proces objects and adding them to the hashMap procesM
+				//----for each resultSet we check if the proces brought by it doesn't exist in the hashMap procesM
+				int iterator=0;
+				for(Proces p: procesM.values()) {
+					if (p.getIdProces()==res.getInt(1)) {
+						p.getFiles().add(file);
+						break;
+					}
+					else {iterator++;}
+				}
+				//------------------ if it doesn't we wreate a new set in that hashMap procesM
+				if(iterator==procesM.size()) {
+					ArrayList<Files> files = new ArrayList<Files>();
+					files.add(file);
+					Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), files , facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
+					procesM.put(res.getString(21)+" "+res.getString(22)+","+it, proces);
+					it++;
+				}
+				//-----------
+			}
+		//	adding proces objects which doesn not have files on it to the hashMAP
+		res=Connexion.select("SELECT p.idProces, p.idDos, p.numP, p.dateCP, p.dateAP, p.description, p.adresseAdv, p.cinAdv, p.nomAdv, p.prenomAdv, p.avocatAdv, p.tribunal, p.ville, p.saleNum, p.dateSeance, p.dateSui, p.txtJug, p.dateJug, p.dateNotif, p.statut, c.prenom, c.nom, f.idFacture, f.mtGlobal, f.mtPaye FROM proces p,dossier d, client c, facture f WHERE p.idDos=d.idDos AND d.idClient=c.idClient AND p.idProces=f.idProces AND p.idProces not in (select pi.idProces from piece pi) and d.idClient="+idClient+";");
+		while(res.next()) {
+			
+			Facture facture = new Facture(res.getInt(23), res.getFloat(24), res.getFloat(25)) ;
+			Proces proces = new Proces(res.getInt(1), res.getInt(2), res.getString(3),Date.toToolsDate(res.getTimestamp(4)) , Date.toToolsDate(res.getTimestamp(5)), res.getString(6), res.getString(7), res.getString(8), res.getString(9), res.getString(10), res.getString(11), res.getString(12), res.getString(13), res.getString(14), Date.toToolsDate(res.getTimestamp(15)), Date.toToolsDate(res.getTimestamp(16)), res.getString(17), Date.toToolsDate(res.getTimestamp(18)), facture,Date.toToolsDate(res.getTimestamp(19)), res.getInt(20));
+			procesM.put(res.getString(21)+" "+res.getString(22)+","+it, proces);
+			it++;
+		}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Connexion.disconect();
+		return procesM;
+	}
+	
+	
 	public static Proces procesById(int id) {
 		Proces proces = null ;
 		ResultSet res;
@@ -199,7 +307,6 @@ public class daoAjouterProces {
 		return proces;
 		
 	}
-	
 	
 	public static int procesUpdate(Proces p) {
 		ResultSet res;

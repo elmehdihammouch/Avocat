@@ -7,7 +7,7 @@
                				<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="post" action="AuthentificationClient">
 					<span class="login100-form-title p-b-33">
 						Account Login
 					</span>
@@ -28,26 +28,6 @@
 						<button class="login100-form-btn">
 							Sign in
 						</button>
-					</div>
-
-					<div class="text-center p-t-45 p-b-4">
-						<span class="txt1">
-							Forgot
-						</span>
-
-						<a href="#" class="txt2 hov1">
-							Username / Password?
-						</a>
-					</div>
-
-					<div class="text-center">
-						<span class="txt1">
-							Connect as
-						</span>
-
-						<a href="" class="txt2 hov1" style="cursor: pointer">
-							Admin
-						</a>
 					</div>
 				</form>
 			</div>
