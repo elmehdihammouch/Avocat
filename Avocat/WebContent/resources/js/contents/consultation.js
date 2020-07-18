@@ -94,7 +94,8 @@ $("#confirmer").click(function(){
 	if(type!='' && factureRegex.test($("#frais").val())==true){
 	   $.post("AjouterConsultation",{"type":$("#type").children("option:selected").val(),"frais":$("#frais").val(),"desc":$("#desc").val(),"operation":"addc","cinClientAD":cin.value}, function(data){
 		   if(data==1){
-			   alert("Cette consultation a ete ajoutee avec succes")}
+			   location.assign("./ConsulterConsultation");
+			   }
 	    		
 	   })        }else{
 		   if(factureRegex.test($("#frais").val())==false){$("#frais").addClass("has-content effect-16-validation")}

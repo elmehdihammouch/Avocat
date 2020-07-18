@@ -95,7 +95,7 @@ public class AjouterDossier extends HttpServlet {
 			ArrayList<Files> filesList = Files.fileUpload(files)	;	
 			Proces p = new Proces(idDos, description, adresseAdv, cinAdv, nomAdv, prenomAdv, avocatAdv, filesList, facture,dateNotif,statut);
 			daoAjouterProces.ajouterProces(p);
-
+			request.getRequestDispatcher("/WEB-INF/views/pages/consulterDossier.jsp").forward(request, response);
 		}
 		
 	}
