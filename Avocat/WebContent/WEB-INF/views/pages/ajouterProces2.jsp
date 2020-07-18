@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+	<link rel="icon" href="./resources/media/images/icon.JPG">
   <link href="./resources/css/contents/ajouterProces.css" rel="stylesheet">
  	 <link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	 <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -13,7 +14,7 @@
 	 <link href="./resources/css/headers/style-responsive.css" rel="stylesheet">
 	 <script src="https://kit.fontawesome.com/dc70a27419.js" crossorigin="anonymous"></script>
 
-<title>Avocat</title>
+<title>Ajout d'un proces</title>
 </head>
 <body style="background: #ffffff;">
 

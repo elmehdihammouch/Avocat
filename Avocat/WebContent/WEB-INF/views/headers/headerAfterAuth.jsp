@@ -61,7 +61,7 @@
         <!-- sidebar menu start-->
           
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="<%if(admin!=null){%>
+          <p class="centered"><a href="#"><img src="<%if(admin!=null){%>
           <%=admin.getImageUrl()%>
           <%} %>" class="img-circle" width="80"></a></p>
           <h5 class="centered"><%if(admin!=null){%>

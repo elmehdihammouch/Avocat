@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Conultation</title>
+	<link rel="icon" href="./resources/media/images/icon.JPG">
 	 <link href="./resources/css/contents/consultationClient.css" rel="stylesheet">
  	 <link href="./resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
  	 <link href="./resources/font-awesome/css/font-awesome.css" rel="stylesheet">

@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Authentification</title>
+	<link rel="icon" href="./resources/media/images/icon.JPG">
 <link href="./resources/css/client/bootstrap.min.css" rel="stylesheet">
 <link href="./resources/css/client/utilAuth.css" rel="stylesheet">
 <link href="./resources/css/client/mainAuth.css" rel="stylesheet">
