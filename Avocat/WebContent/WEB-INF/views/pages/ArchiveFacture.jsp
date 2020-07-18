@@ -30,14 +30,7 @@
 	%> 
 	
 	<jsp:include page="../headers/headerAfterAuthClient.jsp"></jsp:include>
-	<%Integer i =(Integer) request.getAttribute("num");
-	  if(i==null){
-	%>
-	<jsp:include page="../components/Proces.jsp"></jsp:include>
-	<%}else{%>
-	<jsp:include page="../components/ajoutpiecejointe.jsp"></jsp:include>
-
-	<% } %>
+	<jsp:include page="../components/ArchiveFactureClient.jsp"></jsp:include>
 </body>
 	<script type="text/javascript" src="./resources/jquery/jquery.js"></script>
  	<script type="text/javascript" src="./resources/js/headers/jquery.dcjqaccordion.2.7.js"></script>

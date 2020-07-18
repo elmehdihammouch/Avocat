@@ -1,4 +1,9 @@
-
+<%@page import="DAO.daoClient"%>
+<%@page import="models.Compte"%>
+<% HttpSession ses = request.getSession();
+	 Compte client = null;
+	 client = (Compte)session.getAttribute("client"); 
+	%> 
 <section id="container">
     <header class="header black-bg">
       <div class="sidebar-toggle-box">
@@ -9,32 +14,9 @@
       <!--logo end-->
       <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
-        <ul class="nav top-menu">
-          <!-- settings start -->
-
-          <!-- inbox dropdown end -->
-          <!-- notification dropdown start-->
-          <li id="header_notification_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" >
-              <i class="fa fa-bell-o"></i>
-              <span class="badge bg-warning nbnotif">0</span>
-            </a>
-            <ul class="dropdown-menu extended notification" style="overflow: auto;max-height: 90vh;">
-              <div class="notify-arrow notify-arrow-yellow"></div>
-              <li>
-                
-              </li>
-              
-             <!--  = <li>
-                <a href="index.html#">See all notifications</a>
-              </li>-->
-            </ul>
-          </li>
-          <!-- notification dropdown end -->
-        </ul>
-        <!--  notification end -->
+      
       </div>
-   <form action="Authentification" method="get">   
+   <form action="AuthentificationClient" method="get">   
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" id="dis" href="#">deconnexion</a></li>
@@ -53,20 +35,21 @@
         <!-- sidebar menu start-->
           
         <ul class="sidebar-menu" id="nav-accordion">
-          
+          <ul class="sidebar-menu" id="nav-accordion">
+          <h5 class="centered"><%=daoClient.nomcplt(client.getIdClient()) %></h5>
           
             
            <li id="Dossier">
                 <a href="./AccueilClient" class="">
                 <i class="fa fa-folder" aria-hidden="true"></i>
-                <span id="AccueilSB">Dossier </span>
+                <span id="AccueilSB1">Dossier </span>
                 </a>
            </li>
           
            <li id="">
-                <a href="./ajoutPieceJointe" class="">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                <span id="AccueilSB">Ajouter une Piece jointe </span>
+                <a href="./ArchiveClient" class="">
+                <i class="fa fa-archive" aria-hidden="true"></i>
+                <span id="AccueilSB">MAJ Facture </span>
                 </a>
            </li>          
        </ul>

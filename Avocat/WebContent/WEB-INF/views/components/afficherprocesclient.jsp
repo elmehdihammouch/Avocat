@@ -31,7 +31,6 @@
                                                 </th>
                                                 <th style="display:;">idProces</th>
                                                 <th style="display:;">idDossier</th>
-                                                <th>Client</th>
                                                 <th>Advairsaire</th>
                                                 <th>Etat d'avancement</th>    
                                                 <th>Date de creation</th>
@@ -55,7 +54,6 @@
 
                                                 <td style="display:;"><%=e.getValue().getIdDos()%></td>
                                                 
-                                                <td class="3"><%=e.getKey().split(",")[0] %></td>
                                                 
                                 <%try{ %>        
                                          <%if(e.getValue().getNomAdv().equals("") || e.getValue().getPrenomAdv().equals("")) { %> 

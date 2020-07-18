@@ -23,7 +23,13 @@ public class AuthentificationClient extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/pages/ClientAuthentification.jsp").forward(request, response);
+		if(request.getParameter("operation")==null){
+    		request.getRequestDispatcher("/WEB-INF/views/pages/ClientAuthentification.jsp").forward(request, response);}
+    	else if(request.getParameter("operation").equals("disconnect")) {
+			HttpSession ses = request.getSession();
+			ses.invalidate();
+			request.getRequestDispatcher("/WEB-INF/views/pages/ClientAuthentification.jsp").forward(request, response);		
+		}		
 	}
 
 

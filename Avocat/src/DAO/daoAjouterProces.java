@@ -456,6 +456,26 @@ public class daoAjouterProces {
 		Connexion.disconect();
 		return fa;
 	}
+	
+	
+	public static ArrayList<FactureArch> factureArchive(int idclient) {
+		ResultSet res;
+		ArrayList<FactureArch> fa = new ArrayList<FactureArch>();
+		Connexion.connect();
+		res=Connexion.select("SELECT idFactureArch, idFacture, datePayement, lgKm, prKm, dureeJr, prixJr, mtPaye, dateModifcation FROM facturearch where idfacture in (SELECT idFacture from facture where idproces in(SELECT idproces from proces where iddos in ( SELECT iddos from dossier where idclient = "+idclient+"))) ORDER by `dateModifcation` DESC;");
+			try {
+				while(res.next()) {
+					FactureArch f = new FactureArch(res.getInt(1), res.getInt(2), Date.toToolsDate(res.getTimestamp(3)), res.getFloat(4), res.getFloat(5), res.getFloat(6), res.getFloat(7), res.getFloat(8), Date.toToolsDate(res.getTimestamp(9)));
+					fa.add(f);
+				}
+			} catch (SQLException e) {
+			
+				e.printStackTrace();
+			}
+		
+		Connexion.disconect();
+		return fa;
+	}
 	public static class notif {
 		private String nom;
 		private int duree;

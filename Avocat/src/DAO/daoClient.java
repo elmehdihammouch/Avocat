@@ -98,5 +98,21 @@ public class daoClient {
 		return nbr;
 	}
 	
+	public static String nomcplt(int idclient) {
+		ResultSet res;
+		String nom = null;
+		Connexion.connect();
+		res = Connexion.select("SELECT nom , prenom  FROM client where idclient ="+idclient+";");
+		try {res.next();
+			nom = res.getString(1)+"  "+res.getString(2);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Connexion.disconect();
+		return nom;
+	}
+	
 	
 }
